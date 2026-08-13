@@ -1,14 +1,27 @@
-export { DuckDbLayerStack, type ComposedDuckDbPresentation } from './stack';
+export { LayerStack } from './stack';
+export type { ComposedPresentation } from './stack';
 export type {
-  DuckDbColumn,
-  DuckDbLayerGrid,
-  DuckDbMutation,
-  DuckDbMutationContext,
-  DuckDbPresentation,
-  DuckDbPresentationContext,
-  DuckDbProjectedColumn,
-  DuckDbProjection,
-  DuckDbProjectionContext,
-  DuckDbRowDetail,
-  DuckDbSourceLayer,
+  EnrichedColumn,
+  GridSourceLayer,
+  LayerEnrichment,
+  LayerEnrichmentContext,
+  LayerGrid,
+  LayerPresentation,
+  LayerPresentationContext,
+  LayerRowDetail,
 } from './types';
+
+// SQL-only, and separated for a reason: `project` and `mutate` change the
+// query the engine runs, so they are meaningless against an HTTP endpoint or
+// an array. Nothing here imports DuckDB — it is SQL string composition — so
+// `/duckdb` re-exports rather than owns it.
+export { SqlLayerStack } from './sql';
+export type {
+  SqlColumn,
+  SqlMutation,
+  SqlMutationContext,
+  SqlProjectedColumn,
+  SqlProjection,
+  SqlProjectionContext,
+  SqlSourceLayer,
+} from './sql';

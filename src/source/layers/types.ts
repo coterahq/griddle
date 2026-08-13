@@ -1,140 +1,85 @@
 import type React from 'react';
 import type {
+  DataGridCellValue,
   DataGridColumn,
-  DataGridColumnStats,
   DataGridRowDetailContext,
   DataGridRowId,
-  DataGridViewModel,
-} from '@cotera/client/app/components/ui/data-grid';
-import type { DuckDbCellValue } from '../arrow';
+} from '../../core/types';
+import type { DataGridViewModel } from '../../core/view-model';
 
 /**
- * A layer is one thing laid over a parquet file loaded into DuckDB-wasm.
+ * A layer is one thing laid over a data source.
  *
- * There are two physically different ways to lay something over a parquet
- * table, and neither collapses into the other:
+ * There are three physically different ways to lay something over a source,
+ * and none collapses into another:
  *
- *  - **Mutate** the materialized table. Right for a bounded, replayable edit
- *    log: it can ALTER the schema and it can position an inserted row relative
- *    to a row an earlier statement inserted, neither of which a projection can
- *    express.
- *  - **Project** extra columns at read time from a side table. Right for data
- *    that changes constantly and independently of the parquet: a re-materialize
- *    would wipe it, so the join has to exist regardless.
+ *  - **Present.** Grid columns laid ahead of the source's own, a live channel
+ *    for patching rows already on screen, a row detail panel. Pure React and
+ *    grid concepts, so it works against every adapter.
+ *  - **Enrich.** Given a page the source already returned, attach fields to
+ *    each row from somewhere else. The non-SQL join — an HTTP lookup, a
+ *    `Map`, a second grid source.
+ *  - **Project** and **mutate** (see `./sql`). SQL-only, because they change
+ *    the query the engine runs rather than the rows that came back.
  *
- * What they share is everything else — how they are composed, how their
- * columns reach the grid, how they push live updates into rows already on
- * screen — and that is what this type is. The three slots are optional and
- * independent: a layer fills in the ones it needs. The row-select checkbox
- * fills only `present`; the operation replay fills only `mutate`; the
- * automations overlay fills `project` and `present`.
+ * What they share is how they compose, how their columns reach the grid, and
+ * how they push live updates into loaded rows. That is what this type is. The
+ * slots are optional and independent: a row-select checkbox fills only
+ * `present`; a user-name lookup fills only `enrich`; an automations overlay
+ * fills `project` and `present`.
  *
- * **No connection-scoped state.** `CoteraDuckDB.rawQuery` takes an arbitrary
- * connection from a pool, so a `CREATE TEMP TABLE`, a temp view, a prepared
- * statement handle or a `SET`/`PRAGMA` issued by a layer is invisible to the
- * next read. Anything a layer needs to persist belongs in a real table.
+ * ## Enrich is not project, and the difference is not cosmetic
+ *
+ * `project` adds columns to the query, so the grid's own `WHERE` and
+ * `ORDER BY` address them exactly like native ones — sorting by a joined
+ * `name` re-runs one query across every source and returns the right rows.
+ *
+ * `enrich` attaches fields to a page that has already been fetched. The grid
+ * is holding one page of a result it did not run, so sorting by an enriched
+ * column could only reorder *that page* — which looks like it worked and is
+ * wrong. Filtering on one could only hide rows from the page, leaving a short
+ * page and a total that disagrees with it.
+ *
+ * So enriched columns are not sortable or filterable, and that is enforced
+ * rather than documented: {@link EnrichedColumn} removes both keys, so a layer
+ * cannot ask for them, and {@link LayerStack} sets them `false` on the way
+ * out. Silent wrong ordering is the worst outcome available here.
  */
-export type DuckDbSourceLayer<TRow> = {
+export type GridSourceLayer<TRow> = {
   /**
    * Stable and unique within a stack. Drives join-alias derivation, the
    * row-detail conflict warning, and the dev check that catches a layer being
    * rebuilt on every render.
    */
   readonly id: string;
-  readonly mutate?: (context: DuckDbMutationContext) => DuckDbMutation;
-  readonly project?: (context: DuckDbProjectionContext) => DuckDbProjection;
   readonly present?: (
-    context: DuckDbPresentationContext<TRow>
-  ) => DuckDbPresentation<TRow>;
+    context: LayerPresentationContext<TRow>
+  ) => LayerPresentation<TRow>;
+  readonly enrich?: (
+    context: LayerEnrichmentContext<TRow>
+  ) => LayerEnrichment<TRow>;
 };
 
-/** A column of a materialized table or a projected source. */
-export type DuckDbColumn = { name: string; type: string | null };
-
-// ---------------------------------------------------------------- slot 1: mutate
-
-export type DuckDbMutationContext = {
-  /** Raw (unquoted) name of the table being built. */
-  readonly tableName: string;
-  /** The schema this layer inherits from the layers before it. */
-  readonly columns: readonly DuckDbColumn[];
-  /** Resolved from {@link columns}; null when the source has no durable id. */
-  readonly rowIdColumn: string | null;
-};
-
-/**
- * Statements and the resulting schema, from one call.
- *
- * Deliberately one return rather than two methods: a layer that taught the
- * replay about a new operation and forgot to teach the schema projection about
- * it was the single most expensive bug shape in this code.
- */
-export type DuckDbMutation = {
-  /** Executed in order, immediately after the table is created. */
-  readonly statements: readonly string[];
-  /** The schema the table has once they have run. */
-  readonly columns: readonly DuckDbColumn[];
-};
-
-// -------------------------------------------------------------- slot 2: project
-
-export type DuckDbProjectionContext = {
-  /**
-   * Alias of the source this layer wraps. Qualify base columns with it — a
-   * join's ON clause must reference `<baseAlias>."col"`, never a bare name.
-   */
-  readonly baseAlias: string;
-  /**
-   * Mints an alias unique across the whole stack, so two instances of the same
-   * layer kind can be stacked without colliding.
-   */
-  readonly alias: (suffix: string) => string;
-  readonly rowIdColumn: string | null;
-};
-
-export type DuckDbProjectedColumn = {
-  readonly name: string;
-  /** SQL type name; drives grid type inference and typed filter translation. */
-  readonly type: string | null;
-  /**
-   * Replaces the type-derived header stats, which are right for a real column
-   * and wrong for a synthesised one. Receives the fully resolved source — every
-   * layer wrapped, the active WHERE applied — so a stat built from it describes
-   * exactly the rows on screen.
-   */
-  readonly loadStats?: (params: {
-    sourceSql: string;
-  }) => Promise<DataGridColumnStats>;
-};
-
-export type DuckDbProjection = {
-  /** `expr AS "alias"` fragments appended to `SELECT <baseAlias>.*`. */
-  readonly selectExpressions: readonly string[];
-  /** JOIN clauses placed after `FROM <source> AS <baseAlias>`. */
-  readonly joins: readonly string[];
-  /** Declared so sorts, filters and header stats can address them. */
-  readonly columns: readonly DuckDbProjectedColumn[];
-};
-
-// -------------------------------------------------------------- slot 3: present
+// --------------------------------------------------------------- slot: present
 
 /** The grid's side of a layer's live channel. */
-export type DuckDbLayerGrid = {
+export type LayerGrid = {
   /** Applies new values to one loaded row. A miss is a no-op. */
   readonly patch: (
     rowId: DataGridRowId,
-    values: Record<string, DuckDbCellValue>
+    values: Record<string, DataGridCellValue>
   ) => void;
   /**
    * Adds a row to the loaded set, at the end of it.
    *
-   * At the end because that is the only position this can honestly claim: where
-   * a row belongs is decided by the active sort, and the grid holds one page of
-   * a result it does not re-run. The row is reported as drifted when a sort or
-   * filter is active, which is what the "rows changed" chip offers a re-query
-   * for — the same treatment {@link patch} gets when it moves a sorted value.
+   * At the end because that is the only position this can honestly claim:
+   * where a row belongs is decided by the active sort, and the grid holds one
+   * page of a result it does not re-run. The row is reported as drifted when a
+   * sort or filter is active, which is what a "rows changed" affordance offers
+   * a re-query for — the same treatment {@link patch} gets when it moves a
+   * sorted value.
    */
-  readonly insertRow: (row: Record<string, DuckDbCellValue>) => void;
+  readonly insertRow: (row: Record<string, DataGridCellValue>) => void;
   /**
    * Removes a row from the loaded set. A miss is a no-op.
    *
@@ -150,7 +95,7 @@ export type DuckDbLayerGrid = {
   readonly loadedRowIds: () => DataGridRowId[];
 };
 
-export type DuckDbPresentationContext<TRow> = {
+export type LayerPresentationContext<TRow> = {
   /**
    * The holders exist because a column's `renderCell` runs long after the view
    * model is built and needs to reach the live grid and the current rows —
@@ -168,12 +113,12 @@ export type DuckDbPresentationContext<TRow> = {
  * without one: the grid positions rows from the height, and a missing height
  * silently left every row unexpandable while the renderer looked fine.
  */
-export type DuckDbRowDetail<TRow> = {
+export type LayerRowDetail<TRow> = {
   readonly height: number;
   readonly render: (context: DataGridRowDetailContext<TRow>) => React.ReactNode;
 };
 
-export type DuckDbPresentation<TRow> = {
+export type LayerPresentation<TRow> = {
   /**
    * Real grid columns, laid out ahead of the source's own.
    *
@@ -189,6 +134,43 @@ export type DuckDbPresentation<TRow> = {
    *
    * Returns an unsubscribe.
    */
-  readonly subscribe?: (grid: DuckDbLayerGrid) => () => void;
-  readonly rowDetail?: DuckDbRowDetail<TRow>;
+  readonly subscribe?: (grid: LayerGrid) => () => void;
+  readonly rowDetail?: LayerRowDetail<TRow>;
+};
+
+// ---------------------------------------------------------------- slot: enrich
+
+/**
+ * A column attached to an already-fetched page.
+ *
+ * `sortable` and `filterable` are removed rather than defaulted, so declaring
+ * one is a compile error rather than a runtime surprise. See the note on
+ * {@link GridSourceLayer} for why: the grid holds one page of a result it did
+ * not run, so sorting on this could only reorder that page — which looks like
+ * it worked.
+ */
+export type EnrichedColumn<TRow> = Omit<
+  DataGridColumn<TRow>,
+  'sortable' | 'filterable'
+>;
+
+export type LayerEnrichmentContext<TRow> = {
+  readonly getRowId: (row: TRow) => DataGridRowId;
+};
+
+export type LayerEnrichment<TRow> = {
+  /** Declared once, at construction, so the grid can lay them out. */
+  readonly columns: readonly EnrichedColumn<TRow>[];
+  /**
+   * Given the page the source returned, return it with this layer's fields
+   * attached.
+   *
+   * Called once per page with the whole page rather than once per row, so an
+   * implementation can issue one batched lookup for every id it needs instead
+   * of N round trips. Returning the input unchanged is a valid no-op.
+   */
+  readonly attach: (input: {
+    readonly rows: readonly TRow[];
+    readonly signal?: AbortSignal;
+  }) => TRow[] | Promise<TRow[]>;
 };

@@ -25,9 +25,9 @@
     "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   },
   "include": ["src", "test", "examples", "scripts", "*.ts", "*.mts"],
-  // Imported verbatim from Cotera and not yet decoupled — they still reference
-  // `@cotera/client/*`. Each is lifted in its own milestone (layers at L4, the
-  // DuckDB adapter at L5) and its exclusion removed then. Listed here rather
-  // than left broken so `typecheck` stays a meaningful signal in between.
-  "exclude": ["src/source/layers", "src/duckdb"]
+  // Imported verbatim from Cotera and not yet decoupled — still references
+  // `@cotera/client/*`. Lifted at L5, and its exclusion removed then. Listed
+  // here rather than left broken so `typecheck` stays a meaningful signal in
+  // between. (`src/source/layers` came off this list at L4.)
+  "exclude": ["src/duckdb"]
 }

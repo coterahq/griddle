@@ -1,20 +1,20 @@
 import { describe, expect, it, vi } from 'vitest';
-import { DuckDbLayerStack } from '../layers';
+import { SqlLayerStack } from '../index';
 import type {
-  DuckDbLayerGrid,
-  DuckDbPresentationContext,
-  DuckDbSourceLayer,
-} from '../layers';
+  LayerGrid,
+  LayerPresentationContext,
+  SqlSourceLayer,
+} from '../index';
 
 type Row = { id: string };
 
-const presentationContext = (): DuckDbPresentationContext<Row> => ({
+const presentationContext = (): LayerPresentationContext<Row> => ({
   gridHolder: { current: null },
   rowsHolder: { current: [] },
   getRowId: (row) => row.id,
 });
 
-const layerGrid = (): DuckDbLayerGrid => ({
+const layerGrid = (): LayerGrid => ({
   patch: vi.fn(),
   insertRow: vi.fn(),
   deleteRow: vi.fn(),
@@ -25,7 +25,7 @@ const layerGrid = (): DuckDbLayerGrid => ({
 const projectingLayer = (
   id: string,
   columnName: string
-): DuckDbSourceLayer<Row> => ({
+): SqlSourceLayer<Row> => ({
   id,
   project: ({ baseAlias, alias }) => ({
     selectExpressions: [`${alias('t')}.value AS "${columnName}"`],
@@ -38,10 +38,10 @@ const projectingLayer = (
   }),
 });
 
-describe('DuckDbLayerStack', () => {
+describe('SqlLayerStack', () => {
   describe('wrapSource', () => {
     it('leaves the source alone with no projecting layers', () => {
-      const composed = new DuckDbLayerStack<Row>([{ id: 'a' }]);
+      const composed = new SqlLayerStack<Row>([{ id: 'a' }]);
 
       expect(composed.wrapSource('(SELECT * FROM t)')).toBe(
         '(SELECT * FROM t)'
@@ -49,7 +49,7 @@ describe('DuckDbLayerStack', () => {
     });
 
     it('wraps once for one projecting layer', () => {
-      const composed = new DuckDbLayerStack([projectingLayer('runs', 'state')]);
+      const composed = new SqlLayerStack([projectingLayer('runs', 'state')]);
 
       expect(composed.wrapSource('(SELECT * FROM t)')).toBe(
         '(SELECT cotera_src_0.*, cotera_src_0_t.value AS "state" ' +
@@ -59,7 +59,7 @@ describe('DuckDbLayerStack', () => {
     });
 
     it('nests so a later layer can reference an earlier one’s column', () => {
-      const composed = new DuckDbLayerStack([
+      const composed = new SqlLayerStack([
         projectingLayer('runs', 'state'),
         projectingLayer('notes', 'note'),
       ]);
@@ -73,7 +73,7 @@ describe('DuckDbLayerStack', () => {
     });
 
     it('gives two instances of the same layer kind distinct aliases', () => {
-      const composed = new DuckDbLayerStack([
+      const composed = new SqlLayerStack([
         projectingLayer('runs', 'a'),
         projectingLayer('runs', 'b'),
       ]);
@@ -84,11 +84,11 @@ describe('DuckDbLayerStack', () => {
     });
 
     it('skips a layer that projects no columns', () => {
-      const empty: DuckDbSourceLayer<Row> = {
+      const empty: SqlSourceLayer<Row> = {
         id: 'empty',
         project: () => ({ selectExpressions: [], joins: [], columns: [] }),
       };
-      const composed = new DuckDbLayerStack([empty]);
+      const composed = new SqlLayerStack([empty]);
 
       expect(composed.wrapSource('(SELECT * FROM t)')).toBe(
         '(SELECT * FROM t)'
@@ -97,7 +97,7 @@ describe('DuckDbLayerStack', () => {
   });
 
   it('collects projected columns in stack order', () => {
-    const composed = new DuckDbLayerStack([
+    const composed = new SqlLayerStack([
       projectingLayer('runs', 'state'),
       projectingLayer('notes', 'note'),
     ]);
@@ -114,14 +114,14 @@ describe('DuckDbLayerStack', () => {
       const exec = async (sql: string) => {
         executed.push(sql);
       };
-      const adds = (id: string, column: string): DuckDbSourceLayer<Row> => ({
+      const adds = (id: string, column: string): SqlSourceLayer<Row> => ({
         id,
         mutate: ({ columns }) => ({
           statements: [`ALTER TABLE t ADD COLUMN ${column}`],
           columns: [...columns, { name: column, type: 'VARCHAR' }],
         }),
       });
-      const composed = new DuckDbLayerStack([adds('a', 'x'), adds('b', 'y')]);
+      const composed = new SqlLayerStack([adds('a', 'x'), adds('b', 'y')]);
 
       const columns = await composed.materialize({
         exec,
@@ -143,14 +143,14 @@ describe('DuckDbLayerStack', () => {
     it('re-resolves the row id column per layer when told how', async () => {
       const seen: (string | null)[] = [];
       const exec = async () => undefined;
-      const observe = (id: string): DuckDbSourceLayer<Row> => ({
+      const observe = (id: string): SqlSourceLayer<Row> => ({
         id,
         mutate: ({ rowIdColumn }) => {
           seen.push(rowIdColumn);
           return { statements: [], columns: [{ name: 'renamed', type: null }] };
         },
       });
-      const composed = new DuckDbLayerStack([observe('a'), observe('b')]);
+      const composed = new SqlLayerStack([observe('a'), observe('b')]);
 
       await composed.materialize({
         exec,
@@ -166,7 +166,7 @@ describe('DuckDbLayerStack', () => {
   });
 
   describe('present', () => {
-    const withColumn = (id: string): DuckDbSourceLayer<Row> => ({
+    const withColumn = (id: string): SqlSourceLayer<Row> => ({
       id,
       present: () => ({ columns: [{ id, header: id, getValue: () => null }] }),
     });
@@ -175,7 +175,7 @@ describe('DuckDbLayerStack', () => {
       // The array is base-first, but the outermost layer's column belongs
       // leftmost: `[operations, automations, selection]` renders as
       // `[select, workflows, ...]`.
-      const composed = new DuckDbLayerStack([
+      const composed = new SqlLayerStack([
         withColumn('workflows'),
         withColumn('select'),
       ]);
@@ -192,11 +192,11 @@ describe('DuckDbLayerStack', () => {
       const subscribing = (
         id: string,
         teardown: () => void
-      ): DuckDbSourceLayer<Row> => ({
+      ): SqlSourceLayer<Row> => ({
         id,
         present: () => ({ subscribe: () => teardown }),
       });
-      const composed = new DuckDbLayerStack([
+      const composed = new SqlLayerStack([
         subscribing('a', first),
         subscribing('b', second),
       ]);
@@ -212,7 +212,7 @@ describe('DuckDbLayerStack', () => {
     });
 
     it('is a no-op unsubscribe when no layer subscribes', () => {
-      const composed = new DuckDbLayerStack<Row>([{ id: 'a' }]);
+      const composed = new SqlLayerStack<Row>([{ id: 'a' }]);
 
       expect(() =>
         composed.present(presentationContext()).subscribe(layerGrid())()
@@ -220,16 +220,13 @@ describe('DuckDbLayerStack', () => {
     });
 
     describe('row detail', () => {
-      const withDetail = (
-        id: string,
-        height: number
-      ): DuckDbSourceLayer<Row> => ({
+      const withDetail = (id: string, height: number): SqlSourceLayer<Row> => ({
         id,
         present: () => ({ rowDetail: { height, render: () => null } }),
       });
 
       it('is null when no layer declares one', () => {
-        const composed = new DuckDbLayerStack<Row>([{ id: 'a' }]);
+        const composed = new SqlLayerStack<Row>([{ id: 'a' }]);
 
         expect(composed.present(presentationContext()).rowDetail).toBeNull();
       });
@@ -241,7 +238,7 @@ describe('DuckDbLayerStack', () => {
         const warn = vi
           .spyOn(console, 'warn')
           .mockImplementation(() => undefined);
-        const composed = new DuckDbLayerStack([
+        const composed = new SqlLayerStack([
           withDetail('automations', 232),
           withDetail('selection', 100),
         ]);

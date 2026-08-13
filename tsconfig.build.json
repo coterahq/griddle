@@ -11,9 +11,8 @@
   },
   "include": ["src"],
   // `exclude` replaces rather than extends the base config's, so the
-  // not-yet-decoupled dirs have to be repeated here (layers L4, DuckDB L5).
+  // not-yet-decoupled dir has to be repeated here (DuckDB L5).
   "exclude": [
-    "src/source/layers",
     "src/duckdb",
     "src/**/__tests__/**",
     "src/**/*.spec.ts",

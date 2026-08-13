@@ -21,9 +21,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./test/setup.ts'],
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
-    // Verbatim Cotera imports, decoupled in their own milestones (layers L4,
-    // DuckDB adapter L5). Mirrors tsconfig.json's exclude.
-    exclude: ['**/node_modules/**', 'src/source/layers/**', 'src/duckdb/**'],
+    // Verbatim Cotera imports, decoupled at L5. Mirrors tsconfig.json's
+    // exclude. (`src/source/layers` came off this list at L4.)
+    exclude: ['**/node_modules/**', 'src/duckdb/**'],
     reporters: ['default'],
   },
 });

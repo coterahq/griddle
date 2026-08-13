@@ -9,10 +9,9 @@ export default tseslint.config(
       'node_modules/**',
       'examples/dist/**',
       'coverage/**',
-      // Still verbatim Cotera imports; excluded from tsconfig until their
-      // milestones (layers L4, DuckDB adapter L5), so the type-aware rules
-      // have no program for them.
-      'src/source/layers/**',
+      // Still verbatim Cotera imports; excluded from tsconfig until the
+      // DuckDB milestone (L5), so the type-aware rules have no program for it.
+      // (`src/source/layers` came off this list at L4.)
       'src/duckdb/**',
       // Plain-JS build tooling. `allowJs` is false (the package ships no JS
       // sources), so the type-aware project service has no program for these
@@ -94,6 +93,15 @@ export default tseslint.config(
   {
     files: ['**/*.spec.ts', '**/*.spec.tsx', 'test/**'],
     rules: {
+      // The ported Cotera specs are the extraction's contract, so they are
+      // changed only on their import lines. Two of this repo's stricter rules
+      // fire on them, and relaxing the rule is the cheaper of the two prices:
+      // an `async` test stub that awaits nothing, and `expect(() => f())` on a
+      // void-returning call, which is the only way to assert it does not
+      // throw.
+      '@typescript-eslint/require-await': 'off',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
+
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
