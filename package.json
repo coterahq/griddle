@@ -1,0 +1,123 @@
+{
+  "name": "@cotera/data-grid",
+  "version": "0.1.0-beta.0",
+  "description": "A batteries-included React data grid that joins multiple data sources into one view — DuckDB-wasm, HTTP and in-memory adapters, themeable, with component override slots.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coterahq/data-grid.git"
+  },
+  "keywords": [
+    "react",
+    "data-grid",
+    "table",
+    "virtualized",
+    "duckdb",
+    "duckdb-wasm",
+    "parquet",
+    "datagrid"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./source": {
+      "types": "./dist/source/index.d.ts",
+      "import": "./dist/source/index.js",
+      "require": "./dist/source/index.cjs"
+    },
+    "./memory": {
+      "types": "./dist/memory/index.d.ts",
+      "import": "./dist/memory/index.js",
+      "require": "./dist/memory/index.cjs"
+    },
+    "./http": {
+      "types": "./dist/http/index.d.ts",
+      "import": "./dist/http/index.js",
+      "require": "./dist/http/index.cjs"
+    },
+    "./duckdb": {
+      "types": "./dist/duckdb/index.d.ts",
+      "import": "./dist/duckdb/index.js",
+      "require": "./dist/duckdb/index.cjs"
+    },
+    "./style.css": "./dist/style.css",
+    "./themes/cotera.css": "./dist/themes/cotera.css",
+    "./themes/light.css": "./dist/themes/light.css",
+    "./themes/dark.css": "./dist/themes/dark.css",
+    "./themes/dark-auto.css": "./dist/themes/dark-auto.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "bun run build:js && bun run build:types && bun run build:css",
+    "build:js": "tsup",
+    "build:types": "tsc -p tsconfig.build.json && node scripts/dual-declarations.mjs",
+    "build:css": "node scripts/build-css.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:package": "publint && attw --pack .",
+    "examples:dev": "vite --config examples/vite.config.ts",
+    "examples:build": "vite build --config examples/vite.config.ts"
+  },
+  "peerDependencies": {
+    "@duckdb/duckdb-wasm": ">=1.28.0",
+    "react": ">=18.2.0 <20",
+    "react-dom": ">=18.2.0 <20"
+  },
+  "peerDependenciesMeta": {
+    "@duckdb/duckdb-wasm": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.3",
+    "@radix-ui/react-hover-card": "^1.1.14",
+    "@radix-ui/react-switch": "^1.2.6",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.2.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/cli": "^4.1.16",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "jsdom": "26.1.0",
+    "prettier": "^3.4.2",
+    "publint": "^0.2.12",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.16",
+    "tsup": "^8.3.6",
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.31.0",
+    "vite": "^5.4.10",
+    "vitest": "4.0.18"
+  }
+}

@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.19
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run format:check
+      - run: bun run typecheck
+      - run: bun run test
+      - run: bun run build
+      - name: Package correctness
+        # publint checks the manifest; attw checks that the dual ESM/CJS
+        # declarations resolve under every consumer moduleResolution. Under a
+        # dual build this is not optional — a missing .d.cts fails only here.
+        run: bun run check:package
+
+  # The library builds against @types/react 18 (which is what the source was
+  # written under). This proves it also typechecks for a consumer on 19.
+  types-react-19:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.19
+      - run: bun install --frozen-lockfile
+      - run: bun add -d @types/react@^19 @types/react-dom@^19
+      - run: bun run typecheck
+
+  # Everything above runs under bun. This proves the published tarball also
+  # installs and resolves under npm — otherwise the first consumer to hit an
+  # exports-map or peer-range problem discovers it for us.
+  install-under-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.19
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: npm pack --pack-destination /tmp
+      - name: Install the tarball into a clean ESM consumer
+        run: |
+          mkdir -p /tmp/consumer && cd /tmp/consumer
+          npm init -y >/dev/null
+          npm pkg set type=module
+          npm i react@19 react-dom@19 typescript@5.7.3 /tmp/cotera-data-grid-*.tgz
+          cat > index.ts <<'EOF'
+          import { DataGrid, createGridStore } from '@cotera/data-grid';
+          const rows = createGridStore<{ id: number }[]>([]);
+          export { DataGrid, rows };
+          EOF
+          npx tsc --noEmit --strict --moduleResolution bundler \
+            --module esnext --target es2022 --jsx react-jsx index.ts
