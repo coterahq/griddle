@@ -8,8 +8,8 @@ export default defineConfig({
     index: 'src/index.ts',
     'source/index': 'src/source/index.ts',
     'memory/index': 'src/memory/index.ts',
+    'duckdb/index': 'src/duckdb/index.ts',
     // 'http/index':   'src/http/index.ts',     // L6
-    // 'duckdb/index': 'src/duckdb/index.ts',   // L5
   },
   format: ['esm', 'cjs'],
   // Shared core lands in one chunk instead of being duplicated into all five

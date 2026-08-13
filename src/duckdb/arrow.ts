@@ -1,10 +1,10 @@
 /**
  * Arrow values as plain JS.
  *
- * `DuckDBQueryResult.toArray()` hands back Arrow-backed rows whose values are
+ * A query result's `toArray()` hands back Arrow-backed rows whose values are
  * not all JS primitives: `count(*)` is a BIGINT and arrives as a `BigInt`,
  * timestamps arrive as structured values. Everything that reads a query result
- * — the grid's page loader, the header stats, the live cell repaint — has to
+ * — the page loader, the header stats, the live cell repaint — has to
  * normalise them the same way, or the same column changes JS type depending on
  * which path last wrote it.
  *

@@ -1,17 +1,22 @@
 import { describe, expect, it } from 'vitest';
-import type { DataGridFilter } from '@cotera/client/app/components/ui/data-grid';
-import { filterSql } from '../query-sql';
+import type { DataGridFilter } from '../../core/types';
+import { buildWhereSql } from '../query-sql';
 
+// The column descriptor changed shape when it was lifted — it was a warehouse
+// API's response type, which made the SQL builder unusable against a parquet
+// nobody had registered. Every expected string below is byte-for-byte the
+// original's, which is what makes this file evidence rather than decoration.
 const COLUMNS = [
-  { name: 'name', type: 'VARCHAR' },
-  { name: 'revenue', type: 'DOUBLE' },
-  { name: 'active', type: 'BOOLEAN' },
-  { name: 'created_at', type: 'TIMESTAMP' },
+  { id: 'name', sqlType: 'VARCHAR' },
+  { id: 'revenue', sqlType: 'DOUBLE' },
+  { id: 'active', sqlType: 'BOOLEAN' },
+  { id: 'created_at', sqlType: 'TIMESTAMP' },
 ];
 
-const sql = (filter: DataGridFilter): string => filterSql([filter], COLUMNS);
+const sql = (filter: DataGridFilter): string =>
+  buildWhereSql([filter], COLUMNS);
 
-describe('filterSql', () => {
+describe('buildWhereSql', () => {
   it('keeps bare scalars as substring matches', () => {
     expect(sql({ columnId: 'name', value: 'ac' })).toBe(
       ` WHERE "name"::VARCHAR ILIKE '%ac%'`

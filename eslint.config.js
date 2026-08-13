@@ -9,10 +9,6 @@ export default tseslint.config(
       'node_modules/**',
       'examples/dist/**',
       'coverage/**',
-      // Still verbatim Cotera imports; excluded from tsconfig until the
-      // DuckDB milestone (L5), so the type-aware rules have no program for it.
-      // (`src/source/layers` came off this list at L4.)
-      'src/duckdb/**',
       // Plain-JS build tooling. `allowJs` is false (the package ships no JS
       // sources), so the type-aware project service has no program for these
       // and cannot parse them. Prettier still formats them.
@@ -83,6 +79,30 @@ export default tseslint.config(
       // is the grid deciding what someone else's data means.
       '@typescript-eslint/no-base-to-string': 'off',
 
+      /*
+       * This package runs in a browser. `@types/node` is a devDependency —
+       * the DuckDB oracle spec imports `node:fs` — and installing it puts
+       * Node's globals in scope for every file, which means library source
+       * could reach for `process` or `Buffer` and still compile, then throw
+       * on a consumer's page.
+       *
+       * Before `@types/node` existed here that was prevented by accident.
+       * This makes it a rule. `src/internal/dev.ts` reads `process`
+       * deliberately, behind a `typeof` guard and its own local declaration,
+       * which shadows the global and so does not trip this.
+       */
+      'no-restricted-globals': [
+        'error',
+        {
+          name: 'process',
+          message:
+            'Not a browser global. Guard it as `src/internal/dev.ts` does.',
+        },
+        { name: 'Buffer', message: 'Not a browser global.' },
+        { name: '__dirname', message: 'Not available in ESM or a browser.' },
+        { name: '__filename', message: 'Not available in ESM or a browser.' },
+      ],
+
       curly: ['error', 'all'],
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -108,6 +128,20 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
     },
+  },
+  {
+    files: [
+      'scripts/**',
+      'examples/**',
+      '*.config.ts',
+      '*.config.js',
+      '**/*.spec.ts',
+      '**/*.spec.tsx',
+      'src/**/__tests__/**',
+      'test/**',
+    ],
+    // These do run on Node, or under a bundler that provides the shims.
+    rules: { 'no-restricted-globals': 'off' },
   },
   {
     files: ['scripts/**', '*.config.ts', '*.config.js'],

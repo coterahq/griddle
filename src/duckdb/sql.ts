@@ -1,11 +1,14 @@
 /**
  * Literal and identifier quoting for hand-built DuckDB SQL.
  *
- * `CoteraDuckDB.rawQuery` takes a string, so everything the browser generates —
- * the preview table's operation replay, the automations join, the header stat
- * aggregates — interpolates values rather than binding them. These three are
- * the only sanctioned way to do that, and they lived in duplicate in
- * `dataset.page.tsx` and `dataset-automations.tsx` before this file existed.
+ * The injected query function takes a string, so everything this adapter
+ * generates — the page read, the header stat aggregates, a layer's join —
+ * interpolates values rather than binding them. These three are the only
+ * sanctioned way to do that.
+ *
+ * Every value that reaches SQL goes through one of them. A caller building a
+ * `project` layer by hand must too: the fragments it returns are concatenated
+ * into the query verbatim.
  */
 
 /** Single-quoted string literal, with embedded quotes doubled. */

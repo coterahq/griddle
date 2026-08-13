@@ -17,6 +17,9 @@
       ],
       "memory": [
         "./dist/memory/index.d.ts"
+      ],
+      "duckdb": [
+        "./dist/duckdb/index.d.ts"
       ]
     }
   },
@@ -72,6 +75,16 @@
         "default": "./dist/memory/index.cjs"
       }
     },
+    "./duckdb": {
+      "import": {
+        "types": "./dist/duckdb/index.d.ts",
+        "default": "./dist/duckdb/index.js"
+      },
+      "require": {
+        "types": "./dist/duckdb/index.d.cts",
+        "default": "./dist/duckdb/index.cjs"
+      }
+    },
     "./style.css": "./dist/style.css",
     "./themes/cotera.css": "./dist/themes/cotera.css",
     "./themes/light.css": "./dist/themes/light.css",
@@ -114,11 +127,13 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
+    "@duckdb/node-api": "^1.5.5-r.4",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.1.16",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^26.2.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^8.31.0",

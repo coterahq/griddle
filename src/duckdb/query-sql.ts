@@ -1,44 +1,72 @@
 import {
-  duckDbIdentifier,
-  duckDbStringLiteral,
-} from '@cotera/client/app/etc/duckdb';
-import {
-  dataGridColumnTypeFromSqlType,
   isComparisonFilterValue,
   isStructuredFilterValue,
-} from '@cotera/client/app/components/ui/data-grid';
+} from '../core/filters';
+import { dataGridColumnTypeFromSqlType } from '../core/column-type';
 import type {
+  DataGridColumnDataType,
   DataGridComparisonFilterValue,
   DataGridFilter,
   DataGridFilterComparison,
   DataGridFilterScalar,
   DataGridSort,
-} from '@cotera/client/app/components/ui/data-grid';
-import type { DatasetArtifactMetadataOutput } from '@cotera/client/app/etc/api/typed-client';
-import { DATASET_PREVIEW_ORDER_COLUMN } from './operations';
+} from '../core/types';
+import { duckDbIdentifier, duckDbStringLiteral } from './sql';
 
-export const sortSql = (
-  sorts: DataGridSort[],
-  columns: DatasetArtifactMetadataOutput['schema']['columns'],
-  /**
-   * Whether the source still carries {@link DATASET_PREVIEW_ORDER_COLUMN}, and
-   * so can be given a stable default order.
-   */
-  ordered = false
+/**
+ * What the SQL builder needs to know about a column.
+ *
+ * `sqlType` is the engine's own type name and is what drives typed predicates
+ * — a date column compares as a timestamp, a number as a number, everything
+ * else as text. `type` overrides the inference when a caller knows better than
+ * the type name suggests.
+ *
+ * Deliberately structural and tiny. In the original this was
+ * `DatasetArtifactMetadataOutput['schema']['columns']`, a warehouse API's
+ * response type, which made the SQL builder unusable against a parquet file
+ * nobody had registered as an artifact.
+ */
+export type DuckDbColumnDescriptor = {
+  readonly id: string;
+  /** The engine's type name, e.g. `'VARCHAR'`, `'TIMESTAMP'`, `'DOUBLE'`. */
+  readonly sqlType?: string | null;
+  /** Overrides what `sqlType` would infer. */
+  readonly type?: DataGridColumnDataType;
+};
+
+const gridTypeOf = (column: DuckDbColumnDescriptor): DataGridColumnDataType =>
+  column.type ?? dataGridColumnTypeFromSqlType(column.sqlType);
+
+const isTemporalColumn = (column: DuckDbColumnDescriptor): boolean => {
+  const type = gridTypeOf(column);
+  return type === 'date' || type === 'timestamp';
+};
+
+/**
+ * Ordering, with a stable fallback.
+ *
+ * A paged read with no `ORDER BY` is undefined. DuckDB may hand back scan
+ * order today, but nothing holds it steady across pages — least of all after
+ * a mutating layer has issued UPDATEs and INSERTs against the table — so rows
+ * can repeat or disappear between pages of the same result.
+ *
+ * `defaultOrderBy` is the column to fall back on. In the original this was a
+ * hard-coded dataset ordering column; a source that has no such column passes
+ * nothing and accepts that an unsorted page is only stable if the engine says
+ * it is.
+ */
+export const buildOrderBySql = (
+  sorts: readonly DataGridSort[],
+  columns: readonly DuckDbColumnDescriptor[],
+  defaultOrderBy?: string | null
 ): string => {
   const activeSorts = sorts.filter((sort) =>
-    columns.some((column) => column.name === sort.columnId)
+    columns.some((column) => column.id === sort.columnId)
   );
   if (activeSorts.length === 0) {
-    // A paged read with no ORDER BY is undefined: DuckDB may hand back scan
-    // order today, but nothing holds it steady across pages, least of all
-    // after the operation replay has issued UPDATEs and INSERTs against the
-    // table. Without this, rows can repeat or disappear between pages, and
-    // the fractional ordering that positions an inserted row does nothing at
-    // all because nothing reads it.
-    return ordered
-      ? ` ORDER BY ${duckDbIdentifier(DATASET_PREVIEW_ORDER_COLUMN)}`
-      : '';
+    return defaultOrderBy === undefined || defaultOrderBy === null
+      ? ''
+      : ` ORDER BY ${duckDbIdentifier(defaultOrderBy)}`;
   }
   return ` ORDER BY ${activeSorts
     .map(
@@ -46,13 +74,6 @@ export const sortSql = (
         `${duckDbIdentifier(sort.columnId)} ${sort.direction.toUpperCase()}`
     )
     .join(', ')}`;
-};
-
-const isTemporalColumn = (
-  column: DatasetArtifactMetadataOutput['schema']['columns'][number]
-): boolean => {
-  const type = dataGridColumnTypeFromSqlType(column.type);
-  return type === 'date' || type === 'timestamp';
 };
 
 const COMPARISON_OPERATORS: Record<DataGridFilterComparison, string | null> = {
@@ -77,7 +98,7 @@ const COMPARISON_OPERATORS: Record<DataGridFilterComparison, string | null> = {
 const comparisonOperandsSql = (
   identifier: string,
   value: DataGridFilterScalar,
-  column: DatasetArtifactMetadataOutput['schema']['columns'][number]
+  column: DuckDbColumnDescriptor
 ): { subject: string; literal: string } | null => {
   if (isTemporalColumn(column)) {
     return {
@@ -85,7 +106,7 @@ const comparisonOperandsSql = (
       literal: `CAST(${duckDbStringLiteral(String(value))} AS TIMESTAMP)`,
     };
   }
-  const type = dataGridColumnTypeFromSqlType(column.type);
+  const type = gridTypeOf(column);
   if (type === 'boolean') {
     return {
       subject: identifier,
@@ -107,7 +128,7 @@ const comparisonOperandsSql = (
 const comparisonClauseSql = (
   identifier: string,
   filter: DataGridComparisonFilterValue,
-  column: DatasetArtifactMetadataOutput['schema']['columns'][number]
+  column: DuckDbColumnDescriptor
 ): string | null => {
   if (filter.comparison === 'isNull') {
     return `${identifier} IS NULL`;
@@ -134,7 +155,7 @@ const comparisonClauseSql = (
  */
 const filterClauseSql = (
   filter: DataGridFilter,
-  column: DatasetArtifactMetadataOutput['schema']['columns'][number]
+  column: DuckDbColumnDescriptor
 ): string | null => {
   const identifier = duckDbIdentifier(filter.columnId);
   const value = filter.value;
@@ -181,13 +202,20 @@ const filterClauseSql = (
   )}`;
 };
 
-export const filterSql = (
-  filters: DataGridFilter[],
-  columns: DatasetArtifactMetadataOutput['schema']['columns']
+/**
+ * The `WHERE` clause for a set of grid filters, leading space included.
+ *
+ * A filter naming a column that is not in `columns` is dropped rather than
+ * guessed at — the alternative is a binder error that takes out the whole
+ * page for a stale filter chip.
+ */
+export const buildWhereSql = (
+  filters: readonly DataGridFilter[],
+  columns: readonly DuckDbColumnDescriptor[]
 ): string => {
   const clauses = filters.flatMap((filter) => {
     const column = columns.find(
-      (candidate) => candidate.name === filter.columnId
+      (candidate) => candidate.id === filter.columnId
     );
     if (column === undefined || filter.value === null) {
       return [];
@@ -197,3 +225,47 @@ export const filterSql = (
   });
   return clauses.length === 0 ? '' : ` WHERE ${clauses.join(' AND ')}`;
 };
+
+export type BuildPageSqlInput = {
+  /** A source expression: a table name, or the layer stack's wrapped subquery. */
+  readonly source: string;
+  readonly columns: readonly DuckDbColumnDescriptor[];
+  readonly sorts?: readonly DataGridSort[];
+  readonly filters?: readonly DataGridFilter[];
+  readonly offset?: number;
+  readonly limit?: number;
+  readonly defaultOrderBy?: string | null;
+};
+
+/**
+ * One page of rows.
+ *
+ * Exported alongside {@link buildWhereSql} and {@link buildOrderBySql} rather
+ * than only as part of the data source, because the clause builders are what a
+ * caller needs when they are issuing their own query — a `COUNT(*)` over the
+ * same predicate, a CSV export, an aggregate for a chart beside the grid — and
+ * rebuilding a filter translation slightly differently is exactly how the grid
+ * and the export end up disagreeing about what the user asked for.
+ */
+export const buildPageSql = ({
+  source,
+  columns,
+  sorts = [],
+  filters = [],
+  offset = 0,
+  limit = 200,
+  defaultOrderBy,
+}: BuildPageSqlInput): string =>
+  `SELECT * FROM ${source} AS dg_source` +
+  buildWhereSql(filters, columns) +
+  buildOrderBySql(sorts, columns, defaultOrderBy) +
+  ` LIMIT ${String(limit)} OFFSET ${String(offset)}`;
+
+/** `COUNT(*)` under the same predicate a page would use. */
+export const buildCountSql = ({
+  source,
+  columns,
+  filters = [],
+}: Pick<BuildPageSqlInput, 'source' | 'columns' | 'filters'>): string =>
+  `SELECT count(*) AS dg_total FROM ${source} AS dg_source` +
+  buildWhereSql(filters, columns);

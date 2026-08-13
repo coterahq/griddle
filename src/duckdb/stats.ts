@@ -1,14 +1,12 @@
-import {
-  duckDbIdentifier,
-  readNumber,
-  readString,
-} from '@cotera/client/app/etc/duckdb';
-import { datasetPreviewDuckDb } from '@cotera/client/app/etc/duckdb/preview-db';
-import { dataGridColumnTypeFromSqlType } from '@cotera/client/app/components/ui/data-grid';
+import { dataGridColumnTypeFromSqlType } from '../core/column-type';
 import type {
+  DataGridColumnDataType,
   DataGridColumnStats,
   DataGridStatBucket,
-} from '@cotera/client/app/components/ui/data-grid';
+} from '../core/types';
+import { readNumber, readString } from './arrow';
+import { duckDbIdentifier } from './sql';
+import type { DuckDbQuery } from './types';
 
 const STATS_BUCKET_COUNT = 12;
 const STATS_TOP_VALUES = 5;
@@ -71,18 +69,19 @@ const histogramBuckets = ({
 };
 
 const numericColumnStats = async ({
+  query,
   sourceSql,
   identifier,
 }: {
+  query: DuckDbQuery;
   sourceSql: string;
   identifier: string;
 }): Promise<DataGridColumnStats> => {
-  const db = await datasetPreviewDuckDb;
   // TRY_CAST rather than the bare column: the artifact's declared type and the
   // parquet column's physical type do not always agree, and a binder error
   // here would take out the whole header.
   const numeric = `TRY_CAST(${identifier} AS DOUBLE)`;
-  const summaryTable = await db.rawQuery(
+  const summaryTable = await query(
     `SELECT min(${numeric}) AS min_value, max(${numeric}) AS max_value,
             avg(${numeric}) AS mean_value,
             count(*) FILTER (WHERE ${numeric} IS NULL) AS null_count
@@ -99,7 +98,7 @@ const numericColumnStats = async ({
   }
 
   const { width, bucketCount } = bucketRanges(min, max);
-  const bucketTable = await db.rawQuery(
+  const bucketTable = await query(
     `SELECT CAST(least(${
       bucketCount - 1
     }, floor((${numeric} - ${min}) / ${width})) AS INTEGER) AS bucket,
@@ -135,15 +134,16 @@ const numericColumnStats = async ({
 };
 
 const temporalColumnStats = async ({
+  query,
   sourceSql,
   identifier,
 }: {
+  query: DuckDbQuery;
   sourceSql: string;
   identifier: string;
 }): Promise<DataGridColumnStats> => {
-  const db = await datasetPreviewDuckDb;
   const cast = `TRY_CAST(${identifier} AS TIMESTAMP)`;
-  const summaryTable = await db.rawQuery(
+  const summaryTable = await query(
     `SELECT epoch(min(${cast})) AS min_epoch, epoch(max(${cast})) AS max_epoch,
             CAST(min(${cast}) AS VARCHAR) AS min_label,
             CAST(max(${cast}) AS VARCHAR) AS max_label,
@@ -160,7 +160,7 @@ const temporalColumnStats = async ({
   }
 
   const { width, bucketCount } = bucketRanges(minEpoch, maxEpoch);
-  const bucketTable = await db.rawQuery(
+  const bucketTable = await query(
     `SELECT CAST(least(${
       bucketCount - 1
     }, floor((epoch(${cast}) - ${minEpoch}) / ${width})) AS INTEGER) AS bucket,
@@ -193,21 +193,22 @@ const temporalColumnStats = async ({
 };
 
 const categoricalColumnStats = async ({
+  query,
   sourceSql,
   identifier,
 }: {
+  query: DuckDbQuery;
   sourceSql: string;
   identifier: string;
 }): Promise<DataGridColumnStats> => {
-  const db = await datasetPreviewDuckDb;
   const [summaryTable, topTable] = await Promise.all([
-    db.rawQuery(
+    query(
       `SELECT count(*) AS total_count,
               count(*) FILTER (WHERE ${identifier} IS NULL) AS null_count,
               count(DISTINCT ${identifier}) AS unique_count
        FROM ${sourceSql} AS dataset_stats`
     ),
-    db.rawQuery(
+    query(
       `SELECT ${identifier}::VARCHAR AS value, count(*) AS value_count
        FROM ${sourceSql} AS dataset_stats
        WHERE ${identifier} IS NOT NULL
@@ -258,24 +259,36 @@ const categoricalColumnStats = async ({
   };
 };
 
-export const datasetColumnStats = async ({
+/**
+ * Header stats for one column, computed by the engine.
+ *
+ * `sourceSql` is the fully resolved source — every layer wrapped, the active
+ * `WHERE` applied — so a histogram here describes exactly the rows on screen
+ * rather than the whole table.
+ */
+export const duckDbColumnStats = async ({
+  query,
   sourceSql,
   columnName,
   columnType,
+  gridType,
 }: {
+  query: DuckDbQuery;
   sourceSql: string;
   columnName: string;
-  columnType: string | null;
+  columnType?: string | null;
+  /** Overrides what `columnType` would infer. */
+  gridType?: DataGridColumnDataType;
 }): Promise<DataGridColumnStats> => {
   const identifier = duckDbIdentifier(columnName);
-  const type = dataGridColumnTypeFromSqlType(columnType);
+  const type = gridType ?? dataGridColumnTypeFromSqlType(columnType);
   switch (type) {
     case 'number':
-      return numericColumnStats({ sourceSql, identifier });
+      return numericColumnStats({ query, sourceSql, identifier });
     case 'date':
     case 'timestamp':
-      return temporalColumnStats({ sourceSql, identifier });
+      return temporalColumnStats({ query, sourceSql, identifier });
     default:
-      return categoricalColumnStats({ sourceSql, identifier });
+      return categoricalColumnStats({ query, sourceSql, identifier });
   }
 };

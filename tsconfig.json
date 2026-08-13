@@ -25,9 +25,7 @@
     "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   },
   "include": ["src", "test", "examples", "scripts", "*.ts", "*.mts"],
-  // Imported verbatim from Cotera and not yet decoupled — still references
-  // `@cotera/client/*`. Lifted at L5, and its exclusion removed then. Listed
-  // here rather than left broken so `typecheck` stays a meaningful signal in
-  // between. (`src/source/layers` came off this list at L4.)
-  "exclude": ["src/duckdb"]
+  // Nothing is excluded any more: `src/source/layers` was lifted at L4 and
+  // `src/duckdb` at L5, so every file in `src` is typechecked.
+  "exclude": []
 }

@@ -10,10 +10,9 @@
     "types": []
   },
   "include": ["src"],
-  // `exclude` replaces rather than extends the base config's, so the
-  // not-yet-decoupled dir has to be repeated here (DuckDB L5).
+  // `exclude` replaces rather than extends the base config's, so the test
+  // globs have to be repeated here.
   "exclude": [
-    "src/duckdb",
     "src/**/__tests__/**",
     "src/**/*.spec.ts",
     "src/**/*.spec.tsx",
