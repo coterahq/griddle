@@ -1,0 +1,21 @@
+/*
+ * Light theme — for a host with no design tokens of its own.
+ *
+ * Unlayered on purpose: `style.css` defines its defaults inside `@layer base`,
+ * and unlayered declarations beat layered ones regardless of source order. So
+ * this wins however the two files end up ordered by the bundler.
+ *
+ * Pair with `dark.css` (class strategy) or use `dark-auto.css` instead, which
+ * carries both halves behind `prefers-color-scheme`.
+ */
+.cotera-data-grid {
+  --dg-bg: #ffffff;
+  --dg-fg: #0a0a0a;
+  --dg-muted: #f4f4f5;
+  --dg-muted-fg: #71717a;
+  --dg-border: #e4e4e7;
+  --dg-accent: #2563eb;
+  --dg-accent-fg: #fafafa;
+  --dg-popover: #ffffff;
+  --dg-popover-fg: #0a0a0a;
+}

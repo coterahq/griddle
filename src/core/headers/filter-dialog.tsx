@@ -184,7 +184,7 @@ const DataGridFilterForm: React.FC<{
             <div className="space-y-1.5">
               <label
                 htmlFor="data-grid-filter-value"
-                className="block text-[11px] font-medium uppercase tracking-wide text-muted-foreground"
+                className="block text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)"
               >
                 Value
               </label>
@@ -286,7 +286,7 @@ export const DataGridFilterDialog: React.FC<DataGridFilterDialogProps> = (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <div className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+          <div className="text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)">
             Filter
           </div>
           <DialogTitle className="truncate">{columnLabel}</DialogTitle>

@@ -5,14 +5,14 @@ import type {
   DataGridPinnedSide,
 } from './types';
 
-const DEFAULT_COLUMN_WIDTH = 160;
+export const DATA_GRID_DEFAULT_COLUMN_WIDTH = 160;
 export const DATA_GRID_ROW_NUMBER_WIDTH = 52;
 
 const isVisible = <TRow>(column: DataGridColumn<TRow>): boolean =>
   column.visible !== false;
 
 const widthForColumn = <TRow>(column: DataGridColumn<TRow>): number => {
-  const width = column.width ?? DEFAULT_COLUMN_WIDTH;
+  const width = column.width ?? DATA_GRID_DEFAULT_COLUMN_WIDTH;
   const minWidth = column.minWidth ?? 80;
   const maxWidth = column.maxWidth ?? 600;
   return Math.min(maxWidth, Math.max(minWidth, width));

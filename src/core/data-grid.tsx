@@ -3,7 +3,10 @@ import type { ReadonlyGridStore } from '../store';
 import { createGridStore, useGridStore } from '../store';
 import { cn } from '../ui/cn';
 import { Icon } from '../ui/icons';
-import { getDataGridColumnLayout } from './column-layout';
+import {
+  DATA_GRID_DEFAULT_COLUMN_WIDTH,
+  getDataGridColumnLayout,
+} from './column-layout';
 import { BaseCell } from './cells/base-cell';
 import { describeFilterValue, toggleStructuredFilterValue } from './filters';
 import { DataGridHeader } from './headers/header';
@@ -75,7 +78,7 @@ function DefaultTopBar<TRow>({
   ).length;
 
   return (
-    <div className="flex min-h-9 items-center gap-2 border-b border-border bg-background px-3 py-2 text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="flex min-h-9 items-center gap-2 border-b border-(color:--dg-border) bg-(--dg-bg) px-3 py-2 text-[11px] uppercase tracking-wider text-(color:--dg-muted-fg)">
       <span className="shrink-0 tabular-nums">
         {totalRows !== null
           ? `${totalRows.toLocaleString()} rows`
@@ -92,7 +95,7 @@ function DefaultTopBar<TRow>({
             aria-label={`Show ${
               typeof column.header === 'string' ? column.header : column.id
             } column`}
-            className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-muted/50 py-0.5 pl-2 pr-1.5 text-[11px] hover:bg-muted hover:text-foreground"
+            className="flex shrink-0 items-center gap-1 rounded-full border border-(color:--dg-border) bg-(--dg-chip-bg) py-0.5 pl-2 pr-1.5 text-[11px] hover:bg-(--dg-muted) hover:text-(color:--dg-fg)"
             onClick={() => {
               setColumnVisible(column.id, true);
             }}
@@ -105,7 +108,7 @@ function DefaultTopBar<TRow>({
         ))}
       </div>
       {isLoading ? (
-        <span className="shrink-0 text-[11px] text-muted-foreground/70">
+        <span className="shrink-0 text-[11px] text-(color:--dg-muted-fg-soft)">
           Loading…
         </span>
       ) : null}
@@ -128,7 +131,7 @@ export function DataGridFilterChip({
     <button
       type="button"
       aria-label={`Clear ${label} filter`}
-      className="flex shrink-0 items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary transition-colors hover:bg-primary/20"
+      className="flex shrink-0 items-center gap-1 rounded-full border border-(color:--dg-chip-accent-border) bg-(--dg-chip-accent-bg) px-2 py-0.5 text-[10px] uppercase tracking-wider text-(color:--dg-accent) transition-colors hover:bg-(--dg-chip-accent-hover-bg)"
       onClick={onClear}
     >
       <span className="max-w-48 truncate">
@@ -154,7 +157,7 @@ export function DataGridSortChip({
     <button
       type="button"
       aria-label={`Clear ${label} sort`}
-      className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      className="flex shrink-0 items-center gap-1 rounded-full border border-(color:--dg-border) bg-(--dg-chip-bg) px-2 py-0.5 text-[10px] uppercase tracking-wider text-(color:--dg-muted-fg) transition-colors hover:bg-(--dg-muted) hover:text-(color:--dg-fg)"
       onClick={onClear}
     >
       <span className="max-w-48 truncate">{label}</span>
@@ -174,7 +177,9 @@ export function DataGridSortChips({
   clearSort: (columnId: string) => void;
 }) {
   if (sorts.length === 0) {
-    return <span className="shrink-0 text-muted-foreground/60">No sort</span>;
+    return (
+      <span className="shrink-0 text-(color:--dg-muted-fg-faint)">No sort</span>
+    );
   }
   return (
     <>
@@ -200,7 +205,7 @@ function DefaultFooter<TRow>({
   clearFilter,
 }: DataGridFooterProps<TRow>) {
   return (
-    <div className="flex min-h-8 items-center gap-3 border-t border-border bg-background px-3 py-2 text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="flex min-h-8 items-center gap-3 border-t border-(color:--dg-border) bg-(--dg-bg) px-3 py-2 text-[11px] uppercase tracking-wider text-(color:--dg-muted-fg)">
       <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
         {filters.map((filter) => (
           <DataGridFilterChip
@@ -229,7 +234,11 @@ function DefaultFooter<TRow>({
  * to without inheriting its transparency.
  */
 const rowTintClass = (rowIndex: number, selected: boolean): string =>
-  selected ? 'bg-primary/5' : rowIndex % 2 === 0 ? '' : 'bg-muted/20';
+  selected
+    ? 'bg-(--dg-row-selected-bg)'
+    : rowIndex % 2 === 0
+      ? ''
+      : 'bg-(--dg-row-stripe-bg)';
 
 function DefaultRow<TRow>({
   children,
@@ -245,8 +254,8 @@ function DefaultRow<TRow>({
       aria-rowindex={rowIndex + 2}
       aria-selected={selected}
       className={cn(
-        'absolute border-border/60',
-        tint === '' ? 'bg-background' : tint
+        'absolute border-(color:--dg-border-faint)',
+        tint === '' ? 'bg-(--dg-bg)' : tint
       )}
       style={style}
       onClick={onClick}
@@ -317,7 +326,7 @@ const styleForColumn = <TRow,>({
  * The sticky pane holding one side's pinned columns. Sticking the group rather
  * than each individual cell is what makes pinning opaque: cells and headers are
  * translucent by design (the stripe lives on the row, the header wash is
- * `bg-muted/40`), so a stuck *cell* lets the regular columns scrolling beneath
+ * `--dg-header-bg`), so a stuck *cell* lets the regular columns scrolling beneath
  * it read straight through. The group supplies one opaque backdrop for the
  * whole band, plus the row's tint on top of it so the band still stripes.
  *
@@ -353,7 +362,7 @@ function DataGridPinnedGroup({
   };
 
   return (
-    <div className="bg-background" style={style}>
+    <div className="bg-(--dg-bg)" style={style}>
       {tintClass !== undefined && tintClass !== '' ? (
         <div
           aria-hidden
@@ -622,7 +631,7 @@ const RowShellInner = <TRow,>({
           aria-colindex={1}
           // `relative` so the gutter paints over the group's tint layer, which
           // keeps it reading as chrome rather than as part of the striped body.
-          className="relative flex items-center justify-end border-b border-r border-border/70 bg-background px-2 text-xs tabular-nums text-muted-foreground"
+          className="relative flex items-center justify-end border-b border-r border-(color:--dg-border-subtle) bg-(--dg-bg) px-2 text-xs tabular-nums text-(color:--dg-muted-fg)"
           style={{ width: rowNumberWidth, height: rowHeight, flexShrink: 0 }}
           onClick={(event) => {
             event.stopPropagation();
@@ -1424,9 +1433,22 @@ export function DataGrid<TRow>({
         //
         // No border of its own: the grid fills whatever hosts it, and that host
         // draws the edge — an edge here would only double the host's.
-        'flex h-full min-h-0 w-full flex-col overflow-hidden rounded-md bg-background outline-none focus:ring-2 focus:ring-primary/40',
+        'flex h-full min-h-0 w-full flex-col overflow-hidden rounded-md bg-(--dg-bg) outline-none focus:ring-2 focus:ring-(color:--dg-focus-ring-soft)',
         className
       )}
+      // Geometry stays in TypeScript because the virtualizer does arithmetic on
+      // it — CSS cannot be the source of truth for a number that decides which
+      // rows exist. Mirrored onto the root so a theme's own decorations can line
+      // up with the rows without hard-coding the same numbers a second time.
+      // `styles/grid.css` declares the defaults; these are the resolved values.
+      style={
+        {
+          '--dg-row-height': `${rowHeight}px`,
+          '--dg-header-height': `${headerHeight}px`,
+          '--dg-row-number-width': `${layout.rowNumber.width}px`,
+          '--dg-column-width': `${DATA_GRID_DEFAULT_COLUMN_WIDTH}px`,
+        } as React.CSSProperties
+      }
       onKeyDown={handleKeyDown}
     >
       <div ref={topBarRef} className="shrink-0">
@@ -1460,9 +1482,9 @@ export function DataGrid<TRow>({
           <div
             role="status"
             aria-label="Refreshing rows"
-            className="pointer-events-none sticky left-0 top-0 z-40 h-0.5 w-full overflow-hidden bg-primary/10"
+            className="pointer-events-none sticky left-0 top-0 z-40 h-0.5 w-full overflow-hidden bg-(--dg-loading-track)"
           >
-            <div className="h-full w-1/3 animate-pulse rounded-full bg-primary/60" />
+            <div className="h-full w-1/3 animate-pulse rounded-full bg-(--dg-loading-bar)" />
           </div>
         ) : null}
         <div
@@ -1473,7 +1495,7 @@ export function DataGrid<TRow>({
           }}
         >
           <div
-            className="sticky top-0 z-30 bg-background"
+            className="sticky top-0 z-30 bg-(--dg-bg)"
             style={{
               // Load-bearing rather than cosmetic: see `styleForColumn`.
               display: 'flex',
@@ -1545,7 +1567,7 @@ export function DataGrid<TRow>({
                       // scrollport, so the panel would stick to a box that is
                       // itself scrolling and slide away with the columns.
                       // Clipping belongs on the sticky element instead.
-                      className="absolute left-0 border-b border-border/70 bg-muted/30"
+                      className="absolute left-0 border-b border-(color:--dg-border-subtle) bg-(--dg-spacer-row-bg)"
                       style={{
                         top: headerHeight + rowTop + rowHeight,
                         height: expansionHeight,
@@ -1577,7 +1599,7 @@ export function DataGrid<TRow>({
           {hasMore ? (
             <div
               ref={loadMoreSentinelRef}
-              className="absolute left-0 flex items-center justify-center text-sm text-muted-foreground"
+              className="absolute left-0 flex items-center justify-center text-sm text-(color:--dg-muted-fg)"
               style={{
                 top: headerHeight + rowOffsets.totalHeight,
                 height: rowHeight,
@@ -1595,15 +1617,15 @@ export function DataGrid<TRow>({
         {!autoSaveEdits && pendingEditList.length > 0 ? (
           <div
             role="status"
-            className="flex items-center justify-between gap-3 border-t border-border bg-primary/[0.06] px-3 py-2"
+            className="flex items-center justify-between gap-3 border-t border-(color:--dg-border) bg-(--dg-edit-bar-bg) px-3 py-2"
           >
             <div className="flex min-w-0 items-center gap-2">
               {/* Echoes the corner notch drawn on each edited cell. */}
               <span
                 aria-hidden
-                className="h-0 w-0 shrink-0 border-r-[7px] border-t-[7px] border-r-transparent border-t-primary"
+                className="h-0 w-0 shrink-0 border-r-[7px] border-t-[7px] border-r-transparent border-t-(color:--dg-accent)"
               />
-              <span className="truncate text-[11px] font-medium uppercase tracking-wider text-primary">
+              <span className="truncate text-[11px] font-medium uppercase tracking-wider text-(color:--dg-accent)">
                 {pendingEditList.length.toLocaleString()} unsaved edit
                 {pendingEditList.length === 1 ? '' : 's'}
               </span>
@@ -1612,7 +1634,7 @@ export function DataGrid<TRow>({
               <button
                 type="button"
                 disabled={editsSaving}
-                className="rounded-md border border-border bg-background px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-primary transition-colors hover:bg-muted disabled:opacity-50"
+                className="rounded-md border border-(color:--dg-border) bg-(--dg-bg) px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-(color:--dg-accent) transition-colors hover:bg-(--dg-muted) disabled:opacity-50"
                 onClick={settleEdits(onRevertEdits)}
               >
                 Revert
@@ -1620,7 +1642,7 @@ export function DataGrid<TRow>({
               <button
                 type="button"
                 disabled={editsSaving}
-                className="rounded-md bg-primary px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
+                className="rounded-md bg-(--dg-accent) px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-(color:--dg-accent-fg) transition-colors hover:bg-(--dg-accent-active) disabled:opacity-50"
                 onClick={settleEdits(onSaveEdits)}
               >
                 {editsSaving ? 'Saving…' : 'Save changes'}

@@ -1,0 +1,21 @@
+/*
+ * Dark theme, class strategy — applies under any ancestor carrying `.dark`.
+ *
+ * The library emits no dark-mode rules of its own. Colour reaches the grid
+ * only through the nine tier-1 tokens, so "dark mode" is nine reassignments
+ * and every one of the 29 derived tokens follows for free.
+ *
+ * `:is(.dark *)` rather than `.dark &` so this matches the grid root whether
+ * `.dark` sits on `<html>`, on a wrapper, or on the grid element itself.
+ */
+.cotera-data-grid:is(.dark, .dark *) {
+  --dg-bg: #09090b;
+  --dg-fg: #fafafa;
+  --dg-muted: #27272a;
+  --dg-muted-fg: #a1a1aa;
+  --dg-border: #27272a;
+  --dg-accent: #3b82f6;
+  --dg-accent-fg: #0a0a0a;
+  --dg-popover: #18181b;
+  --dg-popover-fg: #fafafa;
+}

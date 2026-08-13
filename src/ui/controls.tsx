@@ -30,14 +30,14 @@ export function Button({
       type={type}
       className={cn(
         'inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-sm font-medium',
-        'transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
+        'transition-colors outline-none focus-visible:ring-2 focus-visible:ring-(color:--dg-focus-ring-control)',
         'disabled:pointer-events-none disabled:opacity-50',
         size === 'sm' ? 'h-8 px-3 text-xs' : 'h-9 px-4 text-sm',
         variant === 'default' &&
-          'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary/90',
+          'bg-(--dg-accent) text-(color:--dg-accent-fg) hover:bg-(--dg-accent-hover) active:bg-(--dg-accent-active)',
         variant === 'outline' &&
-          'border border-border bg-background hover:bg-muted',
-        variant === 'ghost' && 'hover:bg-muted',
+          'border border-(color:--dg-border) bg-(--dg-bg) hover:bg-(--dg-muted)',
+        variant === 'ghost' && 'hover:bg-(--dg-muted)',
         className
       )}
       {...props}
@@ -54,9 +54,9 @@ export function Input({
     <input
       type={type}
       className={cn(
-        'flex h-8 w-full rounded-sm border border-border bg-background px-2 py-1 text-xs',
-        'text-foreground placeholder:text-muted-foreground',
-        'outline-none focus-visible:ring-2 focus-visible:ring-primary/40',
+        'flex h-8 w-full rounded-sm border border-(color:--dg-border) bg-(--dg-bg) px-2 py-1 text-xs',
+        'text-(color:--dg-fg) placeholder:text-(color:--dg-muted-fg)',
+        'outline-none focus-visible:ring-2 focus-visible:ring-(color:--dg-focus-ring-soft)',
         'disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
@@ -73,16 +73,16 @@ export function Switch({
     <SwitchPrimitive.Root
       className={cn(
         'peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-transparent transition-colors',
-        'outline-none focus-visible:ring-2 focus-visible:ring-primary/40',
+        'outline-none focus-visible:ring-2 focus-visible:ring-(color:--dg-focus-ring-soft)',
         'disabled:cursor-not-allowed disabled:opacity-50',
-        'data-[state=checked]:bg-primary data-[state=unchecked]:bg-muted-foreground/30',
+        'data-[state=checked]:bg-(--dg-accent) data-[state=unchecked]:bg-(--dg-switch-track)',
         className
       )}
       {...props}
     >
       <SwitchPrimitive.Thumb
         className={cn(
-          'pointer-events-none block size-4 rounded-full bg-background shadow-sm ring-0 transition-transform',
+          'pointer-events-none block size-4 rounded-full bg-(--dg-bg) shadow-sm ring-0 transition-transform',
           'data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5'
         )}
       />

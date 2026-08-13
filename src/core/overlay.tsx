@@ -1,6 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { useDataGridPortalContainer } from '../ui/portal';
+import { DataGridThemeScope } from '../ui/theme-scope';
 
 type DataGridOverlayState = {
   anchor: HTMLElement;
@@ -77,13 +78,19 @@ export function DataGridOverlay({
 
   const root = portalContainer ?? document.body;
   return createPortal(
-    <div
-      className="z-50 rounded-lg border border-border bg-popover p-2 text-popover-foreground shadow-lg"
-      style={position}
-      role="dialog"
-    >
-      {overlay.content}
-    </div>,
+    // The `--dg-*` tokens live on `.cotera-data-grid`, and this content is
+    // portalled outside it. Without the scope every colour below resolves to
+    // nothing — invisible against a host that happens to define the same token
+    // names, obvious only in production against one that does not.
+    <DataGridThemeScope>
+      <div
+        className="z-50 rounded-lg border border-(color:--dg-border) bg-(--dg-popover) p-2 text-(color:--dg-popover-fg) shadow-lg"
+        style={position}
+        role="dialog"
+      >
+        {overlay.content}
+      </div>
+    </DataGridThemeScope>,
     root
   );
 }

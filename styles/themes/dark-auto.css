@@ -1,0 +1,34 @@
+/*
+ * Light and dark behind `prefers-color-scheme` — for a host with no theme
+ * toggle of its own.
+ *
+ * Use this *instead of* `light.css` + `dark.css`, not alongside them. The
+ * class strategy and the media strategy disagree the moment a user's OS is
+ * dark but the page is showing its light theme, and loading both makes which
+ * one wins a source-order accident.
+ */
+.cotera-data-grid {
+  --dg-bg: #ffffff;
+  --dg-fg: #0a0a0a;
+  --dg-muted: #f4f4f5;
+  --dg-muted-fg: #71717a;
+  --dg-border: #e4e4e7;
+  --dg-accent: #2563eb;
+  --dg-accent-fg: #fafafa;
+  --dg-popover: #ffffff;
+  --dg-popover-fg: #0a0a0a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cotera-data-grid {
+    --dg-bg: #09090b;
+    --dg-fg: #fafafa;
+    --dg-muted: #27272a;
+    --dg-muted-fg: #a1a1aa;
+    --dg-border: #27272a;
+    --dg-accent: #3b82f6;
+    --dg-accent-fg: #0a0a0a;
+    --dg-popover: #18181b;
+    --dg-popover-fg: #fafafa;
+  }
+}

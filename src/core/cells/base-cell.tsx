@@ -12,7 +12,7 @@ import { DataGridCellEditor, dataGridEditorKind } from './cell-editor';
 export const DataGridDirtyNotch = () => (
   <span
     aria-hidden
-    className="pointer-events-none absolute right-0 top-0 h-0 w-0 border-l-[7px] border-t-[7px] border-l-transparent border-t-primary"
+    className="pointer-events-none absolute right-0 top-0 h-0 w-0 border-l-[7px] border-t-[7px] border-l-transparent border-t-(color:--dg-accent)"
   />
 );
 
@@ -34,7 +34,7 @@ export function BaseCell<TRow>({
   const rendered =
     context.column.renderCell?.(context) ??
     (formatted === null ? (
-      <span className="text-muted-foreground">null</span>
+      <span className="text-(color:--dg-muted-fg)">null</span>
     ) : (
       formatted
     ));
@@ -53,10 +53,10 @@ export function BaseCell<TRow>({
       data-editing={context.state.editing ? 'true' : 'false'}
       data-dirty={context.state.dirty ? 'true' : 'false'}
       className={cn(
-        'absolute flex h-full items-center overflow-hidden border-b border-r border-border/70 px-3 text-sm outline-none data-[focused=true]:ring-2 data-[focused=true]:ring-primary/70 data-[focused=true]:ring-inset data-[selected=true]:bg-primary/10',
+        'absolute flex h-full items-center overflow-hidden border-b border-r border-(color:--dg-border-subtle) px-(--dg-cell-padding-x) text-sm outline-none data-[focused=true]:ring-2 data-[focused=true]:ring-(color:--dg-focus-ring) data-[focused=true]:ring-inset data-[selected=true]:bg-(--dg-cell-selected-bg)',
         // The editing ring wins over focus/selection styling and lifts the
         // cell above its neighbours so the ring is never clipped.
-        'data-[editing=true]:z-30 data-[editing=true]:overflow-visible data-[editing=true]:bg-background data-[editing=true]:ring-2 data-[editing=true]:ring-primary data-[editing=true]:ring-inset',
+        'data-[editing=true]:z-30 data-[editing=true]:overflow-visible data-[editing=true]:bg-(--dg-bg) data-[editing=true]:ring-2 data-[editing=true]:ring-(color:--dg-accent) data-[editing=true]:ring-inset',
         ALIGNMENT_CLASS[options.alignment]
       )}
       style={style}
@@ -94,7 +94,7 @@ export function BaseCell<TRow>({
           {barShare !== null ? (
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-1 left-1 rounded-sm bg-primary/15"
+              className="pointer-events-none absolute inset-y-1 left-1 rounded-sm bg-(--dg-cell-bar)"
               style={{ width: `calc(${barShare * 100}% - 0.5rem)` }}
             />
           ) : null}

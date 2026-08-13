@@ -11,7 +11,7 @@ import type { DataGridRowNumberLayoutItem } from '../types';
  * placement lives in one place rather than being matched by eye twice.
  */
 export const DATA_GRID_GUTTER_CHEVRON_CLASS =
-  'absolute left-1 flex h-4 w-4 items-center justify-center rounded text-muted-foreground hover:bg-muted hover:text-foreground';
+  'absolute left-1 flex h-4 w-4 items-center justify-center rounded text-(color:--dg-muted-fg) hover:bg-(--dg-muted) hover:text-(color:--dg-fg)';
 
 /**
  * The row-number gutter, which also hosts the stats disclosure. Putting the
@@ -40,7 +40,7 @@ export function RowNumberHeader({
       // so both line up down the gutter, and `#` sits over the row numbers.
       // `items-start` rather than centred because the header grows tall when
       // stats expand and the chevron must stay beside the first line.
-      className="relative flex items-start justify-end border-b border-r border-border bg-muted/80 px-2 py-2"
+      className="relative flex items-start justify-end border-b border-r border-(color:--dg-border) bg-(--dg-gutter-header-bg) px-2 py-2"
       style={{ width: column.width, height: headerHeight, flexShrink: 0 }}
     >
       <Tooltip asChild side="top" tooltipContent={label}>
@@ -57,7 +57,9 @@ export function RowNumberHeader({
           />
         </button>
       </Tooltip>
-      <span className="text-xs font-semibold text-muted-foreground">#</span>
+      <span className="text-xs font-semibold text-(color:--dg-muted-fg)">
+        #
+      </span>
     </div>
   );
 }

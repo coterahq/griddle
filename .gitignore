@@ -7,3 +7,4 @@ coverage/
 examples/dist/
 test-results/
 playwright-report/
+.claude/settings.local.json

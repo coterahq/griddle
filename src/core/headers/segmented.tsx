@@ -18,14 +18,14 @@ export function Segmented<TValue extends string | number | boolean | null>({
 }: SegmentedProps<TValue>) {
   return (
     <div className="space-y-1.5">
-      <div className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+      <div className="text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)">
         {label}
       </div>
       <div
         role="radiogroup"
         aria-label={label}
         className={cn(
-          'flex gap-1 rounded-lg border border-border bg-muted/40 p-1',
+          'flex gap-1 rounded-lg border border-(color:--dg-border) bg-(--dg-segmented-track-bg) p-1',
           className
         )}
       >
@@ -38,8 +38,8 @@ export function Segmented<TValue extends string | number | boolean | null>({
             className={cn(
               'flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-colors',
               option.value === value
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-background hover:text-foreground'
+                ? 'bg-(--dg-accent) text-(color:--dg-accent-fg)'
+                : 'text-(color:--dg-muted-fg) hover:bg-(--dg-bg) hover:text-(color:--dg-fg)'
             )}
             onClick={() => {
               onChange(option.value);

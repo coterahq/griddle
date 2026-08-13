@@ -1,0 +1,26 @@
+/*
+ * Cotera theme — nine lines of indirection onto the host's own shadcn tokens.
+ *
+ * This is the file that pays for the whole two-tier design. The grid was
+ * extracted from an app whose palette is already `--background`,
+ * `--foreground`, `--primary` and friends, so adopting the library there is
+ * one import rather than a colour audit.
+ *
+ * Dark mode needs no rules here. The host already flips `--background` under
+ * its own `.dark`, and these are aliases rather than copies, so the grid
+ * follows for free — which is exactly why the library ships no dark-mode
+ * rules of its own.
+ *
+ * Any app on the shadcn token names can use this file unchanged.
+ */
+.cotera-data-grid {
+  --dg-bg: var(--background);
+  --dg-fg: var(--foreground);
+  --dg-muted: var(--muted);
+  --dg-muted-fg: var(--muted-foreground);
+  --dg-border: var(--border);
+  --dg-accent: var(--primary);
+  --dg-accent-fg: var(--primary-foreground);
+  --dg-popover: var(--popover);
+  --dg-popover-fg: var(--popover-foreground);
+}

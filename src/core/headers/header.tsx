@@ -81,8 +81,8 @@ export function DataGridHeader<TRow>({
       data-sorted={context.sort !== null ? 'true' : 'false'}
       data-filtered={context.filter !== null ? 'true' : 'false'}
       className={cn(
-        'group/header absolute flex h-full flex-col border-b border-r border-border bg-muted/40 text-xs font-medium text-muted-foreground',
-        'data-[sorted=true]:bg-primary/5 data-[filtered=true]:bg-primary/10'
+        'group/header absolute flex h-full flex-col border-b border-r border-(color:--dg-border) bg-(--dg-header-bg) text-xs font-medium text-(color:--dg-muted-fg)',
+        'data-[sorted=true]:bg-(--dg-header-sorted-bg) data-[filtered=true]:bg-(--dg-header-filtered-bg)'
       )}
       style={style}
       draggable
@@ -106,7 +106,7 @@ export function DataGridHeader<TRow>({
           <span
             aria-label="Computed column"
             title="Computed column"
-            className="shrink-0 rounded bg-muted px-1 font-mono text-[9px] italic text-muted-foreground"
+            className="shrink-0 rounded bg-(--dg-muted) px-1 font-mono text-[9px] italic text-(color:--dg-muted-fg)"
           >
             fx
           </span>
@@ -114,7 +114,7 @@ export function DataGridHeader<TRow>({
           <Icon
             icon={dataGridColumnTypeIcon(context.column.type)}
             size="small"
-            className="shrink-0 text-muted-foreground/70"
+            className="shrink-0 text-(color:--dg-muted-fg-soft)"
           />
         )}
         <Tooltip
@@ -122,9 +122,9 @@ export function DataGridHeader<TRow>({
           side="top"
           tooltipContent={
             <div className="whitespace-nowrap text-xs">
-              <div className="font-medium text-foreground">{label}</div>
+              <div className="font-medium text-(color:--dg-fg)">{label}</div>
               {context.column.typeLabel !== undefined ? (
-                <div className="text-muted-foreground">
+                <div className="text-(color:--dg-muted-fg)">
                   {context.column.typeLabel}
                 </div>
               ) : null}
@@ -135,7 +135,9 @@ export function DataGridHeader<TRow>({
             type="button"
             className={cn(
               'flex min-w-0 flex-1 items-center gap-1 truncate text-left text-[11px] font-semibold uppercase tracking-wide',
-              context.sort !== null ? 'text-primary' : 'text-foreground/80'
+              context.sort !== null
+                ? 'text-(color:--dg-accent)'
+                : 'text-(color:--dg-fg-soft)'
             )}
             onClick={() => {
               if (sortable) {
@@ -184,7 +186,7 @@ export function DataGridHeader<TRow>({
             <button
               type="button"
               aria-label={`${label} column options`}
-              className="shrink-0 rounded p-0.5 text-muted-foreground/60 opacity-0 transition-opacity hover:bg-muted hover:text-foreground focus:opacity-100 group-hover/header:opacity-100 data-[state=open]:opacity-100"
+              className="shrink-0 rounded p-0.5 text-(color:--dg-muted-fg-faint) opacity-0 transition-opacity hover:bg-(--dg-muted) hover:text-(color:--dg-fg) focus:opacity-100 group-hover/header:opacity-100 data-[state=open]:opacity-100"
               onClick={(event) => {
                 event.stopPropagation();
               }}

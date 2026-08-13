@@ -477,10 +477,10 @@ describe('DataGrid pinned column positioning', () => {
       evenTint: groupFor(0)?.firstElementChild?.className,
       oddTint: groupFor(1)?.firstElementChild?.className,
     }).toMatchObject({
-      evenBase: expect.stringContaining('bg-background'),
+      evenBase: expect.stringContaining('bg-(--dg-bg)'),
       // Even rows take the base colour, so there is no tint layer to draw.
-      evenTint: expect.not.stringContaining('bg-muted/20'),
-      oddTint: expect.stringContaining('bg-muted/20'),
+      evenTint: expect.not.stringContaining('bg-(--dg-row-stripe-bg)'),
+      oddTint: expect.stringContaining('bg-(--dg-row-stripe-bg)'),
     });
   });
 });

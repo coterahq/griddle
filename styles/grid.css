@@ -1,0 +1,260 @@
+/*
+ * @cotera/data-grid — the stylesheet.
+ *
+ * Imported for its side effect:
+ *
+ *   import '@cotera/data-grid/style.css';
+ *   import '@cotera/data-grid/themes/light.css';   // or supply --dg-* yourself
+ *
+ * Two things make this safe to drop into a page you do not control.
+ *
+ * `tailwindcss/theme.css` and `tailwindcss/utilities.css` are imported
+ * separately rather than as `@import "tailwindcss"`. The barrel also pulls
+ * preflight, and preflight is a global reset — it would zero the host's
+ * margins, unstyle its headings and change its box-sizing. A library has no
+ * business doing that.
+ *
+ * And every custom property is defined on `.cotera-data-grid`, never on
+ * `:root`. Tailwind emits its own theme layer as `:root, :host { … }`, so
+ * `scripts/build-css.mjs` rescopes that to the same class on the way out and
+ * hard-fails the build if a single `:root`/`:host` selector survives. Custom
+ * properties inherit, so every descendant still sees them; a host that happens
+ * to define `--spacing` is no longer in a load-order race with us.
+ */
+
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+/*
+ * Class scanning. Every `className` in the grid is a static literal — there is
+ * not one interpolated class string in `src/` — so this scan is complete and
+ * the package needs no safelist.
+ *
+ * `source(none)` above turns off automatic detection, which is not a tidiness
+ * preference. Left on, Tailwind walks up to the project root and scans every
+ * text file it finds, and arbitrary-value candidates are valid by
+ * construction — so prose describing a class mints that class. It did: an
+ * early build of this file shipped `bg-(--dg-surface)` and
+ * `bg-(--dg-accent)/10` into `dist/style.css`, both harvested out of
+ * `HANDOFF.md`, the second of them a form this library forbids on purpose.
+ * One explicit source, and the stylesheet contains what the grid uses.
+ */
+@source "../src/**/*.{ts,tsx}";
+
+@layer base {
+  .cotera-data-grid {
+    /*
+     * ── Tier 1 ──────────────────────────────────────────────────────────
+     *
+     * The nine base tokens, and the only thing a theme has to supply. They
+     * are deliberately the shadcn semantics the grid was written against, so
+     * `themes/cotera.css` is nine lines of `var(--background)` indirection.
+     *
+     * The values here are a working light default, so a page that imports
+     * only `style.css` still gets a legible grid. Every theme file — and any
+     * `.cotera-data-grid { --dg-*: … }` rule a host writes — is unlayered and
+     * therefore beats this block, which is layered.
+     */
+    --dg-bg: #ffffff;
+    --dg-fg: #0a0a0a;
+    --dg-muted: #f4f4f5;
+    --dg-muted-fg: #71717a;
+    --dg-border: #e4e4e7;
+    --dg-accent: #2563eb;
+    --dg-accent-fg: #ffffff;
+    --dg-popover: #ffffff;
+    --dg-popover-fg: #0a0a0a;
+
+    /*
+     * ── Tier 2 ──────────────────────────────────────────────────────────
+     *
+     * Every colour the grid paints, named for what it paints. 153 colour
+     * sites across 14 files reduce to these, and a theme can move any one
+     * decoration without touching the base palette.
+     *
+     * Two rules govern this block, and the distinction between them matters:
+     *
+     *   One *derivation* per `(semantic, alpha)` pair. Tailwind 4 compiles
+     *   `bg-primary/10` to `color-mix(in oklab, var(--color-primary) 10%,
+     *   transparent)`, and every declaration below is that same expression —
+     *   same function, same colour space, same percentage, same second
+     *   operand. That is what makes pixel parity with the pre-extraction grid
+     *   a claim rather than a hope.
+     *
+     *   One *token* per role. Where two roles happen to share a derivation —
+     *   a focused cell's ring and a hovered histogram bar are both the accent
+     *   at 70% — they still get separate tokens, because a themer moving one
+     *   almost never means the other. The shared expression is a default they
+     *   start from, not a coupling they are stuck with.
+     *
+     * Which is also why no use site may carry an opacity modifier on an
+     * arbitrary var (`bg-(--dg-accent)/10`). Every alpha is baked here.
+     */
+
+    /* Accent washes behind rows, cells and headers. */
+    --dg-row-selected-bg: color-mix(in oklab, var(--dg-accent) 5%, transparent);
+    --dg-header-sorted-bg: color-mix(
+      in oklab,
+      var(--dg-accent) 5%,
+      transparent
+    );
+    --dg-edit-bar-bg: color-mix(in oklab, var(--dg-accent) 6%, transparent);
+    --dg-cell-selected-bg: color-mix(
+      in oklab,
+      var(--dg-accent) 10%,
+      transparent
+    );
+    --dg-header-filtered-bg: color-mix(
+      in oklab,
+      var(--dg-accent) 10%,
+      transparent
+    );
+
+    /* The sort chips in the toolbar. */
+    --dg-chip-accent-bg: color-mix(in oklab, var(--dg-accent) 10%, transparent);
+    --dg-chip-accent-hover-bg: color-mix(
+      in oklab,
+      var(--dg-accent) 20%,
+      transparent
+    );
+    --dg-chip-accent-border: color-mix(
+      in oklab,
+      var(--dg-accent) 30%,
+      transparent
+    );
+
+    /* Bars: the in-cell value bar, the top loading bar, the stats charts. */
+    --dg-cell-bar: color-mix(in oklab, var(--dg-accent) 15%, transparent);
+    --dg-segmented-thumb-bg: color-mix(
+      in oklab,
+      var(--dg-accent) 15%,
+      transparent
+    );
+    --dg-loading-track: color-mix(in oklab, var(--dg-accent) 10%, transparent);
+    --dg-loading-bar: color-mix(in oklab, var(--dg-accent) 60%, transparent);
+    --dg-chart-track: color-mix(in oklab, var(--dg-accent) 10%, transparent);
+    --dg-chart-bar-alt: color-mix(in oklab, var(--dg-accent) 20%, transparent);
+    --dg-chart-bar: color-mix(in oklab, var(--dg-accent) 45%, transparent);
+    --dg-chart-bar-hover: color-mix(
+      in oklab,
+      var(--dg-accent) 70%,
+      transparent
+    );
+
+    /* Accent fills under a pointer. */
+    --dg-accent-hover: color-mix(in oklab, var(--dg-accent) 80%, transparent);
+    --dg-accent-active: color-mix(in oklab, var(--dg-accent) 90%, transparent);
+
+    /*
+     * Three focus rings rather than one, because the original draws three
+     * different weights: the grid container, a form control, and a focused
+     * cell — which sits on top of a selection wash and needs to beat it.
+     */
+    --dg-focus-ring-soft: color-mix(
+      in oklab,
+      var(--dg-accent) 40%,
+      transparent
+    );
+    --dg-focus-ring-control: color-mix(
+      in oklab,
+      var(--dg-accent) 50%,
+      transparent
+    );
+    --dg-focus-ring: color-mix(in oklab, var(--dg-accent) 70%, transparent);
+
+    /* Neutral surfaces. */
+    --dg-row-stripe-bg: color-mix(in oklab, var(--dg-muted) 20%, transparent);
+    --dg-spacer-row-bg: color-mix(in oklab, var(--dg-muted) 30%, transparent);
+    --dg-slider-track-bg: color-mix(in oklab, var(--dg-muted) 30%, transparent);
+    --dg-header-bg: color-mix(in oklab, var(--dg-muted) 40%, transparent);
+    --dg-segmented-track-bg: color-mix(
+      in oklab,
+      var(--dg-muted) 40%,
+      transparent
+    );
+    --dg-chip-bg: color-mix(in oklab, var(--dg-muted) 50%, transparent);
+    --dg-gutter-header-bg: color-mix(
+      in oklab,
+      var(--dg-muted) 80%,
+      transparent
+    );
+
+    /* Neutral marks and de-emphasised text. */
+    --dg-skeleton-bg-soft: color-mix(
+      in oklab,
+      var(--dg-muted-fg) 10%,
+      transparent
+    );
+    --dg-skeleton-bg: color-mix(in oklab, var(--dg-muted-fg) 15%, transparent);
+    --dg-switch-track: color-mix(in oklab, var(--dg-muted-fg) 30%, transparent);
+    --dg-muted-fg-faint: color-mix(
+      in oklab,
+      var(--dg-muted-fg) 60%,
+      transparent
+    );
+    --dg-muted-fg-soft: color-mix(
+      in oklab,
+      var(--dg-muted-fg) 70%,
+      transparent
+    );
+    --dg-muted-fg-strong: color-mix(
+      in oklab,
+      var(--dg-muted-fg) 80%,
+      transparent
+    );
+
+    /* Rules. `--dg-border-subtle` is the gridline; `--dg-border` is a frame. */
+    --dg-border-faint: color-mix(in oklab, var(--dg-border) 60%, transparent);
+    --dg-border-subtle: color-mix(in oklab, var(--dg-border) 70%, transparent);
+
+    /* Body text at reduced weight. */
+    --dg-fg-faint: color-mix(in oklab, var(--dg-fg) 70%, transparent);
+    --dg-fg-soft: color-mix(in oklab, var(--dg-fg) 80%, transparent);
+
+    /*
+     * The modal scrim. Not derived from the palette: it dims whatever the
+     * host has behind the dialog, which is not the grid's own background.
+     */
+    --dg-scrim: color-mix(in oklab, #000 40%, transparent);
+
+    /*
+     * ── Shape and type ──────────────────────────────────────────────────
+     *
+     * Redefining Tailwind's own scale variables rather than rewriting every
+     * `rounded-md` and `text-xs` at the call site. The utilities already
+     * resolve `var(--radius-md)` and `var(--text-xs)`, and `@layer base`
+     * comes after `@layer theme` in the cascade, so these win.
+     */
+    --dg-radius: 0.375rem;
+    --radius-xs: calc(var(--dg-radius) - 4px);
+    --radius-sm: calc(var(--dg-radius) - 2px);
+    --radius-md: var(--dg-radius);
+    --radius-lg: calc(var(--dg-radius) + 2px);
+
+    --dg-font-size: 0.875rem;
+    --dg-font-size-sm: 0.875rem;
+    --dg-font-size-xs: 0.75rem;
+    --text-base: var(--dg-font-size);
+    --text-sm: var(--dg-font-size-sm);
+    --text-xs: var(--dg-font-size-xs);
+
+    /* Horizontal padding shared by body cells and column headers. */
+    --dg-cell-padding-x: 0.75rem;
+
+    /*
+     * ── Geometry ────────────────────────────────────────────────────────
+     *
+     * Row and header heights and the gutter width are owned by TypeScript —
+     * the virtualizer does arithmetic on them, so CSS cannot be the source of
+     * truth. `DataGrid` mirrors the resolved values onto its root as inline
+     * style, which overrides these; the declarations here are the defaults a
+     * decoration can reference when it renders outside the grid root.
+     */
+    --dg-row-height: 36px;
+    --dg-header-height: 40px;
+    --dg-row-number-width: 52px;
+    --dg-column-width: 160px;
+  }
+}

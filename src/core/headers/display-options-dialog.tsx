@@ -62,7 +62,7 @@ export const DataGridDisplayOptionsDialog: React.FC<
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <div className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+          <div className="text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)">
             Display options
           </div>
           <DialogTitle className="truncate">{columnLabel}</DialogTitle>
@@ -94,12 +94,12 @@ export const DataGridDisplayOptionsDialog: React.FC<
             }}
           />
 
-          <div className="flex items-center justify-between rounded-lg border border-border px-3 py-2">
+          <div className="flex items-center justify-between rounded-lg border border-(color:--dg-border) px-3 py-2">
             <div>
-              <div className="text-xs font-medium text-foreground">
+              <div className="text-xs font-medium text-(color:--dg-fg)">
                 In-cell bar
               </div>
-              <div className="text-[11px] text-muted-foreground">
+              <div className="text-[11px] text-(color:--dg-muted-fg)">
                 Draw a proportional bar behind numeric values
               </div>
             </div>
@@ -113,13 +113,13 @@ export const DataGridDisplayOptionsDialog: React.FC<
           </div>
 
           <div className="space-y-1.5">
-            <div className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            <div className="text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)">
               Preview
             </div>
-            <div className="relative flex h-9 items-center overflow-hidden rounded-lg border border-border bg-muted/30 px-3">
+            <div className="relative flex h-9 items-center overflow-hidden rounded-lg border border-(color:--dg-border) bg-(--dg-slider-track-bg) px-3">
               {previewShare !== null ? (
                 <div
-                  className="absolute inset-y-1 left-1 rounded bg-primary/15"
+                  className="absolute inset-y-1 left-1 rounded bg-(--dg-segmented-thumb-bg)"
                   style={{ width: `${previewShare * 100}%` }}
                 />
               ) : null}

@@ -76,8 +76,8 @@ const StatMark: React.FC<MarkProps> = ({
       className="px-2 py-1"
       tooltipContent={
         <div className="whitespace-nowrap text-xs">
-          <div className="font-medium text-foreground">{bucket.label}</div>
-          <div className="text-muted-foreground">
+          <div className="font-medium text-(color:--dg-fg)">{bucket.label}</div>
+          <div className="text-(color:--dg-muted-fg)">
             {compactNumber(bucket.count)} ·{' '}
             {Math.round(sharePercent(bucket, total) * 100)}%
           </div>
@@ -95,7 +95,7 @@ const StatMark: React.FC<MarkProps> = ({
             ? 'h-full flex-1 items-end rounded-[2px]'
             : // Horizontal marks carry a track so the unfilled remainder reads
               // as "share of the column" rather than a bare bar.
-              'h-2 w-full items-center rounded-full bg-primary/10',
+              'h-2 w-full items-center rounded-full bg-(--dg-chart-track)',
           interactive ? 'cursor-pointer' : 'cursor-default'
         )}
         onClick={handleSelect}
@@ -107,8 +107,8 @@ const StatMark: React.FC<MarkProps> = ({
               ? 'w-full rounded-[2px]'
               : 'h-full rounded-full',
             selected
-              ? 'bg-primary ring-1 ring-inset ring-primary'
-              : 'bg-primary/45 group-hover/mark:bg-primary/70 group-focus/mark:bg-primary/70'
+              ? 'bg-(--dg-accent) ring-1 ring-inset ring-(color:--dg-accent)'
+              : 'bg-(--dg-chart-bar) group-hover/mark:bg-(--dg-chart-bar-hover) group-focus/mark:bg-(--dg-chart-bar-hover)'
           )}
           style={
             orientation === 'vertical' ? { height: size } : { width: size }
@@ -171,7 +171,7 @@ const StatRow: React.FC<{
     <span
       className={cn(
         'w-[45%] min-w-0 truncate text-[10px] font-normal leading-tight',
-        muted ? 'text-muted-foreground/60' : 'text-foreground/80'
+        muted ? 'text-(color:--dg-muted-fg-faint)' : 'text-(color:--dg-fg-soft)'
       )}
     >
       {label}
@@ -180,7 +180,9 @@ const StatRow: React.FC<{
     <span
       className={cn(
         'shrink-0 text-[10px] font-normal leading-tight tabular-nums',
-        muted ? 'text-muted-foreground/60' : 'text-muted-foreground'
+        muted
+          ? 'text-(color:--dg-muted-fg-faint)'
+          : 'text-(color:--dg-muted-fg)'
       )}
     >
       {compactNumber(count)}
@@ -243,11 +245,11 @@ const CategoricalChart: React.FC<
           bar={
             <div
               aria-hidden
-              className="h-2 w-full rounded-full bg-primary/10"
+              className="h-2 w-full rounded-full bg-(--dg-chart-track)"
               title={`${remaining.toLocaleString()} more categories`}
             >
               <div
-                className="h-full rounded-full bg-primary/20"
+                className="h-full rounded-full bg-(--dg-chart-bar-alt)"
                 style={{
                   width: `${
                     maxCount <= 0
@@ -267,14 +269,14 @@ const CategoricalChart: React.FC<
 const StatFootnote: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <div className="mt-1 flex items-center justify-between gap-2 truncate text-[10px] font-normal leading-tight text-muted-foreground/80">
+  <div className="mt-1 flex items-center justify-between gap-2 truncate text-[10px] font-normal leading-tight text-(color:--dg-muted-fg-strong)">
     {children}
   </div>
 );
 
 /** The eyebrow above every stats block; keeps headers visually aligned. */
 const StatCaption: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="truncate text-[9px] font-medium uppercase tracking-wide text-muted-foreground/60">
+  <div className="truncate text-[9px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg-faint)">
     {children}
   </div>
 );
@@ -301,8 +303,8 @@ export const DataGridColumnStatsView: React.FC<
     case 'loading':
       return (
         <div className="space-y-1" aria-label={`Loading ${columnLabel} stats`}>
-          <div className="h-4 w-full animate-pulse rounded bg-muted-foreground/15" />
-          <div className="h-2 w-1/2 animate-pulse rounded bg-muted-foreground/10" />
+          <div className="h-4 w-full animate-pulse rounded bg-(--dg-skeleton-bg)" />
+          <div className="h-2 w-1/2 animate-pulse rounded bg-(--dg-skeleton-bg-soft)" />
         </div>
       );
     case 'error':
@@ -312,19 +314,19 @@ export const DataGridColumnStatsView: React.FC<
           side="top"
           className="max-w-80"
           tooltipContent={
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-(color:--dg-muted-fg)">
               {stats.message ?? 'Could not load stats'}
             </span>
           }
         >
-          <div className="w-fit cursor-help truncate text-[10px] font-normal leading-tight text-muted-foreground/70 underline decoration-dotted underline-offset-2">
+          <div className="w-fit cursor-help truncate text-[10px] font-normal leading-tight text-(color:--dg-muted-fg-soft) underline decoration-dotted underline-offset-2">
             Stats unavailable
           </div>
         </Tooltip>
       );
     case 'summary':
       return (
-        <div className="truncate text-[11px] font-normal text-muted-foreground">
+        <div className="truncate text-[11px] font-normal text-(color:--dg-muted-fg)">
           {stats.label}: {stats.value}
         </div>
       );
@@ -346,7 +348,7 @@ export const DataGridColumnStatsView: React.FC<
               {stats.samples.slice(0, CATEGORICAL_TOP_N).map((sample) => (
                 <div
                   key={sample}
-                  className="truncate text-[10px] font-normal leading-tight text-foreground/70"
+                  className="truncate text-[10px] font-normal leading-tight text-(color:--dg-fg-faint)"
                 >
                   {sample}
                 </div>
