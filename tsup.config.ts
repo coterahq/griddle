@@ -1,15 +1,14 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  // Entries are added as their milestones land — a missing one is a hard build
-  // error, and a stub one would publish an empty subpath that consumers could
-  // import. The exports map in package.json is the full intended surface.
+  // The full published surface. Each entry has a matching `exports` key in
+  // package.json, and publint/attw fail on a mismatch.
   entry: {
     index: 'src/index.ts',
     'source/index': 'src/source/index.ts',
     'memory/index': 'src/memory/index.ts',
     'duckdb/index': 'src/duckdb/index.ts',
-    // 'http/index':   'src/http/index.ts',     // L6
+    'http/index': 'src/http/index.ts',
   },
   format: ['esm', 'cjs'],
   // Shared core lands in one chunk instead of being duplicated into all five

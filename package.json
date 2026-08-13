@@ -20,6 +20,9 @@
       ],
       "duckdb": [
         "./dist/duckdb/index.d.ts"
+      ],
+      "http": [
+        "./dist/http/index.d.ts"
       ]
     }
   },
@@ -83,6 +86,16 @@
       "require": {
         "types": "./dist/duckdb/index.d.cts",
         "default": "./dist/duckdb/index.cjs"
+      }
+    },
+    "./http": {
+      "import": {
+        "types": "./dist/http/index.d.ts",
+        "default": "./dist/http/index.js"
+      },
+      "require": {
+        "types": "./dist/http/index.d.cts",
+        "default": "./dist/http/index.cjs"
       }
     },
     "./style.css": "./dist/style.css",
