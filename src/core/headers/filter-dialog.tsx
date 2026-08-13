@@ -4,15 +4,10 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@cotera/client/v0/components/ui/dialog';
-import { Button } from '@cotera/client/v0/components/ui/button';
-import { Input } from '@cotera/client/v0/components/ui/input';
-// Imported from the module rather than the `components/app` barrel: that barrel
-// pulls in the whole ui barrel, which re-exports this grid.
-import {
-  ModalPageView,
-  useOptionalModalManager,
-} from '@cotera/client/app/components/app/modal-manager/modal-manager';
+} from '../../ui/dialog';
+import { Button } from '../../ui/controls';
+import { Input } from '../../ui/controls';
+import { useDataGridModalHost } from '../../ui/modal-host';
 import { comparisonTakesValue, isComparisonFilterValue } from '../filters';
 import type {
   DataGridColumnDataType,
@@ -133,10 +128,10 @@ const DataGridFilterForm: React.FC<{
     state.comparison === 'isNull'
       ? 'isNull'
       : state.comparison === 'isNotNull'
-      ? 'isNotNull'
-      : state.booleanValue
-      ? 'true'
-      : 'false';
+        ? 'isNotNull'
+        : state.booleanValue
+          ? 'true'
+          : 'false';
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -149,10 +144,10 @@ const DataGridFilterForm: React.FC<{
       value: !takesValue
         ? null
         : columnType === 'boolean'
-        ? state.booleanValue
-        : columnType === 'number'
-        ? numeric
-        : state.text,
+          ? state.booleanValue
+          : columnType === 'number'
+            ? numeric
+            : state.text,
     });
   };
 
@@ -163,7 +158,7 @@ const DataGridFilterForm: React.FC<{
           label="Matches"
           value={booleanChoice}
           options={BOOLEAN_CHOICES}
-          onChange={(choice) =>
+          onChange={(choice) => {
             setState((current) => ({
               ...current,
               comparison:
@@ -171,8 +166,8 @@ const DataGridFilterForm: React.FC<{
                   ? choice
                   : 'equals',
               booleanValue: choice === 'true',
-            }))
-          }
+            }));
+          }}
         />
       ) : (
         <>
@@ -181,9 +176,9 @@ const DataGridFilterForm: React.FC<{
             className="grid grid-cols-4"
             value={state.comparison}
             options={comparisonOptionsFor(columnType)}
-            onChange={(comparison) =>
-              setState((current) => ({ ...current, comparison }))
-            }
+            onChange={(comparison) => {
+              setState((current) => ({ ...current, comparison }));
+            }}
           />
           {takesValue ? (
             <div className="space-y-1.5">
@@ -199,12 +194,12 @@ const DataGridFilterForm: React.FC<{
                 type={inputTypeFor(columnType)}
                 placeholder={`Filter ${columnLabel}`}
                 value={state.text}
-                onChange={(event) =>
+                onChange={(event) => {
                   setState((current) => ({
                     ...current,
                     text: event.target.value,
-                  }))
-                }
+                  }));
+                }}
               />
             </div>
           ) : null}
@@ -244,7 +239,7 @@ export const DataGridFilterDialog: React.FC<DataGridFilterDialogProps> = (
   props
 ) => {
   const { open, onOpenChange, columnLabel, columnType, value, onApply } = props;
-  const modal = useOptionalModalManager();
+  const modal = useDataGridModalHost();
   // The pushed view outlives this render, so it reads the current props through
   // a ref instead of capturing them — otherwise every parent render would have
   // to pop and re-push to stay current.
@@ -258,27 +253,29 @@ export const DataGridFilterDialog: React.FC<DataGridFilterDialogProps> = (
       return;
     }
     modal.push({
+      title: 'Filter',
+      subtitle: latest.current.columnLabel,
       view: () => (
-        <ModalPageView
-          title="Filter"
-          subtitle={latest.current.columnLabel}
-          className="px-4 py-4"
-        >
-          <DataGridFilterForm
-            columnLabel={latest.current.columnLabel}
-            columnType={latest.current.columnType ?? 'unknown'}
-            value={latest.current.value}
-            onSubmit={(next) => {
-              latest.current.onApply(next);
-              latest.current.onOpenChange(false);
-            }}
-            onCancel={() => latest.current.onOpenChange(false)}
-          />
-        </ModalPageView>
+        <DataGridFilterForm
+          columnLabel={latest.current.columnLabel}
+          columnType={latest.current.columnType ?? 'unknown'}
+          value={latest.current.value}
+          onSubmit={(next) => {
+            latest.current.onApply(next);
+            latest.current.onOpenChange(false);
+          }}
+          onCancel={() => {
+            latest.current.onOpenChange(false);
+          }}
+        />
       ),
-      onClose: () => latest.current.onOpenChange(false),
+      onClose: () => {
+        latest.current.onOpenChange(false);
+      },
     });
-    return () => modal.pop();
+    return () => {
+      modal.pop();
+    };
   }, [open, modal]);
 
   if (modal !== null) {
@@ -302,7 +299,9 @@ export const DataGridFilterDialog: React.FC<DataGridFilterDialogProps> = (
             onApply(next);
             onOpenChange(false);
           }}
-          onCancel={() => onOpenChange(false)}
+          onCancel={() => {
+            onOpenChange(false);
+          }}
         />
       </DialogContent>
     </Dialog>

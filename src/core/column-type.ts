@@ -1,7 +1,7 @@
-import type { IconName } from '@cotera/client/app/components/ui/icon';
+import type { DataGridIconName } from '../ui/icons';
 import type { DataGridColumnDataType } from './types';
 
-const ICONS: Record<DataGridColumnDataType, IconName> = {
+const ICONS: Record<DataGridColumnDataType, DataGridIconName> = {
   text: 'file-text',
   number: 'list-ordered',
   boolean: 'list-todo',
@@ -13,7 +13,7 @@ const ICONS: Record<DataGridColumnDataType, IconName> = {
 
 export const dataGridColumnTypeIcon = (
   type: DataGridColumnDataType | undefined
-): IconName => ICONS[type ?? 'unknown'];
+): DataGridIconName => ICONS[type ?? 'unknown'];
 
 /**
  * Best-effort mapping from a warehouse/duckdb type name onto the grid's

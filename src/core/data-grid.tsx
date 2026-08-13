@@ -1,9 +1,8 @@
 import React from 'react';
-import type { ReadonlyWatchable } from '@cotera/client/v0/actions/framework';
-import { useWatchableValue } from '@cotera/client/v0/actions/framework';
-import { cn } from '@cotera/client/v0/lib/utils';
-import { Watchable } from '@cotera/client/v0/actions/framework';
-import { Icon } from '@cotera/client/app/components/ui/icon';
+import type { ReadonlyGridStore } from '../store';
+import { createGridStore, useGridStore } from '../store';
+import { cn } from '../ui/cn';
+import { Icon } from '../ui/icons';
 import { getDataGridColumnLayout } from './column-layout';
 import { BaseCell } from './cells/base-cell';
 import { describeFilterValue, toggleStructuredFilterValue } from './filters';
@@ -45,12 +44,12 @@ import type {
 } from './types';
 import type { DataGridViewModel } from './view-model';
 
-const FALSE_WATCHABLE = Watchable.fromValue(false);
-const NULL_TOTAL = Watchable.fromValue<number | null>(null);
-const EMPTY_STATS = Watchable.fromValue<
+const FALSE_WATCHABLE = createGridStore(false);
+const NULL_TOTAL = createGridStore<number | null>(null);
+const EMPTY_STATS = createGridStore<
   Record<string, DataGridColumnStats | undefined>
 >({});
-const EMPTY_COLUMN_STATS = Watchable.fromValue<DataGridColumnStats | undefined>(
+const EMPTY_COLUMN_STATS = createGridStore<DataGridColumnStats | undefined>(
   undefined
 );
 
@@ -94,7 +93,9 @@ function DefaultTopBar<TRow>({
               typeof column.header === 'string' ? column.header : column.id
             } column`}
             className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-muted/50 py-0.5 pl-2 pr-1.5 text-[11px] hover:bg-muted hover:text-foreground"
-            onClick={() => setColumnVisible(column.id, true)}
+            onClick={() => {
+              setColumnVisible(column.id, true);
+            }}
           >
             <Icon icon="eye-slash" size="small" className="opacity-60" />
             <span className="max-w-40 truncate">
@@ -182,7 +183,9 @@ export function DataGridSortChips({
           key={`sort-${sort.columnId}`}
           label={columnLabelFor(columns, sort.columnId)}
           direction={sort.direction}
-          onClear={() => clearSort(sort.columnId)}
+          onClear={() => {
+            clearSort(sort.columnId);
+          }}
         />
       ))}
     </>
@@ -204,7 +207,9 @@ function DefaultFooter<TRow>({
             key={`filter-${filter.columnId}`}
             label={columnLabelFor(columns, filter.columnId)}
             value={filter.value}
-            onClear={() => clearFilter(filter.columnId)}
+            onClear={() => {
+              clearFilter(filter.columnId);
+            }}
           />
         ))}
         <DataGridSortChips
@@ -406,8 +411,7 @@ type HeaderCellProps<TRow> = {
   displayOptions: DataGridColumnDisplayOptions;
   onHeaderStatsVisible: ((columnId: string) => void) | undefined;
   renderActions:
-    | ((context: DataGridHeaderContext<TRow>) => React.ReactNode)
-    | undefined;
+    ((context: DataGridHeaderContext<TRow>) => React.ReactNode) | undefined;
   HeaderComponent: React.ComponentType<DataGridHeaderComponentProps<TRow>>;
 };
 
@@ -437,9 +441,9 @@ function HeaderCell<TRow>({
     () => statsSource?.get(columnId) ?? EMPTY_COLUMN_STATS,
     [columnId, statsSource]
   );
-  const perColumnStats = useWatchableValue(statsWatchable);
+  const perColumnStats = useGridStore(statsWatchable);
   const stats =
-    statsSource !== undefined ? perColumnStats ?? null : statsFromMap;
+    statsSource !== undefined ? (perColumnStats ?? null) : statsFromMap;
 
   const requestStatsLoad = React.useCallback(() => {
     if (viewModel.headersExpanded.snapshot()) {
@@ -456,7 +460,7 @@ function HeaderCell<TRow>({
   const context: DataGridHeaderContext<TRow> = {
     column: item.column,
     columnIndex: item.columnIndex,
-    sort: sortIndex === null ? null : sorts[sortIndex] ?? null,
+    sort: sortIndex === null ? null : (sorts[sortIndex] ?? null),
     sortIndex,
     sortCount: sorts.length,
     filter: filterValue,
@@ -581,7 +585,9 @@ const RowShellInner = <TRow,>({
         key={item.column.id}
         context={context}
         style={styleForColumn({ item, height: rowHeight })}
-        onClick={(event) => onCellClick(context, event)}
+        onClick={(event) => {
+          onCellClick(context, event);
+        }}
       />
     );
   };
@@ -600,7 +606,9 @@ const RowShellInner = <TRow,>({
         height: rowHeight,
         width: contentWidth,
       }}
-      onClick={(event) => onRowClick(rowId, event)}
+      onClick={(event) => {
+        onRowClick(rowId, event);
+      }}
     >
       <DataGridPinnedGroup
         side="left"
@@ -716,33 +724,31 @@ export function DataGrid<TRow>({
   });
   const [loadMoreInFlight, setLoadMoreInFlight] = React.useState(false);
   const overlay = useDataGridOverlay();
-  const fallbackRows: ReadonlyWatchable<TRow[]> = React.useMemo(
-    () => Watchable.fromValue<TRow[]>([]),
+  const fallbackRows: ReadonlyGridStore<TRow[]> = React.useMemo(
+    () => createGridStore<TRow[]>([]),
     []
   );
 
-  const rowsWatchable: ReadonlyWatchable<TRow[]> =
+  const rowsWatchable: ReadonlyGridStore<TRow[]> =
     rowsWatchableProp ?? rowSource?.rows ?? fallbackRows;
-  const rows = useWatchableValue(rowsWatchable);
-  const columns = useWatchableValue(viewModel.columns);
-  const focusedCell = useWatchableValue(viewModel.focusedCell);
-  const selectedRowIds = useWatchableValue(viewModel.selectedRowIds);
-  const selectedCellRanges = useWatchableValue(viewModel.selectedCellRanges);
-  const sorts = useWatchableValue(viewModel.sorts);
-  const filters = useWatchableValue(viewModel.filters);
-  const rowHeight = useWatchableValue(viewModel.rowHeight);
-  const expansionHeightValue = useWatchableValue(viewModel.expansionHeight);
-  const expandedRowIds = useWatchableValue(viewModel.expandedRowIds);
-  const headerHeight = useWatchableValue(viewModel.headerHeight);
-  const headersExpanded = useWatchableValue(viewModel.headersExpanded);
-  const editingCell = useWatchableValue(viewModel.editingCell);
-  const pendingEdits = useWatchableValue(viewModel.pendingEdits);
-  const displayOptionsByColumn = useWatchableValue(
-    viewModel.columnDisplayOptions
-  );
-  const scrollX = useWatchableValue(viewModel.scrollX);
-  const scrollY = useWatchableValue(viewModel.scrollY);
-  const columnStats = useWatchableValue(columnStatsProp ?? EMPTY_STATS);
+  const rows = useGridStore(rowsWatchable);
+  const columns = useGridStore(viewModel.columns);
+  const focusedCell = useGridStore(viewModel.focusedCell);
+  const selectedRowIds = useGridStore(viewModel.selectedRowIds);
+  const selectedCellRanges = useGridStore(viewModel.selectedCellRanges);
+  const sorts = useGridStore(viewModel.sorts);
+  const filters = useGridStore(viewModel.filters);
+  const rowHeight = useGridStore(viewModel.rowHeight);
+  const expansionHeightValue = useGridStore(viewModel.expansionHeight);
+  const expandedRowIds = useGridStore(viewModel.expandedRowIds);
+  const headerHeight = useGridStore(viewModel.headerHeight);
+  const headersExpanded = useGridStore(viewModel.headersExpanded);
+  const editingCell = useGridStore(viewModel.editingCell);
+  const pendingEdits = useGridStore(viewModel.pendingEdits);
+  const displayOptionsByColumn = useGridStore(viewModel.columnDisplayOptions);
+  const scrollX = useGridStore(viewModel.scrollX);
+  const scrollY = useGridStore(viewModel.scrollY);
+  const columnStats = useGridStore(columnStatsProp ?? EMPTY_STATS);
   const rowSourceHasMoreWatchable = React.useMemo(
     () => rowSource?.hasMore ?? FALSE_WATCHABLE,
     [rowSource]
@@ -755,9 +761,9 @@ export function DataGrid<TRow>({
     () => rowSource?.totalRows ?? NULL_TOTAL,
     [rowSource]
   );
-  const totalRows = useWatchableValue(rowSourceTotalRowsWatchable);
-  const rowSourceHasMore = useWatchableValue(rowSourceHasMoreWatchable);
-  const rowSourceLoading = useWatchableValue(rowSourceLoadingWatchable);
+  const totalRows = useGridStore(rowSourceTotalRowsWatchable);
+  const rowSourceHasMore = useGridStore(rowSourceHasMoreWatchable);
+  const rowSourceLoading = useGridStore(rowSourceLoadingWatchable);
   const hasMore =
     rowSource !== undefined ? rowSourceHasMore : hasMoreProp === true;
   const isLoadingMore =
@@ -875,17 +881,20 @@ export function DataGrid<TRow>({
       }
     });
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   React.useEffect(() => {
     const top = topBarRef.current;
     const bottom = footerRef.current;
-    const measure = () =>
+    const measure = () => {
       setChromeHeight({
         top: top?.offsetHeight ?? 0,
         bottom: bottom?.offsetHeight ?? 0,
       });
+    };
     measure();
     const observer = new ResizeObserver(measure);
     if (top !== null) {
@@ -894,7 +903,9 @@ export function DataGrid<TRow>({
     if (bottom !== null) {
       observer.observe(bottom);
     }
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const visibleWindow = React.useMemo<DataGridVisibleWindow>(() => {
@@ -919,7 +930,7 @@ export function DataGrid<TRow>({
   }, [onVisibleWindowChange, rowSource, visibleWindow]);
 
   const loadMoreRows = React.useCallback(() => {
-    if (hasMore === false || isLoadingMore || loadMoreInFlight) {
+    if (!hasMore || isLoadingMore || loadMoreInFlight) {
       return;
     }
     const loadMore = rowSource?.loadMore ?? onLoadMore;
@@ -927,7 +938,9 @@ export function DataGrid<TRow>({
       return;
     }
     setLoadMoreInFlight(true);
-    void Promise.resolve(loadMore()).finally(() => setLoadMoreInFlight(false));
+    void Promise.resolve(loadMore()).finally(() => {
+      setLoadMoreInFlight(false);
+    });
   }, [hasMore, isLoadingMore, loadMoreInFlight, onLoadMore, rowSource]);
 
   React.useEffect(() => {
@@ -939,7 +952,7 @@ export function DataGrid<TRow>({
   React.useEffect(() => {
     const root = scrollRef.current;
     const target = loadMoreSentinelRef.current;
-    if (root === null || target === null || hasMore === false) {
+    if (root === null || target === null || !hasMore) {
       return;
     }
 
@@ -952,7 +965,9 @@ export function DataGrid<TRow>({
       { root, rootMargin: '240px 0px', threshold: 0 }
     );
     observer.observe(target);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, [hasMore, loadMoreRows, rows.length]);
 
   React.useEffect(() => {
@@ -1288,24 +1303,30 @@ export function DataGrid<TRow>({
   );
 
   const setStatsExpanded = React.useCallback(
-    (expanded: boolean) => viewModel.headersExpanded.set(expanded),
+    (expanded: boolean) => {
+      viewModel.headersExpanded.set(expanded);
+    },
     [viewModel.headersExpanded]
   );
   const clearSort = React.useCallback(
-    (columnId: string) => viewModel.setSort(columnId, null),
+    (columnId: string) => {
+      viewModel.setSort(columnId, null);
+    },
     [viewModel]
   );
   const clearFilter = React.useCallback(
-    (columnId: string) => viewModel.clearFilter(columnId),
+    (columnId: string) => {
+      viewModel.clearFilter(columnId);
+    },
     [viewModel]
   );
-  const clearFilters = React.useCallback(
-    () => viewModel.clearFilters(),
-    [viewModel]
-  );
+  const clearFilters = React.useCallback(() => {
+    viewModel.clearFilters();
+  }, [viewModel]);
   const setColumnVisible = React.useCallback(
-    (columnId: string, visible: boolean) =>
-      viewModel.setColumnVisible(columnId, visible),
+    (columnId: string, visible: boolean) => {
+      viewModel.setColumnVisible(columnId, visible);
+    },
     [viewModel]
   );
   const hiddenColumns = React.useMemo(
@@ -1323,10 +1344,8 @@ export function DataGrid<TRow>({
 
   const settleEdits = React.useCallback(
     (
-        handler:
-          | ((edits: DataGridCellEdit[]) => void | Promise<void>)
-          | undefined
-      ) =>
+      handler: ((edits: DataGridCellEdit[]) => void | Promise<void>) | undefined
+    ) =>
       () => {
         const edits = pendingEditList;
         if (edits.length === 0 || handler === undefined) {
@@ -1338,9 +1357,13 @@ export function DataGrid<TRow>({
         // owns reporting the failure, so swallow it here rather than letting it
         // escape as an unhandled rejection.
         void Promise.resolve(handler(edits))
-          .then(() => viewModel.clearEdits())
+          .then(() => {
+            viewModel.clearEdits();
+          })
           .catch(() => undefined)
-          .finally(() => setEditsSaving(false));
+          .finally(() => {
+            setEditsSaving(false);
+          });
       },
     [pendingEditList, viewModel]
   );
@@ -1467,7 +1490,9 @@ export function DataGrid<TRow>({
                 column={layout.rowNumber}
                 headerHeight={headerHeight}
                 statsExpanded={headersExpanded}
-                onToggleStats={() => setStatsExpanded(!headersExpanded)}
+                onToggleStats={() => {
+                  setStatsExpanded(!headersExpanded);
+                }}
               />
               {layout.leftPinned.map(renderHeaderCell)}
             </DataGridPinnedGroup>
@@ -1539,7 +1564,9 @@ export function DataGrid<TRow>({
                           row,
                           rowId,
                           rowIndex,
-                          collapse: () => viewModel.toggleRowExpanded(rowId),
+                          collapse: () => {
+                            viewModel.toggleRowExpanded(rowId);
+                          },
                         })}
                       </div>
                     </div>

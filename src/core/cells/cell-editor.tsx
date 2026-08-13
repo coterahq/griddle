@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@cotera/client/v0/lib/utils';
+import { cn } from '../../ui/cn';
 import { toDataGridDate } from '../format';
 import type {
   DataGridCellValue,
@@ -123,7 +123,7 @@ export const DataGridCellEditor: React.FC<DataGridCellEditorProps> = ({
   const selectOptions =
     isBoolean && (options === undefined || options.length === 0)
       ? BOOLEAN_OPTIONS
-      : options ?? [];
+      : (options ?? []);
 
   if (kind === 'select') {
     return (
@@ -137,8 +137,12 @@ export const DataGridCellEditor: React.FC<DataGridCellEditorProps> = ({
           commit(event.target.value);
         }}
         onKeyDown={handleKeyDown}
-        onBlur={(event) => commit(event.target.value)}
-        onClick={(event) => event.stopPropagation()}
+        onBlur={(event) => {
+          commit(event.target.value);
+        }}
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
       >
         <option value="">—</option>
         {selectOptions.map((option) => (
@@ -157,12 +161,22 @@ export const DataGridCellEditor: React.FC<DataGridCellEditorProps> = ({
       type={kind === 'number' ? 'number' : kind === 'date' ? 'date' : 'text'}
       className={EDITOR_CLASS}
       value={draft}
-      onChange={(event) => setDraft(event.target.value)}
+      onChange={(event) => {
+        setDraft(event.target.value);
+      }}
       onKeyDown={handleKeyDown}
-      onBlur={(event) => commit(event.target.value)}
-      onFocus={(event) => event.currentTarget.select()}
-      onClick={(event) => event.stopPropagation()}
-      onDoubleClick={(event) => event.stopPropagation()}
+      onBlur={(event) => {
+        commit(event.target.value);
+      }}
+      onFocus={(event) => {
+        event.currentTarget.select();
+      }}
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
+      onDoubleClick={(event) => {
+        event.stopPropagation();
+      }}
     />
   );
 };

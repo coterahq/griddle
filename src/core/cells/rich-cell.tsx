@@ -9,8 +9,12 @@ export function RichCell<TRow>(props: DataGridCellComponentProps<TRow>) {
     <div
       className="absolute h-full"
       style={props.style}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => {
+        setHovered(true);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+      }}
     >
       <BaseCell
         {...props}

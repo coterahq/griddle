@@ -29,31 +29,3 @@ Object.defineProperty(globalThis, 'IntersectionObserver', {
   configurable: true,
   value: NoopObserver,
 });
-
-// Radix measures with this before positioning a popper; jsdom returns undefined.
-if (globalThis.DOMRect === undefined) {
-  Object.defineProperty(globalThis, 'DOMRect', {
-    writable: true,
-    configurable: true,
-    value: class DOMRect {
-      constructor(
-        readonly x = 0,
-        readonly y = 0,
-        readonly width = 0,
-        readonly height = 0
-      ) {}
-      get top(): number {
-        return this.y;
-      }
-      get left(): number {
-        return this.x;
-      }
-      get right(): number {
-        return this.x + this.width;
-      }
-      get bottom(): number {
-        return this.y + this.height;
-      }
-    },
-  });
-}

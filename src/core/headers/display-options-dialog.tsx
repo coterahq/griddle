@@ -5,10 +5,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@cotera/client/v0/components/ui/dialog';
-import { Button } from '@cotera/client/v0/components/ui/button';
-import { Switch } from '@cotera/client/v0/components/ui/switch';
-import { cn } from '@cotera/client/v0/lib/utils';
+} from '../../ui/dialog';
+import { Button } from '../../ui/controls';
+import { Switch } from '../../ui/controls';
+import { cn } from '../../ui/cn';
 import { ALIGNMENT_CLASS, formatDataGridNumber } from '../format';
 import type {
   DataGridColumnAlignment,
@@ -54,10 +54,9 @@ export type DataGridDisplayOptionsDialogProps = {
 export const DataGridDisplayOptionsDialog: React.FC<
   DataGridDisplayOptionsDialogProps
 > = ({ open, onOpenChange, columnLabel, options, onChange }) => {
-  const previewShare =
-    options.inCellBar === true
-      ? Math.min(1, Math.max(0, PREVIEW_VALUE / (options.barMax ?? 1)))
-      : null;
+  const previewShare = options.inCellBar
+    ? Math.min(1, Math.max(0, PREVIEW_VALUE / (options.barMax ?? 1)))
+    : null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -74,19 +73,25 @@ export const DataGridDisplayOptionsDialog: React.FC<
             label="Number format"
             value={options.numberFormat}
             options={NUMBER_FORMATS}
-            onChange={(numberFormat) => onChange({ numberFormat })}
+            onChange={(numberFormat) => {
+              onChange({ numberFormat });
+            }}
           />
           <Segmented
             label="Decimals"
             value={options.decimals}
             options={DECIMALS}
-            onChange={(decimals) => onChange({ decimals })}
+            onChange={(decimals) => {
+              onChange({ decimals });
+            }}
           />
           <Segmented
             label="Alignment"
             value={options.alignment}
             options={ALIGNMENTS}
-            onChange={(alignment) => onChange({ alignment })}
+            onChange={(alignment) => {
+              onChange({ alignment });
+            }}
           />
 
           <div className="flex items-center justify-between rounded-lg border border-border px-3 py-2">
@@ -101,7 +106,9 @@ export const DataGridDisplayOptionsDialog: React.FC<
             <Switch
               checked={options.inCellBar}
               aria-label="In-cell bar"
-              onCheckedChange={(inCellBar) => onChange({ inCellBar })}
+              onCheckedChange={(inCellBar) => {
+                onChange({ inCellBar });
+              }}
             />
           </div>
 
@@ -129,7 +136,12 @@ export const DataGridDisplayOptionsDialog: React.FC<
         </div>
 
         <DialogFooter>
-          <Button size="sm" onClick={() => onOpenChange(false)}>
+          <Button
+            size="sm"
+            onClick={() => {
+              onOpenChange(false);
+            }}
+          >
             Done
           </Button>
         </DialogFooter>

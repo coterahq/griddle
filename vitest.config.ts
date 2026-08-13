@@ -1,9 +1,16 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vitest/config';
 
+/**
+ * No `@vitejs/plugin-react` here on purpose.
+ *
+ * Vitest resolves its own nested copy of Vite, so a plugin built against the
+ * top-level one is a structurally different `Plugin` type and does not
+ * typecheck. The plugin exists for Fast Refresh and Babel transforms, neither
+ * of which a test run uses — Vitest's esbuild transform already picks up
+ * `jsx: "react-jsx"` from tsconfig, which is all these specs need. The
+ * examples app has its own Vite config and does use the plugin.
+ */
 export default defineConfig({
-  plugins: [react()],
   test: {
     globals: true,
     // jsdom, not happy-dom. The grid sizes itself entirely from ResizeObserver
@@ -14,6 +21,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./test/setup.ts'],
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    // Verbatim Cotera imports, decoupled in their own milestones (layers L4,
+    // DuckDB adapter L5). Mirrors tsconfig.json's exclude.
+    exclude: ['**/node_modules/**', 'src/source/layers/**', 'src/duckdb/**'],
     reporters: ['default'],
   },
 });

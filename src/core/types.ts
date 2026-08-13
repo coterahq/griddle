@@ -1,5 +1,5 @@
-import React from 'react';
-import type { ReadonlyWatchable } from '@cotera/client/v0/actions/framework';
+import type React from 'react';
+import type { ReadonlyGridStore } from '../store';
 import type { DataGridViewModel } from './view-model';
 
 export type DataGridRowId = string | number;
@@ -81,13 +81,7 @@ export type DataGridCellRange = {
  * these without adopting the grid's vocabulary wholesale.
  */
 export type DataGridColumnDataType =
-  | 'text'
-  | 'number'
-  | 'boolean'
-  | 'date'
-  | 'timestamp'
-  | 'category'
-  | 'unknown';
+  'text' | 'number' | 'boolean' | 'date' | 'timestamp' | 'category' | 'unknown';
 
 export type DataGridNumberFormat = 'number' | 'percent' | 'compact';
 
@@ -351,10 +345,10 @@ export type DataGridRowPatch<TRow> =
     };
 
 export type DataGridRowSource<TRow> = {
-  rows: ReadonlyWatchable<TRow[]>;
-  totalRows: ReadonlyWatchable<number | null>;
-  hasMore: ReadonlyWatchable<boolean>;
-  isLoading: ReadonlyWatchable<boolean>;
+  rows: ReadonlyGridStore<TRow[]>;
+  totalRows: ReadonlyGridStore<number | null>;
+  hasMore: ReadonlyGridStore<boolean>;
+  isLoading: ReadonlyGridStore<boolean>;
   loadMore: () => void | Promise<void>;
   loadWindow?: (window: DataGridVisibleWindow) => void | Promise<void>;
   /** Present on patchable sources; lets callers push granular live updates. */
@@ -362,7 +356,7 @@ export type DataGridRowSource<TRow> = {
 };
 
 export type DataGridColumnStatsSource = {
-  get(columnId: string): ReadonlyWatchable<DataGridColumnStats | undefined>;
+  get(columnId: string): ReadonlyGridStore<DataGridColumnStats | undefined>;
 };
 
 export type DataGridCellComponentProps<TRow> = {
@@ -431,14 +425,14 @@ export type DataGridFooterProps<TRow> = {
 };
 
 export type DataGridProps<TRow> = {
-  rows?: ReadonlyWatchable<TRow[]>;
+  rows?: ReadonlyGridStore<TRow[]>;
   rowSource?: DataGridRowSource<TRow>;
   getRowId: (row: TRow) => DataGridRowId;
   viewModel: DataGridViewModel<TRow>;
   className?: string;
   hasMore?: boolean;
   isLoadingMore?: boolean;
-  columnStats?: ReadonlyWatchable<
+  columnStats?: ReadonlyGridStore<
     Record<string, DataGridColumnStats | undefined>
   >;
   /**

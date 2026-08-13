@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { JotaiProvider, Watchable } from '@cotera/client/v0/actions/framework';
-import { PortalContainerProvider } from '@cotera/client/app/components/portal-container';
+import { createGridStore } from '../../store';
+import { DataGridPortalProvider } from '../../ui/portal';
 import { DataGrid } from '../data-grid';
 import { createDataGridViewModel } from '../view-model';
 import type { DataGridColumn } from '../types';
@@ -39,7 +39,7 @@ beforeEach(() => {
 });
 
 const renderGrid = ({ withDetail = true }: { withDetail?: boolean } = {}) => {
-  const rows = Watchable.fromValue(ROWS);
+  const rows = createGridStore(ROWS);
   const viewModel = createDataGridViewModel<TestRow>({
     columns: COLUMNS,
     rowHeight: ROW_HEIGHT,
@@ -48,31 +48,25 @@ const renderGrid = ({ withDetail = true }: { withDetail?: boolean } = {}) => {
     totalLoadedRows: ROWS.length,
   });
 
-  // JotaiProvider is required for the component to observe view-model
-  // changes: `Watchable.set` writes to a module-level store, which `useAtom`
-  // only reads through this provider. Without it the state updates but nothing
-  // re-renders.
   const result = render(
-    <JotaiProvider>
-      <PortalContainerProvider>
-        <div style={{ height: 600, width: 640 }}>
-          <DataGrid
-            rows={rows}
-            getRowId={getRowId}
-            viewModel={viewModel}
-            renderRowDetail={
-              withDetail
-                ? (context) => (
-                    <div data-testid={`detail-${context.rowId}`}>
-                      Detail for {context.row.name}
-                    </div>
-                  )
-                : undefined
-            }
-          />
-        </div>
-      </PortalContainerProvider>
-    </JotaiProvider>
+    <DataGridPortalProvider>
+      <div style={{ height: 600, width: 640 }}>
+        <DataGrid
+          rows={rows}
+          getRowId={getRowId}
+          viewModel={viewModel}
+          renderRowDetail={
+            withDetail
+              ? (context) => (
+                  <div data-testid={`detail-${context.rowId}`}>
+                    Detail for {context.row.name}
+                  </div>
+                )
+              : undefined
+          }
+        />
+      </div>
+    </DataGridPortalProvider>
   );
 
   return { ...result, viewModel };

@@ -6,12 +6,9 @@ import {
   within,
 } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { JotaiProvider, Watchable } from '@cotera/client/v0/actions/framework';
-import { PortalContainerProvider } from '@cotera/client/app/components/portal-container';
-import {
-  ModalManager,
-  ModalManagerProvider,
-} from '@cotera/client/app/components/app/modal-manager/modal-manager';
+import { createGridStore } from '../../store';
+import { DataGridPortalProvider } from '../../ui/portal';
+import { TestModalHostProvider } from '../../../test/modal-host';
 import { DataGrid } from '../data-grid';
 import { createDataGridViewModel } from '../view-model';
 import type { DataGridColumn } from '../types';
@@ -72,7 +69,7 @@ beforeEach(() => {
 });
 
 const renderGrid = ({ withModalManager = false } = {}) => {
-  const rows = Watchable.fromValue(ROWS);
+  const rows = createGridStore(ROWS);
   const viewModel = createDataGridViewModel<Row>({
     columns: COLUMNS,
     totalRows: ROWS.length,
@@ -86,18 +83,13 @@ const renderGrid = ({ withModalManager = false } = {}) => {
   );
 
   const result = render(
-    <JotaiProvider>
-      <PortalContainerProvider>
-        {withModalManager ? (
-          <ModalManagerProvider>
-            {grid}
-            <ModalManager />
-          </ModalManagerProvider>
-        ) : (
-          grid
-        )}
-      </PortalContainerProvider>
-    </JotaiProvider>
+    <DataGridPortalProvider>
+      {withModalManager ? (
+        <TestModalHostProvider>{grid}</TestModalHostProvider>
+      ) : (
+        grid
+      )}
+    </DataGridPortalProvider>
   );
 
   return { ...result, viewModel };

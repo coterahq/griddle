@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { Watchable } from '@cotera/client/v0/actions/framework';
-import { PortalContainerProvider } from '@cotera/client/app/components/portal-container';
+import { createGridStore } from '../../store';
+import { DataGridPortalProvider } from '../../ui/portal';
 import { getDataGridColumnLayout } from '../column-layout';
 import { DataGrid } from '../data-grid';
 import { getKeyboardAction } from '../keyboard';
@@ -80,7 +80,7 @@ const renderGrid = ({
 }: {
   onSelectCell?: Parameters<typeof DataGrid<TestRow>>[0]['onSelectCell'];
 } = {}) => {
-  const rows = Watchable.fromValue(ROWS);
+  const rows = createGridStore(ROWS);
   const viewModel = createDataGridViewModel<TestRow>({
     columns: COLUMNS,
     totalRows: ROWS.length,
@@ -88,7 +88,7 @@ const renderGrid = ({
   });
 
   const result = render(
-    <PortalContainerProvider>
+    <DataGridPortalProvider>
       <div style={{ height: 320, width: 640 }}>
         <DataGrid
           rows={rows}
@@ -97,7 +97,7 @@ const renderGrid = ({
           onSelectCell={onSelectCell}
         />
       </div>
-    </PortalContainerProvider>
+    </DataGridPortalProvider>
   );
 
   return { ...result, rows, viewModel };
@@ -322,15 +322,15 @@ describe('DataGrid v2 keyboard and selection', () => {
 
 describe('DataGrid v2 overlays and loading', () => {
   it('opens detail overlays from cell commands and triggers lazy loading near the end', async () => {
-    const rows = Watchable.fromValue(ROWS);
-    const totalRows = Watchable.fromValue<number | null>(10);
-    const hasMore = Watchable.fromValue(true);
-    const isLoading = Watchable.fromValue(false);
+    const rows = createGridStore(ROWS);
+    const totalRows = createGridStore<number | null>(10);
+    const hasMore = createGridStore(true);
+    const isLoading = createGridStore(false);
     const loadMore = vi.fn();
     const viewModel = createDataGridViewModel<TestRow>({ columns: COLUMNS });
 
     render(
-      <PortalContainerProvider>
+      <DataGridPortalProvider>
         <div style={{ height: 320, width: 640 }}>
           <DataGrid
             rowSource={{ rows, totalRows, hasMore, isLoading, loadMore }}
@@ -338,7 +338,7 @@ describe('DataGrid v2 overlays and loading', () => {
             viewModel={viewModel}
           />
         </div>
-      </PortalContainerProvider>
+      </DataGridPortalProvider>
     );
 
     await waitFor(() => {
@@ -355,11 +355,11 @@ describe('DataGrid v2 overlays and loading', () => {
 
 describe('DataGrid v2 column header actions', () => {
   it('renders a host control in its own column and nowhere else', () => {
-    const rows = Watchable.fromValue(ROWS);
+    const rows = createGridStore(ROWS);
     const viewModel = createDataGridViewModel<TestRow>({ columns: COLUMNS });
 
     render(
-      <PortalContainerProvider>
+      <DataGridPortalProvider>
         <div style={{ height: 320, width: 640 }}>
           <DataGrid
             rows={rows}
@@ -372,7 +372,7 @@ describe('DataGrid v2 column header actions', () => {
             }
           />
         </div>
-      </PortalContainerProvider>
+      </DataGridPortalProvider>
     );
 
     expect(screen.getAllByRole('button', { name: 'Run status' })).toHaveLength(
@@ -381,12 +381,12 @@ describe('DataGrid v2 column header actions', () => {
   });
 
   it('leaves the sort alone when the control is clicked', () => {
-    const rows = Watchable.fromValue(ROWS);
+    const rows = createGridStore(ROWS);
     const viewModel = createDataGridViewModel<TestRow>({ columns: COLUMNS });
     const onClick = vi.fn();
 
     render(
-      <PortalContainerProvider>
+      <DataGridPortalProvider>
         <div style={{ height: 320, width: 640 }}>
           <DataGrid
             rows={rows}
@@ -401,7 +401,7 @@ describe('DataGrid v2 column header actions', () => {
             }
           />
         </div>
-      </PortalContainerProvider>
+      </DataGridPortalProvider>
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Run status' }));

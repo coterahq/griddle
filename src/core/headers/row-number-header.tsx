@@ -1,6 +1,6 @@
-import { cn } from '@cotera/client/v0/lib/utils';
-import { Icon } from '@cotera/client/app/components/ui/icon';
-import { Tooltip } from '@cotera/client/app/components/ui/tooltip';
+import { cn } from '../../ui/cn';
+import { Icon } from '../../ui/icons';
+import { Tooltip } from '../../ui/tooltip';
 import type { DataGridRowNumberLayoutItem } from '../types';
 
 /**

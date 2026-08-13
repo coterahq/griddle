@@ -113,8 +113,8 @@ const compare = (left: number | string, right: number | string): number => {
   return String(left) < String(right)
     ? -1
     : String(left) > String(right)
-    ? 1
-    : 0;
+      ? 1
+      : 0;
 };
 
 /**

@@ -1,4 +1,5 @@
-import { Watchable } from '@cotera/client/v0/actions/framework';
+import { createGridStore } from '../store';
+import type { GridStore } from '../store';
 import type {
   DataGridRowId,
   DataGridRowPatch,
@@ -10,17 +11,17 @@ export type PatchableRowSourceOptions<TRow> = {
   getRowId: (row: TRow) => DataGridRowId;
   loadMore: () => void | Promise<void>;
   loadWindow?: (window: DataGridVisibleWindow) => void | Promise<void>;
-  rows?: Watchable<TRow[]>;
-  totalRows?: Watchable<number | null>;
-  hasMore?: Watchable<boolean>;
-  isLoading?: Watchable<boolean>;
+  rows?: GridStore<TRow[]>;
+  totalRows?: GridStore<number | null>;
+  hasMore?: GridStore<boolean>;
+  isLoading?: GridStore<boolean>;
 };
 
 export type PatchableRowSource<TRow> = DataGridRowSource<TRow> & {
-  rows: Watchable<TRow[]>;
-  totalRows: Watchable<number | null>;
-  hasMore: Watchable<boolean>;
-  isLoading: Watchable<boolean>;
+  rows: GridStore<TRow[]>;
+  totalRows: GridStore<number | null>;
+  hasMore: GridStore<boolean>;
+  isLoading: GridStore<boolean>;
   applyPatch: (patch: DataGridRowPatch<TRow>) => void;
   applyPatches: (patches: DataGridRowPatch<TRow>[]) => void;
 };
@@ -36,10 +37,10 @@ export const createPatchableRowSource = <TRow>({
   getRowId,
   loadMore,
   loadWindow,
-  rows = Watchable.fromValue<TRow[]>([]),
-  totalRows = Watchable.fromValue<number | null>(null),
-  hasMore = Watchable.fromValue(false),
-  isLoading = Watchable.fromValue(false),
+  rows = createGridStore<TRow[]>([]),
+  totalRows = createGridStore<number | null>(null),
+  hasMore = createGridStore(false),
+  isLoading = createGridStore(false),
 }: PatchableRowSourceOptions<TRow>): PatchableRowSource<TRow> => {
   const reduce = (
     current: TRow[],
@@ -129,7 +130,9 @@ export const createPatchableRowSource = <TRow>({
     isLoading,
     loadMore,
     loadWindow,
-    applyPatch: (patch) => applyPatches([patch]),
+    applyPatch: (patch) => {
+      applyPatches([patch]);
+    },
     applyPatches,
   };
 };

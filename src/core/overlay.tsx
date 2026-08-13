@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { usePortalContainer } from '@cotera/client/app/components/portal-container';
+import { useDataGridPortalContainer } from '../ui/portal';
 
 type DataGridOverlayState = {
   anchor: HTMLElement;
@@ -37,7 +37,7 @@ export function DataGridOverlay({
   overlay: DataGridOverlayState;
   onClose: () => void;
 }) {
-  const portalContainer = usePortalContainer();
+  const portalContainer = useDataGridPortalContainer();
   const [position, setPosition] = React.useState<React.CSSProperties>({});
 
   React.useLayoutEffect(() => {
@@ -66,7 +66,9 @@ export function DataGridOverlay({
       }
     };
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, [onClose, overlay]);
 
   if (overlay === null) {

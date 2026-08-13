@@ -1,5 +1,5 @@
-import { Watchable } from '@cotera/client/v0/actions/framework';
-import type { ReadonlyWatchable } from '@cotera/client/v0/actions/framework';
+import { createGridStore, derivedGridStore } from '../store';
+import type { GridStore, ReadonlyGridStore } from '../store';
 import type {
   DataGridCellAddress,
   DataGridCellEdit,
@@ -18,37 +18,37 @@ import { DEFAULT_DATA_GRID_DISPLAY_OPTIONS, dataGridEditKey } from './types';
 export type DataGridFocusedCell = DataGridCellAddress;
 
 export type DataGridViewModel<TRow> = {
-  columns: Watchable<DataGridColumn<TRow>[]>;
-  focusedCell: Watchable<DataGridFocusedCell | null>;
-  selectedRowIds: Watchable<Set<DataGridRowId>>;
-  selectedCellRanges: Watchable<DataGridCellRange[]>;
-  cellSelectionAnchor: Watchable<DataGridCellAddress | null>;
-  selectionAnchor: Watchable<DataGridRowId | null>;
-  sorts: Watchable<DataGridSort[]>;
-  filters: Watchable<DataGridFilter[]>;
-  headersExpanded: Watchable<boolean>;
-  columnDisplayOptions: Watchable<
+  columns: GridStore<DataGridColumn<TRow>[]>;
+  focusedCell: GridStore<DataGridFocusedCell | null>;
+  selectedRowIds: GridStore<Set<DataGridRowId>>;
+  selectedCellRanges: GridStore<DataGridCellRange[]>;
+  cellSelectionAnchor: GridStore<DataGridCellAddress | null>;
+  selectionAnchor: GridStore<DataGridRowId | null>;
+  sorts: GridStore<DataGridSort[]>;
+  filters: GridStore<DataGridFilter[]>;
+  headersExpanded: GridStore<boolean>;
+  columnDisplayOptions: GridStore<
     Record<string, DataGridColumnDisplayOptions | undefined>
   >;
-  editingCell: Watchable<DataGridCellAddress | null>;
-  pendingEdits: Watchable<Record<string, DataGridCellEdit | undefined>>;
-  scrollX: Watchable<number>;
-  scrollY: Watchable<number>;
+  editingCell: GridStore<DataGridCellAddress | null>;
+  pendingEdits: GridStore<Record<string, DataGridCellEdit | undefined>>;
+  scrollX: GridStore<number>;
+  scrollY: GridStore<number>;
   /**
    * Rows showing their detail panel. Kept by row id rather than index so it
    * survives paging and re-sorting, which renumber every row.
    */
-  expandedRowIds: Watchable<Set<DataGridRowId>>;
-  rowHeight: ReadonlyWatchable<number>;
+  expandedRowIds: GridStore<Set<DataGridRowId>>;
+  rowHeight: ReadonlyGridStore<number>;
   /**
    * Extra height an expanded row takes. Fixed rather than measured: the grid
    * positions every row from this number, so a panel that resized itself after
    * paint would drag everything below it.
    */
-  expansionHeight: ReadonlyWatchable<number>;
-  headerHeight: ReadonlyWatchable<number>;
-  totalRows: ReadonlyWatchable<number | null>;
-  totalLoadedRows: ReadonlyWatchable<number>;
+  expansionHeight: ReadonlyGridStore<number>;
+  headerHeight: ReadonlyGridStore<number>;
+  totalRows: ReadonlyGridStore<number | null>;
+  totalLoadedRows: ReadonlyGridStore<number>;
 
   focusCell(address: DataGridFocusedCell): void;
   clearFocus(): void;
@@ -142,38 +142,38 @@ export function createDataGridViewModel<TRow>({
   totalRows = null,
   totalLoadedRows = 0,
 }: CreateDataGridViewModelOptions<TRow>): DataGridViewModel<TRow> {
-  const columnsWatchable = Watchable.fromValue(columns);
-  const focusedCell = Watchable.fromValue<DataGridFocusedCell | null>(null);
-  const selectedRowIds = Watchable.fromValue<Set<DataGridRowId>>(new Set(), {
+  const columnsWatchable = createGridStore(columns);
+  const focusedCell = createGridStore<DataGridFocusedCell | null>(null);
+  const selectedRowIds = createGridStore<Set<DataGridRowId>>(new Set(), {
     updater: cloneSet,
   });
-  const selectedCellRanges = Watchable.fromValue<DataGridCellRange[]>([]);
-  const cellSelectionAnchor = Watchable.fromValue<DataGridCellAddress | null>(
-    null
-  );
-  const selectionAnchor = Watchable.fromValue<DataGridRowId | null>(null);
-  const sorts = Watchable.fromValue<DataGridSort[]>([]);
-  const filters = Watchable.fromValue<DataGridFilter[]>([]);
-  const headersExpanded = Watchable.fromValue(false);
-  const columnDisplayOptions = Watchable.fromValue<
+  const selectedCellRanges = createGridStore<DataGridCellRange[]>([]);
+  const cellSelectionAnchor = createGridStore<DataGridCellAddress | null>(null);
+  const selectionAnchor = createGridStore<DataGridRowId | null>(null);
+  const sorts = createGridStore<DataGridSort[]>([]);
+  const filters = createGridStore<DataGridFilter[]>([]);
+  const headersExpanded = createGridStore(false);
+  const columnDisplayOptions = createGridStore<
     Record<string, DataGridColumnDisplayOptions | undefined>
   >({});
-  const editingCell = Watchable.fromValue<DataGridCellAddress | null>(null);
-  const pendingEdits = Watchable.fromValue<
+  const editingCell = createGridStore<DataGridCellAddress | null>(null);
+  const pendingEdits = createGridStore<
     Record<string, DataGridCellEdit | undefined>
   >({});
-  const scrollX = Watchable.fromValue(0);
-  const scrollY = Watchable.fromValue(0);
-  const expandedRowIds = Watchable.fromValue<Set<DataGridRowId>>(new Set(), {
+  const scrollX = createGridStore(0);
+  const scrollY = createGridStore(0);
+  const expandedRowIds = createGridStore<Set<DataGridRowId>>(new Set(), {
     updater: cloneSet,
   });
-  const rowHeightWatchable = Watchable.fromValue(rowHeight);
-  const expansionHeightWatchable = Watchable.fromValue(expansionHeight);
-  const headerHeightWatchable = Watchable.from((get) =>
-    get(headersExpanded) ? expandedHeaderHeight : headerHeight
+  const rowHeightWatchable = createGridStore(rowHeight);
+  const expansionHeightWatchable = createGridStore(expansionHeight);
+  // Dependencies named rather than discovered by a tracked getter: this
+  // contract has no atom identity to track through.
+  const headerHeightWatchable = derivedGridStore([headersExpanded], () =>
+    headersExpanded.snapshot() ? expandedHeaderHeight : headerHeight
   );
-  const totalRowsWatchable = Watchable.fromValue<number | null>(totalRows);
-  const totalLoadedRowsWatchable = Watchable.fromValue(totalLoadedRows);
+  const totalRowsWatchable = createGridStore<number | null>(totalRows);
+  const totalLoadedRowsWatchable = createGridStore(totalLoadedRows);
 
   return {
     columns: columnsWatchable,

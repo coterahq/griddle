@@ -1,14 +1,14 @@
 import React from 'react';
-import { Icon } from '@cotera/client/app/components/ui/icon';
-import { Tooltip } from '@cotera/client/app/components/ui/tooltip';
+import { Icon } from '../../ui/icons';
+import { Tooltip } from '../../ui/tooltip';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@cotera/client/v0/components/ui/dropdown-menu';
-import { cn } from '@cotera/client/v0/lib/utils';
+} from '../../ui/dropdown-menu';
+import { cn } from '../../ui/cn';
 import { dataGridColumnTypeIcon } from '../column-type';
 import { DEFAULT_DATA_GRID_DISPLAY_OPTIONS } from '../types';
 import type { DataGridHeaderComponentProps } from '../types';
@@ -44,7 +44,9 @@ export function DataGridHeader<TRow>({
         resizeStart.width + event.clientX - resizeStart.x
       );
     };
-    const onMouseUp = () => setResizeStart(null);
+    const onMouseUp = () => {
+      setResizeStart(null);
+    };
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
     return () => {
@@ -73,8 +75,8 @@ export function DataGridHeader<TRow>({
         context.sort === null
           ? 'none'
           : context.sort.direction === 'asc'
-          ? 'ascending'
-          : 'descending'
+            ? 'ascending'
+            : 'descending'
       }
       data-sorted={context.sort !== null ? 'true' : 'false'}
       data-filtered={context.filter !== null ? 'true' : 'false'}
@@ -88,7 +90,9 @@ export function DataGridHeader<TRow>({
         event.dataTransfer.setData('text/plain', context.column.id);
         event.dataTransfer.effectAllowed = 'move';
       }}
-      onDragOver={(event) => event.preventDefault()}
+      onDragOver={(event) => {
+        event.preventDefault();
+      }}
       onDrop={(event) => {
         event.preventDefault();
         const sourceColumnId = event.dataTransfer.getData('text/plain');
@@ -181,8 +185,12 @@ export function DataGridHeader<TRow>({
               type="button"
               aria-label={`${label} column options`}
               className="shrink-0 rounded p-0.5 text-muted-foreground/60 opacity-0 transition-opacity hover:bg-muted hover:text-foreground focus:opacity-100 group-hover/header:opacity-100 data-[state=open]:opacity-100"
-              onClick={(event) => event.stopPropagation()}
-              onPointerDown={(event) => event.stopPropagation()}
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+              onPointerDown={(event) => {
+                event.stopPropagation();
+              }}
             >
               <Icon icon="ellipsis-horizontal" size="small" />
             </button>
@@ -190,25 +198,33 @@ export function DataGridHeader<TRow>({
           <DropdownMenuContent
             align="start"
             className="w-48"
-            onClick={(event) => event.stopPropagation()}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
           >
             {sortable ? (
               <>
                 <DropdownMenuItem
-                  onSelect={() => context.commands.setSort('asc')}
+                  onSelect={() => {
+                    context.commands.setSort('asc');
+                  }}
                 >
                   <Icon icon="sort-asc" size="small" />
                   Sort ascending
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  onSelect={() => context.commands.setSort('desc')}
+                  onSelect={() => {
+                    context.commands.setSort('desc');
+                  }}
                 >
                   <Icon icon="sort-desc" size="small" />
                   Sort descending
                 </DropdownMenuItem>
                 {context.sort !== null ? (
                   <DropdownMenuItem
-                    onSelect={() => context.commands.setSort(null)}
+                    onSelect={() => {
+                      context.commands.setSort(null);
+                    }}
                   >
                     <Icon icon="x-mark" size="small" />
                     Clear sort
@@ -218,20 +234,32 @@ export function DataGridHeader<TRow>({
               </>
             ) : null}
             {context.column.pinned !== 'left' ? (
-              <DropdownMenuItem onSelect={() => context.commands.pin('left')}>
+              <DropdownMenuItem
+                onSelect={() => {
+                  context.commands.pin('left');
+                }}
+              >
                 <Icon icon="arrow-left-end-on-rectangle" size="small" />
                 Pin left
               </DropdownMenuItem>
             ) : null}
             {context.column.pinned !== 'right' ? (
-              <DropdownMenuItem onSelect={() => context.commands.pin('right')}>
+              <DropdownMenuItem
+                onSelect={() => {
+                  context.commands.pin('right');
+                }}
+              >
                 <Icon icon="arrow-right-end-on-rectangle" size="small" />
                 Pin right
               </DropdownMenuItem>
             ) : null}
             {context.column.pinned !== null &&
             context.column.pinned !== undefined ? (
-              <DropdownMenuItem onSelect={() => context.commands.unpin()}>
+              <DropdownMenuItem
+                onSelect={() => {
+                  context.commands.unpin();
+                }}
+              >
                 <Icon icon="pin-off" size="small" />
                 Unpin
               </DropdownMenuItem>
@@ -239,13 +267,19 @@ export function DataGridHeader<TRow>({
             {context.column.filterable === true ? (
               <>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onSelect={() => setFilterOpen(true)}>
+                <DropdownMenuItem
+                  onSelect={() => {
+                    setFilterOpen(true);
+                  }}
+                >
                   <Icon icon="magnifying-glass" size="small" />
                   {context.filter !== null ? 'Edit filter…' : 'Filter…'}
                 </DropdownMenuItem>
                 {context.filter !== null ? (
                   <DropdownMenuItem
-                    onSelect={() => context.commands.clearFilter()}
+                    onSelect={() => {
+                      context.commands.clearFilter();
+                    }}
                   >
                     <Icon icon="clear-filters" size="small" />
                     Clear filter
@@ -254,11 +288,19 @@ export function DataGridHeader<TRow>({
               </>
             ) : null}
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={() => setDisplayOptionsOpen(true)}>
+            <DropdownMenuItem
+              onSelect={() => {
+                setDisplayOptionsOpen(true);
+              }}
+            >
               <Icon icon="adjustments-horizontal" size="small" />
               Display options…
             </DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => context.commands.hide()}>
+            <DropdownMenuItem
+              onSelect={() => {
+                context.commands.hide();
+              }}
+            >
               <Icon icon="eye-slash" size="small" />
               Hide column
             </DropdownMenuItem>

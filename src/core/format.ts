@@ -111,7 +111,7 @@ export const inCellBarShare = (
   value: unknown,
   options: DataGridColumnDisplayOptions
 ): number | null => {
-  if (options.inCellBar === false || typeof value !== 'number') {
+  if (!options.inCellBar || typeof value !== 'number') {
     return null;
   }
   if (!Number.isFinite(value)) {

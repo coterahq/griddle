@@ -89,8 +89,7 @@ const numericColumnStats = async ({
      FROM ${sourceSql} AS dataset_stats`
   );
   const summary = summaryTable.toArray()[0] as
-    | Record<string, unknown>
-    | undefined;
+    Record<string, unknown> | undefined;
   const min = readNumber(summary, 'min_value');
   const max = readNumber(summary, 'max_value');
   const mean = readNumber(summary, 'mean_value') ?? 0;
@@ -152,8 +151,7 @@ const temporalColumnStats = async ({
      FROM ${sourceSql} AS dataset_stats`
   );
   const summary = summaryTable.toArray()[0] as
-    | Record<string, unknown>
-    | undefined;
+    Record<string, unknown> | undefined;
   const minEpoch = readNumber(summary, 'min_epoch');
   const maxEpoch = readNumber(summary, 'max_epoch');
   const nullCount = readNumber(summary, 'null_count') ?? 0;
@@ -218,8 +216,7 @@ const categoricalColumnStats = async ({
     ),
   ]);
   const summary = summaryTable.toArray()[0] as
-    | Record<string, unknown>
-    | undefined;
+    Record<string, unknown> | undefined;
   const totalCount = readNumber(summary, 'total_count') ?? 0;
   const nullCount = readNumber(summary, 'null_count') ?? 0;
   const uniqueCount = readNumber(summary, 'unique_count') ?? 0;

@@ -1,4 +1,4 @@
-import { cn } from '@cotera/client/v0/lib/utils';
+import { cn } from '../../ui/cn';
 
 export type SegmentedProps<TValue extends string | number | boolean | null> = {
   label: string;
@@ -41,7 +41,9 @@ export function Segmented<TValue extends string | number | boolean | null>({
                 ? 'bg-primary text-primary-foreground'
                 : 'text-muted-foreground hover:bg-background hover:text-foreground'
             )}
-            onClick={() => onChange(option.value)}
+            onClick={() => {
+              onChange(option.value);
+            }}
           >
             {option.label}
           </button>

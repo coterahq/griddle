@@ -6,8 +6,8 @@ import {
   waitFor,
 } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { JotaiProvider, Watchable } from '@cotera/client/v0/actions/framework';
-import { PortalContainerProvider } from '@cotera/client/app/components/portal-container';
+import { createGridStore } from '../../store';
+import { DataGridPortalProvider } from '../../ui/portal';
 import { DataGrid } from '../data-grid';
 import {
   filterSelectsValue,
@@ -106,30 +106,28 @@ const renderGrid = ({
   columnStats?: Record<string, DataGridColumnStats | undefined>;
   onHeaderStatsVisible?: (columnId: string) => void;
 }) => {
-  const rows = Watchable.fromValue(ROWS);
+  const rows = createGridStore(ROWS);
   const viewModel = createDataGridViewModel<StatsRow>({
     columns,
     totalRows: ROWS.length,
     totalLoadedRows: ROWS.length,
   });
-  const stats = Watchable.fromValue<
+  const stats = createGridStore<
     Record<string, DataGridColumnStats | undefined>
   >(columnStats ?? {});
 
   const result = render(
-    <JotaiProvider>
-      <PortalContainerProvider>
-        <div style={{ height: 320, width: 800 }}>
-          <DataGrid
-            rows={rows}
-            getRowId={getRowId}
-            viewModel={viewModel}
-            columnStats={stats}
-            onHeaderStatsVisible={onHeaderStatsVisible}
-          />
-        </div>
-      </PortalContainerProvider>
-    </JotaiProvider>
+    <DataGridPortalProvider>
+      <div style={{ height: 320, width: 800 }}>
+        <DataGrid
+          rows={rows}
+          getRowId={getRowId}
+          viewModel={viewModel}
+          columnStats={stats}
+          onHeaderStatsVisible={onHeaderStatsVisible}
+        />
+      </div>
+    </DataGridPortalProvider>
   );
 
   return { ...result, viewModel, rows };
@@ -240,7 +238,9 @@ describe('DataGrid header presentation', () => {
     expect(container.textContent).toContain('2 columns');
     expect(container.textContent).toContain('No sort');
 
-    act(() => viewModel.setSort('share', 'desc'));
+    act(() => {
+      viewModel.setSort('share', 'desc');
+    });
 
     const chip = await screen.findByRole('button', {
       name: 'Clear Share sort',
@@ -261,22 +261,20 @@ describe('DataGrid keyboard handling', () => {
     const columns: DataGridColumn<StatsRow>[] = [
       { id: 'status', header: 'Status', width: 160, getValue: (r) => r.status },
     ];
-    const rows = Watchable.fromValue(ROWS);
+    const rows = createGridStore(ROWS);
     const viewModel = createDataGridViewModel<StatsRow>({ columns });
 
     render(
-      <JotaiProvider>
-        <PortalContainerProvider>
-          <DataGrid
-            rows={rows}
-            getRowId={getRowId}
-            viewModel={viewModel}
-            FooterComponent={() => (
-              <input aria-label="Ad-hoc query" defaultValue="" />
-            )}
-          />
-        </PortalContainerProvider>
-      </JotaiProvider>
+      <DataGridPortalProvider>
+        <DataGrid
+          rows={rows}
+          getRowId={getRowId}
+          viewModel={viewModel}
+          FooterComponent={() => (
+            <input aria-label="Ad-hoc query" defaultValue="" />
+          )}
+        />
+      </DataGridPortalProvider>
     );
 
     const input = screen.getByLabelText('Ad-hoc query');
@@ -515,10 +513,14 @@ describe('DataGrid lazy stats headers', () => {
     });
 
     fireEvent.click(screen.getByRole('button', { name: 'Show column stats' }));
-    await waitFor(() => expect(onHeaderStatsVisible).toHaveBeenCalled());
+    await waitFor(() => {
+      expect(onHeaderStatsVisible).toHaveBeenCalled();
+    });
     onHeaderStatsVisible.mockClear();
 
-    act(() => viewModel.scrollX.set(2000));
+    act(() => {
+      viewModel.scrollX.set(2000);
+    });
 
     await waitFor(() => {
       expect(onHeaderStatsVisible).toHaveBeenCalled();
@@ -548,7 +550,9 @@ describe('DataGrid lazy stats headers', () => {
     });
 
     fireEvent.click(screen.getByRole('button', { name: 'Show column stats' }));
-    act(() => viewModel.scrollX.set(2000));
+    act(() => {
+      viewModel.scrollX.set(2000);
+    });
 
     await waitFor(() => {
       expect(

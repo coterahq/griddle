@@ -3,12 +3,32 @@ import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'examples/dist/**', 'coverage/**'] },
+  {
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'examples/dist/**',
+      'coverage/**',
+      // Still verbatim Cotera imports; excluded from tsconfig until their
+      // milestones (layers L4, DuckDB adapter L5), so the type-aware rules
+      // have no program for them.
+      'src/source/layers/**',
+      'src/duckdb/**',
+      // Plain-JS build tooling. `allowJs` is false (the package ships no JS
+      // sources), so the type-aware project service has no program for these
+      // and cannot parse them. Prettier still formats them.
+      'eslint.config.js',
+      'scripts/**/*.mjs',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
   {
     languageOptions: {
-      parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     plugins: { 'react-hooks': reactHooks },
     rules: {
@@ -33,6 +53,37 @@ export default tseslint.config(
         { checksVoidReturn: { attributes: false } },
       ],
 
+      // The imported source predates this repo's stricter config. Relaxed
+      // rather than rewritten: rewriting during the extraction is exactly what
+      // costs the "behaviour-preserving" argument. `pendingEdits` is a
+      // Record keyed by a computed cell address, and deleting a key is how an
+      // edit is discarded — the alternative spellings are all worse.
+      '@typescript-eslint/no-dynamic-delete': 'off',
+
+      // Numbers in template literals. `${rowCount} rows` is not a defect and
+      // the source is full of it.
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        { allowNumber: true },
+      ],
+
+      // The grid passes command objects around as values by design — every
+      // context object hands `commands.focus`, `commands.pin` and friends to
+      // handlers. They are closures over the view model, not methods needing a
+      // receiver, so the rule fires only false positives here.
+      '@typescript-eslint/unbound-method': 'off',
+
+      // Fires on defensive checks the type system believes are unreachable but
+      // the runtime does not — API responses, and DOM globals a test
+      // environment may not implement.
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+
+      // A cell value is `unknown` by design — the grid renders whatever a data
+      // source hands it. `String(value)` as a last-resort display is the
+      // documented fallback, "[object Object]" included, and the alternative
+      // is the grid deciding what someone else's data means.
+      '@typescript-eslint/no-base-to-string': 'off',
+
       curly: ['error', 'all'],
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -46,6 +97,8 @@ export default tseslint.config(
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   {

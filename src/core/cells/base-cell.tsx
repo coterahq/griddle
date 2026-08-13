@@ -1,4 +1,4 @@
-import { cn } from '@cotera/client/v0/lib/utils';
+import { cn } from '../../ui/cn';
 import {
   ALIGNMENT_CLASS,
   formatDataGridValue,
@@ -60,7 +60,7 @@ export function BaseCell<TRow>({
         ALIGNMENT_CLASS[options.alignment]
       )}
       style={style}
-      title={context.state.editing ? undefined : formatted ?? undefined}
+      title={context.state.editing ? undefined : (formatted ?? undefined)}
       onMouseDown={(event) => {
         if (event.button !== 0 || context.state.editing) {
           return;

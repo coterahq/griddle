@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { JotaiProvider, Watchable } from '@cotera/client/v0/actions/framework';
-import { PortalContainerProvider } from '@cotera/client/app/components/portal-container';
+import { createGridStore } from '../../store';
+import { DataGridPortalProvider } from '../../ui/portal';
 import { DataGrid } from '../data-grid';
 import { createDataGridViewModel } from '../view-model';
 import type { DataGridCellEdit, DataGridColumn } from '../types';
@@ -69,25 +69,23 @@ const renderGrid = ({
   onRevertEdits?: (edits: DataGridCellEdit[]) => void | Promise<void>;
   autoSaveEdits?: boolean;
 } = {}) => {
-  const rows = Watchable.fromValue(ROWS);
+  const rows = createGridStore(ROWS);
   const viewModel = createDataGridViewModel<EditRow>({ columns: COLUMNS });
 
   const result = render(
-    <JotaiProvider>
-      <PortalContainerProvider>
-        <div style={{ height: 320, width: 800 }}>
-          <DataGrid
-            rows={rows}
-            getRowId={(row) => row.id}
-            viewModel={viewModel}
-            onCellEdit={onCellEdit}
-            onSaveEdits={onSaveEdits}
-            onRevertEdits={onRevertEdits}
-            autoSaveEdits={autoSaveEdits}
-          />
-        </div>
-      </PortalContainerProvider>
-    </JotaiProvider>
+    <DataGridPortalProvider>
+      <div style={{ height: 320, width: 800 }}>
+        <DataGrid
+          rows={rows}
+          getRowId={(row) => row.id}
+          viewModel={viewModel}
+          onCellEdit={onCellEdit}
+          onSaveEdits={onSaveEdits}
+          onRevertEdits={onRevertEdits}
+          autoSaveEdits={autoSaveEdits}
+        />
+      </div>
+    </DataGridPortalProvider>
   );
 
   return { ...result, viewModel };

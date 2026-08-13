@@ -1,7 +1,7 @@
 import React from 'react';
-import { cn } from '@cotera/client/v0/lib/utils';
-import { Assert } from '@cotera/utilities';
-import { Tooltip } from '@cotera/client/app/components/ui/tooltip';
+import { cn } from '../../ui/cn';
+import { unreachable } from '../../internal/assert';
+import { Tooltip } from '../../ui/tooltip';
 import { filterSelectsValue } from '../filters';
 import type {
   DataGridColumnStats,
@@ -429,6 +429,6 @@ export const DataGridColumnStatsView: React.FC<
       );
     }
     default:
-      return Assert.unreachable(stats);
+      return unreachable(stats);
   }
 };
