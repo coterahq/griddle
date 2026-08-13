@@ -3,6 +3,6 @@ export type {
   ReadonlyGridStore,
   CreateGridStoreOptions,
 } from './store';
-export { createGridStore } from './store';
+export { createGridStore, isGridStore } from './store';
 export { derivedGridStore } from './derived';
 export { useGridStore } from './use-store';

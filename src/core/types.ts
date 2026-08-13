@@ -425,16 +425,24 @@ export type DataGridFooterProps<TRow> = {
 };
 
 export type DataGridProps<TRow> = {
-  rows?: ReadonlyGridStore<TRow[]>;
+  /**
+   * Rows, as a plain array or as a store.
+   *
+   * The array form is the point: "here are 50 rows" should not require a
+   * caller to learn what a store is. Pass a store when the rows change from
+   * outside React and re-rendering the owner is not wanted — that is the
+   * fine-grained path, and it is the exception.
+   */
+  rows?: TRow[] | ReadonlyGridStore<TRow[]>;
   rowSource?: DataGridRowSource<TRow>;
   getRowId: (row: TRow) => DataGridRowId;
   viewModel: DataGridViewModel<TRow>;
   className?: string;
   hasMore?: boolean;
   isLoadingMore?: boolean;
-  columnStats?: ReadonlyGridStore<
-    Record<string, DataGridColumnStats | undefined>
-  >;
+  columnStats?:
+    | Record<string, DataGridColumnStats | undefined>
+    | ReadonlyGridStore<Record<string, DataGridColumnStats | undefined>>;
   /**
    * Per-column stats watchables. Preferred for live data: each rendered header
    * subscribes only to its own column so a stats delta never re-renders the

@@ -21,6 +21,26 @@ export type GridStore<T> = ReadonlyGridStore<T> & {
   set(value: T): void;
 };
 
+/**
+ * Structural test for the store contract.
+ *
+ * Exists so props can accept `T | ReadonlyGridStore<T>` and a caller with a
+ * plain array never has to meet the concept of a store. Deliberately a
+ * standalone function rather than a member — {@link ReadonlyGridStore} has to
+ * stay a strict structural subset of Cotera's `Watchable`, and anything
+ * Watchable-shaped must answer true here too.
+ */
+export function isGridStore<T>(value: unknown): value is ReadonlyGridStore<T> {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+  const candidate = value as { snapshot?: unknown; subscribe?: unknown };
+  return (
+    typeof candidate.snapshot === 'function' &&
+    typeof candidate.subscribe === 'function'
+  );
+}
+
 export type CreateGridStoreOptions<T> = {
   /**
    * Applied to every incoming value before it is stored.

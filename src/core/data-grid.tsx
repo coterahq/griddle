@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReadonlyGridStore } from '../store';
-import { createGridStore, useGridStore } from '../store';
+import { createGridStore, isGridStore, useGridStore } from '../store';
 import { cn } from '../ui/cn';
 import { Icon } from '../ui/icons';
 import { DATA_GRID_THEME_CLASS } from '../ui/theme-scope';
@@ -739,9 +739,22 @@ export function DataGrid<TRow>({
     []
   );
 
-  const rowsWatchable: ReadonlyGridStore<TRow[]> =
-    rowsWatchableProp ?? rowSource?.rows ?? fallbackRows;
-  const rows = useGridStore(rowsWatchable);
+  /*
+   * `rows` and `columnStats` each accept a plain value or a store, so a caller
+   * with an array in hand never meets the concept of a store. The subscription
+   * still happens unconditionally — hooks cannot be conditional, and
+   * subscribing to the fallback store costs nothing — with the plain value
+   * taking precedence over what came back.
+   */
+  const rowsWatchable: ReadonlyGridStore<TRow[]> = isGridStore<TRow[]>(
+    rowsWatchableProp
+  )
+    ? rowsWatchableProp
+    : (rowSource?.rows ?? fallbackRows);
+  const subscribedRows = useGridStore(rowsWatchable);
+  const rows = Array.isArray(rowsWatchableProp)
+    ? rowsWatchableProp
+    : subscribedRows;
   const columns = useGridStore(viewModel.columns);
   const focusedCell = useGridStore(viewModel.focusedCell);
   const selectedRowIds = useGridStore(viewModel.selectedRowIds);
@@ -758,7 +771,17 @@ export function DataGrid<TRow>({
   const displayOptionsByColumn = useGridStore(viewModel.columnDisplayOptions);
   const scrollX = useGridStore(viewModel.scrollX);
   const scrollY = useGridStore(viewModel.scrollY);
-  const columnStats = useGridStore(columnStatsProp ?? EMPTY_STATS);
+  const subscribedColumnStats = useGridStore(
+    isGridStore<Record<string, DataGridColumnStats | undefined>>(
+      columnStatsProp
+    )
+      ? columnStatsProp
+      : EMPTY_STATS
+  );
+  const columnStats =
+    columnStatsProp !== undefined && !isGridStore(columnStatsProp)
+      ? columnStatsProp
+      : subscribedColumnStats;
   const rowSourceHasMoreWatchable = React.useMemo(
     () => rowSource?.hasMore ?? FALSE_WATCHABLE,
     [rowSource]

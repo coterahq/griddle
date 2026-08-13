@@ -1,7 +1,7 @@
 {
   "name": "@cotera/data-grid",
   "version": "0.1.0-beta.0",
-  "description": "A batteries-included React data grid that joins multiple data sources into one view — DuckDB-wasm, HTTP and in-memory adapters, themeable, with component override slots.",
+  "description": "A batteries-included React data grid that joins multiple data sources into one view \u2014 DuckDB-wasm, HTTP and in-memory adapters, themeable, with component override slots.",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
@@ -10,6 +10,16 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "source": [
+        "./dist/source/index.d.ts"
+      ],
+      "memory": [
+        "./dist/memory/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -40,6 +50,26 @@
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
+      }
+    },
+    "./source": {
+      "import": {
+        "types": "./dist/source/index.d.ts",
+        "default": "./dist/source/index.js"
+      },
+      "require": {
+        "types": "./dist/source/index.d.cts",
+        "default": "./dist/source/index.cjs"
+      }
+    },
+    "./memory": {
+      "import": {
+        "types": "./dist/memory/index.d.ts",
+        "default": "./dist/memory/index.js"
+      },
+      "require": {
+        "types": "./dist/memory/index.d.cts",
+        "default": "./dist/memory/index.cjs"
       }
     },
     "./style.css": "./dist/style.css",

@@ -6,8 +6,8 @@ export default defineConfig({
   // import. The exports map in package.json is the full intended surface.
   entry: {
     index: 'src/index.ts',
-    // 'source/index': 'src/source/index.ts',   // L3
-    // 'memory/index': 'src/memory/index.ts',   // L3
+    'source/index': 'src/source/index.ts',
+    'memory/index': 'src/memory/index.ts',
     // 'http/index':   'src/http/index.ts',     // L6
     // 'duckdb/index': 'src/duckdb/index.ts',   // L5
   },
