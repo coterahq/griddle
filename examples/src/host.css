@@ -1,0 +1,156 @@
+/*
+ * The host page's own styling.
+ *
+ * Deliberately hand-written CSS with no Tailwind and no `--dg-*`: this file is
+ * standing in for "some app you do not control". If importing the library's
+ * stylesheet ever changed how the header or the buttons below look, that would
+ * be the leak `dist/style.css` shipping zero `:root` selectors is supposed to
+ * prevent — and this page is where it would show.
+ */
+
+:root {
+  --page-bg: #fbfbfd;
+  --page-fg: #18181b;
+  --page-line: #e4e4e7;
+  color-scheme: light;
+}
+
+:root.dark {
+  --page-bg: #0b0b0f;
+  --page-fg: #f4f4f5;
+  --page-line: #27272a;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.page-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.62;
+}
+
+.switches {
+  display: flex;
+  gap: 8px;
+}
+
+.switch {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--page-line);
+  border-radius: 9px;
+}
+
+.switch button {
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+  opacity: 0.6;
+}
+
+.switch button[aria-checked='true'] {
+  background: var(--page-fg);
+  color: var(--page-bg);
+  opacity: 1;
+}
+
+/*
+ * The grid sizes itself entirely from this box — it sets no height of its own,
+ * which is why `min-height: 0` matters inside a flex column.
+ */
+.grid-frame {
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.page-footer {
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+.detail {
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+/*
+ * Host tokens for the `cotera` theme.
+ *
+ * `themes/cotera.css` is nine lines of `--dg-bg: var(--background)`, so it only
+ * works against an app that already speaks shadcn. This block is that app.
+ * Given a deliberately different palette from the library's own light/dark, so
+ * a screenshot proves the indirection is live rather than coincidentally
+ * matching.
+ */
+:root[data-host-theme='cotera'] {
+  --background: #fffdf9;
+  --foreground: #2a2118;
+  --muted: #f3ece1;
+  --muted-foreground: #8a7a66;
+  --border: #e6dccc;
+  --primary: #b45309;
+  --primary-foreground: #fffdf9;
+  --popover: #fffdf9;
+  --popover-foreground: #2a2118;
+}
+
+:root[data-host-theme='cotera'].dark {
+  --background: #17130e;
+  --foreground: #f5ece0;
+  --muted: #2b2219;
+  --muted-foreground: #a89376;
+  --border: #2b2219;
+  --primary: #f59e0b;
+  --primary-foreground: #17130e;
+  --popover: #211a13;
+  --popover-foreground: #f5ece0;
+}

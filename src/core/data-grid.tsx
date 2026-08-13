@@ -3,6 +3,7 @@ import type { ReadonlyGridStore } from '../store';
 import { createGridStore, useGridStore } from '../store';
 import { cn } from '../ui/cn';
 import { Icon } from '../ui/icons';
+import { DATA_GRID_THEME_CLASS } from '../ui/theme-scope';
 import {
   DATA_GRID_DEFAULT_COLUMN_WIDTH,
   getDataGridColumnLayout,
@@ -1426,6 +1427,12 @@ export function DataGrid<TRow>({
           : undefined
       }
       className={cn(
+        // The token scope, on the grid's own root rather than left to the
+        // consumer. `--dg-*` and the scoped reset both hang off this class, so
+        // a grid without it renders with every colour unresolved and every
+        // button in native chrome. Nesting it inside a consumer's own
+        // `.cotera-data-grid` — to theme a wider region — is harmless.
+        DATA_GRID_THEME_CLASS,
         // Sizes entirely from its container: `h-full` fills a block parent,
         // `min-h-0` stops flex's `min-height: auto` from holding the grid open
         // at its content height. Everything below is measured off the

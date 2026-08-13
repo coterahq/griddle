@@ -44,6 +44,120 @@
 @source "../src/**/*.{ts,tsx}";
 
 @layer base {
+  /*
+   * ── Scoped preflight ──────────────────────────────────────────────────
+   *
+   * Skipping Tailwind's preflight keeps the library out of the host's
+   * business, but the grid still needs a reset for its *own* elements. It
+   * renders `button`, `input`, `select` and inline `svg`, and unreset those
+   * arrive with native chrome — a column header title is a `<button>`, so
+   * without this every header renders as an OS push-button with a border and
+   * a grey fill. That was the state of the first build of this milestone.
+   *
+   * So: preflight's rules, restricted to descendants of the grid's own
+   * scope. Everything here is lifted from `tailwindcss/preflight.css` with
+   * the selector narrowed; the `html`, `body`, heading, list and table rules
+   * are dropped rather than scoped, because the grid renders none of them and
+   * a library resetting a host's `<h1>` is the leak this whole file avoids.
+   *
+   * Consumer content — a `renderCell`, a row detail panel — is inside the
+   * scope and is reset too. That is the same bargain preflight makes, and an
+   * unlayered rule in the consumer's own stylesheet wins on cascade layer.
+   */
+  .cotera-data-grid,
+  .cotera-data-grid *,
+  .cotera-data-grid ::before,
+  .cotera-data-grid ::after,
+  .cotera-data-grid ::backdrop {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Width utilities only set a width — the style has to come from here. */
+    border: 0 solid;
+  }
+
+  .cotera-data-grid img,
+  .cotera-data-grid svg,
+  .cotera-data-grid video,
+  .cotera-data-grid canvas {
+    display: block;
+    vertical-align: middle;
+  }
+
+  .cotera-data-grid img,
+  .cotera-data-grid video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Radix's hover-card trigger is an anchor; it must not look like a link. */
+  .cotera-data-grid a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+
+  .cotera-data-grid button,
+  .cotera-data-grid input,
+  .cotera-data-grid select,
+  .cotera-data-grid textarea {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  .cotera-data-grid button,
+  .cotera-data-grid select {
+    text-transform: none;
+  }
+
+  .cotera-data-grid button {
+    appearance: button;
+  }
+
+  .cotera-data-grid ::placeholder {
+    opacity: 1;
+    color: color-mix(in oklab, currentcolor 50%, transparent);
+  }
+
+  /* The date cell editor is `<input type="date">`. */
+  .cotera-data-grid ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+
+  .cotera-data-grid ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+
+  .cotera-data-grid ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+
+  .cotera-data-grid ::-webkit-datetime-edit-year-field,
+  .cotera-data-grid ::-webkit-datetime-edit-month-field,
+  .cotera-data-grid ::-webkit-datetime-edit-day-field,
+  .cotera-data-grid ::-webkit-datetime-edit-hour-field,
+  .cotera-data-grid ::-webkit-datetime-edit-minute-field,
+  .cotera-data-grid ::-webkit-datetime-edit-second-field,
+  .cotera-data-grid ::-webkit-datetime-edit-millisecond-field,
+  .cotera-data-grid ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+
+  .cotera-data-grid :-moz-focusring {
+    outline: auto;
+  }
+
+  .cotera-data-grid [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+
   .cotera-data-grid {
     /*
      * ── Tier 1 ──────────────────────────────────────────────────────────
