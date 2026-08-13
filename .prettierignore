@@ -3,3 +3,4 @@ node_modules/
 coverage/
 *.parquet
 .claude/
+examples/public/mockServiceWorker.js

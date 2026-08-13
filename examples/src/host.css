@@ -45,8 +45,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px;
-  gap: 14px;
+  padding: 18px 20px 20px;
+  gap: 12px;
   box-sizing: border-box;
 }
 
@@ -153,4 +153,223 @@ body {
   --primary-foreground: #17130e;
   --popover: #211a13;
   --popover-foreground: #f5ece0;
+}
+
+/* ── Demo shell ─────────────────────────────────────────────────────── */
+
+.demo-nav {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--page-line);
+  padding-bottom: 1px;
+}
+
+.demo-nav button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  padding: 7px 12px;
+  cursor: pointer;
+  opacity: 0.58;
+  margin-bottom: -2px;
+}
+
+.demo-nav button[aria-current='page'] {
+  opacity: 1;
+  border-bottom-color: currentColor;
+  font-weight: 550;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.demo-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.demo-header h2 {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.demo-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 74ch;
+  opacity: 0.66;
+}
+
+.demo-header code,
+.demo-footnote code {
+  font-size: 12px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: color-mix(in oklab, currentcolor 8%, transparent);
+}
+
+.demo-toolbar {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/*
+ * The grid sizes itself entirely from this box — it sets no height of its own,
+ * which is why `min-height: 0` matters inside a flex column.
+ */
+.demo-grid {
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-pending,
+.demo-error {
+  margin: 0;
+  padding: 20px;
+  font-size: 13px;
+}
+
+.demo-error {
+  color: #b91c1c;
+}
+
+:root.dark .demo-error {
+  color: #fca5a5;
+}
+
+.demo-footnote {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.demo-details {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.demo-details summary {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.demo-details pre {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--page-line);
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.demo-status {
+  display: none;
+}
+
+.preset-row,
+.demo-toolbar .toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.preset-row button,
+.toggle {
+  border: 1px solid var(--page-line);
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+.preset-row button:hover,
+.toggle:hover {
+  background: color-mix(in oklab, currentcolor 7%, transparent);
+}
+
+/* ── Theme playground ───────────────────────────────────────────────── */
+
+.theming-layout {
+  display: grid;
+  grid-template-columns: 218px 1fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.theming-grid {
+  min-width: 0;
+  min-height: 0;
+  border-left: 1px solid var(--page-line);
+}
+
+.token-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.token-editor label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.token-editor input[type='color'] {
+  inline-size: 26px;
+  block-size: 22px;
+  padding: 0;
+  border: 1px solid var(--page-line);
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.token-editor span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.token-editor code {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+@media (max-width: 720px) {
+  .theming-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .theming-grid {
+    border-left: 0;
+    border-top: 1px solid var(--page-line);
+  }
 }

@@ -1,0 +1,55 @@
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time, and never cancel one mid-flight: a cancelled Pages
+# deployment can leave the site serving a half-uploaded artifact.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.19
+      - run: bun install --frozen-lockfile
+
+      # The demo app imports `dist/style.css` and `dist/themes/*.css` — the
+      # published artifacts, after the `:root` rescoping — rather than the
+      # sources. That is deliberate: it makes the site exercise what a consumer
+      # installs, and it means the library has to build first.
+      - run: bun run build
+
+      - name: Build the demo site
+        # Pages serves a project site from `/<repo>/`, so the base has to be
+        # set at build time. Vite bakes it into every asset URL, and
+        # `examples/src/asset.ts` reads it back for the parquet and the service
+        # worker.
+        run: bunx vite build --config examples/vite.config.ts --base=/data-grid/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: examples/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

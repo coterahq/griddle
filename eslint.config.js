@@ -8,6 +8,10 @@ export default tseslint.config(
       'dist/**',
       'node_modules/**',
       'examples/dist/**',
+      // MSW's generated service worker. Vendored verbatim by `msw init`, and
+      // regenerated on every version bump, so linting it would only produce
+      // findings nobody may act on.
+      'examples/public/mockServiceWorker.js',
       'coverage/**',
       // Plain-JS build tooling. `allowJs` is false (the package ships no JS
       // sources), so the type-aware project service has no program for these

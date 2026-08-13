@@ -8,7 +8,7 @@ import { promisify } from 'node:util';
 const run = promisify(execFile);
 
 /**
- * Captures the examples app in every palette × scheme combination.
+ * Captures each demo in both colour schemes.
  *
  * This is the milestone's visual evidence, and the reason it is a script
  * rather than four manual screenshots is that a baseline nobody can reproduce
@@ -37,12 +37,24 @@ const CHROME_CANDIDATES = [
   '/usr/bin/chromium',
 ].filter((path) => typeof path === 'string' && path !== '');
 
-const COMBINATIONS = [
-  { name: 'library-light', palette: 'library', scheme: 'light' },
-  { name: 'library-dark', palette: 'library', scheme: 'dark' },
-  { name: 'cotera-light', palette: 'cotera', scheme: 'light' },
-  { name: 'cotera-dark', palette: 'cotera', scheme: 'dark' },
-];
+/*
+ * Every demo in both schemes.
+ *
+ * `three-sources` is omitted on purpose: it boots duckdb-wasm in a worker, and
+ * a headless screenshot cannot wait for that without a real automation driver
+ * — `--virtual-time-budget` fast-forwards the clock and the worker never
+ * finishes. Its correctness is covered by the join oracle in
+ * `src/duckdb/__tests__/join-oracle.spec.ts`, which is a better test than a
+ * picture of it anyway.
+ */
+const COMBINATIONS = ['memory', 'http', 'theming', 'overrides'].flatMap(
+  (demo) =>
+    ['light', 'dark'].map((scheme) => ({
+      name: `${demo}-${scheme}`,
+      demo,
+      scheme,
+    }))
+);
 
 const MIME = {
   '.html': 'text/html',
@@ -109,16 +121,17 @@ const server = createServer((request, response) => {
 await new Promise((resolve) => server.listen(PORT, resolve));
 
 try {
-  for (const { name, palette, scheme } of COMBINATIONS) {
-    const url = `http://localhost:${String(PORT)}/index.html?palette=${palette}&scheme=${scheme}`;
+  for (const { name, demo, scheme } of COMBINATIONS) {
+    const url = `http://localhost:${String(PORT)}/index.html?demo=${demo}&scheme=${scheme}`;
     await run(chrome, [
       '--headless',
       '--disable-gpu',
       '--hide-scrollbars',
       // The grid measures itself from ResizeObserver and renders rows in an
       // effect, so a naive capture races the first paint. Virtual time runs
-      // the clock forward without waiting for it.
-      '--virtual-time-budget=4000',
+      // the clock forward without waiting for it — which is also why the
+      // duckdb-wasm demo cannot be captured this way.
+      '--virtual-time-budget=6000',
       '--window-size=1500,940',
       `--screenshot=${join(OUT, `${name}.png`)}`,
       url,

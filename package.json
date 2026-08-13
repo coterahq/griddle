@@ -1,7 +1,7 @@
 {
   "name": "@cotera/data-grid",
   "version": "0.1.0-beta.0",
-  "description": "A batteries-included React data grid that joins multiple data sources into one view \u2014 DuckDB-wasm, HTTP and in-memory adapters, themeable, with component override slots.",
+  "description": "A batteries-included React data grid that joins multiple data sources into one view — DuckDB-wasm, HTTP and in-memory adapters, themeable, with component override slots.",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
@@ -140,6 +140,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
+    "@duckdb/duckdb-wasm": "1.32.0",
     "@duckdb/node-api": "^1.5.5-r.4",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.1.16",
@@ -155,6 +156,7 @@
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "jsdom": "26.1.0",
+    "msw": "^2.15.0",
     "prettier": "^3.4.2",
     "publint": "^0.2.12",
     "react": "^19.1.0",
@@ -165,5 +167,10 @@
     "typescript-eslint": "^8.31.0",
     "vite": "^7",
     "vitest": "4.0.18"
+  },
+  "msw": {
+    "workerDirectory": [
+      "examples/public"
+    ]
   }
 }
