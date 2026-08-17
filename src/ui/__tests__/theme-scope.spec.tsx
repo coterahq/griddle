@@ -7,13 +7,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '../dropdown-menu';
-import { DATA_GRID_THEME_CLASS } from '../theme-scope';
+import { GRIDDLE_THEME_CLASS } from '../theme-scope';
 import { Tooltip } from '../tooltip';
 
 /**
  * Every portal in this library must re-establish the token scope.
  *
- * `--dg-*` is defined on `.cotera-data-grid` rather than on `:root`, which is
+ * `--dg-*` is defined on `.cotera-griddle` rather than on `:root`, which is
  * what stops the stylesheet leaking globals into a host page. The cost is that
  * a React portal — which mounts to `document.body`, outside the grid — escapes
  * the scope and renders with every colour unresolved.
@@ -29,7 +29,7 @@ import { Tooltip } from '../tooltip';
  */
 const assertScoped = (node: HTMLElement | null): void => {
   expect(node).not.toBeNull();
-  expect(node?.closest(`.${DATA_GRID_THEME_CLASS}`)).not.toBeNull();
+  expect(node?.closest(`.${GRIDDLE_THEME_CLASS}`)).not.toBeNull();
 };
 
 describe('portalled content carries the theme scope', () => {
@@ -106,7 +106,7 @@ describe('the theme scope itself', () => {
 
     const scope = screen
       .getByText('overlay body')
-      .closest(`.${DATA_GRID_THEME_CLASS}`);
+      .closest(`.${GRIDDLE_THEME_CLASS}`);
 
     expect(scope?.className).toContain('contents');
   });

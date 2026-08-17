@@ -1,4 +1,4 @@
-# `@cotera/data-grid`
+# `@cotera/griddle`
 
 A React data grid that joins your data sources together instead of making you
 do it first.
@@ -9,7 +9,7 @@ sorts all twenty thousand rows, not the two hundred that happened to be on
 screen.
 
 ```bash
-npm install @cotera/data-grid
+npm install @cotera/griddle
 ```
 
 ---
@@ -116,9 +116,9 @@ decisions, and we'd rather know which ones are in your way.
 ## Quick start
 
 ```tsx
-import { DataGrid, createDataGridViewModel } from '@cotera/data-grid';
-import '@cotera/data-grid/style.css';
-import '@cotera/data-grid/themes/light.css';
+import { DataGrid, createDataGridViewModel } from '@cotera/griddle';
+import '@cotera/griddle/style.css';
+import '@cotera/griddle/themes/light.css';
 
 const columns = [
   { id: 'name', header: 'Name', type: 'text', getValue: (row) => row.name },
@@ -159,8 +159,8 @@ For small data this is the right answer and it needs nothing from us. Build a
 lookup, flatten the rows, hand them over:
 
 ```ts
-import { createMemoryDataSource } from '@cotera/data-grid/memory';
-import { createGridController } from '@cotera/data-grid/source';
+import { createMemoryDataSource } from '@cotera/griddle/memory';
+import { createGridController } from '@cotera/griddle/source';
 
 const usersById = new Map(users.map((user) => [user.user_id, user]));
 const joined = orders.map((order) => ({
@@ -190,7 +190,7 @@ import {
   createDuckDbDataSource,
   joinLayer,
   registerJsonSource,
-} from '@cotera/data-grid/duckdb';
+} from '@cotera/griddle/duckdb';
 
 const ordersRel = await registerJsonSource(query, {
   name: 'orders',
@@ -257,12 +257,12 @@ library could do to you.
 
 ## Adapters
 
-| Import                     | For                                                                        |
-| -------------------------- | -------------------------------------------------------------------------- |
-| `@cotera/data-grid/memory` | An array you already have. Also the reference implementation.              |
-| `@cotera/data-grid/duckdb` | DuckDB: wasm in a browser, native in Node, anything speaking the same SQL. |
-| `@cotera/data-grid/http`   | An HTTP endpoint.                                                          |
-| `@cotera/data-grid/source` | The `GridDataSource` contract and the controller that drives one.          |
+| Import                   | For                                                                        |
+| ------------------------ | -------------------------------------------------------------------------- |
+| `@cotera/griddle/memory` | An array you already have. Also the reference implementation.              |
+| `@cotera/griddle/duckdb` | DuckDB: wasm in a browser, native in Node, anything speaking the same SQL. |
+| `@cotera/griddle/http`   | An HTTP endpoint.                                                          |
+| `@cotera/griddle/source` | The `GridDataSource` contract and the controller that drives one.          |
 
 `createGridController` sits between the grid and a source and owns the loop:
 
@@ -301,7 +301,7 @@ Any answer baked into a library is wrong for somebody. So you pass in a query
 function:
 
 ```ts
-import { createDuckDbWasmQuery } from '@cotera/data-grid/duckdb';
+import { createDuckDbWasmQuery } from '@cotera/griddle/duckdb';
 const query = createDuckDbWasmQuery(db);
 ```
 
@@ -315,7 +315,7 @@ One required method. The rest are optional because some backends can answer
 cheaply and others can't, and pretending otherwise helps nobody:
 
 ```ts
-import type { GridDataSource } from '@cotera/data-grid/source';
+import type { GridDataSource } from '@cotera/griddle/source';
 
 const source: GridDataSource<Order> = {
   async loadPage({ offset, limit, sorts, filters, signal }) {
@@ -530,7 +530,7 @@ Everything here is a store. Call `snapshot()` for the value now, `subscribe()`
 for changes, or `useGridStore()` inside a component:
 
 ```ts
-import { useGridStore } from '@cotera/data-grid';
+import { useGridStore } from '@cotera/griddle';
 
 const status = useGridStore(controller.status); // 'idle' | 'loading' | 'ready' | 'error'
 const total = useGridStore(controller.rowSource.totalRows);
@@ -544,7 +544,7 @@ const selected = useGridStore(viewModel.selectedRowIds);
 Nine tokens. That's the whole surface:
 
 ```css
-.cotera-data-grid {
+.cotera-griddle {
   --dg-bg: #ffffff;
   --dg-fg: #0a0a0a;
   --dg-muted: #f4f4f5;
@@ -562,7 +562,7 @@ stripe, three different focus-ring weights, the chart bars, the skeleton pulse.
 Each derives from the nine with `color-mix(in oklab, …)` and each can be
 overridden on its own if you want to move one without moving the others. Ready
 made themes ship at
-`@cotera/data-grid/themes/{light,dark,dark-auto,cotera}.css`.
+`@cotera/griddle/themes/{light,dark,dark-auto,cotera}.css`.
 
 There are no dark-mode rules in the library at all. Colour only ever arrives
 through those nine, which means `themes/cotera.css` is nine lines of
@@ -570,7 +570,7 @@ through those nine, which means `themes/cotera.css` is nine lines of
 free.
 
 Nothing is defined on `:root`. Every custom property lives on
-`.cotera-data-grid`, and the build fails if a single `:root` or `:host` selector
+`.cotera-griddle`, and the build fails if a single `:root` or `:host` selector
 survives into `dist/style.css`. Drop this stylesheet into a page you don't
 control and it cannot change anything outside the grid. That's not a promise,
 it's an assertion in `scripts/build-css.mjs`.

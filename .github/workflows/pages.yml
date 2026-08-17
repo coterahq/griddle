@@ -37,7 +37,7 @@ jobs:
         # set at build time. Vite bakes it into every asset URL, and
         # `examples/src/asset.ts` reads it back for the parquet and the service
         # worker.
-        run: bunx vite build --config examples/vite.config.ts --base=/data-grid/
+        run: bunx vite build --config examples/vite.config.ts --base=/griddle/
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

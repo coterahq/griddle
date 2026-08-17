@@ -158,7 +158,7 @@ export function ThemingDemo(): React.ReactElement {
       }
       details={{
         label: 'These nine values, as CSS',
-        body: `.cotera-data-grid {\n${TOKENS.map(
+        body: `.cotera-griddle {\n${TOKENS.map(
           (token) => `  ${token}: ${tokens[token]};`
         ).join('\n')}\n}`,
       }}

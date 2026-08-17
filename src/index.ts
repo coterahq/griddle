@@ -36,7 +36,7 @@ export type {
 // controls replaces `HeaderComponent`.
 export {
   DataGridThemeScope,
-  DATA_GRID_THEME_CLASS,
+  GRIDDLE_THEME_CLASS,
   DataGridPortalProvider,
   useDataGridPortalContainer,
   DataGridModalHostProvider,

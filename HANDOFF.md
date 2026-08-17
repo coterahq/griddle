@@ -1,4 +1,4 @@
-# `@cotera/data-grid` — handoff
+# `@cotera/griddle` — handoff
 
 **L0 through L7 are done and green.** What remains is three things outside this
 repo — see [Outstanding](#outstanding-human-not-agent).
@@ -25,7 +25,7 @@ product. `src/duckdb/__tests__/join-oracle.spec.ts` is the proof.
 
 ```
 src/
-  index.ts        the package entry ("@cotera/data-grid")
+  index.ts        the package entry ("@cotera/griddle")
   core/           the grid
   store/          createGridStore / derivedGridStore / useGridStore
   ui/             vendored primitives: cn, icons, tooltip, dialog,
@@ -218,7 +218,7 @@ The URL goes to `fetch` as a string rather than wrapped in a `Request`:
 ### L7 — `examples/` and publish
 
 Five demos at `bun run examples:dev`, all static. `.github/workflows/pages.yml`
-deploys with `--base=/data-grid/`.
+deploys with `--base=/griddle/`.
 
 `examples/src/duckdb.ts` is worth reading before touching anything wasm — both
 the worker script URL _and_ the wasm module URL must be absolutised, because
@@ -228,17 +228,17 @@ everything the blob worker fetches resolves against the blob.
 
 ## Traps
 
-| Trap                                        | Why it bites                                                                                                                                                                                                  |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **A portal without `DataGridThemeScope`**   | `--dg-*` lives on `.cotera-data-grid`, and a portal to `document.body` is outside it. Renders unstyled — invisible against a host that defines the same tokens. `theme-scope.spec.tsx` covers the four sites. |
-| **Missing `(color:…)` hint**                | `text-`/`border-`/`ring-` are ambiguous. `build-css` fails the build on it.                                                                                                                                   |
-| **Opacity modifier on an arbitrary var**    | Breaks the `color-mix` pixel-parity argument. `build-css` fails the build on it.                                                                                                                              |
-| **Adding a member to `ReadonlyGridStore`**  | Silently breaks structural compatibility with Cotera's `Watchable`. `store.spec.ts` catches it.                                                                                                               |
-| **Reaching for a Node global in `src/`**    | `@types/node` is installed for the DuckDB oracle spec, so `process` and `Buffer` typecheck everywhere. `no-restricted-globals` is what stops one shipping.                                                    |
-| **Adding an entry point**                   | Four places: `tsup.config.ts`, `package.json` `exports`, `package.json` `typesVersions`, and the `check:package` exclusions if it is CSS. publint/attw catch a mismatch.                                      |
-| **`--virtual-time-budget` and duckdb-wasm** | The flag freezes the clock the worker handshake needs, so a headless capture hangs on "Booting DuckDB…" and looks like a bug in the worker URLs. `capture-screenshots` skips that demo.                       |
-| **A relative URL reaching a worker**        | Both the duckdb-wasm worker script and the wasm module resolve against the `blob:`, not the document. Works under a dev server at `/`; 404s only under a deployment base.                                     |
-| **GitHub Pages cannot set COOP/COEP**       | `crossOriginIsolated` is false, so `SharedArrayBuffer` is unavailable. The `coi` bundle is left out of the bundle map entirely, so the fallback is structural rather than hoped for.                          |
+| Trap                                        | Why it bites                                                                                                                                                                                                |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A portal without `DataGridThemeScope`**   | `--dg-*` lives on `.cotera-griddle`, and a portal to `document.body` is outside it. Renders unstyled — invisible against a host that defines the same tokens. `theme-scope.spec.tsx` covers the four sites. |
+| **Missing `(color:…)` hint**                | `text-`/`border-`/`ring-` are ambiguous. `build-css` fails the build on it.                                                                                                                                 |
+| **Opacity modifier on an arbitrary var**    | Breaks the `color-mix` pixel-parity argument. `build-css` fails the build on it.                                                                                                                            |
+| **Adding a member to `ReadonlyGridStore`**  | Silently breaks structural compatibility with Cotera's `Watchable`. `store.spec.ts` catches it.                                                                                                             |
+| **Reaching for a Node global in `src/`**    | `@types/node` is installed for the DuckDB oracle spec, so `process` and `Buffer` typecheck everywhere. `no-restricted-globals` is what stops one shipping.                                                  |
+| **Adding an entry point**                   | Four places: `tsup.config.ts`, `package.json` `exports`, `package.json` `typesVersions`, and the `check:package` exclusions if it is CSS. publint/attw catch a mismatch.                                    |
+| **`--virtual-time-budget` and duckdb-wasm** | The flag freezes the clock the worker handshake needs, so a headless capture hangs on "Booting DuckDB…" and looks like a bug in the worker URLs. `capture-screenshots` skips that demo.                     |
+| **A relative URL reaching a worker**        | Both the duckdb-wasm worker script and the wasm module resolve against the `blob:`, not the document. Works under a dev server at `/`; 404s only under a deployment base.                                   |
+| **GitHub Pages cannot set COOP/COEP**       | `crossOriginIsolated` is false, so `SharedArrayBuffer` is unavailable. The `coi` bundle is left out of the bundle map entirely, so the fallback is structural rather than hoped for.                        |
 
 ---
 
@@ -269,7 +269,7 @@ the change has to be replayed here and the L1 parity argument gets weaker.
 
 1. **npm auth + `@cotera` publish rights** — `npm whoami` fails. Blocks
    publishing `0.1.0-beta.1`; everything else is ready.
-2. **Create `coterahq/data-grid`** and enable Pages with source = _GitHub
+2. **Create `coterahq/griddle`** and enable Pages with source = _GitHub
    Actions_. `.github/workflows/pages.yml` is waiting for it.
 3. **Publishing mechanism** — recommend npm trusted publishing (OIDC) over a
    stored `NPM_TOKEN`; pairs with the `provenance: true` already in

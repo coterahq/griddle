@@ -8,7 +8,7 @@
  * Pair with `dark.css` (class strategy) or use `dark-auto.css` instead, which
  * carries both halves behind `prefers-color-scheme`.
  */
-.cotera-data-grid {
+.cotera-griddle {
   --dg-bg: #ffffff;
   --dg-fg: #0a0a0a;
   --dg-muted: #f4f4f5;

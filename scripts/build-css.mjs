@@ -122,9 +122,9 @@ await run('npx', [
  * descendant still sees them.
  */
 let css = await readFile(raw, 'utf8');
-css = css.replace(/(^|[},])\s*:root\s*,\s*:host\s*\{/g, '$1.cotera-data-grid{');
-css = css.replace(/(^|[},])\s*:root\s*\{/g, '$1.cotera-data-grid{');
-css = css.replace(/(^|[},])\s*:host\s*\{/g, '$1.cotera-data-grid{');
+css = css.replace(/(^|[},])\s*:root\s*,\s*:host\s*\{/g, '$1.cotera-griddle{');
+css = css.replace(/(^|[},])\s*:root\s*\{/g, '$1.cotera-griddle{');
+css = css.replace(/(^|[},])\s*:host\s*\{/g, '$1.cotera-griddle{');
 
 // The guarantee, not a hope: if any selector survived, the build fails loudly
 // rather than silently shipping globals into every consumer's page.

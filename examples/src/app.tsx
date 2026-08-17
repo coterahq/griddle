@@ -93,7 +93,7 @@ export function App(): React.ReactElement {
     <div className="page">
       <header className="page-header">
         <div className="brand">
-          <h1>@cotera/data-grid</h1>
+          <h1>@cotera/griddle</h1>
           <p>
             A React data grid that joins multiple data sources into one view.
           </p>

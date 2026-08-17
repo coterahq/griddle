@@ -78,7 +78,7 @@ export function DataGridOverlay({
 
   const root = portalContainer ?? document.body;
   return createPortal(
-    // The `--dg-*` tokens live on `.cotera-data-grid`, and this content is
+    // The `--dg-*` tokens live on `.cotera-griddle`, and this content is
     // portalled outside it. Without the scope every colour below resolves to
     // nothing — invisible against a host that happens to define the same token
     // names, obvious only in production against one that does not.

@@ -63,9 +63,9 @@ jobs:
           mkdir -p /tmp/consumer && cd /tmp/consumer
           npm init -y >/dev/null
           npm pkg set type=module
-          npm i react@19 react-dom@19 typescript@5.7.3 /tmp/cotera-data-grid-*.tgz
+          npm i react@19 react-dom@19 typescript@5.7.3 /tmp/cotera-griddle-*.tgz
           cat > index.ts <<'EOF'
-          import { DataGrid, createGridStore } from '@cotera/data-grid';
+          import { DataGrid, createGridStore } from '@cotera/griddle';
           const rows = createGridStore<{ id: number }[]>([]);
           export { DataGrid, rows };
           EOF

@@ -7,7 +7,7 @@
  * dark but the page is showing its light theme, and loading both makes which
  * one wins a source-order accident.
  */
-.cotera-data-grid {
+.cotera-griddle {
   --dg-bg: #ffffff;
   --dg-fg: #0a0a0a;
   --dg-muted: #f4f4f5;
@@ -20,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .cotera-data-grid {
+  .cotera-griddle {
     --dg-bg: #09090b;
     --dg-fg: #fafafa;
     --dg-muted: #27272a;

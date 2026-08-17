@@ -3,7 +3,7 @@ import type { ReadonlyGridStore } from '../store';
 import { createGridStore, isGridStore, useGridStore } from '../store';
 import { cn } from '../ui/cn';
 import { Icon } from '../ui/icons';
-import { DATA_GRID_THEME_CLASS } from '../ui/theme-scope';
+import { GRIDDLE_THEME_CLASS } from '../ui/theme-scope';
 import {
   DATA_GRID_DEFAULT_COLUMN_WIDTH,
   getDataGridColumnLayout,
@@ -1472,8 +1472,8 @@ export function DataGrid<TRow>({
         // consumer. `--dg-*` and the scoped reset both hang off this class, so
         // a grid without it renders with every colour unresolved and every
         // button in native chrome. Nesting it inside a consumer's own
-        // `.cotera-data-grid` — to theme a wider region — is harmless.
-        DATA_GRID_THEME_CLASS,
+        // `.cotera-griddle` — to theme a wider region — is harmless.
+        GRIDDLE_THEME_CLASS,
         // Sizes entirely from its container: `h-full` fills a block parent,
         // `min-h-0` stops flex's `min-height: auto` from holding the grid open
         // at its content height. Everything below is measured off the

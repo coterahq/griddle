@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 /** The class the library's design tokens are defined on. */
-export const DATA_GRID_THEME_CLASS = 'cotera-data-grid';
+export const GRIDDLE_THEME_CLASS = 'cotera-griddle';
 
 /**
  * Re-establishes the token scope inside a portal.
  *
- * The `--dg-*` custom properties live on `.cotera-data-grid` rather than
+ * The `--dg-*` custom properties live on `.cotera-griddle` rather than
  * `:root`, so a library stylesheet cannot leak globals into the host page.
  * Custom properties inherit, so everything rendered *inside* the grid is
  * covered for free — but a React portal is not inside it. Content sent to
@@ -29,7 +29,7 @@ export function DataGridThemeScope({
 }): React.ReactElement {
   return (
     <div
-      className={`${DATA_GRID_THEME_CLASS} contents${className === undefined ? '' : ` ${className}`}`}
+      className={`${GRIDDLE_THEME_CLASS} contents${className === undefined ? '' : ` ${className}`}`}
     >
       {children}
     </div>

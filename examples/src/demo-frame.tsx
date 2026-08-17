@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DATA_GRID_THEME_CLASS } from '../../src';
+import { GRIDDLE_THEME_CLASS } from '../../src';
 
 /**
  * The chrome around every demo: a title, a claim, and the grid.
@@ -47,7 +47,7 @@ export function DemoFrame({
        * would write, and the demo should show that rather than rely on the
        * grid doing it silently.
        */}
-      <div className={`${DATA_GRID_THEME_CLASS} demo-grid`}>
+      <div className={`${GRIDDLE_THEME_CLASS} demo-grid`}>
         {error != null ? (
           <p className="demo-error">{error.message}</p>
         ) : pending != null ? (

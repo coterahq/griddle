@@ -1,5 +1,5 @@
 export { cn } from './cn';
-export { DataGridThemeScope, DATA_GRID_THEME_CLASS } from './theme-scope';
+export { DataGridThemeScope, GRIDDLE_THEME_CLASS } from './theme-scope';
 export { DataGridPortalProvider, useDataGridPortalContainer } from './portal';
 export { DataGridModalHostProvider, useDataGridModalHost } from './modal-host';
 export type { DataGridModalHost } from './modal-host';

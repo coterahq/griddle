@@ -13,7 +13,7 @@
  *
  * Any app on the shadcn token names can use this file unchanged.
  */
-.cotera-data-grid {
+.cotera-griddle {
   --dg-bg: var(--background);
   --dg-fg: var(--foreground);
   --dg-muted: var(--muted);

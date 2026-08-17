@@ -1,10 +1,10 @@
 /*
- * @cotera/data-grid — the stylesheet.
+ * @cotera/griddle — the stylesheet.
  *
  * Imported for its side effect:
  *
- *   import '@cotera/data-grid/style.css';
- *   import '@cotera/data-grid/themes/light.css';   // or supply --dg-* yourself
+ *   import '@cotera/griddle/style.css';
+ *   import '@cotera/griddle/themes/light.css';   // or supply --dg-* yourself
  *
  * Two things make this safe to drop into a page you do not control.
  *
@@ -14,7 +14,7 @@
  * margins, unstyle its headings and change its box-sizing. A library has no
  * business doing that.
  *
- * And every custom property is defined on `.cotera-data-grid`, never on
+ * And every custom property is defined on `.cotera-griddle`, never on
  * `:root`. Tailwind emits its own theme layer as `:root, :host { … }`, so
  * `scripts/build-css.mjs` rescopes that to the same class on the way out and
  * hard-fails the build if a single `:root`/`:host` selector survives. Custom
@@ -64,11 +64,11 @@
    * scope and is reset too. That is the same bargain preflight makes, and an
    * unlayered rule in the consumer's own stylesheet wins on cascade layer.
    */
-  .cotera-data-grid,
-  .cotera-data-grid *,
-  .cotera-data-grid ::before,
-  .cotera-data-grid ::after,
-  .cotera-data-grid ::backdrop {
+  .cotera-griddle,
+  .cotera-griddle *,
+  .cotera-griddle ::before,
+  .cotera-griddle ::after,
+  .cotera-griddle ::backdrop {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -76,31 +76,31 @@
     border: 0 solid;
   }
 
-  .cotera-data-grid img,
-  .cotera-data-grid svg,
-  .cotera-data-grid video,
-  .cotera-data-grid canvas {
+  .cotera-griddle img,
+  .cotera-griddle svg,
+  .cotera-griddle video,
+  .cotera-griddle canvas {
     display: block;
     vertical-align: middle;
   }
 
-  .cotera-data-grid img,
-  .cotera-data-grid video {
+  .cotera-griddle img,
+  .cotera-griddle video {
     max-width: 100%;
     height: auto;
   }
 
   /* Radix's hover-card trigger is an anchor; it must not look like a link. */
-  .cotera-data-grid a {
+  .cotera-griddle a {
     color: inherit;
     -webkit-text-decoration: inherit;
     text-decoration: inherit;
   }
 
-  .cotera-data-grid button,
-  .cotera-data-grid input,
-  .cotera-data-grid select,
-  .cotera-data-grid textarea {
+  .cotera-griddle button,
+  .cotera-griddle input,
+  .cotera-griddle select,
+  .cotera-griddle textarea {
     font: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
@@ -111,54 +111,54 @@
     opacity: 1;
   }
 
-  .cotera-data-grid button,
-  .cotera-data-grid select {
+  .cotera-griddle button,
+  .cotera-griddle select {
     text-transform: none;
   }
 
-  .cotera-data-grid button {
+  .cotera-griddle button {
     appearance: button;
   }
 
-  .cotera-data-grid ::placeholder {
+  .cotera-griddle ::placeholder {
     opacity: 1;
     color: color-mix(in oklab, currentcolor 50%, transparent);
   }
 
   /* The date cell editor is `<input type="date">`. */
-  .cotera-data-grid ::-webkit-date-and-time-value {
+  .cotera-griddle ::-webkit-date-and-time-value {
     min-height: 1lh;
     text-align: inherit;
   }
 
-  .cotera-data-grid ::-webkit-datetime-edit {
+  .cotera-griddle ::-webkit-datetime-edit {
     display: inline-flex;
   }
 
-  .cotera-data-grid ::-webkit-datetime-edit-fields-wrapper {
+  .cotera-griddle ::-webkit-datetime-edit-fields-wrapper {
     padding: 0;
   }
 
-  .cotera-data-grid ::-webkit-datetime-edit-year-field,
-  .cotera-data-grid ::-webkit-datetime-edit-month-field,
-  .cotera-data-grid ::-webkit-datetime-edit-day-field,
-  .cotera-data-grid ::-webkit-datetime-edit-hour-field,
-  .cotera-data-grid ::-webkit-datetime-edit-minute-field,
-  .cotera-data-grid ::-webkit-datetime-edit-second-field,
-  .cotera-data-grid ::-webkit-datetime-edit-millisecond-field,
-  .cotera-data-grid ::-webkit-datetime-edit-meridiem-field {
+  .cotera-griddle ::-webkit-datetime-edit-year-field,
+  .cotera-griddle ::-webkit-datetime-edit-month-field,
+  .cotera-griddle ::-webkit-datetime-edit-day-field,
+  .cotera-griddle ::-webkit-datetime-edit-hour-field,
+  .cotera-griddle ::-webkit-datetime-edit-minute-field,
+  .cotera-griddle ::-webkit-datetime-edit-second-field,
+  .cotera-griddle ::-webkit-datetime-edit-millisecond-field,
+  .cotera-griddle ::-webkit-datetime-edit-meridiem-field {
     padding-block: 0;
   }
 
-  .cotera-data-grid :-moz-focusring {
+  .cotera-griddle :-moz-focusring {
     outline: auto;
   }
 
-  .cotera-data-grid [hidden]:where(:not([hidden='until-found'])) {
+  .cotera-griddle [hidden]:where(:not([hidden='until-found'])) {
     display: none !important;
   }
 
-  .cotera-data-grid {
+  .cotera-griddle {
     /*
      * ── Tier 1 ──────────────────────────────────────────────────────────
      *
@@ -168,7 +168,7 @@
      *
      * The values here are a working light default, so a page that imports
      * only `style.css` still gets a legible grid. Every theme file — and any
-     * `.cotera-data-grid { --dg-*: … }` rule a host writes — is unlayered and
+     * `.cotera-griddle { --dg-*: … }` rule a host writes — is unlayered and
      * therefore beats this block, which is layered.
      */
     --dg-bg: #ffffff;
