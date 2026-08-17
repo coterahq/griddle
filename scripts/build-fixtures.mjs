@@ -147,6 +147,18 @@ await loadJson('shipments', shipments);
 await connection.run(
   `COPY orders TO ${literal(join(OUT, 'orders.parquet'))} (FORMAT PARQUET, COMPRESSION ZSTD)`
 );
+
+/*
+ * A CSV too, for the "paste a URL" demo.
+ *
+ * Same-origin, so the demo has a default that works without depending on some
+ * third party's CORS headers staying friendly. Users can paste their own; this
+ * is what the box is pre-filled with.
+ */
+await connection.run(
+  `COPY (SELECT * FROM orders USING SAMPLE 2500 ROWS) ` +
+    `TO ${literal(join(OUT, 'orders.csv'))} (FORMAT CSV, HEADER)`
+);
 await writeFile(join(OUT, 'shipments.json'), JSON.stringify(shipments));
 // The orders JSON was only a vehicle for building the parquet. Shipping it
 // too would put 3.4 MB of the same rows next to the 177 kB that replaced them.

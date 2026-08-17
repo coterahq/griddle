@@ -6,13 +6,25 @@ export type { CreateDuckDbWasmQueryOptions } from './wasm';
 
 export type { DuckDbQuery, DuckDbQueryResult } from './types';
 
-// The flagship: joining other sources into one grid.
-export { joinLayer, selectionLayer } from './join-layer';
-export type { JoinLayerOptions, SelectionLayerOptions } from './join-layer';
+/*
+ * The flagship. Defined in core, re-exported here: a join is a declaration
+ * that says nothing about SQL, and `/memory` compiles the same layer object
+ * with a `Map`. This adapter's contribution is `compileJoinToSqlLayer`.
+ */
+export { joinLayer, selectionLayer, compileJoinToSqlLayer } from './join-layer';
+export type {
+  JoinColumn,
+  JoinRelation,
+  JoinSourceLayer,
+  JoinSpec,
+  SelectionLayerOptions,
+} from './join-layer';
+export { inlineRowsRelation } from './ingest';
 
 // Ingestion — the step between "a parquet on S3" and "a grid".
 export {
   describeSource,
+  gridColumnsFromSource,
   registerArrowSource,
   registerJsonSource,
   registerParquetSource,

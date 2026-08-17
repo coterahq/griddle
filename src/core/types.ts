@@ -438,6 +438,21 @@ export type DataGridProps<TRow> = {
   getRowId: (row: TRow) => DataGridRowId;
   viewModel: DataGridViewModel<TRow>;
   className?: string;
+  /**
+   * Inline style for the grid root, merged over the geometry custom properties
+   * the grid sets for itself.
+   *
+   * This is where a per-instance theme goes. `--dg-*` defaults are declared on
+   * `.cotera-griddle`, which the grid root carries, and a declaration on an
+   * element always beats a value inherited from an ancestor — so setting the
+   * tokens on a wrapper does nothing. Setting them here does, because an
+   * inline style beats every stylesheet rule.
+   *
+   * ```tsx
+   * <DataGrid style={{ '--dg-accent': '#b45309' } as React.CSSProperties} … />
+   * ```
+   */
+  style?: React.CSSProperties;
   hasMore?: boolean;
   isLoadingMore?: boolean;
   columnStats?:

@@ -1,3 +1,5 @@
+import { dataGridColumnTypeFromSqlType } from '../core/column-type';
+import type { DataGridColumn } from '../core/types';
 import { duckDbIdentifier, duckDbStringLiteral } from './sql';
 import type { DuckDbQuery } from './types';
 
@@ -72,6 +74,41 @@ const inlineLiteral = (value: unknown): string => {
 };
 
 /**
+ * An array of objects as a SQL relation expression, inline.
+ *
+ * `(SELECT * FROM (VALUES (…),(…)) AS dg_rows("a","b"))`, ready to sit after
+ * `FROM` or `JOIN`. No view, no registration, nothing async — which is what
+ * lets `createDuckDbDataSource` compile a `{ kind: 'rows' }` join
+ * synchronously, at construction, without needing to await a `CREATE VIEW`.
+ *
+ * Columns are the union of keys across every row, in first-seen order, so a
+ * ragged array keeps the fields only later rows carry.
+ *
+ * Sized for lookup tables. A few thousand rows is a large SQL string but a
+ * cheap query; a few hundred thousand belongs in `registerParquetSource` or a
+ * real view.
+ */
+export const inlineRowsRelation = (
+  rows: readonly unknown[],
+  alias = 'dg_rows'
+): string => {
+  const records = rows.map((row) => row as Record<string, unknown>);
+  const keys = [...new Set(records.flatMap((row) => Object.keys(row)))];
+  if (keys.length === 0 || records.length === 0) {
+    // `SELECT … WHERE false` rather than an empty VALUES list, which is a
+    // syntax error: an empty relation still needs a shape to select from.
+    return '(SELECT NULL AS dg_empty WHERE false)';
+  }
+  const values = records
+    .map((row) => `(${keys.map((key) => inlineLiteral(row[key])).join(', ')})`)
+    .join(', ');
+  return (
+    `(SELECT * FROM (VALUES ${values}) ` +
+    `AS ${duckDbIdentifier(alias)}(${keys.map(duckDbIdentifier).join(', ')}))`
+  );
+};
+
+/**
  * JSON, either fetched by DuckDB or handed over as an array.
  *
  * The `url` form is `read_json_auto`, which gets DuckDB's own schema
@@ -98,23 +135,9 @@ export const registerJsonSource = async (
     return identifier;
   }
 
-  const rows = options.rows.map((row) => row as Record<string, unknown>);
-  const keys = [...new Set(rows.flatMap((row) => Object.keys(row)))];
-  if (keys.length === 0 || rows.length === 0) {
-    // `SELECT … WHERE false` rather than an empty VALUES list, which is a
-    // syntax error: an empty source should still have a shape to select from.
-    await query(
-      `CREATE OR REPLACE VIEW ${identifier} AS SELECT NULL AS dg_empty WHERE false`
-    );
-    return identifier;
-  }
-
-  const values = rows
-    .map((row) => `(${keys.map((key) => inlineLiteral(row[key])).join(', ')})`)
-    .join(', ');
   await query(
-    `CREATE OR REPLACE VIEW ${identifier} AS SELECT * FROM (VALUES ${values}) ` +
-      `AS dg_rows(${keys.map(duckDbIdentifier).join(', ')})`
+    `CREATE OR REPLACE VIEW ${identifier} AS ` +
+      `SELECT * FROM ${inlineRowsRelation(options.rows)}`
   );
   return identifier;
 };
@@ -167,6 +190,26 @@ export const registerArrowSource = async (
  * friendlier headers or explicit grid types should still write the array —
  * this is for "point it at a parquet and show me".
  */
+/**
+ * Grid columns from a described schema.
+ *
+ * The other half of `describeSource`: that returns what the SQL builder needs,
+ * this returns what the view model needs, and together they are the whole of
+ * "point it at a parquet and show me". A caller who wants friendlier headers
+ * or an explicit type should write the array by hand instead.
+ */
+export const gridColumnsFromSource = <TRow = Record<string, unknown>>(
+  descriptors: readonly { id: string; sqlType: string | null }[]
+): DataGridColumn<TRow>[] =>
+  descriptors.map((descriptor) => ({
+    id: descriptor.id,
+    header: descriptor.id,
+    type: dataGridColumnTypeFromSqlType(descriptor.sqlType),
+    typeLabel: descriptor.sqlType ?? undefined,
+    getValue: (row: TRow) =>
+      (row as Record<string, unknown>)[descriptor.id] ?? null,
+  }));
+
 export const describeSource = async (
   query: DuckDbQuery,
   from: string

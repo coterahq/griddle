@@ -1,4 +1,25 @@
 export { LayerStack } from './stack';
+
+// Joins. Declarative on purpose: a join is a relation, a key and some
+// columns, and each adapter compiles that however it can. Nothing here knows
+// about SQL.
+export {
+  applyJoin,
+  applyJoins,
+  joinLayer,
+  joinedGridColumns,
+  joinsIn,
+  selectionLayer,
+} from './join';
+export type {
+  JoinColumn,
+  JoinRelation,
+  JoinSourceLayer,
+  JoinSpec,
+  ResolvedJoin,
+  ResolvedJoinColumn,
+  SelectionLayerOptions,
+} from './join';
 export type { ComposedPresentation } from './stack';
 export type {
   EnrichedColumn,

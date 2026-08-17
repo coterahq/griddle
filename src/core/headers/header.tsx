@@ -338,6 +338,7 @@ export function DataGridHeader<TRow>({
         open={displayOptionsOpen}
         onOpenChange={setDisplayOptionsOpen}
         columnLabel={label}
+        columnType={context.column.type}
         options={context.displayOptions ?? DEFAULT_DATA_GRID_DISPLAY_OPTIONS}
         onChange={context.commands.setDisplayOptions}
       />

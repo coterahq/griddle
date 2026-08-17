@@ -1,3 +1,4 @@
+import { isDevelopment } from '../internal/dev';
 import { createPatchableRowSource } from '../core/row-source';
 import type { PatchableRowSource } from '../core/row-source';
 import type {
@@ -36,6 +37,8 @@ export type GridController<TRow> = {
   };
   /** Re-run the current query from offset 0, keeping rows mounted meanwhile. */
   refresh: () => void;
+  /** What the source declared it can order by; `null` when it said nothing. */
+  sortableColumns: ReadonlySet<string> | null;
   dispose: () => void;
 };
 
@@ -130,10 +133,51 @@ export function createGridController<TRow>({
     return created;
   };
 
+  /**
+   * What the source says it can order by, or `null` for "anything".
+   *
+   * Read once: a capability is a property of the backend, not of the moment.
+   */
+  const sortable: ReadonlySet<string> | null = (() => {
+    const declared = source.sortableColumns?.();
+    return declared === undefined ? null : new Set(declared);
+  })();
+
+  const warnedSorts = new Set<string>();
+
+  /**
+   * Drops sorts the source cannot honour.
+   *
+   * Sending one anyway is worse than dropping it: an endpoint that ignores an
+   * unknown `sort` parameter returns its default order, the grid draws an
+   * arrow on the column, and the user reads a list they believe is sorted.
+   * Dropping it leaves the arrow off and the order honest.
+   */
+  const supportedSorts = (sorts: DataGridSort[]): DataGridSort[] => {
+    if (sortable === null) {
+      return sorts;
+    }
+    return sorts.filter((sort) => {
+      if (sortable.has(sort.columnId)) {
+        return true;
+      }
+      if (isDevelopment() && !warnedSorts.has(sort.columnId)) {
+        warnedSorts.add(sort.columnId);
+        console.warn(
+          `Column "${sort.columnId}" is not in this source's ` +
+            '`sortableColumns()`, so the sort was dropped rather than sent and ' +
+            'silently ignored. Mark the column `sortable: false` to stop the ' +
+            'grid offering it.'
+        );
+      }
+      return false;
+    });
+  };
+
   const query = (offset: number, signal: AbortSignal): GridQuery => ({
     offset,
     limit: pageSize,
-    sorts: viewModel.sorts.snapshot(),
+    sorts: supportedSorts(viewModel.sorts.snapshot()),
     filters: viewModel.filters.snapshot(),
     signal,
   });
@@ -364,6 +408,36 @@ export function createGridController<TRow>({
     get: (columnId) => statsStoreFor(columnId),
   };
 
+  /*
+   * Fold the capability into the columns, so the header stops offering a sort
+   * the source cannot perform.
+   *
+   * Intersected, never widened: a column the caller marked `sortable: false`
+   * stays that way regardless of what the source can do. The capability can
+   * only take a sort away.
+   */
+  const applySortCapability = (): void => {
+    if (sortable === null) {
+      return;
+    }
+    const columns = viewModel.columns.snapshot();
+    let changed = false;
+    const next = columns.map((column) => {
+      const allowed = sortable.has(column.id);
+      if (!allowed && column.sortable !== false) {
+        changed = true;
+        return { ...column, sortable: false };
+      }
+      return column;
+    });
+    if (changed) {
+      viewModel.columns.set(next);
+    }
+  };
+
+  applySortCapability();
+  const unsubscribeColumns = viewModel.columns.subscribe(applySortCapability);
+
   loadFirstPage();
 
   return {
@@ -377,6 +451,7 @@ export function createGridController<TRow>({
       onHeaderStatsVisible,
     },
     refresh: loadFirstPage,
+    sortableColumns: sortable,
     dispose: () => {
       disposed = true;
       inFlight?.abort();
@@ -385,6 +460,7 @@ export function createGridController<TRow>({
       }
       unsubscribeSorts();
       unsubscribeFilters();
+      unsubscribeColumns();
     },
   };
 }

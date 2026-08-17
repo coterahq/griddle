@@ -1,149 +1,91 @@
+import { joinsIn } from '../source/layers/join';
+import type { ResolvedJoin } from '../source/layers/join';
+import type { GridSourceLayer } from '../source/layers/types';
 import type { SqlProjectedColumn, SqlSourceLayer } from '../source/layers/sql';
+import { inlineRowsRelation } from './ingest';
 import { duckDbIdentifier } from './sql';
 
-export type JoinLayerOptions = {
-  /** Stable and unique within the stack; drives alias minting. */
-  id: string;
-  /** Table name, `read_parquet('…')`, or any expression valid after `JOIN`. */
-  from: string;
-  /**
-   * The join key.
-   *
-   * A string means the same column name on both sides. `{ left, right }` when
-   * they differ — `left` is the base source's column, `right` is the joined
-   * one's.
-   */
-  on: string | { left: string; right: string };
-  /**
-   * Columns to bring across.
-   *
-   * A string takes the column under its own name; `{ name, as }` renames it,
-   * which is how two joins that both have a `name` column coexist.
-   */
-  columns: readonly (
-    string | { name: string; as?: string; sqlType?: string }
-  )[];
-  /** `LEFT` keeps unmatched base rows, which is almost always what you want. */
-  kind?: 'LEFT' | 'INNER';
-};
+/*
+ * `joinLayer` and `selectionLayer` live in core and are re-exported here,
+ * because this is where somebody looks for them. Neither knows anything about
+ * SQL: a join is a declaration, and compiling it is this file's job.
+ */
+export { joinLayer, selectionLayer } from '../source/layers/join';
+export type {
+  JoinColumn,
+  JoinRelation,
+  JoinSourceLayer,
+  JoinSpec,
+  SelectionLayerOptions,
+} from '../source/layers/join';
 
-const normaliseColumn = (
-  column: JoinLayerOptions['columns'][number]
-): { name: string; as: string; sqlType: string | null } =>
-  typeof column === 'string'
-    ? { name: column, as: column, sqlType: null }
-    : {
-        name: column.name,
-        as: column.as ?? column.name,
-        sqlType: column.sqlType ?? null,
-      };
+/** The right-hand side of a join as an expression valid after `JOIN`. */
+const relationSql = (join: ResolvedJoin): string =>
+  join.relation.kind === 'sql'
+    ? join.relation.expression
+    : // Inline, so a `{ kind: 'rows' }` join needs no `CREATE VIEW` and no
+      // `await` — the same layer object works on this adapter and on
+      // `/memory`, which is the entire point of the relation being declarative.
+      inlineRowsRelation(
+        typeof join.relation.rows === 'function'
+          ? join.relation.rows()
+          : join.relation.rows
+      );
 
 /**
- * Joins another source into the grid.
+ * A declared join, compiled into a `project` layer.
  *
- * This is the headline feature, and it is a thin convenience over `project`
- * for a reason: a hand-written projection can do everything this does and
- * more, but nobody should have to write a JOIN fragment and mint aliases to
- * put a user's name next to their order.
- *
- * ```ts
- * createDuckDbDataSource({
- *   query,
- *   from: orders,
- *   columns: ORDER_COLUMNS,
- *   layers: [
- *     joinLayer({ id: 'user', from: users, on: 'user_id', columns: ['name', 'email'] }),
- *     joinLayer({ id: 'flags', from: flags, on: 'order_id', columns: ['is_flagged'] }),
- *   ],
- * });
- * ```
- *
- * Sorting by `name` or filtering on `is_flagged` then issues **one** DuckDB
- * query across all three sources and returns the right rows — not the right
- * rows out of the page that happened to be loaded. That is the difference
- * between this and `enrich`, and it is why joined columns are ordinary,
- * sortable, filterable grid columns while enriched ones are not.
- *
- * The parquet can be on S3, the users a JSON API's response inserted as a
- * table, the flags an in-memory array. DuckDB does not care which, and neither
- * does the grid.
+ * The projection becomes part of the page query, so the grid's own `WHERE` and
+ * `ORDER BY` reach the joined columns exactly like native ones. That is what
+ * makes sorting by a joined column return the right rows out of the whole
+ * result instead of the right rows out of the loaded page.
  */
-export function joinLayer<TRow>({
-  id,
-  from,
-  on,
-  columns,
-  kind = 'LEFT',
-}: JoinLayerOptions): SqlSourceLayer<TRow> {
-  const key = typeof on === 'string' ? { left: on, right: on } : on;
-  const resolved = columns.map(normaliseColumn);
+export const compileJoinToSqlLayer = <TRow>(
+  join: ResolvedJoin
+): SqlSourceLayer<TRow> => ({
+  id: join.id,
+  project: ({ baseAlias, alias }) => {
+    // Minted from the layer's position in the stack, so two joins against the
+    // same table do not collide.
+    const joined = alias(`join_${join.id}`);
+    const projected: SqlProjectedColumn[] = join.columns.map((column) => ({
+      name: column.as,
+      type: column.sqlType,
+    }));
 
-  return {
-    id,
-    project: ({ baseAlias, alias }) => {
-      // `alias` is minted from the layer's position in the stack, so two joins
-      // against the same table do not collide.
-      const joined = alias(`join_${id}`);
-      const projected: SqlProjectedColumn[] = resolved.map((column) => ({
-        name: column.as,
-        type: column.sqlType,
-      }));
-
-      return {
-        selectExpressions: resolved.map(
-          (column) =>
-            `${joined}.${duckDbIdentifier(column.name)} AS ${duckDbIdentifier(
-              column.as
-            )}`
-        ),
-        // The base side must be qualified with `baseAlias`: an unqualified
-        // name would be ambiguous the moment the joined table has one too.
-        joins: [
-          `${kind} JOIN ${from} AS ${joined} ON ${joined}.${duckDbIdentifier(
-            key.right
-          )} = ${baseAlias}.${duckDbIdentifier(key.left)}`,
-        ],
-        columns: projected,
-      };
-    },
-  };
-}
-
-export type SelectionLayerOptions<TRow> = {
-  id?: string;
-  /** Rendered in the leading column. Given the row and its id. */
-  render: (input: { row: TRow; rowId: string | number }) => React.ReactNode;
-  width?: number;
-};
-
-/**
- * A `present`-only layer contributing one leading column.
- *
- * Exists mostly as the worked example of the slot: it touches no SQL, so it
- * composes with an HTTP or in-memory source exactly as it does with DuckDB.
- * The rendering is the caller's — a checkbox, a drag handle, a row menu — so
- * this stays a layout concern rather than becoming a selection framework.
- */
-export function selectionLayer<TRow>({
-  id = 'selection',
-  render,
-  width = 44,
-}: SelectionLayerOptions<TRow>): SqlSourceLayer<TRow> {
-  return {
-    id,
-    present: ({ getRowId }) => ({
-      columns: [
-        {
-          id,
-          header: '',
-          width,
-          pinned: 'left',
-          sortable: false,
-          filterable: false,
-          getValue: () => null,
-          renderCell: ({ row }) => render({ row, rowId: getRowId(row) }),
-        },
+    return {
+      selectExpressions: join.columns.map(
+        (column) =>
+          `${joined}.${duckDbIdentifier(column.name)} AS ${duckDbIdentifier(
+            column.as
+          )}`
+      ),
+      // The base side is qualified with `baseAlias`: an unqualified name would
+      // be ambiguous the moment the joined relation has one of its own.
+      joins: [
+        `${join.kind} JOIN ${relationSql(join)} AS ${joined} ` +
+          `ON ${joined}.${duckDbIdentifier(join.key.right)} = ` +
+          `${baseAlias}.${duckDbIdentifier(join.key.left)}`,
       ],
-    }),
-  };
-}
+      columns: projected,
+    };
+  },
+});
+
+/**
+ * Normalises a mixed layer stack into one the SQL stack understands.
+ *
+ * Declared joins are compiled; hand-written `project` / `mutate` layers pass
+ * through untouched; `present` and `enrich` layers are engine-agnostic and
+ * also pass through.
+ */
+export const toSqlLayers = <TRow>(
+  layers: readonly GridSourceLayer<TRow>[]
+): SqlSourceLayer<TRow>[] => {
+  const compiled = new Map(
+    joinsIn(layers).map((join) => [join.id, compileJoinToSqlLayer<TRow>(join)])
+  );
+  return layers.map(
+    (layer) => compiled.get(layer.id) ?? (layer as SqlSourceLayer<TRow>)
+  );
+};

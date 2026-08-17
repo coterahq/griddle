@@ -100,7 +100,7 @@ export function Tooltip({
             align={alignFor(side)}
             sideOffset={4}
             className={cn(
-              'z-50 w-fit rounded-md border border-(color:--dg-border) bg-(--dg-bg) p-2 text-sm shadow-md outline-hidden',
+              'z-50 w-fit rounded-md border border-(color:--dg-border) bg-(--dg-bg) p-2 text-sm text-(color:--dg-fg) shadow-md outline-hidden',
               className
             )}
           >

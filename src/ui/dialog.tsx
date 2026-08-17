@@ -19,7 +19,7 @@ export function DialogContent({
         <DialogPrimitive.Content
           className={cn(
             'fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2',
-            'rounded-md border border-(color:--dg-border) bg-(--dg-bg) p-4 shadow-lg outline-hidden',
+            'rounded-md border border-(color:--dg-border) bg-(--dg-bg) p-4 text-(color:--dg-fg) shadow-lg outline-hidden',
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0',
             className
           )}

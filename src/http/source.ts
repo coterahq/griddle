@@ -64,6 +64,18 @@ export type CreateHttpDataSourceOptions<TRow> = {
    */
   parseTotal?: (response: Response, body: unknown) => number | null;
 
+  /**
+   * Column ids the endpoint can order by.
+   *
+   * Worth declaring. Most APIs accept a fixed set of sort fields and ignore
+   * anything else, which means the grid draws a sort arrow, the backend
+   * returns its default order, and the user reads a list they believe is
+   * sorted. Declaring the set makes the grid stop offering the others.
+   *
+   * Omit it only if the endpoint really can sort by every column.
+   */
+  sortableColumns?: readonly string[];
+
   /** Column stats, if the endpoint can produce them. */
   loadColumnStats?: (input: {
     columnId: string;
@@ -123,6 +135,7 @@ export function createHttpDataSource<TRow>({
   parseResponse,
   fetch: fetchImpl,
   parseTotal,
+  sortableColumns,
   loadColumnStats,
 }: CreateHttpDataSourceOptions<TRow>): GridDataSource<TRow> {
   const doFetch = fetchImpl ?? globalThis.fetch.bind(globalThis);
@@ -217,6 +230,10 @@ export function createHttpDataSource<TRow>({
 
   if (loadColumnStats !== undefined) {
     source.loadColumnStats = loadColumnStats;
+  }
+
+  if (sortableColumns !== undefined) {
+    source.sortableColumns = () => sortableColumns;
   }
 
   return source;

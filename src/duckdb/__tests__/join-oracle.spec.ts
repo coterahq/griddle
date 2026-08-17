@@ -526,3 +526,181 @@ describe('row-for-row agreement with /memory', () => {
     );
   });
 });
+
+/**
+ * The same `joinLayer` object, on both adapters, giving the same answer.
+ *
+ * This is the test that makes "a join is a declaration, not a SQL feature"
+ * true rather than aspirational. One layer array is built once and handed to
+ * `createDuckDbDataSource` and `createMemoryDataSource` without modification;
+ * if the two ever disagree about what a join means, this fails.
+ */
+describe('one join spec, two adapters', () => {
+  type Flat = OrderRow & {
+    user_name: string | null;
+    is_flagged: boolean | null;
+  };
+
+  const LAYERS = [
+    joinLayer<Flat>({
+      id: 'user',
+      from: { kind: 'rows', rows: USERS },
+      on: 'user_id',
+      columns: ['user_name'],
+    }),
+    joinLayer<Flat>({
+      id: 'flags',
+      from: { kind: 'rows', rows: FLAGS },
+      on: { left: 'id', right: 'order_id' },
+      columns: [{ name: 'is_flagged', sqlType: 'BOOLEAN', type: 'boolean' }],
+    }),
+  ];
+
+  const MEMORY_BASE: DataGridColumn<Flat>[] = [
+    { id: 'id', header: 'Id', type: 'number', getValue: (row) => row.id },
+    {
+      id: 'region',
+      header: 'Region',
+      type: 'text',
+      getValue: (row) => row.region,
+    },
+    {
+      id: 'total',
+      header: 'Total',
+      type: 'number',
+      getValue: (row) => row.total,
+    },
+  ];
+
+  const memoryIds = async (
+    sorts: DataGridSort[],
+    filters: DataGridFilter[]
+  ): Promise<number[]> => {
+    const source = createMemoryDataSource<Flat>({
+      rows: ORDERS as Flat[],
+      columns: MEMORY_BASE,
+      layers: LAYERS,
+    });
+    const result = await source.loadPage({
+      offset: 0,
+      limit: 100,
+      sorts,
+      filters,
+    });
+    return result.rows.map((row) => row.id);
+  };
+
+  const duckIds = async (
+    sorts: DataGridSort[],
+    filters: DataGridFilter[]
+  ): Promise<number[]> => {
+    const duck = createDuckDbDataSource<Flat>({
+      query,
+      from: 'orders',
+      columns: COLUMNS,
+      defaultOrderBy: 'id',
+      layers: LAYERS,
+    });
+    const result = await duck.loadPage({
+      offset: 0,
+      limit: 100,
+      sorts,
+      filters,
+    });
+    // No coercion: `fromArrowValue` has already turned the BIGINT into a
+    // number by the time a row leaves the adapter, which is the point of it.
+    return result.rows.map((row) => row.id);
+  };
+
+  const cases: [string, DataGridSort[], DataGridFilter[]][] = [
+    [
+      'sorting by a joined column',
+      [
+        { columnId: 'user_name', direction: 'asc' },
+        { columnId: 'id', direction: 'asc' },
+      ],
+      [],
+    ],
+    [
+      'sorting by a joined column, descending',
+      [
+        { columnId: 'user_name', direction: 'desc' },
+        { columnId: 'id', direction: 'asc' },
+      ],
+      [],
+    ],
+    [
+      'filtering on a joined column',
+      [{ columnId: 'id', direction: 'asc' }],
+      [
+        {
+          columnId: 'user_name',
+          value: { kind: 'in', values: ['ada', 'grace'] },
+        },
+      ],
+    ],
+    [
+      'filtering on one join and sorting by another source',
+      [
+        { columnId: 'total', direction: 'desc' },
+        { columnId: 'id', direction: 'asc' },
+      ],
+      [
+        {
+          columnId: 'is_flagged',
+          value: { kind: 'compare', comparison: 'equals', value: true },
+        },
+      ],
+    ],
+    [
+      'a substring filter on a joined column',
+      [{ columnId: 'id', direction: 'asc' }],
+      [{ columnId: 'user_name', value: 'a' }],
+    ],
+  ];
+
+  it.each(cases)('agrees on %s', async (_label, sorts, filters) => {
+    const [memory, duck] = await Promise.all([
+      memoryIds(sorts, filters),
+      duckIds(sorts, filters),
+    ]);
+    expect(memory).toMatchObject(duck);
+  });
+
+  it('brings the joined values across identically', async () => {
+    const sorts: DataGridSort[] = [{ columnId: 'id', direction: 'asc' }];
+    const memory = createMemoryDataSource<Flat>({
+      rows: ORDERS as Flat[],
+      columns: MEMORY_BASE,
+      layers: LAYERS,
+    });
+    const duck = createDuckDbDataSource<Flat>({
+      query,
+      from: 'orders',
+      columns: COLUMNS,
+      layers: LAYERS,
+    });
+
+    const fromMemory = await memory.loadPage({
+      offset: 0,
+      limit: 100,
+      sorts,
+      filters: [],
+    });
+    const fromDuck = await duck.loadPage({
+      offset: 0,
+      limit: 100,
+      sorts,
+      filters: [],
+    });
+
+    const shape = (rows: Flat[]) =>
+      rows.map((row) => ({
+        id: row.id,
+        user_name: row.user_name,
+        is_flagged: row.is_flagged,
+      }));
+
+    expect(shape(fromMemory.rows)).toMatchObject(shape(fromDuck.rows));
+  });
+});

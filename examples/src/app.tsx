@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { CsvDemo } from './demos/csv';
 import { MemoryDemo } from './demos/memory';
+import { ParquetDemo } from './demos/parquet';
 import { HttpDemo } from './demos/http';
 import { OverridesDemo } from './demos/overrides';
 import { ThemingDemo } from './demos/theming';
@@ -17,11 +19,27 @@ import lightHref from '../../dist/themes/light.css?url';
 import darkHref from '../../dist/themes/dark.css?url';
 
 type DemoId =
-  'three-sources' | 'memory' | 'http' | 'duckdb' | 'theming' | 'overrides';
+  | 'parquet'
+  | 'csv'
+  | 'three-sources'
+  | 'memory'
+  | 'http'
+  | 'theming'
+  | 'overrides';
 type Scheme = 'light' | 'dark';
 
+/*
+ * Order is the argument.
+ *
+ * One parquet file first, because "point it at a file, get a working grid" is
+ * the smallest true thing this library does and the fastest to understand. The
+ * cross-source join is the interesting claim, but it lands better once you have
+ * already seen the simple case work.
+ */
 const DEMOS: { id: DemoId; label: string; render: () => React.ReactElement }[] =
   [
+    { id: 'parquet', label: 'A parquet file', render: () => <ParquetDemo /> },
+    { id: 'csv', label: 'Any CSV', render: () => <CsvDemo /> },
     {
       id: 'three-sources',
       label: 'Three sources',
@@ -54,7 +72,7 @@ export function App(): React.ReactElement {
     fromQuery(
       'demo',
       DEMOS.map((entry) => entry.id),
-      'three-sources'
+      'parquet'
     )
   );
   const [scheme, setScheme] = React.useState<Scheme>(() =>

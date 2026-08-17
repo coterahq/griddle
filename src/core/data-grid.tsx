@@ -695,6 +695,7 @@ export function DataGrid<TRow>({
   getRowId,
   viewModel,
   className,
+  style,
   hasMore: hasMoreProp,
   isLoadingMore: isLoadingMoreProp = false,
   columnStats: columnStatsProp,
@@ -1481,7 +1482,13 @@ export function DataGrid<TRow>({
         //
         // No border of its own: the grid fills whatever hosts it, and that host
         // draws the edge — an edge here would only double the host's.
-        'flex h-full min-h-0 w-full flex-col overflow-hidden rounded-md bg-(--dg-bg) outline-none focus:ring-2 focus:ring-(color:--dg-focus-ring-soft)',
+        // `text-` as well as `bg-`. Without it the grid paints its own
+        // background and inherits the *page's* text colour, so a dark theme on
+        // a light page renders dark text on a dark grid. It looked fine for a
+        // long time only because the demo flipped the page and the grid
+        // together; the theme playground, which moves one without the other,
+        // is what exposed it.
+        'flex h-full min-h-0 w-full flex-col overflow-hidden rounded-md bg-(--dg-bg) text-(color:--dg-fg) outline-none focus:ring-2 focus:ring-(color:--dg-focus-ring-soft)',
         className
       )}
       // Geometry stays in TypeScript because the virtualizer does arithmetic on
@@ -1489,12 +1496,15 @@ export function DataGrid<TRow>({
       // rows exist. Mirrored onto the root so a theme's own decorations can line
       // up with the rows without hard-coding the same numbers a second time.
       // `styles/grid.css` declares the defaults; these are the resolved values.
+      // The caller's style comes last, so a per-instance theme can override
+      // anything here — including the geometry mirrors, if it wants to.
       style={
         {
           '--dg-row-height': `${rowHeight}px`,
           '--dg-header-height': `${headerHeight}px`,
           '--dg-row-number-width': `${layout.rowNumber.width}px`,
           '--dg-column-width': `${DATA_GRID_DEFAULT_COLUMN_WIDTH}px`,
+          ...style,
         } as React.CSSProperties
       }
       onKeyDown={handleKeyDown}

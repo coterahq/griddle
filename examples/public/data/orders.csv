@@ -1,0 +1,2501 @@
+order_id,user_id,status,region,channel,total,items,note,placed_at
+114352,1213,fulfilled,APAC,phone,2172.57,10,priority handling requested,2024-01-03
+106640,1314,pending,LATAM,retail,622.06,7,priority handling requested,2024-09-19
+109676,1332,cancelled,NA,retail,1770.17,5,priority handling requested,2024-10-26
+119029,1089,refunded,NA,phone,1438.31,5,,2024-01-10
+109838,1335,fulfilled,LATAM,phone,1173.12,28,,2025-04-28
+112444,1124,fulfilled,LATAM,partner,2017.98,1,priority handling requested,2024-12-29
+108754,1063,fulfilled,LATAM,phone,545.13,27,priority handling requested,2024-05-02
+101021,1205,cancelled,LATAM,phone,114.63,4,,2024-03-26
+108298,1329,pending,LATAM,web,2371.73,3,priority handling requested,2024-07-30
+106279,1129,refunded,EMEA,partner,806.32,5,priority handling requested,2025-04-13
+106746,1395,fulfilled,EMEA,web,1741.73,30,priority handling requested,2024-10-02
+114621,1133,cancelled,LATAM,web,1059.03,10,priority handling requested,2024-01-06
+101782,1262,refunded,EMEA,retail,1860.16,14,priority handling requested,2024-03-31
+107155,1051,fulfilled,EMEA,partner,769.91,10,priority handling requested,2024-01-09
+103803,1186,cancelled,NA,retail,1617.59,11,priority handling requested,2024-10-01
+109626,1149,refunded,APAC,phone,1283.53,1,priority handling requested,2024-09-16
+105718,1259,cancelled,LATAM,retail,1822.9,5,priority handling requested,2025-02-02
+110307,1269,refunded,NA,partner,350.86,7,priority handling requested,2024-11-18
+114979,1061,fulfilled,LATAM,retail,2288.8,29,priority handling requested,2024-08-02
+117251,1004,pending,NA,partner,1548.08,15,priority handling requested,2024-11-07
+104456,1370,cancelled,LATAM,partner,2010.28,28,priority handling requested,2024-12-31
+101314,1029,pending,NA,phone,1399.38,6,priority handling requested,2024-05-16
+116030,1226,pending,EMEA,web,982.03,15,priority handling requested,2024-09-23
+106432,1371,fulfilled,APAC,retail,1050.35,25,priority handling requested,2024-09-18
+100800,1095,fulfilled,EMEA,retail,2381.22,15,priority handling requested,2025-03-23
+113034,1034,fulfilled,NA,retail,866.01,2,priority handling requested,2024-07-14
+114030,1366,pending,EMEA,phone,394.96,30,,2024-09-11
+102785,1329,refunded,LATAM,phone,2282.97,24,priority handling requested,2025-06-09
+108257,1312,cancelled,APAC,retail,1204.87,14,priority handling requested,2024-02-15
+115424,1157,fulfilled,APAC,phone,1834.65,20,priority handling requested,2024-02-27
+116345,1204,cancelled,APAC,retail,1682.38,22,priority handling requested,2025-03-05
+110154,1117,pending,EMEA,partner,261.13,27,,2024-11-24
+100887,1273,fulfilled,APAC,web,544.24,18,priority handling requested,2025-03-02
+103226,1072,fulfilled,NA,partner,1512.93,22,,2024-09-16
+113167,1297,refunded,EMEA,partner,1278.57,23,priority handling requested,2024-10-02
+107963,1123,refunded,LATAM,partner,1630.48,1,priority handling requested,2024-10-02
+106324,1174,fulfilled,EMEA,retail,981.69,1,priority handling requested,2025-06-13
+118553,1358,cancelled,EMEA,retail,402.24,9,priority handling requested,2025-05-24
+110840,1037,cancelled,APAC,retail,2037.47,26,priority handling requested,2024-10-09
+111852,1120,refunded,APAC,partner,2456.33,5,priority handling requested,2025-02-06
+118433,1180,cancelled,LATAM,partner,917.53,28,,2025-03-29
+100997,1288,pending,APAC,partner,1416.94,25,priority handling requested,2025-05-25
+100254,1397,cancelled,EMEA,web,2440.67,26,priority handling requested,2024-11-13
+110107,1153,refunded,EMEA,web,141.6,5,priority handling requested,2024-04-16
+108150,1390,refunded,APAC,phone,2207.93,5,priority handling requested,2024-02-16
+107496,1033,cancelled,EMEA,phone,2269.65,29,,2025-03-24
+116183,1199,refunded,NA,web,2344.28,24,priority handling requested,2024-04-29
+102030,1313,fulfilled,LATAM,partner,1996.96,5,priority handling requested,2024-06-08
+103328,1296,refunded,EMEA,retail,2358.14,21,priority handling requested,2025-05-07
+102704,1305,fulfilled,APAC,phone,2010.23,18,priority handling requested,2024-04-11
+115695,1135,refunded,LATAM,web,930.04,7,priority handling requested,2024-07-06
+111930,1197,cancelled,LATAM,retail,1183.88,18,priority handling requested,2024-05-10
+100244,1156,cancelled,NA,phone,2149.91,12,priority handling requested,2024-08-14
+117474,1248,pending,LATAM,phone,1594.14,26,priority handling requested,2024-02-16
+119292,1243,refunded,NA,web,897.71,16,priority handling requested,2025-03-21
+100542,1227,refunded,NA,phone,1448.12,21,priority handling requested,2024-09-26
+100037,1387,fulfilled,LATAM,retail,1157.18,10,priority handling requested,2024-01-24
+101588,1048,cancelled,NA,phone,1509.85,28,priority handling requested,2025-01-07
+100347,1312,fulfilled,EMEA,partner,2039.58,29,priority handling requested,2024-02-10
+101028,1184,fulfilled,EMEA,phone,1445.09,22,priority handling requested,2024-10-26
+109419,1275,pending,NA,web,2084.76,21,priority handling requested,2024-08-04
+109833,1223,pending,NA,web,189.85,19,priority handling requested,2024-05-01
+105182,1366,cancelled,APAC,web,800.33,26,priority handling requested,2024-01-19
+101694,1036,fulfilled,EMEA,phone,1136.47,25,,2025-02-10
+119908,1292,fulfilled,NA,web,1680.94,22,priority handling requested,2025-03-20
+100442,1036,cancelled,NA,web,949.64,2,priority handling requested,2025-05-02
+105641,1111,refunded,LATAM,partner,310.49,21,priority handling requested,2024-09-08
+111972,1086,refunded,EMEA,retail,224.41,11,priority handling requested,2025-04-06
+113051,1301,pending,NA,partner,1366.42,3,priority handling requested,2024-08-26
+106032,1114,pending,EMEA,web,1104.15,17,,2024-06-01
+109856,1150,pending,EMEA,web,559.67,9,priority handling requested,2025-05-29
+112685,1353,cancelled,EMEA,retail,1537.42,12,priority handling requested,2024-07-28
+105617,1021,pending,LATAM,web,2406.17,17,priority handling requested,2024-03-29
+117175,1117,refunded,APAC,retail,2029.52,7,priority handling requested,2025-01-02
+119597,1350,refunded,LATAM,phone,647.01,2,priority handling requested,2024-02-14
+110932,1265,refunded,NA,retail,2383.33,2,priority handling requested,2024-03-31
+119242,1273,fulfilled,APAC,web,15.09,6,,2024-03-26
+119630,1058,cancelled,APAC,web,1781.61,14,,2024-09-12
+119015,1192,refunded,NA,phone,729.05,6,priority handling requested,2024-04-19
+107975,1062,refunded,LATAM,web,582.74,27,priority handling requested,2024-10-01
+108921,1329,fulfilled,LATAM,phone,1840.62,22,priority handling requested,2024-01-09
+106366,1105,fulfilled,NA,web,1023.3,19,priority handling requested,2025-05-28
+111617,1056,refunded,NA,phone,1543.19,26,priority handling requested,2024-04-05
+115336,1144,refunded,EMEA,partner,2188.08,18,,2024-05-02
+101391,1027,cancelled,APAC,retail,1139.43,12,priority handling requested,2024-10-17
+106060,1134,fulfilled,EMEA,web,1235.99,26,priority handling requested,2024-03-06
+112573,1364,fulfilled,LATAM,phone,238.75,20,priority handling requested,2024-12-30
+110859,1267,fulfilled,NA,partner,2252.21,29,priority handling requested,2025-04-08
+112294,1165,cancelled,EMEA,retail,1130.51,4,priority handling requested,2024-03-06
+104100,1085,pending,LATAM,partner,983.29,30,priority handling requested,2024-06-09
+103419,1217,fulfilled,LATAM,phone,2061.13,19,,2024-03-20
+106546,1388,pending,EMEA,web,1967.55,3,,2025-04-12
+119524,1345,pending,APAC,phone,1025.2,14,priority handling requested,2024-07-20
+104118,1141,refunded,APAC,web,574.33,16,priority handling requested,2024-05-23
+114424,1272,refunded,EMEA,phone,675.85,17,priority handling requested,2024-11-21
+111059,1073,pending,NA,partner,689.51,19,priority handling requested,2024-02-11
+111101,1223,pending,LATAM,phone,1427.49,7,priority handling requested,2024-09-03
+118799,1369,refunded,EMEA,retail,1552.8,13,priority handling requested,2024-04-22
+106457,1379,refunded,EMEA,retail,1736.0,19,priority handling requested,2024-06-08
+101758,1074,refunded,NA,phone,711.4,20,priority handling requested,2024-08-10
+117838,1343,pending,LATAM,retail,1570.56,3,priority handling requested,2024-08-07
+118853,1397,pending,LATAM,partner,219.19,17,priority handling requested,2025-02-28
+115689,1082,refunded,LATAM,retail,2088.65,2,priority handling requested,2025-02-06
+110189,1300,pending,NA,phone,2104.67,23,priority handling requested,2024-03-27
+108294,1068,fulfilled,NA,partner,2222.84,26,priority handling requested,2025-03-02
+104703,1209,cancelled,NA,partner,1909.89,20,,2025-05-22
+115737,1193,refunded,APAC,web,108.92,14,priority handling requested,2024-09-17
+108200,1379,fulfilled,NA,retail,1582.48,22,priority handling requested,2025-03-02
+107801,1391,refunded,APAC,retail,931.24,7,,2024-01-03
+113285,1202,pending,LATAM,retail,1981.17,20,priority handling requested,2025-03-13
+118267,1215,cancelled,LATAM,partner,2388.35,5,priority handling requested,2024-06-14
+106088,1086,refunded,APAC,retail,1757.39,15,priority handling requested,2024-04-29
+113166,1265,refunded,NA,phone,344.59,13,priority handling requested,2024-02-07
+106343,1046,pending,EMEA,partner,882.94,24,priority handling requested,2024-02-16
+101981,1182,pending,NA,partner,1388.51,19,priority handling requested,2024-06-12
+115535,1080,fulfilled,LATAM,partner,1423.84,27,priority handling requested,2024-01-20
+108116,1093,fulfilled,EMEA,retail,709.63,22,priority handling requested,2024-02-06
+106592,1245,pending,EMEA,partner,1362.89,19,,2025-03-16
+104680,1303,pending,APAC,retail,2284.25,2,priority handling requested,2024-07-01
+115380,1113,refunded,APAC,web,2383.32,13,priority handling requested,2024-07-03
+110852,1177,refunded,APAC,web,1506.69,22,priority handling requested,2024-01-29
+114081,1091,cancelled,NA,retail,311.87,2,priority handling requested,2024-04-22
+109726,1132,pending,APAC,web,727.58,1,priority handling requested,2024-01-30
+110374,1168,refunded,EMEA,partner,490.09,5,priority handling requested,2024-02-17
+107338,1347,refunded,APAC,partner,893.17,15,priority handling requested,2024-07-23
+112474,1129,fulfilled,APAC,retail,1442.09,4,priority handling requested,2024-11-29
+101934,1279,fulfilled,APAC,retail,2434.25,30,priority handling requested,2024-01-19
+113209,1236,fulfilled,LATAM,retail,611.01,27,priority handling requested,2025-06-13
+106319,1294,cancelled,NA,web,775.68,19,priority handling requested,2025-01-05
+106876,1024,refunded,EMEA,phone,112.91,2,priority handling requested,2024-10-08
+111414,1307,cancelled,EMEA,phone,1955.15,15,priority handling requested,2025-01-16
+107322,1163,cancelled,EMEA,web,1139.02,6,priority handling requested,2024-06-12
+114010,1188,refunded,LATAM,web,2048.92,16,priority handling requested,2024-10-24
+105379,1355,cancelled,NA,retail,2271.5,24,priority handling requested,2024-01-01
+100306,1381,cancelled,EMEA,partner,1302.96,10,priority handling requested,2025-06-22
+119692,1078,pending,EMEA,web,360.94,27,,2024-11-27
+109114,1022,fulfilled,EMEA,phone,273.93,26,,2024-11-30
+106386,1025,cancelled,EMEA,retail,488.62,15,priority handling requested,2025-03-29
+108509,1151,pending,LATAM,web,1770.38,4,,2025-06-13
+107764,1176,pending,EMEA,phone,1523.6,7,priority handling requested,2024-04-07
+104940,1149,refunded,NA,web,725.13,2,priority handling requested,2025-04-19
+112338,1001,pending,LATAM,retail,2354.0,25,priority handling requested,2024-11-10
+107231,1108,pending,LATAM,web,1974.55,29,priority handling requested,2024-11-14
+115885,1248,refunded,NA,retail,987.66,8,priority handling requested,2025-04-04
+100837,1099,refunded,EMEA,phone,1098.7,27,,2025-03-12
+109386,1125,cancelled,APAC,web,1123.04,5,priority handling requested,2024-03-14
+107087,1056,refunded,APAC,partner,2314.19,17,priority handling requested,2024-05-10
+101078,1332,pending,APAC,retail,393.7,13,priority handling requested,2025-06-14
+116141,1261,fulfilled,NA,phone,667.29,9,priority handling requested,2024-02-12
+107822,1387,refunded,EMEA,web,91.72,30,priority handling requested,2025-06-21
+115476,1237,pending,EMEA,web,2250.38,30,priority handling requested,2024-05-02
+112172,1178,pending,EMEA,phone,186.93,2,,2024-07-29
+109110,1322,fulfilled,NA,phone,65.62,6,priority handling requested,2024-06-21
+118101,1259,refunded,LATAM,phone,2215.38,1,,2024-09-09
+114853,1160,fulfilled,LATAM,partner,905.28,30,,2024-11-26
+100143,1003,pending,APAC,web,1386.82,3,priority handling requested,2025-03-30
+119659,1112,cancelled,NA,retail,2373.98,30,,2024-09-13
+106732,1065,fulfilled,NA,web,1887.77,16,,2024-07-03
+119102,1130,fulfilled,NA,phone,1595.33,13,priority handling requested,2024-07-20
+101003,1212,refunded,LATAM,phone,1159.54,6,,2024-01-17
+104756,1242,fulfilled,EMEA,partner,2287.84,13,,2024-04-24
+114863,1010,cancelled,EMEA,retail,2108.55,20,priority handling requested,2025-05-28
+118964,1332,refunded,NA,partner,805.23,15,priority handling requested,2024-03-01
+100912,1253,refunded,APAC,phone,1715.63,13,priority handling requested,2025-03-18
+113356,1152,fulfilled,EMEA,partner,1387.05,7,priority handling requested,2024-01-11
+114677,1299,fulfilled,EMEA,retail,474.84,5,priority handling requested,2024-12-25
+101127,1331,refunded,APAC,phone,185.77,5,priority handling requested,2024-01-25
+115419,1246,fulfilled,EMEA,phone,554.5,10,priority handling requested,2024-10-19
+113363,1059,refunded,NA,web,1891.59,3,priority handling requested,2025-02-17
+108798,1254,cancelled,EMEA,phone,2499.46,21,priority handling requested,2025-03-12
+112539,1054,pending,NA,retail,1730.44,27,priority handling requested,2024-04-27
+106275,1084,refunded,EMEA,phone,325.93,23,priority handling requested,2024-03-05
+102811,1028,refunded,EMEA,partner,1790.88,17,,2025-05-27
+114784,1397,fulfilled,NA,retail,2048.69,5,priority handling requested,2025-04-27
+103559,1139,fulfilled,EMEA,web,1530.66,8,priority handling requested,2024-01-26
+110245,1083,pending,EMEA,retail,1742.3,26,priority handling requested,2024-02-11
+114245,1180,pending,NA,web,2099.13,29,priority handling requested,2024-02-28
+109564,1367,cancelled,NA,web,1905.25,4,priority handling requested,2024-05-30
+108840,1304,fulfilled,NA,web,2088.22,4,priority handling requested,2024-05-18
+100522,1175,fulfilled,EMEA,phone,2025.67,24,priority handling requested,2024-08-10
+100115,1077,cancelled,NA,partner,975.38,8,priority handling requested,2025-04-12
+105226,1285,pending,EMEA,retail,1997.74,23,priority handling requested,2024-02-01
+113867,1229,pending,APAC,partner,1625.04,15,priority handling requested,2025-02-23
+105365,1396,cancelled,EMEA,phone,1454.98,12,priority handling requested,2025-04-27
+119299,1269,pending,EMEA,web,1937.39,7,priority handling requested,2024-07-18
+115781,1393,pending,EMEA,phone,1522.23,5,priority handling requested,2024-02-09
+108512,1219,pending,LATAM,retail,1997.33,25,priority handling requested,2025-06-03
+101933,1361,refunded,NA,web,1952.71,12,priority handling requested,2024-11-30
+105412,1014,refunded,NA,partner,2285.93,13,priority handling requested,2024-10-12
+108549,1290,cancelled,APAC,phone,829.15,14,priority handling requested,2024-03-24
+112398,1238,refunded,LATAM,web,1930.58,7,,2024-05-17
+109810,1396,cancelled,EMEA,web,697.31,16,,2024-12-30
+102015,1328,fulfilled,APAC,phone,2250.2,11,priority handling requested,2024-12-15
+100261,1356,refunded,APAC,partner,426.3,21,priority handling requested,2024-12-19
+116234,1230,pending,LATAM,web,1510.41,11,priority handling requested,2024-03-13
+104114,1213,cancelled,EMEA,phone,2018.0,8,priority handling requested,2025-02-19
+118391,1123,pending,LATAM,phone,2255.12,24,priority handling requested,2025-01-06
+119719,1237,fulfilled,EMEA,web,1214.45,25,priority handling requested,2024-04-06
+112296,1361,pending,APAC,retail,733.36,8,priority handling requested,2024-06-11
+114513,1266,cancelled,APAC,web,2144.77,10,priority handling requested,2024-09-16
+118357,1340,fulfilled,APAC,web,2357.21,19,priority handling requested,2025-01-26
+100041,1279,fulfilled,NA,partner,1653.81,11,priority handling requested,2025-06-15
+119803,1232,refunded,LATAM,partner,1939.43,2,priority handling requested,2025-05-09
+108665,1302,pending,LATAM,retail,2145.48,25,,2024-09-26
+118898,1100,pending,NA,retail,1310.96,6,priority handling requested,2024-01-23
+104372,1117,pending,NA,phone,2153.15,22,priority handling requested,2025-02-16
+117437,1022,refunded,APAC,phone,2108.8,8,priority handling requested,2025-05-28
+113605,1210,pending,LATAM,web,1353.96,30,priority handling requested,2024-04-09
+106582,1307,pending,APAC,partner,1345.72,13,priority handling requested,2025-02-17
+110611,1218,fulfilled,NA,retail,635.29,12,priority handling requested,2025-04-07
+117382,1377,cancelled,LATAM,phone,996.95,11,priority handling requested,2025-04-24
+118509,1098,refunded,NA,web,1093.99,18,priority handling requested,2024-06-29
+104679,1150,cancelled,NA,phone,416.31,22,priority handling requested,2025-04-01
+113586,1105,refunded,LATAM,retail,813.02,26,,2024-05-05
+119529,1350,pending,LATAM,web,341.24,10,priority handling requested,2024-06-18
+119060,1169,cancelled,EMEA,retail,1816.83,7,priority handling requested,2024-05-24
+109235,1013,fulfilled,NA,partner,1237.25,9,priority handling requested,2024-04-18
+116976,1327,fulfilled,LATAM,web,135.34,1,,2025-02-15
+101679,1131,refunded,APAC,phone,1588.3,1,priority handling requested,2025-02-03
+114144,1075,pending,LATAM,web,1916.49,24,priority handling requested,2024-02-21
+106838,1312,fulfilled,LATAM,phone,2387.34,17,priority handling requested,2024-11-12
+105320,1296,fulfilled,LATAM,retail,1003.3,15,priority handling requested,2025-04-12
+109472,1355,cancelled,LATAM,web,1893.23,19,priority handling requested,2024-11-12
+101300,1386,refunded,APAC,phone,92.15,28,priority handling requested,2024-07-29
+119790,1175,pending,APAC,web,1410.57,7,priority handling requested,2025-02-03
+104136,1034,cancelled,NA,phone,349.5,10,priority handling requested,2024-12-26
+109804,1093,fulfilled,LATAM,phone,419.85,22,,2025-06-04
+104058,1278,fulfilled,APAC,web,2426.41,2,priority handling requested,2025-06-07
+112286,1244,pending,EMEA,web,830.6,7,priority handling requested,2025-04-01
+112958,1276,fulfilled,EMEA,retail,1640.03,2,priority handling requested,2025-01-06
+109410,1335,refunded,NA,retail,637.26,4,priority handling requested,2024-11-30
+109074,1348,pending,NA,web,1883.3,30,priority handling requested,2024-11-30
+112094,1282,cancelled,APAC,partner,1389.19,19,priority handling requested,2025-04-20
+101249,1270,cancelled,APAC,retail,1433.79,18,priority handling requested,2024-06-11
+110442,1006,fulfilled,LATAM,phone,1246.7,26,priority handling requested,2025-03-13
+115942,1157,fulfilled,NA,retail,891.54,24,priority handling requested,2024-09-20
+111513,1233,cancelled,EMEA,retail,192.78,29,priority handling requested,2024-12-25
+116923,1180,pending,NA,partner,956.47,5,priority handling requested,2025-05-13
+118242,1211,fulfilled,NA,web,2077.96,5,,2025-03-15
+117445,1181,cancelled,APAC,partner,1021.59,12,priority handling requested,2025-06-18
+106967,1326,refunded,NA,retail,2035.43,22,priority handling requested,2024-06-13
+108858,1288,cancelled,APAC,partner,87.5,19,priority handling requested,2024-05-11
+101193,1083,cancelled,APAC,retail,727.56,9,priority handling requested,2025-03-06
+108845,1349,pending,APAC,web,1250.89,20,,2024-03-04
+108568,1113,fulfilled,LATAM,retail,564.92,13,priority handling requested,2024-01-21
+118977,1133,cancelled,LATAM,phone,614.38,17,,2024-07-02
+103630,1377,refunded,LATAM,web,2226.07,24,priority handling requested,2025-01-24
+100616,1307,cancelled,LATAM,web,899.38,9,priority handling requested,2025-03-26
+113384,1057,fulfilled,EMEA,retail,258.66,16,priority handling requested,2025-01-08
+116235,1068,cancelled,APAC,web,1525.6,23,,2024-01-05
+114680,1156,refunded,EMEA,web,1796.79,30,priority handling requested,2024-07-27
+117475,1123,fulfilled,NA,phone,14.95,20,priority handling requested,2024-07-11
+112375,1017,pending,EMEA,partner,26.54,12,priority handling requested,2025-03-30
+112675,1327,cancelled,APAC,partner,1399.07,6,priority handling requested,2025-01-26
+105202,1392,cancelled,LATAM,phone,1985.71,26,priority handling requested,2025-03-12
+115187,1272,pending,EMEA,retail,1151.99,29,priority handling requested,2024-03-16
+104914,1184,pending,NA,retail,801.86,7,priority handling requested,2024-03-20
+110679,1135,pending,NA,phone,779.69,19,,2024-05-05
+100388,1326,refunded,EMEA,phone,748.71,1,,2024-01-21
+102900,1363,fulfilled,APAC,web,2351.93,10,priority handling requested,2024-10-21
+104727,1214,pending,EMEA,web,354.44,21,priority handling requested,2024-01-25
+108581,1035,pending,EMEA,partner,629.34,27,priority handling requested,2024-11-30
+107599,1302,fulfilled,NA,phone,2185.54,27,priority handling requested,2024-03-16
+101023,1306,pending,EMEA,phone,1988.39,7,priority handling requested,2025-04-20
+112078,1247,cancelled,NA,retail,940.86,22,priority handling requested,2024-11-20
+116444,1214,pending,NA,phone,1786.09,22,,2025-03-02
+104468,1193,pending,LATAM,web,266.23,10,priority handling requested,2025-04-22
+103387,1170,fulfilled,APAC,partner,803.59,10,priority handling requested,2024-11-15
+104192,1003,fulfilled,NA,retail,2152.48,16,priority handling requested,2025-06-09
+108370,1229,fulfilled,EMEA,phone,359.17,13,priority handling requested,2024-06-09
+108379,1198,fulfilled,EMEA,web,320.08,24,priority handling requested,2024-03-22
+103563,1368,fulfilled,APAC,phone,1699.1,24,priority handling requested,2025-02-16
+113808,1133,cancelled,LATAM,web,1441.92,15,priority handling requested,2024-12-24
+105337,1275,refunded,EMEA,web,198.05,17,priority handling requested,2025-01-15
+102836,1223,fulfilled,APAC,phone,1571.46,21,priority handling requested,2025-03-29
+116574,1055,cancelled,NA,partner,1763.68,10,priority handling requested,2024-11-22
+116262,1031,fulfilled,LATAM,phone,2188.19,10,priority handling requested,2025-03-05
+115296,1202,cancelled,NA,retail,1356.93,8,priority handling requested,2025-03-21
+100038,1342,cancelled,APAC,retail,1247.09,23,priority handling requested,2024-05-09
+114231,1253,refunded,NA,phone,742.02,24,priority handling requested,2024-12-28
+115448,1138,cancelled,EMEA,phone,2177.39,5,priority handling requested,2024-08-11
+117342,1016,pending,APAC,retail,692.2,2,priority handling requested,2024-07-07
+110647,1086,refunded,LATAM,phone,864.93,16,priority handling requested,2024-12-11
+104717,1254,fulfilled,APAC,phone,1624.41,4,priority handling requested,2024-01-01
+115793,1365,pending,EMEA,web,16.68,9,priority handling requested,2025-05-26
+117595,1264,cancelled,APAC,web,930.72,27,priority handling requested,2025-05-02
+118675,1331,refunded,NA,phone,1237.33,16,priority handling requested,2024-08-13
+100965,1167,refunded,NA,partner,1463.65,15,priority handling requested,2024-09-20
+119564,1049,fulfilled,LATAM,web,549.82,4,priority handling requested,2025-03-13
+114944,1138,cancelled,LATAM,partner,2254.79,6,priority handling requested,2025-03-16
+111478,1301,refunded,APAC,phone,1180.62,19,priority handling requested,2025-06-01
+117883,1114,cancelled,APAC,phone,2209.63,30,priority handling requested,2024-04-25
+113865,1077,cancelled,APAC,partner,286.12,6,,2025-06-21
+116914,1250,cancelled,APAC,phone,1782.39,30,priority handling requested,2024-06-21
+115599,1035,fulfilled,LATAM,partner,2046.62,14,priority handling requested,2024-09-13
+109609,1124,pending,NA,retail,2193.58,10,priority handling requested,2024-09-22
+116492,1240,fulfilled,LATAM,retail,295.14,22,priority handling requested,2025-05-15
+114649,1326,fulfilled,NA,web,594.88,23,priority handling requested,2024-03-30
+106575,1139,cancelled,EMEA,web,517.57,2,priority handling requested,2024-06-06
+116010,1284,cancelled,APAC,partner,1231.45,12,,2024-07-02
+112246,1160,fulfilled,EMEA,partner,1683.1,1,priority handling requested,2024-07-02
+103099,1252,cancelled,APAC,retail,2208.32,18,priority handling requested,2024-04-24
+113904,1362,pending,EMEA,retail,1921.53,29,priority handling requested,2025-04-02
+105532,1177,refunded,EMEA,phone,201.07,15,priority handling requested,2024-01-25
+101857,1140,refunded,LATAM,retail,1949.92,27,priority handling requested,2025-03-22
+110974,1284,pending,NA,web,2057.47,13,priority handling requested,2024-06-09
+109931,1117,cancelled,LATAM,retail,1398.29,24,priority handling requested,2025-01-28
+113140,1166,refunded,NA,retail,1490.63,19,priority handling requested,2024-10-10
+118698,1307,fulfilled,LATAM,phone,1862.9,16,priority handling requested,2025-03-07
+102569,1210,pending,NA,retail,1674.12,22,priority handling requested,2025-03-16
+111640,1102,pending,EMEA,web,1892.23,27,priority handling requested,2025-06-11
+107862,1389,cancelled,LATAM,web,416.31,1,priority handling requested,2024-03-25
+119806,1267,refunded,LATAM,retail,94.64,3,priority handling requested,2025-05-29
+106678,1231,cancelled,APAC,web,1415.18,22,priority handling requested,2025-05-01
+119546,1283,pending,APAC,phone,167.16,21,priority handling requested,2025-05-30
+118948,1269,fulfilled,NA,retail,1180.03,4,priority handling requested,2025-04-15
+107499,1309,fulfilled,APAC,web,1698.33,20,priority handling requested,2025-05-20
+109713,1060,fulfilled,APAC,retail,2342.45,13,priority handling requested,2024-09-14
+114826,1073,pending,NA,partner,560.6,28,priority handling requested,2024-03-12
+105947,1123,fulfilled,APAC,phone,1120.68,17,priority handling requested,2024-08-01
+105167,1195,refunded,LATAM,partner,1145.3,17,priority handling requested,2025-04-07
+118206,1263,cancelled,NA,web,794.76,2,priority handling requested,2024-08-31
+100731,1379,cancelled,LATAM,web,2238.41,28,priority handling requested,2024-09-15
+116628,1121,cancelled,LATAM,web,633.68,2,priority handling requested,2024-07-21
+100788,1013,refunded,EMEA,web,2250.89,13,priority handling requested,2024-12-26
+101924,1290,pending,NA,phone,748.61,18,priority handling requested,2024-02-21
+112199,1216,fulfilled,EMEA,web,1511.97,4,priority handling requested,2024-05-27
+118939,1106,pending,NA,retail,1117.66,12,priority handling requested,2024-08-18
+100996,1306,cancelled,APAC,web,198.48,23,priority handling requested,2025-05-20
+118989,1286,refunded,APAC,phone,850.28,29,priority handling requested,2024-11-19
+113693,1201,fulfilled,LATAM,web,1671.72,28,priority handling requested,2024-12-20
+100050,1303,fulfilled,APAC,retail,1938.22,9,priority handling requested,2025-06-20
+115625,1017,refunded,NA,retail,2126.16,17,,2024-11-24
+105329,1015,fulfilled,LATAM,retail,2253.7,14,priority handling requested,2025-01-13
+114442,1076,fulfilled,LATAM,partner,1540.06,15,priority handling requested,2025-03-04
+103067,1381,fulfilled,LATAM,phone,362.94,13,priority handling requested,2025-03-22
+113321,1396,refunded,APAC,web,501.51,10,priority handling requested,2025-05-17
+105308,1071,fulfilled,APAC,retail,149.6,2,priority handling requested,2025-04-14
+102924,1087,fulfilled,APAC,web,701.73,2,priority handling requested,2024-12-02
+118940,1362,refunded,NA,partner,933.57,17,priority handling requested,2025-06-12
+111634,1042,fulfilled,LATAM,partner,205.11,15,priority handling requested,2024-03-14
+113851,1255,fulfilled,APAC,web,445.18,22,,2025-01-24
+105650,1039,refunded,LATAM,partner,732.38,3,priority handling requested,2024-02-28
+104589,1374,fulfilled,NA,phone,1133.68,2,priority handling requested,2025-05-17
+110721,1162,fulfilled,LATAM,phone,1459.66,26,,2025-05-25
+115833,1293,pending,NA,phone,1348.98,9,priority handling requested,2025-05-28
+111714,1182,refunded,EMEA,retail,2393.89,13,priority handling requested,2024-04-24
+113845,1006,pending,APAC,partner,1071.15,3,priority handling requested,2024-02-24
+104132,1062,pending,EMEA,retail,208.83,20,priority handling requested,2025-05-31
+106156,1315,cancelled,EMEA,partner,1331.47,5,priority handling requested,2024-06-21
+112645,1058,fulfilled,NA,phone,757.09,26,priority handling requested,2024-05-19
+102531,1203,cancelled,LATAM,web,607.56,28,priority handling requested,2025-06-13
+118508,1220,refunded,APAC,phone,752.56,30,,2024-12-04
+110519,1066,cancelled,NA,partner,2208.12,2,priority handling requested,2025-01-31
+108822,1032,cancelled,NA,web,2239.87,5,priority handling requested,2025-06-20
+101476,1006,fulfilled,NA,web,290.79,21,priority handling requested,2025-05-28
+119558,1120,pending,EMEA,web,2393.33,2,priority handling requested,2025-02-27
+114571,1125,pending,EMEA,phone,2091.63,29,priority handling requested,2024-06-11
+100349,1140,cancelled,EMEA,phone,76.75,17,priority handling requested,2025-03-13
+115613,1027,refunded,EMEA,web,2083.4,7,priority handling requested,2024-11-11
+104794,1057,pending,NA,partner,761.35,7,,2025-03-03
+112359,1248,cancelled,APAC,web,2245.89,3,priority handling requested,2025-01-28
+104390,1159,refunded,NA,partner,2407.68,21,priority handling requested,2024-03-27
+112606,1307,refunded,LATAM,partner,1359.42,10,priority handling requested,2024-11-01
+108086,1305,pending,APAC,retail,2241.82,19,priority handling requested,2025-04-02
+113489,1397,pending,APAC,retail,36.0,21,,2024-10-05
+108528,1179,pending,NA,web,2363.33,21,priority handling requested,2024-08-01
+117112,1389,fulfilled,LATAM,phone,93.66,20,priority handling requested,2024-07-19
+113965,1085,cancelled,APAC,web,2096.17,25,priority handling requested,2024-05-31
+115170,1148,cancelled,LATAM,phone,2145.03,19,priority handling requested,2024-05-03
+109493,1030,refunded,APAC,retail,1656.18,22,priority handling requested,2025-03-25
+100030,1377,refunded,NA,retail,360.87,28,priority handling requested,2024-08-15
+114462,1363,fulfilled,APAC,web,1615.02,7,priority handling requested,2024-11-04
+113458,1202,fulfilled,EMEA,partner,2339.29,1,priority handling requested,2024-05-24
+102809,1051,refunded,APAC,retail,1538.35,28,priority handling requested,2025-02-10
+117796,1160,refunded,APAC,web,1266.45,16,priority handling requested,2025-06-16
+113552,1276,fulfilled,EMEA,retail,1894.16,10,priority handling requested,2024-09-09
+107265,1129,refunded,NA,web,787.41,21,priority handling requested,2024-09-22
+104674,1278,pending,APAC,retail,864.62,30,,2024-05-16
+119562,1327,fulfilled,NA,phone,2219.22,5,,2025-03-16
+115915,1068,refunded,EMEA,partner,859.41,2,,2024-03-04
+115754,1172,fulfilled,APAC,phone,2063.97,1,priority handling requested,2024-11-24
+114888,1297,pending,APAC,partner,439.07,23,priority handling requested,2025-04-05
+119661,1391,fulfilled,NA,web,236.77,3,priority handling requested,2025-01-08
+112607,1253,refunded,NA,phone,357.21,20,priority handling requested,2024-02-03
+105492,1367,fulfilled,APAC,retail,737.03,4,priority handling requested,2024-05-16
+108048,1243,cancelled,LATAM,partner,1539.29,22,priority handling requested,2025-01-19
+118943,1146,fulfilled,NA,retail,1075.67,1,,2024-10-24
+100973,1195,cancelled,APAC,phone,901.71,5,priority handling requested,2025-04-25
+105457,1377,cancelled,APAC,partner,2174.17,22,priority handling requested,2024-12-16
+109980,1230,pending,NA,phone,2268.86,15,,2024-06-13
+106676,1341,cancelled,LATAM,phone,2281.93,13,priority handling requested,2025-03-31
+117311,1058,pending,EMEA,partner,1324.96,4,priority handling requested,2025-03-20
+109636,1324,cancelled,APAC,web,196.49,24,priority handling requested,2024-10-07
+109566,1284,pending,LATAM,partner,1672.9,4,priority handling requested,2024-03-17
+118358,1135,refunded,EMEA,phone,1315.88,4,priority handling requested,2024-03-17
+108943,1018,refunded,LATAM,web,2308.26,22,priority handling requested,2024-01-11
+116443,1289,refunded,APAC,retail,2146.85,30,priority handling requested,2024-08-11
+114474,1167,pending,EMEA,partner,1144.27,4,priority handling requested,2024-04-13
+106803,1396,pending,NA,retail,199.36,5,,2024-07-30
+119274,1253,refunded,NA,web,1784.4,8,,2025-04-14
+116793,1174,fulfilled,LATAM,retail,1524.94,18,priority handling requested,2024-02-16
+103427,1014,pending,APAC,partner,1529.06,17,priority handling requested,2025-01-09
+107040,1295,pending,NA,retail,234.38,1,priority handling requested,2024-06-23
+113769,1105,pending,EMEA,phone,1188.01,7,,2025-05-23
+119699,1015,fulfilled,EMEA,phone,2305.42,18,priority handling requested,2025-06-16
+114884,1022,cancelled,EMEA,retail,2150.32,30,priority handling requested,2024-09-15
+109190,1278,fulfilled,APAC,retail,523.48,17,priority handling requested,2025-03-26
+110454,1123,pending,NA,partner,904.39,25,priority handling requested,2024-02-03
+100168,1103,cancelled,LATAM,retail,1885.31,8,,2024-12-22
+112928,1026,pending,EMEA,phone,2083.51,14,priority handling requested,2024-06-16
+103758,1313,fulfilled,APAC,web,1889.86,2,priority handling requested,2024-12-17
+113498,1146,refunded,LATAM,partner,562.48,3,priority handling requested,2025-05-16
+103243,1323,cancelled,APAC,partner,2310.29,11,priority handling requested,2024-12-26
+109611,1029,cancelled,APAC,partner,2013.3,19,priority handling requested,2024-11-15
+101996,1289,fulfilled,LATAM,web,1525.38,20,priority handling requested,2024-04-15
+100199,1024,cancelled,LATAM,web,761.37,4,priority handling requested,2024-09-26
+114308,1349,cancelled,APAC,web,536.25,4,priority handling requested,2024-03-05
+110892,1222,pending,APAC,phone,1062.98,3,priority handling requested,2024-11-16
+112178,1363,fulfilled,EMEA,retail,2347.61,28,,2024-12-08
+100624,1257,refunded,APAC,web,94.37,12,priority handling requested,2025-04-22
+109063,1185,refunded,LATAM,web,1270.14,23,priority handling requested,2024-04-07
+103881,1079,refunded,LATAM,phone,807.36,13,priority handling requested,2024-01-09
+109947,1325,pending,EMEA,partner,1210.52,8,priority handling requested,2024-01-15
+106959,1222,pending,LATAM,retail,1137.2,2,priority handling requested,2025-04-22
+111562,1284,refunded,LATAM,web,1976.45,12,priority handling requested,2024-01-29
+112438,1188,pending,LATAM,partner,1972.18,2,priority handling requested,2025-03-14
+103953,1117,fulfilled,NA,phone,754.74,12,priority handling requested,2025-05-14
+118868,1221,pending,APAC,partner,636.74,14,,2024-12-05
+118284,1157,cancelled,LATAM,partner,199.75,2,priority handling requested,2024-04-23
+110683,1160,refunded,APAC,partner,198.33,23,priority handling requested,2025-03-06
+107695,1270,refunded,APAC,web,1910.45,20,priority handling requested,2024-07-04
+104148,1329,pending,NA,partner,2202.32,27,priority handling requested,2025-03-17
+109182,1052,fulfilled,EMEA,phone,921.56,30,priority handling requested,2024-11-24
+100976,1066,fulfilled,EMEA,phone,1575.95,28,,2025-01-23
+117393,1238,pending,APAC,partner,652.31,10,priority handling requested,2024-03-15
+114973,1135,pending,APAC,partner,1109.83,27,,2024-09-24
+118726,1122,cancelled,EMEA,phone,2396.59,23,priority handling requested,2024-03-20
+114833,1339,pending,LATAM,retail,2000.08,1,priority handling requested,2024-03-08
+114181,1059,refunded,LATAM,web,1638.15,19,priority handling requested,2024-01-09
+119787,1139,fulfilled,EMEA,retail,821.86,10,priority handling requested,2024-02-27
+112577,1249,fulfilled,NA,phone,1298.13,10,priority handling requested,2024-04-03
+114024,1396,cancelled,EMEA,phone,1445.97,13,priority handling requested,2025-01-24
+116358,1122,pending,APAC,partner,1336.0,8,priority handling requested,2025-06-10
+111635,1386,cancelled,APAC,phone,1673.5,18,priority handling requested,2024-11-29
+112504,1187,refunded,APAC,partner,1009.01,14,priority handling requested,2024-09-02
+101019,1185,pending,LATAM,partner,125.24,19,priority handling requested,2024-12-23
+118236,1053,fulfilled,APAC,partner,1207.74,23,priority handling requested,2024-09-21
+105316,1041,fulfilled,NA,phone,1213.89,11,,2024-05-18
+106186,1286,cancelled,EMEA,retail,1170.32,23,priority handling requested,2025-05-08
+117034,1280,refunded,NA,web,1196.35,8,priority handling requested,2025-01-30
+118305,1249,fulfilled,EMEA,web,747.46,16,priority handling requested,2024-10-24
+109132,1349,cancelled,EMEA,web,1406.53,2,priority handling requested,2025-03-04
+110661,1053,fulfilled,APAC,web,2081.11,22,priority handling requested,2024-11-15
+113789,1163,fulfilled,NA,partner,149.06,13,priority handling requested,2025-06-18
+106125,1181,fulfilled,NA,retail,100.1,23,priority handling requested,2024-08-28
+108408,1328,refunded,LATAM,phone,843.37,10,priority handling requested,2025-05-12
+116582,1277,pending,EMEA,retail,2313.06,14,priority handling requested,2025-02-12
+101064,1284,refunded,EMEA,partner,2076.44,12,priority handling requested,2024-01-07
+109630,1002,cancelled,LATAM,partner,185.73,4,priority handling requested,2024-07-25
+113788,1246,fulfilled,APAC,phone,2386.97,28,,2024-11-10
+116996,1118,cancelled,EMEA,phone,1753.19,19,,2024-02-15
+109590,1328,cancelled,LATAM,phone,1014.11,15,priority handling requested,2024-07-26
+110464,1396,refunded,NA,phone,2212.48,1,priority handling requested,2024-01-04
+107251,1297,pending,LATAM,retail,1900.97,5,priority handling requested,2024-12-31
+118915,1252,fulfilled,NA,retail,2083.27,4,priority handling requested,2024-10-10
+104843,1207,fulfilled,NA,web,235.49,6,priority handling requested,2025-01-21
+102658,1202,fulfilled,LATAM,retail,2457.16,12,,2024-09-04
+110520,1168,cancelled,LATAM,web,647.69,21,priority handling requested,2025-04-18
+110134,1046,fulfilled,NA,partner,158.61,15,priority handling requested,2024-02-07
+113639,1215,refunded,NA,partner,4.8,13,priority handling requested,2024-06-16
+116762,1208,pending,APAC,phone,1066.28,6,priority handling requested,2025-03-13
+112242,1215,fulfilled,LATAM,web,241.07,22,priority handling requested,2025-03-04
+115083,1219,refunded,APAC,partner,751.07,8,priority handling requested,2024-11-19
+116427,1220,cancelled,NA,phone,214.13,24,priority handling requested,2024-11-06
+106329,1139,fulfilled,NA,web,1886.45,2,priority handling requested,2024-09-09
+119682,1350,fulfilled,LATAM,retail,1618.3,25,,2024-07-25
+119800,1213,fulfilled,APAC,phone,803.41,7,priority handling requested,2024-12-21
+114505,1196,refunded,APAC,partner,1117.28,20,priority handling requested,2024-06-05
+119565,1311,cancelled,NA,web,902.52,27,priority handling requested,2024-03-15
+100888,1373,fulfilled,LATAM,retail,249.46,1,priority handling requested,2025-02-08
+108908,1207,refunded,NA,phone,816.68,19,,2024-05-01
+117399,1149,refunded,LATAM,partner,1896.33,7,,2024-08-03
+107399,1129,refunded,APAC,retail,1555.98,15,priority handling requested,2025-05-23
+111326,1219,pending,EMEA,retail,711.74,18,priority handling requested,2025-03-07
+102732,1090,pending,NA,phone,16.17,28,priority handling requested,2024-06-19
+104363,1149,refunded,APAC,retail,252.92,22,priority handling requested,2025-01-29
+102950,1126,fulfilled,LATAM,retail,1254.14,7,priority handling requested,2024-06-05
+115303,1319,cancelled,EMEA,retail,1251.2,20,priority handling requested,2025-03-02
+107654,1095,fulfilled,APAC,partner,542.55,25,priority handling requested,2024-10-01
+116435,1175,pending,APAC,retail,1244.23,16,,2024-09-04
+115313,1242,fulfilled,APAC,partner,989.04,5,priority handling requested,2024-02-27
+107066,1185,refunded,LATAM,retail,1179.41,24,priority handling requested,2024-06-28
+101313,1091,refunded,LATAM,phone,963.4,26,priority handling requested,2025-02-03
+100494,1353,pending,EMEA,web,1148.79,13,priority handling requested,2024-10-21
+118516,1190,pending,NA,phone,1201.88,20,,2024-07-24
+114405,1164,pending,LATAM,retail,824.63,7,,2024-08-26
+108107,1048,pending,NA,web,1659.14,14,priority handling requested,2024-11-26
+103763,1352,refunded,EMEA,retail,1062.16,27,priority handling requested,2024-08-30
+103303,1388,pending,APAC,retail,691.6,24,priority handling requested,2024-02-15
+104177,1330,pending,LATAM,retail,886.51,15,priority handling requested,2025-02-19
+117054,1009,refunded,APAC,retail,208.02,5,priority handling requested,2025-05-07
+107477,1120,cancelled,APAC,partner,1200.94,9,priority handling requested,2024-06-14
+111674,1221,fulfilled,NA,web,2126.69,20,priority handling requested,2024-03-28
+102764,1166,fulfilled,LATAM,web,266.44,23,,2024-01-10
+116757,1361,refunded,APAC,phone,1891.95,14,priority handling requested,2024-10-26
+116392,1271,pending,NA,web,1081.78,23,priority handling requested,2025-03-05
+118918,1283,refunded,NA,phone,384.41,24,priority handling requested,2025-05-13
+117596,1264,cancelled,NA,retail,1324.42,25,priority handling requested,2024-07-31
+100995,1109,refunded,LATAM,partner,2020.93,17,,2025-03-19
+108570,1014,refunded,LATAM,partner,1168.97,20,priority handling requested,2024-01-18
+102780,1382,refunded,LATAM,phone,645.83,23,priority handling requested,2024-03-22
+118005,1303,cancelled,NA,web,1694.12,12,priority handling requested,2024-11-20
+105565,1280,cancelled,NA,retail,62.54,8,priority handling requested,2024-08-23
+100370,1189,fulfilled,LATAM,web,1187.23,11,priority handling requested,2024-04-19
+116156,1130,refunded,APAC,retail,290.97,9,priority handling requested,2025-01-25
+102672,1200,fulfilled,NA,web,1718.12,18,priority handling requested,2024-01-15
+110121,1386,fulfilled,NA,web,759.51,17,priority handling requested,2024-09-21
+108609,1366,fulfilled,EMEA,partner,1946.27,5,priority handling requested,2024-07-23
+105472,1385,pending,EMEA,phone,444.78,10,priority handling requested,2024-02-01
+105139,1373,refunded,APAC,partner,2372.45,22,priority handling requested,2025-05-08
+112999,1149,fulfilled,EMEA,partner,2059.67,7,priority handling requested,2024-08-30
+105173,1032,cancelled,EMEA,retail,1870.28,21,,2024-12-16
+100396,1399,refunded,APAC,phone,1905.0,5,priority handling requested,2025-02-08
+107362,1137,fulfilled,APAC,retail,2276.97,22,priority handling requested,2025-03-29
+114926,1164,cancelled,NA,partner,1587.58,7,priority handling requested,2025-05-26
+109167,1119,pending,NA,partner,2415.58,23,,2024-05-09
+118526,1297,fulfilled,LATAM,web,244.5,29,priority handling requested,2024-01-22
+107152,1045,pending,LATAM,retail,1242.57,9,priority handling requested,2025-04-08
+106169,1102,pending,NA,web,1060.81,3,,2025-04-21
+108819,1396,refunded,EMEA,retail,1108.78,25,priority handling requested,2024-07-25
+106433,1025,pending,NA,partner,1190.47,9,priority handling requested,2025-02-07
+118624,1329,refunded,NA,phone,14.88,17,priority handling requested,2024-07-06
+109775,1040,pending,EMEA,retail,182.27,6,priority handling requested,2024-08-25
+108815,1133,fulfilled,LATAM,partner,1387.57,13,priority handling requested,2024-11-05
+113969,1119,cancelled,APAC,web,373.9,16,priority handling requested,2024-08-16
+107943,1080,pending,LATAM,web,2056.58,4,priority handling requested,2024-06-24
+106487,1054,refunded,EMEA,phone,1726.95,28,priority handling requested,2025-04-18
+108576,1204,pending,EMEA,web,1387.05,13,priority handling requested,2024-07-27
+104617,1072,pending,APAC,phone,283.01,13,,2025-02-01
+100375,1020,fulfilled,LATAM,web,605.29,25,priority handling requested,2024-08-24
+118336,1282,fulfilled,EMEA,retail,1668.88,7,priority handling requested,2025-05-19
+111706,1241,pending,EMEA,web,1526.14,23,priority handling requested,2024-04-04
+113839,1329,pending,APAC,web,2108.06,3,priority handling requested,2024-03-23
+105915,1039,pending,LATAM,partner,2057.3,3,priority handling requested,2024-06-06
+102028,1086,pending,APAC,phone,975.5,5,priority handling requested,2024-08-06
+110807,1016,pending,NA,web,972.92,10,priority handling requested,2024-03-18
+104927,1240,cancelled,LATAM,partner,1320.67,8,priority handling requested,2025-01-30
+104271,1275,fulfilled,EMEA,partner,854.45,18,priority handling requested,2024-10-06
+109628,1060,cancelled,NA,partner,1861.56,13,priority handling requested,2024-02-09
+118456,1386,pending,NA,phone,1160.07,22,priority handling requested,2024-11-28
+100468,1196,fulfilled,APAC,retail,2261.47,7,priority handling requested,2025-04-06
+103405,1043,refunded,APAC,web,1154.32,29,priority handling requested,2024-09-05
+119043,1372,refunded,LATAM,web,317.85,30,priority handling requested,2024-03-29
+118982,1334,pending,NA,phone,1299.68,13,priority handling requested,2024-08-20
+102698,1128,refunded,NA,retail,2346.2,21,priority handling requested,2024-10-21
+114985,1340,refunded,APAC,retail,2177.93,17,priority handling requested,2024-01-26
+101916,1345,refunded,NA,partner,1767.47,13,priority handling requested,2024-09-20
+114023,1123,pending,LATAM,retail,2450.7,8,priority handling requested,2024-12-09
+100177,1184,refunded,APAC,retail,1856.14,14,priority handling requested,2024-04-16
+108417,1044,refunded,APAC,phone,309.94,6,priority handling requested,2025-05-25
+100763,1307,refunded,LATAM,phone,1387.39,12,priority handling requested,2024-03-08
+117568,1188,fulfilled,EMEA,partner,65.04,6,priority handling requested,2024-05-29
+101654,1358,fulfilled,EMEA,phone,878.66,3,priority handling requested,2024-01-29
+113948,1316,pending,LATAM,phone,1391.77,4,priority handling requested,2025-03-28
+116432,1322,refunded,APAC,phone,1780.87,23,priority handling requested,2024-06-20
+111407,1109,pending,LATAM,partner,1248.49,26,priority handling requested,2024-07-28
+102994,1212,fulfilled,APAC,phone,1012.95,1,priority handling requested,2025-04-06
+103870,1227,fulfilled,APAC,phone,1916.26,2,,2024-11-13
+115126,1235,cancelled,EMEA,partner,1369.53,19,,2025-03-20
+105586,1178,refunded,LATAM,partner,1482.63,22,,2024-08-21
+111263,1312,fulfilled,NA,retail,815.06,17,,2025-02-03
+111398,1140,fulfilled,APAC,partner,592.36,1,priority handling requested,2024-04-21
+118514,1102,fulfilled,NA,retail,300.54,25,priority handling requested,2024-01-31
+109052,1291,cancelled,APAC,web,431.27,16,priority handling requested,2024-02-16
+113767,1308,refunded,APAC,partner,1913.44,15,priority handling requested,2025-04-07
+101799,1353,refunded,EMEA,partner,2462.71,22,priority handling requested,2024-11-13
+115504,1128,pending,EMEA,partner,793.76,24,,2025-01-16
+111463,1013,pending,APAC,partner,1416.17,17,priority handling requested,2025-02-20
+105845,1128,pending,APAC,partner,1707.91,4,priority handling requested,2025-04-02
+101382,1186,cancelled,LATAM,web,544.5,25,priority handling requested,2024-01-31
+107285,1324,fulfilled,APAC,retail,1578.84,5,priority handling requested,2025-02-23
+111316,1012,fulfilled,APAC,partner,89.8,7,priority handling requested,2025-01-14
+100216,1295,fulfilled,NA,partner,803.87,15,,2024-04-14
+103589,1350,fulfilled,NA,phone,520.0,7,,2024-06-23
+108974,1246,fulfilled,EMEA,partner,836.92,16,,2024-08-28
+113065,1027,refunded,LATAM,web,944.79,12,,2024-03-16
+111367,1216,cancelled,NA,partner,1698.08,7,priority handling requested,2024-04-20
+113006,1318,pending,NA,partner,2183.27,28,priority handling requested,2024-04-22
+107104,1282,refunded,EMEA,web,1630.53,27,priority handling requested,2024-02-11
+105794,1270,fulfilled,APAC,retail,909.16,11,priority handling requested,2024-05-19
+111378,1110,refunded,EMEA,retail,2143.2,26,,2024-12-17
+101400,1029,fulfilled,NA,partner,1115.83,13,priority handling requested,2024-10-22
+104081,1309,cancelled,EMEA,partner,2267.56,14,,2025-06-16
+117677,1207,pending,LATAM,partner,1041.94,28,priority handling requested,2025-04-10
+107242,1276,pending,EMEA,retail,194.55,22,priority handling requested,2024-05-22
+113436,1122,refunded,EMEA,partner,2437.55,28,priority handling requested,2024-11-12
+109094,1247,cancelled,EMEA,web,2145.86,15,priority handling requested,2024-03-03
+110340,1361,refunded,NA,retail,1455.54,19,priority handling requested,2025-06-06
+108574,1256,cancelled,LATAM,partner,234.25,13,priority handling requested,2024-10-22
+118822,1005,pending,EMEA,retail,79.83,7,priority handling requested,2025-04-23
+112087,1089,cancelled,LATAM,web,2031.1,10,priority handling requested,2024-04-08
+106488,1160,fulfilled,APAC,phone,2030.53,23,priority handling requested,2025-02-19
+115337,1296,cancelled,APAC,partner,1488.36,5,priority handling requested,2025-03-22
+116960,1349,pending,EMEA,retail,1962.83,12,priority handling requested,2024-09-08
+116429,1083,cancelled,LATAM,partner,392.93,5,priority handling requested,2025-04-21
+112508,1316,fulfilled,EMEA,partner,697.91,18,priority handling requested,2024-04-20
+119283,1374,fulfilled,LATAM,web,2078.63,15,priority handling requested,2024-01-04
+114381,1291,fulfilled,APAC,retail,78.94,24,priority handling requested,2024-07-21
+100883,1135,pending,APAC,partner,1102.54,10,priority handling requested,2024-07-09
+119865,1112,refunded,NA,phone,1550.55,11,priority handling requested,2024-07-02
+100990,1120,pending,LATAM,web,383.62,5,priority handling requested,2024-07-01
+102511,1292,fulfilled,EMEA,web,1315.4,8,priority handling requested,2024-09-08
+119536,1287,pending,LATAM,retail,2113.1,25,priority handling requested,2024-02-22
+118951,1351,cancelled,EMEA,partner,867.01,13,priority handling requested,2024-05-19
+105133,1348,pending,NA,web,2392.05,9,priority handling requested,2024-01-02
+101565,1246,pending,LATAM,web,861.21,12,,2024-09-25
+116486,1129,refunded,EMEA,web,1138.41,23,priority handling requested,2025-05-22
+107668,1133,cancelled,APAC,phone,657.04,20,priority handling requested,2024-01-03
+113916,1156,refunded,NA,partner,2362.84,13,priority handling requested,2024-03-18
+108642,1317,refunded,EMEA,retail,999.01,3,priority handling requested,2025-03-12
+103673,1106,cancelled,NA,phone,657.59,15,priority handling requested,2024-10-08
+102793,1190,pending,APAC,phone,1852.34,15,priority handling requested,2024-05-21
+103029,1240,pending,LATAM,partner,1722.44,13,priority handling requested,2024-08-27
+101229,1206,refunded,APAC,retail,2390.51,25,,2024-05-06
+115609,1388,pending,APAC,phone,1053.19,3,priority handling requested,2024-05-23
+102753,1143,fulfilled,LATAM,web,1851.71,20,priority handling requested,2024-06-15
+119609,1381,pending,LATAM,web,668.18,29,priority handling requested,2024-09-29
+113465,1364,fulfilled,LATAM,retail,1341.8,28,priority handling requested,2025-05-01
+101506,1296,fulfilled,EMEA,web,1291.52,21,priority handling requested,2024-01-04
+111062,1350,cancelled,LATAM,partner,962.3,5,priority handling requested,2024-08-12
+109545,1285,refunded,LATAM,web,709.0,20,priority handling requested,2024-12-04
+106636,1057,refunded,EMEA,retail,1371.98,16,priority handling requested,2025-06-07
+104317,1283,cancelled,NA,retail,472.24,6,priority handling requested,2025-05-24
+115412,1125,refunded,LATAM,web,1087.01,9,,2025-04-26
+112227,1294,pending,EMEA,web,812.16,22,priority handling requested,2025-01-09
+104543,1273,pending,EMEA,retail,89.85,23,priority handling requested,2024-05-27
+101976,1235,pending,APAC,retail,1324.15,18,priority handling requested,2025-02-05
+101167,1135,refunded,LATAM,partner,1270.78,2,priority handling requested,2024-10-05
+107741,1213,fulfilled,NA,partner,2260.31,26,priority handling requested,2024-09-02
+111589,1164,pending,LATAM,web,2303.08,21,,2025-03-18
+101443,1233,refunded,LATAM,retail,1173.87,9,,2025-02-11
+116104,1325,refunded,LATAM,partner,143.66,8,priority handling requested,2025-04-08
+103527,1058,cancelled,EMEA,retail,512.25,19,priority handling requested,2024-08-30
+109860,1063,pending,APAC,partner,2003.86,8,priority handling requested,2025-05-07
+111682,1378,fulfilled,EMEA,web,2445.51,6,priority handling requested,2024-04-26
+103072,1225,fulfilled,LATAM,web,296.01,19,priority handling requested,2025-03-02
+111514,1052,cancelled,LATAM,web,108.28,30,priority handling requested,2024-12-18
+111902,1062,fulfilled,NA,retail,76.31,21,priority handling requested,2025-06-09
+107302,1210,refunded,APAC,retail,779.15,17,priority handling requested,2025-01-23
+103862,1067,pending,NA,web,1547.7,7,priority handling requested,2024-08-05
+103711,1014,fulfilled,NA,phone,335.85,2,priority handling requested,2024-07-13
+106969,1148,fulfilled,EMEA,phone,1813.54,21,,2025-06-19
+116741,1239,pending,LATAM,retail,1320.57,3,,2024-01-16
+107120,1007,refunded,EMEA,web,1187.35,16,priority handling requested,2024-06-26
+114154,1283,cancelled,APAC,retail,700.37,5,,2024-03-02
+110990,1373,fulfilled,EMEA,phone,2058.55,19,priority handling requested,2024-02-11
+116693,1285,refunded,LATAM,web,2042.77,5,priority handling requested,2025-03-21
+114836,1349,cancelled,APAC,web,233.62,13,priority handling requested,2025-03-31
+118266,1341,fulfilled,EMEA,retail,919.1,19,priority handling requested,2024-07-23
+111781,1344,cancelled,EMEA,phone,485.82,30,priority handling requested,2025-04-20
+100507,1393,pending,APAC,web,364.43,26,priority handling requested,2024-04-09
+114976,1377,fulfilled,LATAM,phone,2246.66,4,priority handling requested,2024-04-19
+110927,1129,fulfilled,APAC,retail,1306.96,10,priority handling requested,2024-01-11
+101466,1340,cancelled,APAC,web,2289.43,17,priority handling requested,2024-07-04
+104585,1165,fulfilled,NA,retail,904.8,17,priority handling requested,2025-02-18
+109970,1260,pending,LATAM,web,731.64,7,,2025-02-12
+111711,1045,refunded,NA,web,1011.76,3,priority handling requested,2024-08-04
+116622,1313,fulfilled,APAC,retail,1291.59,30,priority handling requested,2024-12-25
+113625,1277,pending,EMEA,retail,459.13,7,priority handling requested,2025-02-26
+103543,1222,refunded,LATAM,partner,37.3,3,priority handling requested,2025-04-23
+105415,1308,fulfilled,APAC,partner,1792.16,22,,2024-04-03
+109181,1331,pending,APAC,phone,2114.88,1,,2024-03-02
+103213,1052,refunded,APAC,partner,57.02,24,priority handling requested,2024-04-06
+116869,1390,fulfilled,APAC,web,1767.24,2,priority handling requested,2025-03-01
+114330,1042,fulfilled,LATAM,retail,1355.95,26,,2024-08-16
+118219,1153,refunded,EMEA,retail,504.9,18,priority handling requested,2024-02-22
+111552,1179,refunded,NA,retail,201.44,15,priority handling requested,2024-04-28
+119676,1301,refunded,LATAM,phone,1634.04,22,,2024-05-04
+118497,1337,pending,EMEA,partner,934.43,8,priority handling requested,2025-06-10
+113415,1084,cancelled,APAC,web,1092.5,12,priority handling requested,2024-07-08
+107429,1006,fulfilled,NA,partner,1390.99,8,priority handling requested,2025-05-19
+117242,1335,refunded,LATAM,web,716.78,6,priority handling requested,2024-12-22
+101985,1029,refunded,EMEA,retail,1155.29,13,priority handling requested,2024-01-29
+109513,1343,fulfilled,APAC,retail,1497.78,2,,2024-10-28
+119786,1114,fulfilled,NA,partner,132.32,7,priority handling requested,2024-01-22
+105996,1347,pending,NA,retail,78.4,15,priority handling requested,2025-01-31
+112157,1398,fulfilled,EMEA,web,953.95,22,,2024-10-31
+103833,1373,pending,APAC,phone,1076.23,18,,2024-01-03
+111666,1044,fulfilled,LATAM,partner,563.34,16,,2025-04-04
+109853,1389,fulfilled,NA,web,15.34,2,priority handling requested,2024-10-02
+104064,1081,pending,LATAM,web,398.19,10,priority handling requested,2024-01-27
+111586,1364,pending,EMEA,web,1491.95,25,priority handling requested,2025-02-07
+100131,1221,pending,LATAM,web,480.16,26,priority handling requested,2024-03-16
+117538,1147,cancelled,EMEA,partner,1055.43,11,priority handling requested,2024-02-15
+106478,1019,refunded,NA,phone,503.89,2,priority handling requested,2025-06-05
+112478,1271,fulfilled,EMEA,phone,642.54,1,,2024-10-19
+104561,1020,refunded,APAC,partner,1235.35,13,,2024-07-14
+109921,1314,refunded,APAC,phone,275.05,7,priority handling requested,2024-08-28
+111449,1026,refunded,EMEA,phone,2453.46,20,,2024-07-16
+116780,1182,refunded,NA,retail,91.66,30,priority handling requested,2025-03-29
+108182,1019,pending,NA,web,2132.35,25,priority handling requested,2024-04-13
+117118,1116,pending,APAC,partner,427.27,28,priority handling requested,2024-12-18
+103024,1305,cancelled,NA,phone,2460.39,4,priority handling requested,2024-11-25
+101088,1374,fulfilled,APAC,retail,236.5,1,priority handling requested,2024-02-24
+117414,1392,fulfilled,LATAM,retail,77.39,23,priority handling requested,2024-04-26
+114898,1291,cancelled,LATAM,web,2284.94,22,priority handling requested,2024-01-22
+101670,1050,cancelled,EMEA,partner,812.74,11,,2024-06-27
+109652,1153,pending,NA,retail,1410.3,12,priority handling requested,2024-04-14
+113857,1390,pending,EMEA,phone,905.18,23,priority handling requested,2024-07-19
+118490,1273,fulfilled,APAC,web,863.23,12,priority handling requested,2024-01-01
+102848,1045,pending,APAC,web,1170.06,5,priority handling requested,2024-05-11
+114686,1029,refunded,LATAM,retail,310.99,27,priority handling requested,2025-03-24
+108919,1218,fulfilled,LATAM,phone,311.37,22,priority handling requested,2024-04-12
+107966,1257,refunded,EMEA,web,1525.32,2,priority handling requested,2024-01-27
+103431,1373,pending,NA,web,287.56,3,priority handling requested,2024-05-05
+109055,1039,pending,APAC,retail,2182.39,18,priority handling requested,2024-07-14
+104858,1209,refunded,NA,phone,835.72,18,priority handling requested,2024-09-15
+101428,1065,fulfilled,LATAM,phone,1466.21,26,,2025-01-14
+100145,1150,pending,APAC,phone,2013.27,25,priority handling requested,2024-09-19
+115648,1151,pending,NA,partner,872.03,23,priority handling requested,2025-02-07
+111218,1065,refunded,LATAM,retail,1320.74,12,priority handling requested,2024-04-07
+103371,1394,cancelled,NA,retail,2425.76,14,priority handling requested,2025-02-18
+106734,1312,refunded,LATAM,web,752.59,12,priority handling requested,2024-01-17
+118856,1316,cancelled,APAC,retail,1481.13,16,priority handling requested,2025-02-10
+116861,1027,pending,APAC,web,763.31,1,priority handling requested,2024-01-01
+116416,1244,pending,EMEA,retail,1552.26,14,priority handling requested,2025-01-07
+112086,1186,refunded,APAC,web,1610.7,15,priority handling requested,2025-06-20
+117776,1307,pending,LATAM,web,1556.29,1,priority handling requested,2024-11-26
+111760,1393,pending,EMEA,web,488.79,18,priority handling requested,2024-08-11
+109662,1179,refunded,EMEA,partner,1618.67,21,priority handling requested,2024-05-31
+106338,1050,refunded,EMEA,retail,2403.38,5,,2024-07-02
+107863,1329,pending,NA,retail,315.66,4,priority handling requested,2024-04-24
+110124,1196,refunded,APAC,partner,216.68,27,priority handling requested,2024-05-08
+115649,1091,fulfilled,EMEA,retail,2358.96,19,priority handling requested,2024-04-07
+103116,1257,fulfilled,EMEA,partner,631.07,20,priority handling requested,2024-10-22
+116328,1118,refunded,EMEA,phone,48.1,28,priority handling requested,2024-05-13
+115928,1308,pending,APAC,partner,1258.86,20,priority handling requested,2025-04-18
+103008,1391,cancelled,EMEA,partner,607.64,27,priority handling requested,2024-05-21
+115399,1116,refunded,EMEA,web,2024.22,3,priority handling requested,2025-02-11
+101945,1300,cancelled,LATAM,phone,1399.47,29,priority handling requested,2024-12-20
+100359,1163,pending,APAC,retail,40.59,28,,2024-12-16
+111445,1166,cancelled,NA,partner,2093.14,21,priority handling requested,2025-04-13
+100674,1012,fulfilled,APAC,phone,1479.23,19,priority handling requested,2024-10-14
+105552,1102,pending,LATAM,partner,2205.06,4,,2024-03-14
+108170,1018,fulfilled,EMEA,web,737.99,2,priority handling requested,2025-03-11
+109500,1159,pending,NA,retail,1986.02,10,,2024-02-29
+104098,1019,refunded,LATAM,retail,480.08,16,priority handling requested,2024-10-04
+113928,1221,cancelled,NA,retail,2150.16,10,,2024-12-24
+106126,1072,pending,EMEA,retail,372.65,1,priority handling requested,2025-04-20
+117096,1292,pending,EMEA,phone,1490.41,9,priority handling requested,2024-01-01
+104085,1286,pending,LATAM,phone,3.33,27,priority handling requested,2025-06-07
+115176,1002,refunded,LATAM,retail,348.68,11,,2024-07-03
+107486,1273,refunded,APAC,partner,1646.29,20,priority handling requested,2024-06-26
+116898,1223,refunded,LATAM,web,133.94,25,priority handling requested,2025-06-23
+115009,1353,pending,LATAM,retail,409.91,9,priority handling requested,2025-03-16
+104726,1086,pending,NA,phone,431.98,1,priority handling requested,2024-05-31
+108477,1313,cancelled,NA,phone,738.29,21,,2024-01-05
+108917,1363,cancelled,LATAM,retail,760.37,11,priority handling requested,2024-11-11
+112745,1302,fulfilled,NA,partner,1572.9,8,priority handling requested,2024-01-04
+116606,1343,cancelled,APAC,web,1491.99,9,priority handling requested,2025-01-03
+108393,1059,fulfilled,NA,partner,799.31,24,priority handling requested,2024-09-08
+111569,1330,fulfilled,LATAM,phone,1798.68,10,priority handling requested,2025-02-11
+104019,1192,pending,APAC,retail,2098.51,19,priority handling requested,2024-01-12
+103112,1019,fulfilled,EMEA,partner,1881.97,15,,2025-02-16
+107565,1163,cancelled,EMEA,retail,432.86,5,,2024-06-14
+116082,1076,fulfilled,LATAM,web,207.67,9,priority handling requested,2025-01-19
+105326,1367,pending,EMEA,partner,1414.54,18,,2024-02-21
+104857,1158,refunded,EMEA,web,925.02,14,priority handling requested,2024-08-25
+100251,1320,fulfilled,EMEA,phone,986.18,1,priority handling requested,2024-06-13
+117059,1208,cancelled,LATAM,phone,25.1,17,priority handling requested,2025-01-28
+111587,1350,cancelled,NA,phone,392.19,19,,2024-11-29
+108438,1085,refunded,NA,partner,752.73,29,priority handling requested,2025-05-14
+116495,1128,refunded,EMEA,web,118.15,4,,2024-10-16
+105670,1131,fulfilled,LATAM,partner,1816.64,5,priority handling requested,2024-01-23
+119611,1098,refunded,EMEA,phone,1172.09,9,priority handling requested,2024-01-23
+113168,1375,fulfilled,EMEA,retail,806.86,4,priority handling requested,2025-05-19
+114089,1299,cancelled,EMEA,phone,1304.33,29,priority handling requested,2025-05-26
+119365,1182,refunded,EMEA,web,1919.94,20,priority handling requested,2024-03-06
+105919,1295,fulfilled,EMEA,web,353.05,23,,2024-05-22
+118670,1198,pending,EMEA,web,2180.33,7,priority handling requested,2024-06-05
+119272,1346,refunded,EMEA,retail,991.67,17,priority handling requested,2024-01-19
+107235,1398,cancelled,APAC,partner,1750.54,22,priority handling requested,2025-06-09
+114155,1233,cancelled,LATAM,web,621.57,19,priority handling requested,2025-06-06
+111565,1130,fulfilled,LATAM,retail,474.24,10,priority handling requested,2024-11-20
+104731,1290,pending,EMEA,partner,1698.44,5,,2025-03-25
+102877,1106,fulfilled,LATAM,retail,1321.69,30,priority handling requested,2024-05-03
+102711,1074,cancelled,NA,phone,770.75,30,priority handling requested,2024-12-14
+109803,1195,fulfilled,EMEA,partner,2476.88,19,priority handling requested,2024-03-29
+105914,1348,fulfilled,EMEA,partner,1931.01,9,priority handling requested,2024-03-19
+118329,1383,refunded,EMEA,web,1655.95,23,priority handling requested,2024-12-23
+101044,1011,refunded,LATAM,phone,1930.86,17,priority handling requested,2024-09-15
+116692,1257,refunded,LATAM,partner,2483.08,8,priority handling requested,2024-10-25
+109385,1270,refunded,NA,partner,608.62,11,priority handling requested,2024-07-03
+115351,1081,cancelled,EMEA,partner,53.99,4,priority handling requested,2024-11-07
+118551,1293,refunded,NA,web,247.25,25,priority handling requested,2025-03-16
+118199,1083,fulfilled,LATAM,phone,2069.6,10,,2024-05-30
+100844,1215,refunded,APAC,partner,850.55,29,priority handling requested,2024-05-03
+104293,1324,fulfilled,LATAM,web,74.58,1,priority handling requested,2024-11-10
+113163,1049,cancelled,NA,phone,2345.82,10,priority handling requested,2024-03-15
+118429,1097,fulfilled,LATAM,web,266.17,14,priority handling requested,2024-10-18
+113831,1058,refunded,EMEA,partner,1455.53,1,priority handling requested,2024-03-18
+113177,1207,fulfilled,NA,retail,395.18,18,priority handling requested,2025-02-23
+118019,1289,fulfilled,NA,partner,2286.61,2,priority handling requested,2025-02-26
+112694,1120,refunded,APAC,web,916.67,14,priority handling requested,2025-04-05
+106026,1200,cancelled,NA,partner,1340.03,3,priority handling requested,2024-11-23
+111239,1236,pending,APAC,web,2126.39,16,priority handling requested,2024-09-17
+101041,1127,pending,NA,partner,599.9,19,priority handling requested,2024-04-26
+112440,1272,cancelled,NA,web,1067.95,18,priority handling requested,2025-02-19
+113781,1052,fulfilled,EMEA,phone,2000.6,18,priority handling requested,2025-03-29
+112491,1066,refunded,APAC,phone,1416.23,20,,2024-06-04
+114873,1184,fulfilled,NA,retail,778.4,6,priority handling requested,2025-05-06
+103553,1215,pending,NA,partner,2406.72,2,priority handling requested,2024-07-24
+116936,1182,cancelled,NA,phone,387.79,11,priority handling requested,2024-12-27
+104174,1292,cancelled,APAC,retail,4.93,11,priority handling requested,2024-03-03
+107061,1043,refunded,APAC,phone,892.12,26,priority handling requested,2024-04-01
+118884,1278,refunded,LATAM,partner,111.38,2,priority handling requested,2025-05-15
+113016,1216,fulfilled,NA,phone,1917.86,4,priority handling requested,2024-08-14
+108986,1134,fulfilled,APAC,phone,1450.06,6,,2025-01-30
+111900,1267,refunded,EMEA,partner,85.29,5,priority handling requested,2024-03-22
+103982,1047,fulfilled,EMEA,web,94.02,15,,2024-12-13
+116933,1160,fulfilled,LATAM,phone,1631.79,25,priority handling requested,2025-06-06
+117014,1006,refunded,APAC,web,1239.97,6,priority handling requested,2024-11-11
+109586,1166,fulfilled,APAC,partner,525.36,1,priority handling requested,2024-07-25
+103198,1175,fulfilled,NA,retail,1575.58,25,priority handling requested,2025-03-24
+118152,1388,cancelled,NA,web,604.0,13,priority handling requested,2025-02-13
+114130,1253,refunded,NA,web,1193.56,2,priority handling requested,2024-12-16
+115065,1035,pending,LATAM,phone,2464.8,8,priority handling requested,2024-04-30
+118388,1211,pending,NA,retail,43.72,2,,2024-08-29
+101989,1237,refunded,EMEA,phone,2191.47,19,priority handling requested,2024-02-12
+115015,1074,cancelled,APAC,phone,1204.81,12,priority handling requested,2024-11-29
+104475,1357,cancelled,NA,partner,1444.58,1,,2024-05-11
+105017,1393,fulfilled,LATAM,phone,921.16,16,,2025-04-18
+105921,1335,fulfilled,LATAM,web,538.06,17,,2024-09-08
+116295,1024,cancelled,EMEA,retail,309.69,25,priority handling requested,2024-05-23
+104059,1028,fulfilled,EMEA,partner,1933.75,30,priority handling requested,2024-05-04
+110112,1038,pending,NA,partner,671.99,30,priority handling requested,2024-01-22
+107078,1313,cancelled,LATAM,partner,2295.47,29,priority handling requested,2025-05-12
+115486,1197,pending,EMEA,phone,1522.06,4,,2025-03-14
+114051,1062,cancelled,APAC,partner,1381.89,5,priority handling requested,2024-01-18
+100221,1275,refunded,APAC,phone,1866.57,28,priority handling requested,2024-05-31
+116395,1047,pending,NA,phone,992.91,18,priority handling requested,2024-04-15
+110087,1381,cancelled,EMEA,web,2020.29,8,priority handling requested,2024-02-05
+104294,1351,fulfilled,EMEA,retail,1069.01,28,priority handling requested,2024-08-21
+104729,1353,pending,APAC,retail,2131.6,8,priority handling requested,2024-01-09
+111909,1074,refunded,NA,web,96.97,26,,2025-06-06
+110824,1371,fulfilled,EMEA,phone,1930.85,2,priority handling requested,2025-03-16
+101292,1049,fulfilled,EMEA,retail,706.32,11,priority handling requested,2025-05-27
+109974,1360,cancelled,LATAM,phone,1435.0,16,priority handling requested,2024-01-16
+108524,1275,refunded,APAC,partner,1979.07,19,priority handling requested,2025-04-22
+116266,1160,pending,NA,retail,711.64,5,priority handling requested,2024-10-28
+111803,1391,fulfilled,APAC,phone,1569.88,15,priority handling requested,2025-01-09
+101686,1288,pending,LATAM,web,2102.33,1,priority handling requested,2024-03-08
+110867,1292,fulfilled,APAC,phone,2431.82,23,,2024-09-15
+114208,1360,cancelled,NA,retail,374.33,18,priority handling requested,2024-09-10
+118283,1261,refunded,NA,web,1502.49,2,priority handling requested,2024-12-08
+111903,1154,cancelled,NA,phone,616.78,25,priority handling requested,2025-01-17
+114517,1335,fulfilled,APAC,web,2115.03,22,priority handling requested,2025-02-28
+102034,1189,refunded,EMEA,retail,2067.56,7,priority handling requested,2024-02-15
+111034,1332,cancelled,EMEA,phone,777.3,16,,2024-08-26
+100257,1096,pending,LATAM,phone,1527.16,8,priority handling requested,2024-11-27
+113020,1330,fulfilled,LATAM,web,2252.93,15,priority handling requested,2024-03-01
+100664,1126,cancelled,APAC,phone,150.82,4,priority handling requested,2024-10-31
+118125,1302,refunded,LATAM,phone,2461.0,18,priority handling requested,2024-05-09
+101845,1362,cancelled,LATAM,phone,1098.34,30,priority handling requested,2024-12-26
+119216,1373,pending,APAC,retail,1800.95,12,,2024-12-23
+116991,1277,pending,NA,phone,1614.26,29,priority handling requested,2024-09-25
+100698,1365,fulfilled,APAC,phone,1818.1,12,priority handling requested,2024-05-01
+118893,1318,fulfilled,NA,retail,2488.07,16,priority handling requested,2024-07-11
+104354,1197,cancelled,APAC,retail,194.71,29,priority handling requested,2025-05-19
+113672,1320,cancelled,EMEA,retail,774.46,6,priority handling requested,2025-04-22
+109357,1011,cancelled,EMEA,web,1989.21,16,priority handling requested,2024-12-09
+105449,1092,refunded,NA,partner,2323.62,14,,2024-05-03
+110643,1288,refunded,NA,phone,1325.55,3,,2024-08-22
+117055,1322,pending,EMEA,phone,1204.24,6,priority handling requested,2025-03-05
+111605,1132,refunded,EMEA,retail,829.01,28,priority handling requested,2025-02-02
+110768,1141,cancelled,NA,retail,624.78,6,priority handling requested,2025-05-08
+110220,1224,pending,NA,retail,228.56,7,priority handling requested,2024-11-20
+113126,1340,cancelled,APAC,phone,2457.95,2,priority handling requested,2024-11-01
+119022,1130,fulfilled,APAC,web,1331.07,15,,2024-01-26
+105729,1328,cancelled,LATAM,retail,559.89,23,priority handling requested,2025-02-20
+105755,1029,pending,NA,partner,130.13,11,priority handling requested,2024-01-26
+105355,1065,pending,APAC,retail,144.73,7,priority handling requested,2024-08-09
+102926,1239,pending,LATAM,phone,2146.26,8,priority handling requested,2024-05-24
+118392,1183,cancelled,NA,retail,842.68,12,priority handling requested,2025-04-20
+110659,1248,fulfilled,NA,retail,465.33,25,priority handling requested,2025-05-17
+108248,1217,pending,LATAM,partner,1759.52,4,priority handling requested,2024-05-11
+105410,1260,cancelled,APAC,web,555.7,15,priority handling requested,2024-08-16
+105024,1264,cancelled,NA,partner,1869.52,4,priority handling requested,2024-12-22
+106035,1039,refunded,EMEA,partner,2171.94,18,priority handling requested,2025-05-03
+114787,1282,pending,EMEA,web,1855.64,11,priority handling requested,2025-01-26
+109124,1180,cancelled,EMEA,partner,906.19,14,priority handling requested,2024-07-26
+107164,1138,refunded,LATAM,retail,25.35,21,priority handling requested,2024-09-29
+117396,1349,pending,NA,phone,1369.53,9,priority handling requested,2024-07-25
+101222,1288,fulfilled,LATAM,phone,2034.61,7,,2024-11-23
+101423,1155,fulfilled,EMEA,phone,2465.54,24,priority handling requested,2024-12-13
+105175,1029,refunded,LATAM,web,1341.11,16,,2024-07-23
+111354,1014,refunded,APAC,partner,1493.47,25,priority handling requested,2025-05-22
+117336,1379,pending,APAC,retail,72.91,8,priority handling requested,2024-12-14
+112090,1007,refunded,EMEA,retail,1910.71,22,priority handling requested,2025-03-18
+106453,1089,refunded,APAC,partner,2475.21,8,,2025-03-12
+114894,1015,refunded,NA,phone,1473.35,3,,2024-09-29
+102556,1324,cancelled,APAC,partner,2024.51,8,priority handling requested,2024-10-26
+113587,1283,pending,NA,retail,590.88,28,,2024-09-25
+108354,1053,pending,LATAM,web,2339.9,20,priority handling requested,2025-02-07
+103984,1392,pending,APAC,phone,1149.53,20,priority handling requested,2025-01-19
+105419,1106,pending,NA,retail,1043.52,7,priority handling requested,2024-08-04
+111411,1149,refunded,LATAM,web,2149.38,12,,2024-11-26
+115030,1302,fulfilled,NA,phone,1125.27,5,priority handling requested,2024-04-10
+102516,1106,refunded,NA,retail,2421.58,2,priority handling requested,2024-05-29
+101354,1141,refunded,NA,partner,409.63,19,priority handling requested,2025-02-27
+114725,1306,cancelled,LATAM,web,2301.97,16,priority handling requested,2024-10-07
+115506,1209,refunded,LATAM,partner,976.74,20,,2024-03-20
+100676,1212,cancelled,APAC,retail,1533.83,7,priority handling requested,2024-08-03
+118700,1146,pending,NA,partner,1794.49,26,priority handling requested,2025-01-13
+103442,1199,fulfilled,NA,partner,1769.77,2,priority handling requested,2025-03-13
+108181,1329,pending,NA,phone,10.53,20,priority handling requested,2025-02-01
+106305,1066,fulfilled,EMEA,phone,2317.67,27,,2024-11-14
+117453,1208,refunded,EMEA,web,42.75,1,priority handling requested,2024-01-14
+112989,1002,cancelled,EMEA,partner,2157.39,17,priority handling requested,2025-03-14
+110812,1339,cancelled,NA,partner,1953.46,26,priority handling requested,2025-02-27
+117655,1193,cancelled,EMEA,web,226.75,20,,2024-06-12
+119217,1210,pending,APAC,phone,2488.47,29,priority handling requested,2024-12-20
+100856,1003,refunded,EMEA,web,999.63,3,priority handling requested,2025-06-18
+108710,1134,cancelled,EMEA,partner,626.27,27,priority handling requested,2024-10-26
+119802,1387,cancelled,LATAM,partner,1637.83,4,priority handling requested,2024-07-29
+109035,1100,refunded,LATAM,partner,518.69,5,priority handling requested,2024-06-11
+100463,1357,pending,LATAM,phone,836.34,12,priority handling requested,2024-02-28
+107044,1394,pending,NA,phone,1138.7,9,,2024-04-06
+113357,1176,pending,LATAM,partner,2457.29,10,priority handling requested,2024-03-03
+113520,1116,fulfilled,NA,web,24.83,21,,2024-10-22
+116306,1101,cancelled,EMEA,partner,2209.19,29,,2025-01-10
+104240,1044,pending,NA,partner,1823.61,29,priority handling requested,2024-12-05
+118758,1300,fulfilled,APAC,phone,1948.42,18,priority handling requested,2025-02-08
+108799,1285,fulfilled,EMEA,retail,1587.81,26,priority handling requested,2025-01-10
+102697,1340,refunded,LATAM,web,234.4,13,priority handling requested,2024-01-19
+118901,1357,fulfilled,LATAM,retail,1195.81,3,priority handling requested,2024-06-09
+116283,1381,refunded,LATAM,web,710.77,12,priority handling requested,2024-05-22
+103386,1212,pending,NA,web,2320.52,14,,2024-06-18
+114587,1221,refunded,APAC,retail,987.01,7,priority handling requested,2024-07-29
+102532,1210,refunded,NA,web,2336.51,22,priority handling requested,2025-02-02
+111086,1326,cancelled,LATAM,retail,1369.93,16,priority handling requested,2024-05-08
+105538,1348,fulfilled,LATAM,web,1505.1,13,priority handling requested,2024-12-23
+115002,1379,refunded,APAC,web,1598.64,14,priority handling requested,2024-05-22
+101903,1005,refunded,NA,retail,1596.88,27,,2025-04-23
+114168,1214,cancelled,NA,phone,1247.38,6,priority handling requested,2024-08-09
+113914,1373,cancelled,NA,phone,1794.22,5,priority handling requested,2024-07-08
+108475,1031,refunded,EMEA,partner,1961.8,21,priority handling requested,2025-04-10
+106331,1257,refunded,NA,retail,1027.9,25,priority handling requested,2024-03-24
+115227,1304,pending,LATAM,phone,992.84,27,,2024-09-20
+112405,1093,fulfilled,LATAM,web,122.09,22,,2024-03-07
+107522,1020,cancelled,LATAM,retail,1661.34,16,priority handling requested,2024-05-05
+108829,1232,fulfilled,LATAM,retail,1953.08,14,priority handling requested,2024-02-08
+101430,1075,pending,APAC,web,243.03,23,priority handling requested,2024-10-19
+112144,1021,fulfilled,APAC,phone,877.1,18,priority handling requested,2024-12-24
+119679,1126,cancelled,APAC,partner,331.85,29,priority handling requested,2024-08-16
+104147,1089,refunded,EMEA,retail,2241.44,2,priority handling requested,2025-01-15
+114793,1325,refunded,EMEA,partner,266.82,5,priority handling requested,2025-03-30
+103028,1011,cancelled,EMEA,partner,1130.61,2,priority handling requested,2025-03-05
+100012,1140,fulfilled,APAC,web,2268.71,22,priority handling requested,2025-02-23
+101572,1054,cancelled,NA,partner,126.84,3,,2024-06-23
+108837,1278,pending,NA,partner,763.45,23,,2024-05-14
+100807,1123,pending,LATAM,partner,1157.74,1,priority handling requested,2024-07-26
+111418,1179,pending,LATAM,partner,780.56,29,priority handling requested,2024-03-12
+103656,1363,pending,LATAM,retail,207.19,2,,2024-06-09
+109875,1017,cancelled,APAC,partner,9.28,5,priority handling requested,2025-01-30
+107631,1076,cancelled,APAC,retail,1876.79,27,,2024-09-02
+104341,1334,cancelled,LATAM,phone,596.45,12,priority handling requested,2024-11-05
+113283,1130,refunded,APAC,phone,889.95,19,priority handling requested,2024-12-02
+105756,1062,pending,LATAM,retail,966.6,28,priority handling requested,2024-10-31
+108938,1147,pending,EMEA,web,1309.8,20,,2024-05-12
+110047,1054,refunded,NA,phone,1708.18,15,priority handling requested,2024-04-01
+102642,1010,fulfilled,APAC,phone,619.09,15,priority handling requested,2024-10-28
+101800,1287,pending,LATAM,web,1684.79,19,priority handling requested,2025-06-21
+101872,1226,cancelled,EMEA,web,1309.3,5,priority handling requested,2025-02-13
+111464,1267,fulfilled,EMEA,phone,2066.18,26,priority handling requested,2024-05-23
+109606,1177,refunded,NA,retail,954.41,20,,2025-04-26
+100034,1265,refunded,LATAM,phone,147.73,11,priority handling requested,2024-11-18
+105174,1077,cancelled,EMEA,retail,1791.92,14,priority handling requested,2024-07-10
+101617,1236,pending,NA,web,2136.06,27,priority handling requested,2024-08-06
+112024,1150,refunded,APAC,partner,963.12,24,priority handling requested,2024-01-23
+114211,1105,refunded,APAC,web,2477.7,25,,2024-07-01
+118262,1302,pending,EMEA,web,1863.04,15,priority handling requested,2024-07-04
+117280,1010,fulfilled,NA,partner,1879.66,3,,2024-04-22
+104586,1024,refunded,APAC,web,2158.72,12,priority handling requested,2025-03-30
+110424,1160,refunded,NA,web,1039.79,5,priority handling requested,2024-01-08
+114068,1208,cancelled,EMEA,retail,1149.28,21,priority handling requested,2024-09-30
+104431,1280,refunded,APAC,web,2345.65,16,priority handling requested,2025-01-11
+117190,1186,fulfilled,APAC,phone,1094.47,17,,2024-03-24
+113058,1391,cancelled,LATAM,retail,845.63,5,,2024-09-21
+112741,1163,refunded,LATAM,web,676.58,20,priority handling requested,2025-03-26
+106052,1048,fulfilled,NA,web,2324.1,9,priority handling requested,2024-11-22
+111932,1238,fulfilled,EMEA,phone,769.39,7,priority handling requested,2024-08-16
+109053,1001,cancelled,NA,retail,1864.93,10,,2025-02-21
+106520,1235,refunded,NA,partner,1104.68,25,priority handling requested,2025-03-27
+105447,1066,refunded,EMEA,phone,2321.74,13,priority handling requested,2025-05-31
+107208,1392,cancelled,NA,partner,1002.66,4,priority handling requested,2024-10-31
+116389,1041,pending,NA,retail,248.67,19,priority handling requested,2024-03-14
+110651,1164,refunded,EMEA,web,2385.86,7,,2024-02-16
+106065,1295,fulfilled,NA,partner,1388.36,17,priority handling requested,2024-03-14
+113309,1333,cancelled,EMEA,partner,2417.75,9,priority handling requested,2025-05-08
+106247,1364,pending,EMEA,retail,602.53,24,priority handling requested,2024-06-22
+116572,1290,fulfilled,NA,partner,174.56,29,priority handling requested,2024-10-20
+110596,1362,pending,APAC,partner,520.51,28,priority handling requested,2024-12-10
+118071,1236,refunded,APAC,retail,1651.75,23,priority handling requested,2024-10-12
+110510,1265,fulfilled,NA,partner,350.19,13,priority handling requested,2025-01-21
+117971,1162,pending,APAC,retail,2421.03,6,priority handling requested,2024-06-30
+115670,1005,pending,EMEA,web,2363.74,10,priority handling requested,2024-10-25
+112446,1041,fulfilled,NA,web,1105.74,12,priority handling requested,2024-08-30
+108051,1396,fulfilled,LATAM,web,2067.29,17,,2025-03-16
+100301,1326,pending,NA,partner,122.12,7,,2025-05-13
+115892,1361,pending,APAC,partner,1298.39,15,priority handling requested,2025-03-29
+118205,1164,refunded,NA,retail,1099.0,26,priority handling requested,2024-04-06
+109685,1202,refunded,LATAM,web,2305.44,7,priority handling requested,2024-07-06
+115409,1296,fulfilled,EMEA,retail,836.76,7,priority handling requested,2024-08-22
+105293,1237,pending,APAC,phone,332.24,24,,2024-03-10
+112988,1096,cancelled,EMEA,phone,204.13,7,,2025-05-23
+103764,1155,refunded,NA,retail,1043.73,28,priority handling requested,2025-05-03
+114341,1127,fulfilled,NA,retail,183.03,1,,2024-12-06
+116304,1210,pending,NA,retail,805.16,17,priority handling requested,2024-08-19
+100280,1217,fulfilled,EMEA,web,573.98,25,priority handling requested,2024-07-30
+115453,1346,fulfilled,APAC,phone,1139.67,2,priority handling requested,2024-02-08
+114916,1166,pending,NA,phone,755.98,11,priority handling requested,2025-06-04
+119532,1081,cancelled,NA,phone,176.49,16,priority handling requested,2024-01-31
+117099,1350,refunded,APAC,web,974.8,1,priority handling requested,2025-04-06
+103834,1259,pending,EMEA,web,1015.51,9,priority handling requested,2024-05-28
+100497,1143,refunded,NA,phone,1860.54,28,priority handling requested,2024-04-25
+115039,1241,cancelled,NA,partner,1386.93,30,priority handling requested,2024-09-07
+106482,1322,cancelled,LATAM,phone,1779.14,10,priority handling requested,2025-03-15
+113188,1164,refunded,LATAM,phone,1674.84,2,priority handling requested,2024-07-30
+111127,1082,cancelled,NA,partner,366.87,9,priority handling requested,2025-06-14
+113905,1177,fulfilled,NA,partner,2094.56,23,priority handling requested,2024-03-23
+101779,1107,refunded,LATAM,partner,621.74,20,priority handling requested,2024-09-22
+108951,1202,pending,EMEA,retail,1223.7,4,priority handling requested,2024-03-17
+105463,1168,cancelled,EMEA,phone,1800.66,12,priority handling requested,2025-02-25
+100831,1357,refunded,APAC,retail,1149.78,19,priority handling requested,2025-02-09
+111845,1097,pending,NA,partner,1648.89,30,priority handling requested,2024-06-23
+105395,1164,pending,LATAM,web,1379.2,13,priority handling requested,2025-02-08
+114769,1087,pending,LATAM,partner,2295.75,18,priority handling requested,2024-02-02
+101773,1390,fulfilled,EMEA,partner,926.28,9,priority handling requested,2025-03-11
+107808,1272,refunded,EMEA,web,1140.97,25,,2025-06-23
+100287,1033,refunded,APAC,phone,2101.99,8,priority handling requested,2024-06-25
+117654,1303,pending,NA,web,2221.76,30,priority handling requested,2024-01-15
+119419,1140,pending,APAC,web,1915.04,19,priority handling requested,2024-08-24
+106731,1069,pending,EMEA,phone,909.31,17,,2025-05-07
+106681,1020,pending,APAC,web,435.65,20,priority handling requested,2024-04-29
+103209,1152,cancelled,APAC,phone,949.89,25,priority handling requested,2024-04-15
+117941,1261,cancelled,EMEA,phone,1153.75,1,priority handling requested,2024-03-16
+116959,1055,fulfilled,LATAM,phone,1737.96,29,priority handling requested,2025-03-10
+114627,1190,refunded,LATAM,web,1947.82,6,priority handling requested,2024-05-26
+103070,1064,refunded,NA,retail,2271.0,8,priority handling requested,2024-02-07
+119048,1357,refunded,EMEA,web,304.23,17,,2025-02-02
+114253,1128,fulfilled,APAC,phone,1242.77,14,priority handling requested,2024-05-20
+116211,1055,pending,APAC,phone,1288.08,1,priority handling requested,2024-09-27
+112334,1196,pending,LATAM,phone,2225.0,14,priority handling requested,2025-05-19
+104658,1099,cancelled,EMEA,partner,345.9,5,priority handling requested,2024-04-21
+115858,1254,cancelled,EMEA,web,1622.84,4,priority handling requested,2024-07-27
+101929,1210,refunded,EMEA,retail,324.87,20,priority handling requested,2024-08-15
+112378,1318,fulfilled,APAC,web,1871.43,17,,2024-01-07
+103446,1045,refunded,NA,partner,1346.99,4,,2024-08-15
+119052,1200,pending,NA,web,34.91,1,,2024-10-07
+109576,1074,fulfilled,NA,web,2298.35,17,priority handling requested,2024-06-25
+106159,1336,refunded,NA,retail,2489.93,30,priority handling requested,2024-06-18
+107885,1398,cancelled,LATAM,partner,286.73,2,priority handling requested,2024-07-17
+115441,1372,refunded,LATAM,web,374.38,18,,2024-07-22
+105753,1381,pending,EMEA,phone,945.86,2,priority handling requested,2024-05-01
+106677,1128,cancelled,EMEA,phone,2142.38,4,,2024-01-09
+117812,1117,refunded,EMEA,retail,1982.56,23,,2024-07-18
+109815,1243,refunded,EMEA,web,2078.93,6,priority handling requested,2024-02-08
+119866,1089,cancelled,LATAM,web,1637.91,20,,2024-11-30
+102957,1008,pending,APAC,phone,552.5,2,priority handling requested,2025-01-13
+109043,1122,refunded,EMEA,phone,962.05,29,priority handling requested,2025-04-03
+103530,1045,fulfilled,EMEA,partner,2488.13,20,priority handling requested,2024-10-12
+114638,1348,fulfilled,NA,phone,1764.68,26,priority handling requested,2024-09-17
+102718,1375,cancelled,EMEA,retail,1684.13,27,priority handling requested,2025-06-05
+119595,1224,refunded,EMEA,retail,69.13,28,priority handling requested,2024-07-28
+116824,1012,fulfilled,NA,phone,954.43,27,priority handling requested,2024-10-18
+108781,1220,pending,LATAM,phone,2339.96,29,priority handling requested,2025-01-24
+109018,1083,cancelled,NA,web,1763.89,9,,2024-06-05
+101410,1142,refunded,EMEA,web,41.28,27,priority handling requested,2024-10-13
+103978,1021,cancelled,LATAM,partner,739.74,29,priority handling requested,2025-01-29
+106623,1321,pending,NA,phone,2113.16,4,priority handling requested,2024-04-28
+105077,1027,pending,NA,partner,2450.14,13,priority handling requested,2024-03-28
+114983,1042,cancelled,NA,partner,494.87,29,,2024-09-29
+103884,1071,cancelled,NA,phone,879.81,3,priority handling requested,2024-07-04
+105585,1295,fulfilled,NA,web,530.89,18,priority handling requested,2024-01-19
+118795,1256,cancelled,APAC,phone,2024.96,7,priority handling requested,2025-02-16
+111872,1029,fulfilled,APAC,phone,944.46,17,priority handling requested,2025-06-02
+101875,1104,refunded,LATAM,phone,967.68,17,priority handling requested,2024-10-31
+104759,1059,fulfilled,LATAM,phone,1970.38,23,priority handling requested,2025-05-24
+116634,1309,cancelled,NA,partner,2056.22,10,priority handling requested,2024-10-07
+100700,1110,refunded,LATAM,phone,559.38,29,priority handling requested,2024-02-19
+107831,1396,cancelled,LATAM,partner,259.27,8,,2024-05-09
+107855,1067,fulfilled,EMEA,partner,1659.01,12,priority handling requested,2024-02-18
+109448,1000,cancelled,LATAM,retail,743.55,2,priority handling requested,2024-11-13
+105172,1257,cancelled,NA,phone,993.22,20,priority handling requested,2024-10-12
+114085,1360,cancelled,EMEA,web,1020.48,24,,2024-09-23
+101399,1366,fulfilled,NA,partner,2085.95,2,priority handling requested,2024-06-23
+105847,1380,pending,LATAM,web,1719.0,28,priority handling requested,2024-05-29
+107089,1329,cancelled,APAC,partner,1780.51,29,priority handling requested,2025-05-20
+119482,1074,pending,LATAM,phone,824.31,27,priority handling requested,2025-05-03
+104196,1103,pending,APAC,retail,1254.93,12,priority handling requested,2024-04-20
+105589,1016,refunded,NA,web,661.39,3,priority handling requested,2025-04-07
+108683,1127,pending,LATAM,web,2090.81,22,priority handling requested,2025-03-03
+108722,1074,refunded,NA,phone,1085.85,8,priority handling requested,2024-01-27
+111107,1202,pending,LATAM,retail,680.05,17,priority handling requested,2024-10-07
+100162,1149,fulfilled,LATAM,phone,1300.55,27,priority handling requested,2024-06-22
+111057,1356,cancelled,NA,web,816.11,2,priority handling requested,2025-05-27
+114514,1030,refunded,NA,phone,2368.93,15,,2024-05-20
+112054,1046,pending,LATAM,retail,284.42,1,priority handling requested,2025-04-24
+106268,1194,refunded,LATAM,web,1509.28,17,priority handling requested,2025-01-28
+114112,1258,cancelled,EMEA,phone,709.1,13,priority handling requested,2025-03-24
+106030,1206,pending,NA,phone,2121.1,6,priority handling requested,2024-03-16
+111247,1296,fulfilled,LATAM,retail,779.92,12,priority handling requested,2024-11-18
+107848,1301,refunded,EMEA,partner,1998.98,1,priority handling requested,2025-02-10
+116239,1037,fulfilled,LATAM,partner,1155.58,9,priority handling requested,2024-10-30
+119696,1182,pending,NA,web,933.75,12,priority handling requested,2025-04-15
+115000,1141,pending,EMEA,retail,1640.19,22,priority handling requested,2025-05-04
+100178,1062,fulfilled,NA,phone,356.57,30,priority handling requested,2024-08-18
+115994,1116,pending,LATAM,partner,1976.44,4,priority handling requested,2024-08-30
+117588,1381,refunded,NA,web,2394.19,4,,2025-05-29
+101052,1285,pending,NA,retail,2092.81,22,priority handling requested,2024-08-25
+102546,1096,fulfilled,APAC,partner,502.95,5,,2024-02-20
+101440,1211,pending,APAC,partner,1385.93,16,priority handling requested,2024-06-10
+111488,1129,cancelled,LATAM,retail,2263.26,9,priority handling requested,2024-05-31
+115355,1052,fulfilled,APAC,retail,2269.29,3,priority handling requested,2024-09-09
+111421,1222,fulfilled,EMEA,web,1338.04,25,priority handling requested,2025-05-11
+108813,1191,cancelled,APAC,phone,551.11,1,priority handling requested,2024-11-20
+105442,1082,cancelled,LATAM,retail,504.31,27,priority handling requested,2024-11-26
+112695,1195,refunded,APAC,phone,1050.14,22,priority handling requested,2024-04-26
+117431,1374,cancelled,LATAM,retail,689.44,13,priority handling requested,2024-06-13
+109480,1142,pending,EMEA,partner,838.66,7,priority handling requested,2024-10-14
+103841,1221,refunded,NA,phone,543.66,23,priority handling requested,2025-01-05
+105397,1317,cancelled,LATAM,phone,814.03,29,,2024-05-22
+119412,1165,fulfilled,EMEA,phone,1723.58,23,priority handling requested,2025-03-01
+119010,1029,pending,EMEA,partner,696.45,13,priority handling requested,2024-06-08
+101180,1062,cancelled,APAC,web,90.88,28,,2024-07-10
+105809,1035,fulfilled,EMEA,partner,1828.79,11,,2024-10-18
+109159,1371,cancelled,LATAM,retail,1588.76,27,priority handling requested,2024-01-05
+105563,1104,refunded,APAC,partner,1511.56,23,priority handling requested,2025-04-23
+101982,1326,cancelled,NA,phone,2075.3,12,priority handling requested,2025-02-14
+112543,1265,pending,NA,retail,2424.5,17,,2025-05-25
+115430,1123,cancelled,EMEA,phone,1721.97,13,priority handling requested,2024-12-09
+109374,1010,fulfilled,EMEA,web,795.37,5,priority handling requested,2025-01-25
+100077,1287,pending,APAC,partner,2149.27,24,priority handling requested,2024-07-14
+107176,1086,pending,APAC,partner,658.72,18,priority handling requested,2025-03-22
+100450,1288,cancelled,APAC,phone,382.73,23,priority handling requested,2024-04-13
+108780,1016,fulfilled,NA,phone,991.56,17,,2024-02-22
+104793,1150,fulfilled,EMEA,partner,1644.6,18,priority handling requested,2025-04-11
+114913,1370,refunded,APAC,retail,2416.27,10,,2025-03-15
+103207,1074,refunded,LATAM,partner,1079.39,18,priority handling requested,2024-10-25
+111762,1044,refunded,NA,retail,679.06,15,,2024-07-01
+107528,1180,pending,APAC,phone,862.93,6,priority handling requested,2025-02-04
+109600,1074,cancelled,NA,web,1756.72,25,priority handling requested,2024-02-08
+106486,1014,fulfilled,EMEA,phone,1403.28,9,priority handling requested,2025-02-16
+100694,1137,refunded,NA,web,244.57,15,,2024-06-07
+107635,1310,pending,APAC,web,1604.62,23,priority handling requested,2025-02-06
+103812,1023,fulfilled,EMEA,web,299.68,22,priority handling requested,2025-05-26
+118697,1152,refunded,EMEA,web,2190.23,4,priority handling requested,2025-01-16
+115467,1104,fulfilled,LATAM,retail,2051.47,28,priority handling requested,2024-05-14
+108548,1391,pending,APAC,retail,1380.06,21,,2024-08-11
+112358,1220,fulfilled,LATAM,web,1149.94,17,priority handling requested,2024-10-09
+103795,1084,pending,LATAM,partner,2260.15,4,priority handling requested,2024-03-05
+114601,1025,pending,EMEA,partner,2119.97,27,priority handling requested,2024-05-15
+107417,1345,cancelled,APAC,web,1606.77,9,priority handling requested,2024-07-06
+117549,1126,refunded,LATAM,web,52.55,14,,2024-08-31
+115935,1007,fulfilled,LATAM,partner,868.23,23,,2024-06-18
+107708,1350,fulfilled,EMEA,phone,1025.82,6,priority handling requested,2024-10-15
+115181,1133,pending,APAC,partner,992.21,7,,2024-09-21
+115704,1238,pending,NA,web,467.13,27,priority handling requested,2024-05-18
+108617,1044,pending,LATAM,retail,1533.21,8,priority handling requested,2025-01-31
+108622,1155,pending,NA,phone,88.41,7,priority handling requested,2025-01-31
+119131,1007,fulfilled,EMEA,retail,660.45,6,priority handling requested,2024-09-23
+114692,1317,cancelled,LATAM,phone,1333.86,10,priority handling requested,2025-06-14
+118397,1324,fulfilled,NA,web,535.55,12,,2025-05-22
+118485,1211,fulfilled,LATAM,partner,1369.76,30,priority handling requested,2024-10-05
+106817,1125,pending,EMEA,partner,2115.86,11,priority handling requested,2025-06-11
+112258,1332,pending,EMEA,web,2043.54,2,priority handling requested,2025-06-13
+118791,1382,fulfilled,EMEA,partner,2267.01,16,priority handling requested,2024-02-13
+105012,1187,pending,LATAM,retail,699.96,7,,2025-02-12
+118107,1378,refunded,EMEA,phone,133.1,5,priority handling requested,2025-01-17
+101135,1282,pending,APAC,retail,597.86,26,priority handling requested,2024-12-29
+110412,1097,refunded,NA,web,162.21,10,priority handling requested,2024-09-24
+108343,1237,fulfilled,EMEA,web,2322.69,27,priority handling requested,2025-04-02
+114209,1095,refunded,NA,partner,1549.58,1,priority handling requested,2025-04-06
+107757,1137,refunded,LATAM,retail,2206.66,12,priority handling requested,2024-12-04
+107626,1391,fulfilled,EMEA,retail,953.67,23,priority handling requested,2024-07-31
+102955,1358,fulfilled,EMEA,phone,2084.26,12,priority handling requested,2024-01-06
+106534,1247,cancelled,NA,phone,1216.0,6,priority handling requested,2024-04-22
+115212,1157,pending,APAC,retail,266.31,14,priority handling requested,2024-10-27
+114029,1245,fulfilled,NA,phone,1671.11,12,priority handling requested,2024-08-13
+101805,1370,refunded,LATAM,phone,2170.72,15,priority handling requested,2024-10-09
+113661,1029,fulfilled,APAC,retail,2263.02,18,,2025-01-22
+101723,1350,refunded,NA,phone,910.48,7,priority handling requested,2024-01-11
+109829,1065,pending,NA,retail,2231.09,13,priority handling requested,2024-05-07
+115249,1040,fulfilled,LATAM,retail,530.04,1,priority handling requested,2024-11-18
+110150,1308,cancelled,APAC,retail,1595.48,17,,2024-02-02
+113600,1135,refunded,NA,partner,214.35,26,priority handling requested,2024-09-01
+104574,1119,fulfilled,EMEA,partner,1398.34,25,priority handling requested,2025-01-27
+105625,1288,refunded,LATAM,phone,1890.12,6,priority handling requested,2024-09-20
+104029,1355,fulfilled,NA,partner,1956.12,12,priority handling requested,2024-12-08
+114271,1325,fulfilled,EMEA,phone,229.8,2,priority handling requested,2024-11-17
+105159,1324,cancelled,APAC,retail,2149.52,11,priority handling requested,2025-05-03
+109414,1364,pending,LATAM,partner,773.88,24,priority handling requested,2024-06-02
+101303,1053,pending,LATAM,phone,1460.96,11,priority handling requested,2024-07-15
+110527,1101,fulfilled,APAC,phone,1758.88,19,priority handling requested,2025-01-03
+109599,1378,cancelled,LATAM,phone,1846.67,3,priority handling requested,2025-05-01
+110286,1297,cancelled,EMEA,partner,1042.12,6,priority handling requested,2024-09-07
+108302,1350,cancelled,NA,web,1550.63,6,priority handling requested,2024-09-20
+110644,1334,pending,NA,partner,2457.95,29,priority handling requested,2024-10-27
+105161,1211,fulfilled,APAC,retail,790.95,12,priority handling requested,2024-03-20
+101705,1268,pending,LATAM,partner,1075.0,3,,2024-08-02
+105403,1241,refunded,NA,retail,487.57,12,,2024-09-03
+113934,1037,pending,NA,retail,470.31,19,priority handling requested,2024-09-21
+118099,1272,refunded,APAC,partner,344.13,29,priority handling requested,2024-07-31
+118976,1216,fulfilled,LATAM,retail,1301.46,23,priority handling requested,2024-08-18
+116812,1125,cancelled,EMEA,phone,1487.3,25,priority handling requested,2024-06-17
+104138,1378,cancelled,NA,partner,2115.61,1,priority handling requested,2024-08-17
+115368,1174,cancelled,EMEA,retail,65.51,26,priority handling requested,2024-12-22
+107043,1094,pending,NA,retail,71.44,4,priority handling requested,2024-03-13
+100953,1215,fulfilled,EMEA,partner,600.41,19,priority handling requested,2024-12-23
+100532,1310,pending,NA,retail,1780.4,22,priority handling requested,2025-04-10
+106685,1180,pending,LATAM,phone,465.12,8,,2024-12-03
+101721,1334,fulfilled,EMEA,retail,2255.49,19,,2024-06-10
+103944,1356,fulfilled,EMEA,partner,2498.5,11,priority handling requested,2024-03-09
+106187,1143,pending,APAC,web,514.27,23,priority handling requested,2025-04-21
+114936,1307,pending,EMEA,web,11.55,2,priority handling requested,2024-03-24
+115475,1174,refunded,NA,retail,91.23,1,priority handling requested,2024-04-02
+119584,1277,cancelled,LATAM,retail,1602.03,18,,2024-01-20
+105814,1177,cancelled,LATAM,partner,2223.38,2,priority handling requested,2025-06-10
+105791,1058,pending,EMEA,partner,1251.88,20,priority handling requested,2024-04-03
+112053,1180,cancelled,APAC,web,1397.22,12,,2024-12-05
+105362,1267,cancelled,APAC,phone,592.33,3,priority handling requested,2025-05-11
+114655,1216,cancelled,LATAM,partner,1857.12,23,priority handling requested,2024-05-07
+109396,1272,pending,LATAM,retail,1878.13,9,priority handling requested,2025-03-01
+105453,1128,pending,NA,retail,910.23,26,priority handling requested,2025-01-14
+112903,1144,fulfilled,NA,partner,1428.25,5,priority handling requested,2025-02-09
+117520,1314,fulfilled,EMEA,phone,1855.95,12,priority handling requested,2024-03-27
+103091,1313,fulfilled,LATAM,phone,418.89,10,,2024-09-27
+100553,1141,cancelled,NA,retail,1512.97,21,priority handling requested,2025-01-06
+108119,1121,refunded,LATAM,phone,110.01,15,priority handling requested,2024-04-11
+115611,1118,fulfilled,EMEA,web,1144.34,24,,2025-01-14
+108687,1222,refunded,LATAM,phone,1714.14,11,priority handling requested,2024-04-28
+108542,1182,fulfilled,APAC,phone,538.43,20,,2025-03-10
+100667,1021,pending,NA,partner,407.55,12,priority handling requested,2024-07-20
+107784,1044,pending,NA,partner,110.99,21,priority handling requested,2024-08-09
+116930,1359,refunded,EMEA,phone,600.07,19,priority handling requested,2024-12-04
+112852,1043,refunded,NA,partner,1324.9,9,priority handling requested,2024-04-07
+103486,1190,pending,APAC,retail,721.9,2,priority handling requested,2024-08-26
+110066,1109,fulfilled,NA,retail,864.89,4,priority handling requested,2025-06-19
+117855,1212,refunded,EMEA,retail,1688.49,1,priority handling requested,2024-11-01
+118081,1063,refunded,NA,retail,1292.37,21,,2024-04-03
+109233,1078,refunded,LATAM,retail,75.28,22,priority handling requested,2025-03-12
+103068,1187,fulfilled,EMEA,partner,1889.91,6,,2024-04-24
+108872,1311,cancelled,LATAM,phone,786.82,20,priority handling requested,2024-02-21
+116763,1029,refunded,APAC,phone,436.59,25,priority handling requested,2024-05-26
+108445,1154,refunded,NA,web,1866.81,14,priority handling requested,2025-05-13
+119146,1370,cancelled,NA,partner,556.98,22,priority handling requested,2024-09-04
+119132,1133,pending,NA,web,1143.96,24,,2024-08-16
+104478,1332,refunded,NA,partner,677.88,10,priority handling requested,2025-05-29
+119094,1399,fulfilled,NA,retail,10.73,16,priority handling requested,2024-07-17
+116834,1086,fulfilled,APAC,phone,434.03,26,priority handling requested,2025-01-06
+111368,1373,fulfilled,APAC,partner,1972.71,4,priority handling requested,2025-02-06
+105314,1327,refunded,EMEA,web,1231.63,13,priority handling requested,2025-04-07
+110498,1058,pending,NA,partner,2011.82,6,priority handling requested,2024-12-07
+107581,1284,refunded,APAC,retail,2274.04,23,priority handling requested,2024-02-01
+111725,1160,pending,EMEA,partner,1882.55,5,priority handling requested,2024-04-28
+110958,1109,pending,LATAM,partner,1086.25,29,priority handling requested,2024-02-06
+106796,1296,pending,APAC,web,1105.57,17,priority handling requested,2024-07-11
+100209,1219,pending,EMEA,web,162.86,25,priority handling requested,2025-05-12
+111258,1030,refunded,EMEA,retail,2037.05,23,priority handling requested,2024-06-05
+107953,1240,refunded,EMEA,retail,169.82,3,priority handling requested,2024-07-11
+101148,1036,refunded,LATAM,retail,2228.37,10,priority handling requested,2024-03-21
+111592,1014,refunded,EMEA,phone,2215.35,26,priority handling requested,2024-12-18
+112197,1178,refunded,APAC,web,1378.16,13,priority handling requested,2024-11-20
+109257,1066,pending,LATAM,retail,2404.54,22,priority handling requested,2024-10-23
+107671,1276,fulfilled,EMEA,web,147.79,11,priority handling requested,2024-11-10
+100621,1109,pending,LATAM,phone,316.34,23,priority handling requested,2025-03-17
+108225,1300,pending,NA,phone,2416.31,13,,2025-05-28
+115553,1176,cancelled,LATAM,retail,1373.59,7,priority handling requested,2024-08-21
+113667,1236,fulfilled,APAC,web,1240.77,12,priority handling requested,2025-05-23
+104899,1014,cancelled,LATAM,partner,815.61,8,priority handling requested,2025-03-13
+117690,1187,fulfilled,NA,retail,2262.83,8,priority handling requested,2024-03-24
+110211,1266,fulfilled,EMEA,phone,1830.98,5,priority handling requested,2024-08-01
+116181,1206,refunded,LATAM,phone,14.76,7,priority handling requested,2025-05-09
+113537,1154,pending,NA,web,1110.65,13,priority handling requested,2024-03-04
+100013,1202,refunded,LATAM,retail,1459.65,22,priority handling requested,2024-05-22
+100154,1255,cancelled,EMEA,web,585.75,6,,2024-08-26
+113002,1175,refunded,EMEA,partner,420.3,9,,2025-01-19
+117411,1030,refunded,LATAM,phone,704.58,13,priority handling requested,2024-12-13
+106110,1319,refunded,APAC,retail,954.12,17,priority handling requested,2025-03-22
+118121,1102,pending,EMEA,partner,1800.72,30,,2025-02-10
+116112,1169,refunded,EMEA,phone,2107.3,2,priority handling requested,2024-06-06
+105130,1019,fulfilled,EMEA,partner,2372.46,27,priority handling requested,2025-03-11
+103200,1008,cancelled,EMEA,web,115.61,1,priority handling requested,2024-01-08
+107352,1249,cancelled,NA,retail,749.22,9,priority handling requested,2024-08-21
+111082,1165,pending,EMEA,partner,187.71,11,priority handling requested,2025-06-17
+104880,1190,fulfilled,LATAM,retail,667.5,20,priority handling requested,2024-12-19
+119441,1291,fulfilled,LATAM,retail,16.38,4,priority handling requested,2025-01-20
+102972,1084,fulfilled,EMEA,phone,1666.25,11,,2024-06-20
+113499,1154,fulfilled,LATAM,web,93.05,27,priority handling requested,2024-09-21
+109443,1020,refunded,EMEA,retail,1363.06,2,priority handling requested,2024-02-02
+117499,1312,pending,EMEA,phone,1014.0,5,priority handling requested,2025-04-30
+110848,1204,cancelled,EMEA,web,198.36,4,priority handling requested,2024-01-06
+113084,1261,pending,EMEA,partner,492.45,20,priority handling requested,2024-01-26
+100286,1313,cancelled,NA,web,920.52,22,priority handling requested,2024-11-17
+108233,1280,fulfilled,LATAM,phone,954.61,17,priority handling requested,2024-08-02
+116230,1011,cancelled,EMEA,web,1193.21,30,priority handling requested,2024-02-29
+103741,1222,refunded,LATAM,partner,735.05,9,,2024-02-15
+100227,1366,fulfilled,APAC,retail,183.1,11,priority handling requested,2024-10-05
+110329,1391,pending,NA,web,620.43,26,priority handling requested,2025-01-20
+116667,1084,pending,LATAM,web,2405.32,23,priority handling requested,2024-01-02
+119981,1375,refunded,APAC,web,1795.1,18,priority handling requested,2024-04-15
+100690,1041,cancelled,LATAM,partner,27.76,26,,2024-03-23
+115993,1299,cancelled,NA,partner,747.42,4,priority handling requested,2024-01-18
+105684,1019,fulfilled,APAC,phone,678.96,27,priority handling requested,2025-01-12
+119233,1303,cancelled,LATAM,web,1249.37,1,priority handling requested,2024-05-02
+107056,1135,fulfilled,APAC,partner,1365.56,9,priority handling requested,2024-01-23
+100672,1208,cancelled,LATAM,phone,1637.3,6,priority handling requested,2024-10-13
+108713,1283,refunded,EMEA,partner,2482.53,8,,2025-05-04
+111075,1190,refunded,EMEA,retail,2114.38,10,,2025-05-05
+113862,1063,refunded,EMEA,retail,947.24,22,priority handling requested,2024-09-08
+107738,1341,cancelled,EMEA,web,2097.72,9,priority handling requested,2024-05-21
+113849,1339,refunded,APAC,phone,1489.08,7,priority handling requested,2025-03-13
+106364,1116,pending,NA,phone,68.86,3,priority handling requested,2025-05-07
+105619,1213,fulfilled,LATAM,partner,1217.73,20,priority handling requested,2024-02-18
+111333,1049,fulfilled,NA,retail,1465.23,2,priority handling requested,2024-04-26
+117188,1180,pending,LATAM,web,1040.36,8,priority handling requested,2024-12-30
+112500,1241,cancelled,NA,phone,1232.02,14,priority handling requested,2024-06-08
+112732,1036,pending,APAC,retail,480.92,13,,2024-04-24
+109774,1324,pending,LATAM,phone,1642.34,22,priority handling requested,2025-04-21
+113883,1214,cancelled,NA,phone,1117.56,19,,2025-05-14
+117245,1361,pending,NA,phone,759.43,26,priority handling requested,2025-03-27
+113010,1308,refunded,EMEA,partner,325.97,29,priority handling requested,2025-02-23
+101444,1096,cancelled,EMEA,partner,726.25,11,priority handling requested,2024-01-10
+107689,1255,cancelled,EMEA,web,2410.28,12,priority handling requested,2024-01-24
+117744,1371,refunded,LATAM,phone,64.52,27,,2024-02-18
+114961,1127,fulfilled,LATAM,partner,662.19,29,priority handling requested,2024-06-13
+110042,1187,refunded,NA,partner,582.73,21,,2024-10-27
+106634,1250,refunded,LATAM,retail,1371.82,29,priority handling requested,2025-02-04
+103019,1328,cancelled,LATAM,web,439.02,17,priority handling requested,2024-12-02
+115117,1291,fulfilled,NA,retail,1112.69,4,priority handling requested,2024-06-20
+106097,1055,pending,NA,web,1476.11,22,,2025-06-09
+103233,1015,cancelled,APAC,partner,1895.32,7,,2024-05-20
+102553,1117,fulfilled,EMEA,phone,33.72,21,priority handling requested,2025-01-09
+112291,1148,fulfilled,APAC,retail,1559.05,4,priority handling requested,2024-06-21
+100236,1124,fulfilled,LATAM,phone,643.48,18,,2025-02-14
+118968,1241,cancelled,NA,retail,1938.66,23,priority handling requested,2024-08-24
+108314,1087,pending,EMEA,web,473.22,21,,2025-02-28
+108535,1090,cancelled,NA,partner,2195.56,10,priority handling requested,2024-11-18
+113569,1050,refunded,EMEA,phone,2319.8,9,priority handling requested,2025-03-05
+117697,1180,refunded,APAC,web,449.53,3,priority handling requested,2025-05-27
+105286,1349,refunded,NA,phone,1467.64,4,priority handling requested,2024-05-24
+114135,1022,cancelled,NA,partner,403.63,22,,2024-05-03
+105239,1008,refunded,APAC,phone,1732.65,16,priority handling requested,2024-11-14
+118790,1019,cancelled,APAC,web,1738.31,10,priority handling requested,2025-04-08
+111579,1216,fulfilled,EMEA,partner,1019.77,17,priority handling requested,2024-01-07
+108446,1127,fulfilled,LATAM,web,2052.98,13,priority handling requested,2024-05-23
+114745,1376,pending,APAC,partner,102.5,16,priority handling requested,2024-10-19
+100351,1201,pending,EMEA,phone,1807.95,7,,2024-06-20
+117565,1262,fulfilled,NA,web,849.28,5,priority handling requested,2024-01-14
+100680,1086,cancelled,EMEA,web,2040.98,26,priority handling requested,2024-12-28
+114266,1255,pending,LATAM,retail,2467.09,13,priority handling requested,2024-04-22
+112371,1131,refunded,LATAM,phone,1223.9,12,,2024-06-22
+108436,1268,cancelled,EMEA,retail,258.21,26,priority handling requested,2025-01-12
+109372,1145,refunded,EMEA,retail,139.55,12,priority handling requested,2025-06-15
+117919,1396,fulfilled,APAC,retail,1712.49,13,,2024-04-24
+116735,1304,cancelled,LATAM,web,1334.9,9,priority handling requested,2025-04-20
+114014,1196,pending,EMEA,phone,1484.7,6,priority handling requested,2024-04-05
+112123,1153,fulfilled,LATAM,partner,26.52,27,priority handling requested,2024-02-19
+111284,1396,pending,NA,web,2002.37,15,priority handling requested,2025-02-20
+116248,1111,refunded,LATAM,retail,408.74,24,priority handling requested,2024-04-24
+112331,1343,cancelled,NA,partner,554.74,9,,2024-05-07
+116405,1255,cancelled,LATAM,partner,147.09,8,priority handling requested,2024-07-21
+107246,1268,pending,LATAM,retail,3.39,1,priority handling requested,2024-09-04
+107934,1151,fulfilled,EMEA,retail,855.38,1,priority handling requested,2025-06-03
+107427,1167,cancelled,APAC,phone,630.54,20,priority handling requested,2024-02-11
+112827,1152,refunded,NA,web,1288.17,15,priority handling requested,2024-10-25
+101848,1030,refunded,EMEA,phone,616.04,4,priority handling requested,2024-11-10
+101937,1382,cancelled,NA,retail,1758.88,1,,2025-04-04
+105646,1206,refunded,EMEA,phone,1840.98,8,priority handling requested,2024-12-29
+100538,1328,pending,APAC,partner,1709.58,17,,2024-09-04
+107511,1139,cancelled,NA,web,1215.73,28,priority handling requested,2024-07-24
+105376,1189,fulfilled,EMEA,web,1228.93,15,priority handling requested,2024-01-13
+119624,1221,refunded,LATAM,web,1125.88,24,priority handling requested,2024-12-04
+107634,1377,cancelled,LATAM,phone,1162.66,3,priority handling requested,2025-02-12
+117450,1272,pending,NA,partner,1200.79,20,priority handling requested,2025-01-14
+108946,1336,cancelled,APAC,web,2271.33,16,priority handling requested,2025-02-03
+111578,1013,cancelled,EMEA,retail,1781.82,2,priority handling requested,2024-12-11
+110056,1104,pending,EMEA,web,2119.88,12,priority handling requested,2025-06-10
+110282,1262,pending,APAC,phone,2243.4,4,priority handling requested,2025-06-22
+118343,1044,cancelled,LATAM,phone,1313.57,29,priority handling requested,2025-01-26
+109413,1349,fulfilled,LATAM,retail,325.09,26,priority handling requested,2024-11-23
+110399,1013,pending,LATAM,web,348.96,27,priority handling requested,2025-01-09
+115432,1353,pending,LATAM,web,366.5,13,priority handling requested,2024-11-27
+116350,1389,pending,EMEA,retail,611.47,29,priority handling requested,2025-04-26
+105234,1050,pending,NA,web,1589.62,7,priority handling requested,2025-05-29
+100681,1184,cancelled,NA,web,1820.11,6,priority handling requested,2025-06-16
+103406,1086,fulfilled,NA,retail,2292.35,7,priority handling requested,2024-01-11
+106043,1223,refunded,NA,phone,341.16,19,priority handling requested,2024-11-05
+110930,1037,fulfilled,NA,retail,391.72,5,priority handling requested,2024-06-06
+103902,1321,pending,EMEA,partner,1436.71,19,,2024-10-23
+115403,1210,fulfilled,APAC,phone,1438.8,3,priority handling requested,2024-03-07
+115411,1019,pending,NA,retail,1513.7,21,priority handling requested,2025-02-14
+118237,1142,pending,NA,partner,1139.39,18,priority handling requested,2025-04-14
+116287,1048,pending,APAC,retail,2220.83,28,priority handling requested,2024-10-26
+102757,1099,cancelled,LATAM,phone,1706.36,20,priority handling requested,2024-04-23
+100901,1001,fulfilled,NA,partner,709.65,13,,2024-12-21
+108655,1303,fulfilled,NA,web,2180.81,7,priority handling requested,2024-04-20
+112844,1018,refunded,EMEA,partner,768.14,21,priority handling requested,2024-09-03
+116039,1258,fulfilled,NA,partner,188.6,3,priority handling requested,2024-04-19
+102808,1379,fulfilled,APAC,phone,1313.07,11,priority handling requested,2025-01-20
+118581,1342,cancelled,LATAM,partner,934.39,11,priority handling requested,2025-05-15
+102583,1260,pending,NA,web,911.37,21,priority handling requested,2024-11-05
+115395,1340,pending,EMEA,partner,852.05,2,priority handling requested,2024-05-19
+119035,1000,pending,EMEA,phone,2477.88,30,priority handling requested,2025-03-24
+105296,1392,pending,APAC,partner,385.36,21,,2024-05-28
+103679,1181,fulfilled,APAC,retail,1039.65,28,,2025-06-19
+100100,1165,pending,EMEA,partner,1066.27,28,,2025-05-30
+112279,1006,cancelled,NA,phone,1263.47,14,priority handling requested,2024-12-18
+115655,1330,pending,APAC,web,1005.43,10,priority handling requested,2024-02-13
+117631,1349,fulfilled,APAC,retail,2495.86,27,,2025-02-13
+105519,1272,refunded,EMEA,retail,1976.03,13,priority handling requested,2024-10-10
+119881,1181,pending,LATAM,web,1200.91,30,,2024-10-27
+100235,1319,cancelled,EMEA,partner,598.33,11,priority handling requested,2024-02-07
+110984,1274,cancelled,EMEA,web,864.44,10,priority handling requested,2024-10-15
+107942,1143,fulfilled,LATAM,partner,779.96,25,,2025-03-30
+119076,1190,refunded,APAC,web,1002.12,26,priority handling requested,2024-11-28
+114825,1393,pending,NA,retail,1135.73,11,priority handling requested,2024-04-16
+116656,1117,fulfilled,EMEA,phone,2332.06,17,priority handling requested,2024-02-22
+116182,1273,cancelled,LATAM,phone,4.08,14,priority handling requested,2025-01-07
+111721,1373,refunded,APAC,web,1626.39,23,priority handling requested,2024-07-11
+114306,1365,pending,LATAM,partner,868.18,14,priority handling requested,2025-05-12
+117867,1296,fulfilled,LATAM,web,1266.95,2,priority handling requested,2024-01-17
+107481,1209,pending,APAC,web,1722.74,24,priority handling requested,2024-11-18
+101840,1094,fulfilled,NA,retail,730.78,20,,2024-07-31
+100423,1087,cancelled,APAC,web,2339.17,11,,2024-06-03
+101152,1100,refunded,EMEA,partner,993.28,15,priority handling requested,2024-08-23
+116900,1366,fulfilled,NA,retail,731.66,11,,2024-07-26
+114947,1180,pending,LATAM,phone,253.32,9,priority handling requested,2024-08-30
+118499,1189,cancelled,APAC,web,1959.42,9,,2025-06-23
+113349,1303,fulfilled,NA,partner,1006.32,20,priority handling requested,2024-02-28
+110078,1257,cancelled,NA,retail,2217.81,5,priority handling requested,2025-02-17
+117395,1263,pending,APAC,retail,1560.86,3,priority handling requested,2024-08-27
+115702,1077,pending,APAC,retail,430.68,3,priority handling requested,2024-12-31
+103830,1346,refunded,LATAM,web,2103.99,18,priority handling requested,2024-04-18
+109656,1169,cancelled,EMEA,retail,891.26,15,priority handling requested,2025-04-18
+102902,1245,cancelled,LATAM,phone,793.01,22,priority handling requested,2025-03-25
+107015,1288,cancelled,APAC,partner,1854.93,27,priority handling requested,2024-05-20
+108333,1092,pending,APAC,phone,1510.95,9,,2024-10-17
+110386,1377,pending,NA,web,2116.38,17,priority handling requested,2024-06-06
+107182,1199,cancelled,EMEA,retail,1904.87,7,priority handling requested,2024-10-02
+114951,1374,refunded,NA,phone,2040.71,2,priority handling requested,2025-01-07
+105967,1011,fulfilled,NA,retail,248.4,10,priority handling requested,2025-03-12
+103050,1254,cancelled,NA,web,16.88,11,priority handling requested,2024-12-05
+103118,1075,pending,APAC,web,2051.11,4,priority handling requested,2024-05-23
+118803,1125,pending,EMEA,partner,1082.88,19,priority handling requested,2024-08-16
+107471,1173,fulfilled,APAC,retail,57.96,23,priority handling requested,2025-04-02
+110760,1294,pending,NA,web,1616.23,1,priority handling requested,2025-01-26
+105261,1177,pending,APAC,phone,292.6,3,priority handling requested,2024-09-15
+119254,1193,pending,NA,phone,784.27,16,priority handling requested,2024-12-02
+106787,1118,refunded,APAC,retail,2135.33,7,priority handling requested,2025-01-25
+111486,1255,cancelled,NA,web,1424.35,16,priority handling requested,2024-10-10
+115587,1037,fulfilled,APAC,web,2102.35,15,priority handling requested,2025-04-04
+117210,1226,pending,APAC,web,168.71,17,,2024-11-23
+114220,1362,pending,APAC,retail,302.17,2,priority handling requested,2024-06-03
+108984,1195,pending,NA,retail,2211.05,25,,2025-05-13
+105034,1392,cancelled,EMEA,phone,637.39,18,priority handling requested,2024-07-18
+103236,1224,refunded,APAC,phone,1684.13,28,,2025-06-21
+117686,1091,fulfilled,NA,phone,968.32,4,priority handling requested,2024-10-08
+110375,1138,cancelled,EMEA,phone,268.72,7,priority handling requested,2025-03-23
+116337,1229,pending,LATAM,partner,1147.79,29,priority handling requested,2024-03-15
+101449,1141,fulfilled,LATAM,partner,318.95,4,priority handling requested,2025-06-04
+102934,1359,fulfilled,NA,phone,1494.88,9,,2025-04-15
+119453,1218,refunded,LATAM,phone,1487.89,30,priority handling requested,2025-02-14
+102602,1184,fulfilled,EMEA,phone,426.75,8,priority handling requested,2024-05-15
+101920,1152,pending,EMEA,retail,2137.51,12,,2024-02-07
+116789,1035,pending,APAC,partner,1779.18,14,priority handling requested,2025-01-23
+103874,1189,cancelled,NA,phone,1854.87,28,,2025-03-30
+118576,1100,fulfilled,LATAM,retail,1642.84,18,,2025-06-01
+100735,1085,refunded,NA,partner,18.96,28,priority handling requested,2024-06-17
+112455,1194,fulfilled,APAC,phone,1898.81,22,priority handling requested,2024-07-17
+105997,1260,fulfilled,APAC,retail,1638.85,25,priority handling requested,2024-08-11
+118783,1003,pending,NA,retail,210.33,1,priority handling requested,2025-05-31
+111455,1051,pending,NA,web,658.78,2,priority handling requested,2024-10-22
+105946,1133,refunded,EMEA,web,281.18,5,,2024-12-18
+109047,1326,pending,LATAM,phone,392.16,10,priority handling requested,2024-03-27
+109826,1255,cancelled,LATAM,phone,318.72,26,priority handling requested,2025-03-07
+106302,1391,pending,NA,partner,447.49,24,priority handling requested,2025-01-15
+116554,1171,cancelled,APAC,web,1750.92,1,priority handling requested,2025-03-16
+104660,1082,fulfilled,NA,partner,752.58,21,,2024-08-06
+114796,1038,pending,LATAM,retail,395.37,14,priority handling requested,2024-09-14
+113695,1031,fulfilled,LATAM,retail,1234.37,20,priority handling requested,2024-06-14
+118743,1359,fulfilled,EMEA,partner,1727.73,17,priority handling requested,2024-04-05
+110924,1040,cancelled,APAC,phone,1014.47,5,priority handling requested,2024-05-19
+105985,1333,refunded,NA,retail,384.05,18,priority handling requested,2025-05-11
+117802,1157,refunded,NA,phone,403.51,10,priority handling requested,2024-07-12
+114350,1133,pending,LATAM,phone,1816.74,18,priority handling requested,2024-02-07
+114279,1338,fulfilled,NA,web,1981.49,22,,2024-12-23
+116803,1061,refunded,EMEA,partner,2334.0,18,priority handling requested,2024-04-09
+100820,1370,cancelled,LATAM,web,1474.87,4,priority handling requested,2024-03-21
+101564,1298,refunded,NA,web,489.89,16,priority handling requested,2025-02-26
+115285,1023,refunded,NA,web,1783.08,17,priority handling requested,2024-12-06
+117123,1059,cancelled,LATAM,retail,2381.57,22,priority handling requested,2024-06-11
+103757,1170,cancelled,APAC,partner,639.92,26,priority handling requested,2024-05-05
+119948,1028,cancelled,EMEA,retail,2122.51,29,,2024-04-28
+111203,1121,refunded,LATAM,partner,2431.99,15,priority handling requested,2025-04-07
+112981,1354,refunded,EMEA,web,1772.75,27,priority handling requested,2024-07-07
+106053,1359,cancelled,LATAM,phone,1879.73,27,priority handling requested,2025-05-10
+118597,1152,refunded,NA,phone,2168.29,4,,2024-10-23
+115225,1179,pending,NA,phone,194.51,25,priority handling requested,2024-10-28
+116882,1136,pending,APAC,web,16.58,22,priority handling requested,2024-06-30
+112489,1226,cancelled,EMEA,partner,836.5,2,priority handling requested,2024-08-21
+107575,1319,fulfilled,EMEA,partner,365.21,6,priority handling requested,2025-04-13
+100397,1083,cancelled,EMEA,partner,1004.39,14,priority handling requested,2024-03-12
+103222,1202,cancelled,APAC,phone,2448.31,29,priority handling requested,2025-05-13
+116064,1177,refunded,EMEA,phone,1077.63,13,priority handling requested,2024-07-08
+101018,1087,fulfilled,APAC,phone,645.98,24,priority handling requested,2025-01-05
+111729,1240,refunded,NA,web,1256.43,25,priority handling requested,2025-05-11
+110480,1366,fulfilled,NA,partner,443.69,23,priority handling requested,2024-01-15
+100675,1304,refunded,EMEA,web,384.39,22,,2024-09-28
+114258,1282,pending,EMEA,partner,2348.31,4,priority handling requested,2024-07-24
+114598,1398,refunded,EMEA,partner,274.92,21,priority handling requested,2024-06-12
+116705,1347,fulfilled,APAC,phone,2257.52,2,priority handling requested,2024-07-10
+118462,1322,fulfilled,LATAM,phone,484.61,6,priority handling requested,2024-12-08
+110509,1239,cancelled,APAC,partner,1444.91,3,,2024-12-09
+116111,1215,refunded,EMEA,phone,928.62,13,priority handling requested,2024-02-19
+108844,1012,pending,APAC,phone,2245.73,8,priority handling requested,2024-11-16
+118851,1366,refunded,EMEA,partner,973.54,27,priority handling requested,2024-02-28
+103437,1391,cancelled,NA,partner,2261.91,4,priority handling requested,2025-05-25
+116313,1105,cancelled,NA,retail,2234.87,21,priority handling requested,2024-01-30
+101692,1273,cancelled,APAC,retail,649.88,2,priority handling requested,2024-05-13
+115949,1003,cancelled,LATAM,retail,440.61,19,priority handling requested,2025-04-12
+108215,1324,refunded,EMEA,retail,1787.57,4,priority handling requested,2024-09-10
+109881,1025,refunded,NA,partner,208.72,23,priority handling requested,2024-10-24
+107374,1332,fulfilled,EMEA,retail,61.06,14,priority handling requested,2025-03-19
+106976,1262,refunded,LATAM,phone,1598.38,27,priority handling requested,2024-10-21
+111080,1217,cancelled,EMEA,phone,1166.06,6,priority handling requested,2025-02-03
+118870,1310,pending,EMEA,partner,1632.35,19,priority handling requested,2024-03-09
+107171,1328,pending,EMEA,web,511.33,1,priority handling requested,2024-12-03
+101055,1270,fulfilled,EMEA,partner,1959.4,29,priority handling requested,2024-09-15
+109459,1185,refunded,APAC,retail,499.44,18,priority handling requested,2024-11-28
+116910,1128,pending,APAC,partner,2218.26,9,priority handling requested,2025-06-15
+101928,1136,refunded,APAC,phone,894.05,4,,2025-05-16
+101061,1176,cancelled,LATAM,phone,1328.6,8,priority handling requested,2024-01-12
+104207,1131,refunded,APAC,retail,1317.49,4,priority handling requested,2024-10-13
+113937,1365,cancelled,NA,phone,2225.55,30,priority handling requested,2024-04-08
+119359,1166,pending,NA,web,440.73,13,priority handling requested,2024-10-06
+110007,1289,cancelled,LATAM,phone,342.46,3,priority handling requested,2025-03-07
+101955,1335,refunded,LATAM,partner,1774.94,6,priority handling requested,2024-02-07
+110975,1121,pending,NA,partner,1292.08,3,priority handling requested,2025-01-27
+115294,1160,refunded,EMEA,web,1389.78,11,priority handling requested,2025-01-20
+113572,1140,fulfilled,APAC,web,1839.59,2,,2024-12-14
+114162,1084,cancelled,NA,phone,696.16,27,priority handling requested,2024-02-26
+119316,1164,fulfilled,APAC,phone,768.65,12,priority handling requested,2024-12-29
+103239,1205,refunded,LATAM,phone,1428.9,21,priority handling requested,2024-01-27
+107315,1272,cancelled,EMEA,phone,1955.62,8,priority handling requested,2025-03-04
+111360,1013,fulfilled,EMEA,phone,918.03,26,priority handling requested,2024-06-01
+106814,1170,cancelled,EMEA,retail,1122.64,21,priority handling requested,2025-04-21
+114724,1106,pending,EMEA,partner,141.18,30,priority handling requested,2024-02-18
+115762,1151,pending,LATAM,phone,2009.45,30,priority handling requested,2024-02-19
+108093,1295,pending,APAC,partner,336.28,25,,2024-10-11
+103000,1193,cancelled,APAC,phone,718.3,1,priority handling requested,2025-01-17
+119533,1367,refunded,LATAM,web,1893.1,14,priority handling requested,2024-02-12
+117384,1151,fulfilled,APAC,partner,657.04,30,priority handling requested,2024-01-31
+118171,1131,fulfilled,LATAM,phone,216.94,22,priority handling requested,2024-10-01
+115075,1027,pending,APAC,partner,1934.86,9,priority handling requested,2025-01-25
+101336,1160,cancelled,LATAM,partner,262.41,10,,2025-06-18
+111088,1130,cancelled,LATAM,partner,1669.52,25,priority handling requested,2024-05-29
+107720,1200,pending,APAC,web,813.43,23,priority handling requested,2024-11-19
+101756,1233,refunded,LATAM,web,2354.84,23,priority handling requested,2024-11-19
+110100,1074,pending,NA,retail,2097.04,14,priority handling requested,2024-01-24
+114628,1187,fulfilled,NA,phone,896.51,12,priority handling requested,2024-08-17
+105862,1321,refunded,NA,retail,1679.09,24,priority handling requested,2024-02-29
+109409,1074,refunded,NA,phone,1165.63,16,,2024-07-10
+116399,1067,cancelled,LATAM,phone,1029.11,1,priority handling requested,2025-03-22
+112830,1039,cancelled,NA,retail,1845.03,6,,2024-12-10
+116175,1385,pending,APAC,retail,2398.77,22,priority handling requested,2024-07-13
+114813,1045,pending,LATAM,phone,517.94,10,priority handling requested,2025-04-23
+105662,1068,pending,EMEA,retail,1116.78,10,priority handling requested,2024-02-13
+110363,1072,refunded,APAC,partner,2421.61,24,priority handling requested,2025-05-08
+102908,1226,pending,EMEA,web,618.81,12,priority handling requested,2025-04-09
+111532,1034,pending,NA,retail,2423.83,16,priority handling requested,2024-04-21
+112676,1085,fulfilled,EMEA,partner,92.13,26,priority handling requested,2025-05-19
+105393,1004,pending,APAC,phone,858.94,8,priority handling requested,2024-10-20
+101602,1114,cancelled,LATAM,phone,2408.37,17,priority handling requested,2024-01-30
+102820,1200,refunded,EMEA,phone,1582.79,30,priority handling requested,2024-03-26
+112634,1223,pending,APAC,retail,2445.69,10,priority handling requested,2024-06-13
+110462,1123,cancelled,APAC,phone,1913.48,20,priority handling requested,2024-11-23
+109141,1369,cancelled,EMEA,partner,1347.92,3,priority handling requested,2025-04-27
+116298,1284,cancelled,EMEA,phone,2359.29,16,priority handling requested,2024-12-13
+103710,1228,pending,EMEA,phone,2192.65,6,priority handling requested,2025-05-12
+111228,1032,cancelled,LATAM,retail,1517.97,8,,2025-04-10
+113504,1144,refunded,NA,web,1796.57,2,priority handling requested,2024-05-12
+106784,1039,fulfilled,LATAM,partner,1069.41,28,priority handling requested,2024-09-29
+106533,1103,cancelled,EMEA,phone,1191.84,5,,2024-07-13
+108281,1323,fulfilled,EMEA,phone,1534.98,25,priority handling requested,2024-07-07
+107404,1351,pending,EMEA,web,940.03,15,,2024-01-17
+119396,1368,cancelled,NA,retail,2214.97,28,priority handling requested,2024-10-01
+118202,1360,cancelled,LATAM,partner,885.34,11,priority handling requested,2024-03-14
+114838,1186,fulfilled,LATAM,web,1952.72,5,priority handling requested,2025-05-17
+102217,1311,cancelled,NA,web,2137.72,8,priority handling requested,2024-01-25
+102971,1318,cancelled,NA,retail,2462.79,20,priority handling requested,2024-02-27
+116440,1279,pending,EMEA,retail,23.58,11,priority handling requested,2024-07-05
+109744,1328,fulfilled,NA,phone,1516.25,17,,2024-05-29
+109276,1151,fulfilled,NA,retail,1408.23,28,,2025-03-28
+106439,1237,fulfilled,APAC,phone,493.16,13,priority handling requested,2024-02-13
+111257,1310,refunded,APAC,retail,920.02,14,priority handling requested,2025-01-08
+108079,1017,cancelled,EMEA,partner,1575.01,21,priority handling requested,2024-06-29
+118595,1188,fulfilled,NA,phone,1299.66,19,priority handling requested,2024-04-12
+102424,1135,fulfilled,NA,phone,943.0,30,,2024-10-25
+104957,1060,fulfilled,NA,retail,788.3,12,priority handling requested,2025-03-09
+104160,1295,cancelled,EMEA,phone,632.66,1,priority handling requested,2024-08-29
+103417,1290,fulfilled,APAC,phone,2299.56,19,priority handling requested,2025-03-07
+112776,1248,refunded,NA,partner,2033.88,19,,2025-03-21
+118473,1287,fulfilled,NA,phone,524.16,29,priority handling requested,2024-03-30
+116453,1109,pending,EMEA,retail,433.52,22,priority handling requested,2025-02-17
+119072,1171,pending,APAC,phone,1444.91,4,,2024-01-15
+113885,1037,cancelled,EMEA,retail,1825.73,11,priority handling requested,2024-01-13
+113334,1396,pending,EMEA,phone,2076.61,8,priority handling requested,2025-03-22
+118032,1235,fulfilled,APAC,partner,241.59,18,priority handling requested,2024-07-06
+108447,1084,cancelled,LATAM,retail,121.37,29,priority handling requested,2025-03-31
+109621,1069,refunded,EMEA,partner,2377.72,3,priority handling requested,2024-10-25
+103391,1259,refunded,APAC,partner,99.38,22,priority handling requested,2024-11-05
+113164,1345,pending,EMEA,web,2434.93,5,priority handling requested,2024-11-26
+106227,1044,refunded,EMEA,retail,1515.77,1,priority handling requested,2024-01-15
+111776,1003,fulfilled,LATAM,partner,72.22,11,priority handling requested,2025-02-27
+113121,1091,cancelled,APAC,web,2186.92,9,priority handling requested,2024-09-20
+110151,1077,cancelled,EMEA,partner,1648.76,19,priority handling requested,2024-02-28
+104131,1119,cancelled,APAC,retail,1263.25,19,priority handling requested,2024-12-23
+111952,1223,refunded,LATAM,phone,1836.22,17,priority handling requested,2024-06-19
+112273,1295,cancelled,APAC,phone,1645.06,24,priority handling requested,2024-10-20
+107881,1205,fulfilled,EMEA,retail,465.19,30,,2024-01-30
+103383,1039,fulfilled,LATAM,web,2377.8,17,priority handling requested,2024-12-11
+102049,1268,refunded,APAC,retail,579.76,13,priority handling requested,2024-01-07
+112110,1102,pending,EMEA,partner,1827.81,12,,2024-04-17
+112312,1329,pending,LATAM,phone,638.07,3,priority handling requested,2024-04-21
+119325,1398,refunded,EMEA,web,1705.68,17,priority handling requested,2024-06-11
+102375,1136,cancelled,EMEA,partner,467.79,27,priority handling requested,2024-04-05
+118826,1004,refunded,APAC,partner,1050.93,29,priority handling requested,2025-01-26
+113343,1041,refunded,APAC,partner,2330.95,1,priority handling requested,2024-01-13
+116330,1087,pending,LATAM,partner,2387.91,10,,2025-06-02
+108313,1110,refunded,LATAM,retail,2263.84,13,priority handling requested,2024-05-08
+102666,1066,refunded,APAC,partner,1103.04,22,,2025-05-23
+116102,1122,pending,NA,phone,1346.14,18,priority handling requested,2024-01-28
+103554,1074,cancelled,EMEA,retail,1184.53,2,,2025-02-21
+102267,1265,fulfilled,EMEA,retail,252.17,9,priority handling requested,2025-06-22
+118043,1202,pending,EMEA,partner,2096.83,10,,2025-05-13
+106863,1023,pending,EMEA,phone,1665.26,6,priority handling requested,2024-12-15
+106611,1112,cancelled,APAC,partner,1709.06,28,priority handling requested,2024-11-19
+119138,1070,cancelled,EMEA,phone,978.06,26,priority handling requested,2024-08-24
+103720,1190,refunded,EMEA,partner,2490.34,30,,2024-01-06
+115872,1246,pending,LATAM,retail,2268.48,15,,2024-12-01
+115960,1086,fulfilled,NA,partner,2174.75,17,priority handling requested,2024-09-14
+117575,1129,pending,APAC,partner,484.18,18,,2024-06-14
+111678,1266,pending,LATAM,phone,699.83,21,priority handling requested,2024-05-25
+117944,1286,cancelled,LATAM,web,1884.06,7,,2024-08-29
+115718,1378,fulfilled,EMEA,web,1902.67,29,priority handling requested,2024-01-26
+102254,1318,pending,NA,phone,1733.96,10,priority handling requested,2024-06-11
+102510,1320,fulfilled,NA,web,2193.01,23,priority handling requested,2024-02-24
+102400,1321,cancelled,APAC,partner,1764.99,13,priority handling requested,2024-07-24
+118966,1192,fulfilled,LATAM,phone,1151.85,11,priority handling requested,2025-05-14
+113935,1197,refunded,EMEA,retail,11.39,19,,2024-09-26
+102363,1345,pending,EMEA,partner,1788.0,3,priority handling requested,2024-11-18
+102087,1120,fulfilled,EMEA,partner,5.28,23,,2024-05-19
+117803,1212,cancelled,APAC,phone,174.06,17,priority handling requested,2025-06-04
+110755,1288,cancelled,EMEA,phone,1157.1,21,priority handling requested,2025-01-08
+114521,1091,refunded,LATAM,web,679.64,21,priority handling requested,2025-02-02
+117856,1075,fulfilled,APAC,partner,1115.67,4,priority handling requested,2024-09-08
+106455,1339,refunded,EMEA,retail,1832.76,3,priority handling requested,2024-12-25
+118744,1222,pending,LATAM,partner,329.56,3,priority handling requested,2024-12-13
+109278,1059,pending,EMEA,phone,398.61,21,priority handling requested,2024-04-10
+106031,1069,fulfilled,APAC,phone,1475.29,8,priority handling requested,2024-11-19
+116819,1314,fulfilled,LATAM,web,382.39,24,priority handling requested,2025-04-18
+103056,1388,refunded,LATAM,phone,2150.19,23,,2025-04-14
+119215,1035,refunded,EMEA,phone,1505.0,8,priority handling requested,2025-01-29
+106566,1238,fulfilled,LATAM,web,239.25,2,priority handling requested,2024-06-02
+115579,1000,cancelled,APAC,phone,2108.34,14,priority handling requested,2024-03-16
+112176,1073,refunded,LATAM,partner,437.74,7,priority handling requested,2024-10-14
+104513,1061,refunded,NA,retail,220.21,24,priority handling requested,2024-11-10
+114160,1171,cancelled,LATAM,partner,1045.97,15,priority handling requested,2025-02-01
+102288,1165,pending,NA,retail,35.38,16,priority handling requested,2024-09-29
+106157,1389,refunded,NA,web,336.52,27,priority handling requested,2024-02-01
+105786,1388,pending,EMEA,phone,2459.02,10,priority handling requested,2025-06-22
+108796,1241,pending,APAC,web,549.3,23,,2024-02-03
+102157,1292,fulfilled,LATAM,partner,1344.29,7,priority handling requested,2025-02-20
+117800,1081,cancelled,EMEA,partner,2260.96,14,,2025-01-11
+117868,1141,refunded,EMEA,retail,565.72,19,priority handling requested,2025-06-13
+118810,1312,cancelled,APAC,retail,1740.99,10,priority handling requested,2025-03-18
+102291,1292,cancelled,NA,phone,580.02,12,priority handling requested,2024-05-15
+115665,1374,cancelled,LATAM,web,1487.19,2,priority handling requested,2024-02-06
+111989,1244,fulfilled,EMEA,partner,1362.55,18,priority handling requested,2025-01-12
+115995,1114,fulfilled,LATAM,phone,1020.3,15,priority handling requested,2025-06-15
+109300,1233,refunded,NA,phone,100.63,4,,2024-03-07
+116890,1332,fulfilled,EMEA,partner,2243.5,22,priority handling requested,2024-02-22
+112947,1297,refunded,EMEA,web,1537.58,16,priority handling requested,2025-02-14
+110562,1036,cancelled,APAC,phone,1564.18,25,priority handling requested,2025-04-25
+108191,1128,pending,EMEA,partner,1700.04,23,priority handling requested,2025-01-23
+105760,1296,cancelled,NA,partner,2029.7,26,priority handling requested,2024-12-05
+105105,1098,cancelled,NA,web,1471.63,30,priority handling requested,2024-07-11
+110833,1375,cancelled,APAC,phone,509.99,13,priority handling requested,2024-04-11
+106175,1213,refunded,LATAM,phone,1912.13,29,priority handling requested,2024-08-13
+112705,1121,cancelled,APAC,web,527.62,20,priority handling requested,2025-05-18
+102853,1309,cancelled,NA,retail,389.69,28,priority handling requested,2024-07-30
+118351,1017,pending,EMEA,retail,1190.72,17,priority handling requested,2024-04-21
+114083,1111,cancelled,APAC,retail,885.73,4,,2025-05-06
+105699,1359,pending,EMEA,phone,1487.38,18,,2025-04-03
+109618,1313,cancelled,NA,partner,1199.94,18,priority handling requested,2025-05-09
+116599,1207,cancelled,NA,web,1322.66,14,,2024-12-07
+112598,1330,cancelled,APAC,partner,1609.56,5,,2025-03-23
+117070,1054,fulfilled,APAC,retail,1900.23,16,priority handling requested,2024-07-13
+119912,1222,refunded,NA,phone,1687.69,17,priority handling requested,2024-08-23
+106249,1039,refunded,NA,partner,1683.25,29,priority handling requested,2024-12-17
+117084,1252,fulfilled,APAC,web,1196.75,26,priority handling requested,2025-02-07
+111409,1084,pending,APAC,phone,2056.22,6,priority handling requested,2024-05-15
+102258,1184,fulfilled,EMEA,partner,1547.01,26,priority handling requested,2024-03-29
+106529,1390,fulfilled,EMEA,web,418.99,15,priority handling requested,2024-08-17
+118188,1140,fulfilled,EMEA,web,1126.17,29,priority handling requested,2024-11-09
+108087,1372,pending,LATAM,partner,1080.24,4,priority handling requested,2024-09-19
+110925,1198,pending,EMEA,partner,10.86,1,priority handling requested,2024-05-26
+102137,1175,fulfilled,LATAM,retail,1883.95,24,priority handling requested,2024-01-16
+106680,1163,fulfilled,EMEA,phone,1338.1,12,priority handling requested,2025-02-23
+102221,1061,cancelled,EMEA,partner,1275.99,27,,2024-06-14
+107593,1165,pending,LATAM,phone,1929.09,13,,2024-10-27
+102061,1262,refunded,EMEA,phone,556.82,9,priority handling requested,2024-08-09
+109904,1046,cancelled,LATAM,phone,1517.07,30,priority handling requested,2024-01-10
+113008,1273,refunded,APAC,web,823.71,15,priority handling requested,2024-04-22
+102085,1298,pending,NA,phone,1290.87,12,priority handling requested,2024-03-31
+116901,1139,cancelled,EMEA,phone,399.55,29,priority handling requested,2025-04-27
+116863,1268,refunded,APAC,partner,1313.47,26,priority handling requested,2024-03-26
+115927,1048,cancelled,LATAM,partner,2162.54,25,priority handling requested,2024-12-29
+106099,1076,refunded,NA,phone,339.86,20,priority handling requested,2024-10-11
+102096,1289,pending,APAC,retail,724.09,21,priority handling requested,2024-03-30
+110129,1247,fulfilled,NA,partner,64.64,17,,2024-10-10
+106428,1098,pending,NA,web,1511.77,24,priority handling requested,2024-11-26
+109827,1119,pending,EMEA,retail,1437.1,6,priority handling requested,2024-02-26
+112962,1334,fulfilled,NA,retail,456.7,7,priority handling requested,2025-05-23
+102616,1187,refunded,EMEA,web,52.88,9,priority handling requested,2024-07-18
+119619,1290,cancelled,NA,web,1662.1,10,,2025-04-21
+110463,1116,refunded,APAC,retail,703.97,23,priority handling requested,2024-01-01
+109994,1274,pending,EMEA,retail,2034.36,24,priority handling requested,2025-01-16
+107460,1379,cancelled,NA,retail,894.36,23,priority handling requested,2024-12-02
+113583,1289,pending,APAC,phone,291.52,4,,2024-06-18
+115881,1010,refunded,EMEA,retail,714.5,22,priority handling requested,2025-05-11
+114321,1355,pending,NA,partner,600.53,3,priority handling requested,2024-06-04
+104316,1076,cancelled,NA,retail,59.05,27,priority handling requested,2025-05-05
+102418,1034,fulfilled,EMEA,phone,2101.68,6,priority handling requested,2024-03-25
+102323,1194,refunded,NA,partner,1.23,19,priority handling requested,2025-05-06
+119118,1072,fulfilled,EMEA,retail,460.31,10,,2025-01-03
+102468,1110,pending,NA,phone,1863.02,18,priority handling requested,2025-02-26
+108449,1271,fulfilled,APAC,web,1890.62,11,priority handling requested,2025-01-30
+118359,1197,refunded,LATAM,phone,718.42,30,priority handling requested,2024-12-26
+102072,1140,refunded,NA,web,384.72,29,,2025-05-04
+111511,1006,pending,LATAM,web,1566.77,7,priority handling requested,2025-04-24
+111431,1300,pending,EMEA,phone,2334.2,8,priority handling requested,2024-11-08
+114909,1220,fulfilled,EMEA,retail,1867.16,20,priority handling requested,2025-03-01
+102153,1360,refunded,APAC,phone,680.31,7,priority handling requested,2025-02-04
+113525,1339,fulfilled,APAC,phone,2164.58,14,,2024-06-05
+102988,1163,pending,NA,retail,582.69,17,priority handling requested,2024-11-10
+116797,1289,cancelled,EMEA,phone,1901.67,16,,2024-09-16
+107026,1079,pending,NA,web,41.21,10,priority handling requested,2024-09-11
+118996,1097,fulfilled,NA,partner,448.79,16,priority handling requested,2024-04-15
+118824,1188,cancelled,APAC,phone,508.97,7,priority handling requested,2025-03-21
+110521,1084,cancelled,APAC,partner,1917.32,15,priority handling requested,2024-09-04
+116708,1215,cancelled,LATAM,web,1972.53,5,priority handling requested,2024-07-01
+107306,1259,refunded,NA,retail,895.54,15,priority handling requested,2024-11-21
+102379,1354,fulfilled,APAC,phone,1050.71,8,,2024-04-01
+107416,1127,cancelled,APAC,retail,462.22,16,,2024-02-08
+102810,1300,pending,NA,retail,2150.85,3,priority handling requested,2024-09-08
+102491,1314,pending,NA,partner,2176.02,29,priority handling requested,2025-05-24
+108130,1127,cancelled,NA,partner,898.87,9,priority handling requested,2024-04-25
+102322,1256,fulfilled,LATAM,phone,850.73,24,priority handling requested,2025-04-17
+102447,1220,fulfilled,LATAM,phone,916.26,23,priority handling requested,2024-02-21
+110178,1074,fulfilled,APAC,retail,1059.76,11,priority handling requested,2024-02-16
+102181,1255,cancelled,NA,partner,2129.61,1,,2025-02-18
+106881,1275,fulfilled,LATAM,partner,2197.22,25,priority handling requested,2025-05-22
+117422,1239,fulfilled,APAC,partner,2419.93,24,,2024-06-17
+116374,1023,cancelled,NA,phone,387.12,23,,2024-06-16
+104643,1115,pending,NA,phone,595.03,12,priority handling requested,2025-03-08
+110090,1057,cancelled,LATAM,web,2068.45,8,priority handling requested,2024-01-15
+108244,1029,fulfilled,LATAM,phone,2439.51,3,,2025-04-20
+102355,1330,pending,EMEA,phone,843.78,19,priority handling requested,2024-02-16
+105288,1197,refunded,NA,partner,216.26,11,priority handling requested,2024-09-09
+107025,1391,refunded,NA,web,1801.91,17,priority handling requested,2024-05-29
+113838,1352,fulfilled,NA,phone,1911.7,28,priority handling requested,2024-12-16
+113848,1179,fulfilled,EMEA,retail,1461.37,8,priority handling requested,2025-04-11
+107038,1033,fulfilled,NA,web,1319.21,27,priority handling requested,2024-12-27
+113199,1231,pending,LATAM,phone,1795.5,23,priority handling requested,2024-05-30
+118139,1355,pending,EMEA,web,1003.72,23,,2024-07-24
+112002,1182,cancelled,EMEA,web,1363.39,24,priority handling requested,2024-04-21
+103876,1267,fulfilled,EMEA,retail,1301.49,22,priority handling requested,2025-01-14
+112226,1122,pending,LATAM,partner,907.56,30,priority handling requested,2025-04-10
+103320,1097,cancelled,EMEA,retail,28.68,16,priority handling requested,2024-03-01
+103570,1367,pending,APAC,web,726.53,17,priority handling requested,2025-05-08
+110829,1245,refunded,LATAM,web,1094.28,11,priority handling requested,2025-06-04
+118749,1199,cancelled,APAC,partner,1123.02,4,priority handling requested,2025-04-12
+108293,1275,pending,APAC,phone,647.6,29,,2025-05-05
+103164,1359,fulfilled,NA,partner,1517.02,8,priority handling requested,2024-12-26
+102620,1155,fulfilled,NA,partner,497.76,24,priority handling requested,2025-04-23
+102484,1113,fulfilled,EMEA,retail,1415.77,5,priority handling requested,2025-01-09
+119279,1154,cancelled,APAC,web,2438.79,2,,2024-05-07
+102109,1331,pending,EMEA,phone,1962.52,22,priority handling requested,2025-06-17
+102348,1327,refunded,LATAM,web,1577.52,30,priority handling requested,2024-12-19
+110607,1211,cancelled,APAC,partner,1431.61,29,,2025-03-24
+111462,1068,fulfilled,NA,phone,1970.86,4,,2024-04-05
+111121,1022,pending,APAC,partner,784.91,19,,2025-01-16
+102179,1015,cancelled,EMEA,web,290.87,26,priority handling requested,2025-02-02
+109248,1144,pending,LATAM,partner,2004.86,3,priority handling requested,2024-04-29
+111938,1168,cancelled,EMEA,retail,87.04,9,priority handling requested,2024-08-12
+118593,1284,cancelled,EMEA,web,1961.53,2,,2024-06-12
+102169,1204,cancelled,NA,phone,178.3,21,priority handling requested,2024-07-08
+107534,1327,cancelled,EMEA,partner,1896.14,3,priority handling requested,2024-02-22
+102489,1100,fulfilled,NA,retail,337.01,13,priority handling requested,2024-12-02
+114760,1089,fulfilled,NA,retail,356.71,20,,2024-09-26
+112994,1204,pending,EMEA,web,310.41,4,priority handling requested,2024-03-13
+107919,1345,pending,NA,phone,1143.77,24,,2024-02-28
+110972,1162,fulfilled,APAC,partner,1203.7,3,priority handling requested,2025-05-11
+116938,1244,pending,APAC,partner,1098.12,12,priority handling requested,2024-01-11
+118277,1235,refunded,APAC,retail,978.33,22,priority handling requested,2024-12-08
+102199,1228,fulfilled,LATAM,partner,2291.53,15,priority handling requested,2024-08-03
+104115,1223,fulfilled,EMEA,partner,2173.15,25,priority handling requested,2025-06-03
+118294,1014,refunded,LATAM,web,114.97,29,priority handling requested,2024-11-28
+110249,1109,refunded,EMEA,partner,195.21,3,priority handling requested,2024-06-29
+119244,1242,fulfilled,LATAM,retail,1045.38,15,,2024-11-13
+103545,1108,fulfilled,LATAM,retail,2084.34,12,priority handling requested,2024-05-28
+103105,1039,refunded,APAC,web,351.02,24,priority handling requested,2025-06-21
+110590,1309,pending,NA,web,1702.42,12,priority handling requested,2025-06-08
+110724,1371,refunded,EMEA,partner,1504.44,9,priority handling requested,2024-10-13
+102825,1078,cancelled,LATAM,retail,1157.49,12,priority handling requested,2024-01-11
+110635,1349,refunded,NA,web,945.23,17,priority handling requested,2024-02-23
+105010,1045,fulfilled,LATAM,phone,478.79,2,priority handling requested,2024-10-24
+102161,1180,pending,NA,web,718.19,21,priority handling requested,2024-09-29
+107289,1352,cancelled,NA,web,1821.09,2,priority handling requested,2025-01-01
+115766,1377,refunded,APAC,phone,1272.45,27,,2025-01-15
+106750,1210,cancelled,EMEA,partner,1514.72,24,priority handling requested,2024-04-04
+119471,1330,refunded,NA,web,310.11,9,priority handling requested,2024-12-13
+107842,1214,refunded,LATAM,phone,1263.83,17,,2024-02-14
+111718,1310,pending,EMEA,partner,559.74,6,priority handling requested,2025-01-16
+116881,1145,refunded,NA,web,837.48,9,priority handling requested,2025-06-05
+114653,1213,fulfilled,EMEA,phone,1880.43,21,priority handling requested,2025-01-19
+103326,1208,fulfilled,LATAM,web,691.39,9,priority handling requested,2024-08-07
+119749,1236,cancelled,NA,partner,623.79,22,priority handling requested,2024-11-12
+114422,1214,fulfilled,NA,partner,117.82,8,priority handling requested,2024-09-12
+111878,1300,fulfilled,EMEA,partner,2489.98,20,priority handling requested,2024-12-13
+111700,1185,fulfilled,EMEA,retail,2383.87,18,priority handling requested,2025-05-30
+117558,1399,fulfilled,NA,retail,2199.45,12,,2024-10-21
+107114,1130,pending,NA,retail,2423.92,1,priority handling requested,2025-01-04
+113359,1122,fulfilled,APAC,partner,2365.52,3,priority handling requested,2024-02-07
+117670,1036,cancelled,APAC,partner,1188.93,24,priority handling requested,2025-06-04
+112760,1398,refunded,EMEA,partner,1842.96,28,priority handling requested,2025-02-23
+117313,1006,cancelled,APAC,retail,1112.28,30,priority handling requested,2024-07-28
+107886,1319,pending,NA,partner,345.41,26,priority handling requested,2024-11-02
+108564,1340,fulfilled,APAC,partner,924.73,30,priority handling requested,2024-02-20
+114095,1252,cancelled,LATAM,retail,1349.58,26,priority handling requested,2024-01-04
+102966,1059,refunded,EMEA,web,961.53,13,priority handling requested,2025-02-19
+112748,1138,pending,APAC,retail,1339.37,29,priority handling requested,2024-11-15
+115398,1058,refunded,NA,web,1309.2,11,priority handling requested,2025-02-22
+115688,1214,refunded,NA,retail,1050.78,11,priority handling requested,2024-09-09
+102132,1356,cancelled,NA,partner,1885.59,25,priority handling requested,2024-11-25
+103989,1359,cancelled,NA,retail,1195.57,3,,2025-05-20
+110449,1253,fulfilled,NA,phone,1239.21,22,priority handling requested,2024-02-15
+115546,1052,refunded,NA,web,709.77,3,priority handling requested,2024-08-21
+111129,1025,fulfilled,NA,phone,1727.11,27,,2024-12-03
+112106,1183,fulfilled,LATAM,web,389.25,1,priority handling requested,2025-01-13
+111958,1336,fulfilled,LATAM,partner,378.94,1,priority handling requested,2024-11-13
+109343,1216,cancelled,APAC,phone,1620.77,28,priority handling requested,2024-01-09
+109465,1260,refunded,NA,web,1705.11,27,,2024-07-04
+115172,1029,cancelled,APAC,web,1667.04,10,priority handling requested,2024-06-24
+105083,1049,pending,LATAM,partner,1778.86,24,priority handling requested,2024-04-14
+110109,1353,cancelled,APAC,web,740.67,5,,2025-03-22
+102223,1095,cancelled,LATAM,web,1951.95,4,priority handling requested,2025-04-27
+114660,1349,pending,NA,web,854.6,9,,2024-03-09
+112641,1192,fulfilled,NA,phone,2025.93,30,priority handling requested,2024-06-15
+102738,1339,refunded,LATAM,partner,794.29,22,priority handling requested,2024-07-10
+102454,1020,refunded,APAC,web,262.29,28,priority handling requested,2024-05-16
+106540,1286,refunded,APAC,web,1906.88,22,priority handling requested,2024-06-02
+119003,1049,fulfilled,EMEA,phone,741.29,5,priority handling requested,2025-03-08
+110993,1289,cancelled,EMEA,phone,2306.51,6,priority handling requested,2024-04-23
+102428,1213,cancelled,EMEA,retail,1292.11,14,priority handling requested,2024-04-14
+104678,1171,refunded,NA,partner,2226.34,10,priority handling requested,2024-04-14
+103137,1059,pending,NA,partner,595.9,8,priority handling requested,2024-10-27
+114446,1015,pending,APAC,partner,1551.1,10,priority handling requested,2024-02-27
+105004,1125,cancelled,EMEA,web,2161.59,25,priority handling requested,2024-08-12
+103304,1029,fulfilled,EMEA,retail,1582.41,20,priority handling requested,2024-05-31
+116158,1026,refunded,APAC,partner,1478.58,23,priority handling requested,2025-03-23
+106587,1293,refunded,APAC,web,1289.46,24,,2025-05-02
+108396,1172,cancelled,NA,phone,41.19,16,priority handling requested,2024-10-09
+113529,1319,fulfilled,LATAM,partner,494.56,24,priority handling requested,2025-04-08
+110556,1245,pending,LATAM,partner,302.54,7,,2024-03-10
+108800,1131,fulfilled,EMEA,partner,46.07,28,,2025-06-13
+105371,1068,refunded,LATAM,web,1209.41,21,priority handling requested,2024-06-15
+102079,1156,cancelled,APAC,phone,1219.59,15,priority handling requested,2025-06-12
+116873,1126,cancelled,APAC,retail,208.78,12,priority handling requested,2024-12-22
+104705,1255,fulfilled,NA,retail,1186.59,28,priority handling requested,2024-03-04
+117979,1214,cancelled,EMEA,phone,321.13,1,priority handling requested,2024-06-09
+108000,1307,refunded,NA,partner,785.66,28,priority handling requested,2024-10-06
+102992,1071,fulfilled,NA,partner,805.02,18,,2024-09-13
+108492,1122,fulfilled,LATAM,phone,889.51,29,priority handling requested,2025-02-06
+112166,1273,cancelled,EMEA,partner,1501.87,22,,2024-10-03
+102452,1041,fulfilled,APAC,web,2307.43,6,,2024-05-13
+115322,1398,refunded,NA,retail,1191.82,13,,2024-12-26
+115384,1199,refunded,NA,partner,2178.77,9,priority handling requested,2024-08-26
+110940,1280,fulfilled,NA,retail,2144.54,5,priority handling requested,2025-04-28
+108078,1057,cancelled,NA,retail,865.8,18,priority handling requested,2024-06-29
+111380,1386,cancelled,LATAM,partner,371.2,27,priority handling requested,2025-04-12
+108056,1359,refunded,LATAM,retail,726.17,30,priority handling requested,2024-11-09
+116750,1329,cancelled,LATAM,retail,1399.65,8,,2024-10-06
+107774,1164,fulfilled,APAC,phone,1761.11,29,priority handling requested,2024-08-21
+111019,1289,refunded,APAC,retail,1594.81,11,priority handling requested,2024-06-20
+119334,1279,refunded,NA,partner,1528.82,15,priority handling requested,2025-02-12
+105503,1265,fulfilled,LATAM,retail,1094.92,21,,2024-03-10
+104442,1284,fulfilled,APAC,partner,2233.31,9,priority handling requested,2024-11-27
+117732,1135,refunded,APAC,partner,153.48,21,priority handling requested,2024-09-22
+102148,1397,refunded,EMEA,web,909.76,2,priority handling requested,2024-05-14
+111538,1278,fulfilled,NA,web,897.9,18,priority handling requested,2024-01-22
+119232,1257,cancelled,EMEA,phone,2236.8,3,priority handling requested,2025-02-05
+116170,1210,refunded,NA,retail,238.89,20,,2024-10-19
+114910,1381,refunded,NA,retail,1959.92,7,priority handling requested,2024-07-25
+105624,1285,refunded,EMEA,retail,2461.02,6,priority handling requested,2024-01-17
+117866,1052,pending,APAC,partner,2467.66,24,priority handling requested,2024-04-11
+112713,1088,fulfilled,APAC,partner,1009.86,7,,2025-05-31
+110955,1337,refunded,NA,retail,990.88,2,priority handling requested,2025-03-23
+119508,1273,refunded,EMEA,partner,1704.44,30,priority handling requested,2025-04-30
+107405,1326,fulfilled,NA,phone,2040.67,5,priority handling requested,2025-02-22
+106604,1187,fulfilled,LATAM,retail,2381.52,23,priority handling requested,2025-04-03
+106210,1311,cancelled,NA,phone,2126.02,18,priority handling requested,2024-11-16
+103174,1065,fulfilled,APAC,phone,779.42,8,priority handling requested,2024-09-25
+117864,1210,pending,APAC,partner,309.01,21,priority handling requested,2025-05-10
+104486,1233,cancelled,LATAM,retail,957.88,8,priority handling requested,2024-09-19
+103796,1318,pending,NA,retail,789.0,14,priority handling requested,2025-05-21
+102158,1267,refunded,NA,phone,1470.31,7,,2024-02-03
+117642,1123,refunded,APAC,phone,86.43,4,priority handling requested,2025-01-31
+108881,1042,fulfilled,APAC,web,2159.76,10,,2025-04-13
+106581,1242,fulfilled,NA,web,122.21,28,,2024-01-08
+111547,1235,cancelled,NA,web,2198.77,1,priority handling requested,2024-06-14
+116084,1008,cancelled,LATAM,web,155.4,14,priority handling requested,2024-05-01
+105094,1265,pending,NA,partner,2409.35,25,,2024-09-02
+108640,1368,cancelled,EMEA,phone,802.15,5,priority handling requested,2025-02-19
+117638,1333,pending,LATAM,phone,1826.37,14,,2024-09-09
+105498,1032,refunded,LATAM,retail,2137.07,25,priority handling requested,2024-11-03
+117665,1370,pending,EMEA,partner,2331.38,26,priority handling requested,2025-03-27
+115329,1066,refunded,EMEA,retail,1470.13,18,,2024-07-27
+109544,1115,refunded,APAC,retail,1926.49,3,priority handling requested,2024-08-22
+113083,1042,pending,EMEA,retail,2382.19,10,,2025-02-05
+108498,1034,pending,EMEA,partner,696.3,10,,2025-01-04
+102599,1020,refunded,EMEA,web,2184.82,9,priority handling requested,2025-02-03
+108577,1331,pending,LATAM,partner,1146.32,13,,2025-01-23
+110766,1023,refunded,LATAM,phone,1767.6,23,priority handling requested,2024-09-30
+108216,1108,cancelled,APAC,web,440.54,19,priority handling requested,2024-10-11
+113427,1208,cancelled,LATAM,partner,938.67,2,priority handling requested,2024-08-30
+115369,1310,pending,APAC,partner,23.48,16,priority handling requested,2025-03-06
+119638,1031,pending,NA,phone,1128.27,21,priority handling requested,2024-09-29
+118479,1293,fulfilled,NA,web,604.36,22,priority handling requested,2025-05-08
+113195,1315,refunded,NA,partner,2195.59,6,,2024-04-21
+103046,1341,fulfilled,NA,partner,544.6,23,priority handling requested,2025-06-10
+102319,1323,cancelled,APAC,partner,2448.23,30,priority handling requested,2025-03-03
+102450,1166,pending,APAC,web,1762.53,24,priority handling requested,2024-11-05
+115155,1188,pending,EMEA,phone,96.04,11,priority handling requested,2024-08-25
+107323,1199,pending,LATAM,phone,231.33,7,priority handling requested,2025-04-15
+115845,1312,refunded,NA,retail,2064.17,29,,2024-12-28
+105198,1251,fulfilled,EMEA,partner,1658.38,17,priority handling requested,2024-03-30
+102358,1206,refunded,LATAM,web,2169.95,2,,2024-01-28
+102071,1295,pending,EMEA,phone,2096.04,9,priority handling requested,2024-03-20
+113655,1348,fulfilled,NA,partner,639.08,14,priority handling requested,2025-06-05
+112391,1398,refunded,LATAM,retail,232.99,24,priority handling requested,2024-12-14
+108309,1131,pending,LATAM,partner,2033.65,18,priority handling requested,2025-05-03
+105454,1248,pending,APAC,web,2116.72,13,priority handling requested,2024-06-07
+117151,1365,pending,APAC,web,1424.72,20,priority handling requested,2024-03-04
+116005,1237,cancelled,NA,phone,1627.37,1,,2024-04-12
+105713,1149,pending,EMEA,web,1297.32,8,priority handling requested,2025-06-07
+108532,1253,fulfilled,NA,phone,1204.72,30,priority handling requested,2024-07-30
+116063,1142,fulfilled,EMEA,phone,6.66,25,priority handling requested,2024-08-09
+110698,1127,cancelled,APAC,web,1298.56,5,priority handling requested,2024-04-23
+113903,1112,pending,LATAM,web,1540.06,24,,2024-11-10
+113816,1354,refunded,APAC,partner,2271.85,30,,2024-10-27
+119572,1264,pending,LATAM,partner,2277.87,12,priority handling requested,2024-03-13
+102275,1094,pending,NA,phone,1311.49,8,,2024-12-12
+117363,1391,fulfilled,LATAM,web,2074.07,8,priority handling requested,2024-10-11
+112772,1164,pending,APAC,partner,2012.32,10,priority handling requested,2024-07-04
+110871,1044,refunded,APAC,web,1674.08,30,priority handling requested,2025-01-17
+116774,1036,fulfilled,NA,phone,628.04,19,priority handling requested,2024-03-27
+115565,1044,cancelled,NA,web,508.71,8,priority handling requested,2025-04-28
+113669,1231,pending,LATAM,partner,833.98,20,,2024-10-07
+106498,1065,pending,APAC,partner,1366.2,11,priority handling requested,2025-01-23
+104189,1013,cancelled,EMEA,web,1880.52,27,priority handling requested,2024-12-07
+102077,1046,fulfilled,EMEA,phone,1244.25,17,priority handling requested,2024-11-29
+115717,1267,refunded,LATAM,web,768.94,14,priority handling requested,2025-02-07
+118140,1080,cancelled,EMEA,partner,745.69,21,priority handling requested,2024-10-04
+117104,1109,fulfilled,NA,retail,1829.79,4,priority handling requested,2024-09-22
+102307,1133,pending,LATAM,partner,1587.14,19,priority handling requested,2025-06-03
+106301,1345,fulfilled,NA,partner,1462.68,17,priority handling requested,2024-07-01
+113151,1147,cancelled,EMEA,phone,2271.32,1,priority handling requested,2025-04-22
+109450,1380,refunded,NA,retail,2023.55,24,priority handling requested,2025-01-10
+110810,1228,pending,EMEA,phone,2477.78,5,priority handling requested,2024-03-06
+109066,1311,cancelled,NA,retail,1616.94,30,priority handling requested,2024-10-06
+102143,1226,refunded,APAC,retail,564.19,19,priority handling requested,2024-03-12
+110532,1340,refunded,EMEA,partner,884.7,24,priority handling requested,2024-04-10
+116396,1299,refunded,LATAM,retail,223.09,10,,2025-05-03
+104824,1024,pending,APAC,retail,286.21,6,priority handling requested,2024-06-02
+113220,1021,pending,EMEA,partner,1836.63,9,priority handling requested,2025-06-19
+105106,1073,refunded,APAC,retail,1019.7,26,priority handling requested,2024-06-21
+117695,1257,fulfilled,LATAM,phone,433.32,17,priority handling requested,2024-03-28
+113733,1027,cancelled,NA,partner,1196.27,4,priority handling requested,2024-10-20
+103749,1104,pending,APAC,phone,1014.67,3,priority handling requested,2025-01-03
+106256,1077,pending,LATAM,retail,78.1,23,priority handling requested,2024-05-04
+107096,1279,refunded,NA,phone,1256.89,26,priority handling requested,2024-09-23
+108820,1200,refunded,NA,partner,2223.05,10,priority handling requested,2024-04-27
+117331,1262,refunded,NA,partner,1808.43,12,priority handling requested,2024-03-14
+105872,1127,pending,LATAM,retail,721.74,3,priority handling requested,2024-03-22
+104597,1268,refunded,APAC,web,1476.27,8,priority handling requested,2024-09-08
+108295,1059,cancelled,EMEA,phone,1337.73,5,,2024-12-14
+115765,1097,refunded,EMEA,retail,1031.69,10,priority handling requested,2025-04-26
+102320,1150,pending,LATAM,phone,534.9,25,,2025-04-28
+102245,1238,refunded,NA,partner,1958.85,30,priority handling requested,2024-07-03
+112983,1229,cancelled,APAC,web,2356.14,3,priority handling requested,2024-07-26
+114005,1337,refunded,APAC,retail,1938.05,10,priority handling requested,2025-03-13
+102648,1151,pending,EMEA,partner,433.68,5,,2025-02-17
+102286,1001,refunded,APAC,retail,1300.06,8,priority handling requested,2024-01-21
+116958,1280,cancelled,LATAM,phone,1224.59,26,,2025-01-08
+112956,1177,cancelled,LATAM,retail,2249.87,29,priority handling requested,2025-01-22
+104234,1215,refunded,LATAM,web,1365.76,12,priority handling requested,2024-01-22
+111442,1104,fulfilled,APAC,web,869.49,17,priority handling requested,2025-02-26
+110472,1387,fulfilled,NA,retail,2350.35,8,priority handling requested,2024-06-20
+115889,1038,fulfilled,LATAM,partner,1810.25,3,priority handling requested,2025-04-03
+111525,1114,cancelled,LATAM,retail,1466.84,15,priority handling requested,2024-04-27
+117540,1299,pending,EMEA,web,926.52,6,,2024-07-12
+111749,1254,pending,LATAM,phone,2407.78,25,priority handling requested,2024-07-11
+112739,1209,fulfilled,LATAM,phone,1439.25,26,priority handling requested,2025-01-11
+110822,1042,fulfilled,LATAM,phone,1387.65,21,priority handling requested,2024-09-19
+102413,1149,cancelled,APAC,phone,1422.25,2,priority handling requested,2024-03-06
+114984,1284,cancelled,EMEA,phone,1248.08,10,priority handling requested,2025-06-02
+106006,1280,refunded,LATAM,phone,1447.65,27,priority handling requested,2024-04-03
+107249,1091,cancelled,NA,retail,2279.19,16,priority handling requested,2024-11-27
+111980,1334,cancelled,LATAM,phone,1549.83,8,priority handling requested,2024-02-23
+112207,1061,pending,LATAM,web,556.81,12,priority handling requested,2025-03-13
+117716,1077,refunded,EMEA,phone,668.68,13,priority handling requested,2024-01-10
+114256,1316,fulfilled,EMEA,phone,512.13,5,priority handling requested,2024-12-01
+119149,1106,refunded,NA,retail,1471.05,18,priority handling requested,2024-09-12
+103278,1309,fulfilled,APAC,retail,1212.72,8,priority handling requested,2024-01-10
+117263,1097,fulfilled,APAC,phone,226.28,30,priority handling requested,2024-04-23
+113844,1018,fulfilled,EMEA,retail,257.13,20,,2024-12-14
+112657,1095,fulfilled,NA,web,1048.46,4,priority handling requested,2024-07-21
+104741,1086,pending,NA,partner,1932.42,29,,2024-08-04
+116473,1080,fulfilled,NA,web,313.93,27,priority handling requested,2025-01-29
+119941,1396,cancelled,LATAM,web,1901.94,29,priority handling requested,2024-02-15
+104229,1245,refunded,LATAM,retail,1278.51,24,priority handling requested,2024-07-07
+104416,1175,refunded,APAC,retail,2432.88,29,priority handling requested,2024-06-19
+104525,1316,fulfilled,EMEA,partner,1539.45,11,,2025-05-22
+117721,1122,fulfilled,NA,web,155.99,14,priority handling requested,2024-09-19
+106610,1290,fulfilled,LATAM,phone,2167.88,19,priority handling requested,2024-09-27
+116779,1267,cancelled,LATAM,web,1934.05,14,priority handling requested,2024-04-10
+105348,1185,refunded,APAC,phone,96.49,4,priority handling requested,2024-05-06
+107267,1064,fulfilled,NA,partner,1052.88,29,priority handling requested,2024-05-24
+115505,1132,cancelled,NA,web,1667.78,17,priority handling requested,2025-05-13
+118653,1376,fulfilled,NA,phone,2408.5,6,priority handling requested,2025-04-01
+111215,1197,cancelled,LATAM,retail,1653.42,10,priority handling requested,2024-06-14
+115163,1228,fulfilled,APAC,partner,579.73,27,priority handling requested,2024-02-26
+116820,1152,cancelled,APAC,retail,2358.51,16,,2025-05-09
+109056,1112,pending,APAC,partner,2211.95,28,priority handling requested,2024-09-22
+101330,1371,fulfilled,LATAM,phone,1577.25,6,priority handling requested,2024-05-15
+101214,1348,pending,NA,partner,994.58,3,priority handling requested,2024-03-28
+119737,1337,fulfilled,LATAM,partner,1408.07,14,,2024-02-24
+106040,1009,cancelled,APAC,partner,331.92,6,,2024-07-01
+116792,1223,pending,NA,partner,825.96,26,priority handling requested,2025-05-14
+113777,1010,cancelled,LATAM,partner,1218.96,10,priority handling requested,2024-09-09
+108260,1011,cancelled,EMEA,retail,735.34,6,priority handling requested,2025-03-14
+118806,1133,pending,APAC,retail,1554.86,4,,2024-03-02
+113278,1172,cancelled,EMEA,phone,1596.08,27,priority handling requested,2024-06-09
+111237,1033,cancelled,EMEA,partner,792.38,16,priority handling requested,2025-01-01
+111610,1158,pending,EMEA,web,154.57,21,priority handling requested,2024-10-11
+108706,1379,pending,NA,web,166.8,23,priority handling requested,2024-09-02
+113301,1267,cancelled,NA,phone,39.2,21,priority handling requested,2024-01-22
+101114,1338,pending,EMEA,phone,2492.62,26,priority handling requested,2025-03-22
+100304,1267,refunded,EMEA,retail,1325.1,2,priority handling requested,2025-05-12
+114278,1213,pending,NA,web,20.3,28,priority handling requested,2024-04-07
+101421,1391,cancelled,LATAM,retail,1652.46,22,priority handling requested,2024-05-02
+106538,1184,pending,LATAM,web,488.7,6,,2024-01-15
+115958,1099,fulfilled,NA,web,802.41,29,priority handling requested,2025-04-30
+104481,1246,cancelled,APAC,phone,476.65,22,priority handling requested,2024-07-08
+100259,1356,pending,LATAM,phone,222.53,10,priority handling requested,2024-11-25
+103411,1273,refunded,NA,web,538.01,10,priority handling requested,2024-10-23
+101456,1261,cancelled,NA,retail,2346.6,26,,2024-08-22
+119090,1085,cancelled,EMEA,partner,807.44,8,,2024-09-22
+111031,1084,refunded,NA,phone,1112.01,2,priority handling requested,2025-02-25
+111767,1166,pending,APAC,phone,419.18,14,priority handling requested,2024-07-31
+100738,1063,refunded,APAC,partner,20.12,11,priority handling requested,2025-03-25
+117426,1002,fulfilled,EMEA,retail,597.27,16,priority handling requested,2024-01-22
+102945,1027,refunded,NA,retail,1966.58,8,priority handling requested,2025-01-28
+114698,1371,fulfilled,LATAM,retail,1486.85,22,priority handling requested,2024-11-07
+105748,1365,cancelled,NA,web,1021.8,16,priority handling requested,2025-05-17
+118808,1059,cancelled,EMEA,phone,1139.5,21,priority handling requested,2024-04-13
+102819,1180,pending,EMEA,retail,731.38,17,,2024-06-01
+100004,1209,cancelled,LATAM,phone,1478.2,24,priority handling requested,2024-05-25
+104776,1324,fulfilled,NA,web,1690.48,11,priority handling requested,2025-06-10
+100324,1206,pending,EMEA,phone,852.5,2,priority handling requested,2024-03-03
+105842,1021,pending,LATAM,partner,1375.39,12,priority handling requested,2024-05-21
+108287,1052,cancelled,APAC,web,520.12,5,priority handling requested,2024-10-23
+101332,1054,pending,NA,retail,1437.37,8,priority handling requested,2024-01-18
+119523,1202,fulfilled,NA,partner,1701.45,24,priority handling requested,2024-03-19
+100190,1120,cancelled,LATAM,partner,1311.27,2,,2024-09-12
+115485,1039,pending,EMEA,phone,352.8,29,priority handling requested,2025-02-05
+118838,1343,fulfilled,EMEA,web,686.97,16,priority handling requested,2024-09-09
+116926,1382,pending,LATAM,web,1029.54,5,priority handling requested,2024-10-13
+114294,1145,cancelled,EMEA,web,2275.79,5,priority handling requested,2025-05-02
+111622,1012,refunded,EMEA,retail,2000.45,23,priority handling requested,2025-05-03
+113478,1334,refunded,EMEA,partner,1318.31,30,priority handling requested,2025-04-01
+100813,1306,pending,APAC,phone,1186.76,17,,2024-07-07
+105138,1146,pending,LATAM,web,2459.99,1,priority handling requested,2025-04-20
+117227,1241,pending,LATAM,retail,705.66,21,priority handling requested,2024-02-01
+113628,1022,cancelled,NA,partner,612.41,12,,2025-06-01
+101960,1039,fulfilled,NA,partner,838.13,7,priority handling requested,2024-02-13
+104485,1246,pending,LATAM,phone,1232.96,14,priority handling requested,2024-11-09
+112432,1360,refunded,NA,retail,1651.91,19,priority handling requested,2024-10-10
+119601,1037,fulfilled,EMEA,partner,1304.84,26,,2024-08-01
+114138,1147,fulfilled,EMEA,partner,2058.86,5,priority handling requested,2024-07-21
+105108,1206,fulfilled,APAC,web,1700.77,27,priority handling requested,2024-07-15
+113771,1107,pending,EMEA,phone,1640.63,1,,2025-05-17
+112170,1083,cancelled,APAC,retail,1977.49,4,priority handling requested,2025-02-16
+104050,1237,refunded,EMEA,web,14.99,23,priority handling requested,2024-06-12
+105540,1389,refunded,EMEA,retail,377.47,16,priority handling requested,2025-05-31
+100782,1086,pending,APAC,partner,326.36,12,priority handling requested,2024-05-28
+118732,1287,cancelled,EMEA,retail,2133.72,7,priority handling requested,2024-07-30
+114359,1360,refunded,EMEA,phone,2253.96,25,priority handling requested,2024-03-20
+117304,1312,cancelled,EMEA,partner,497.14,14,priority handling requested,2024-02-16
+109186,1372,fulfilled,NA,phone,2242.14,4,priority handling requested,2025-06-15
+103822,1276,fulfilled,NA,phone,361.86,22,priority handling requested,2024-09-24
+100701,1110,fulfilled,APAC,phone,2287.13,25,,2024-07-30
+113932,1177,pending,APAC,retail,139.68,17,priority handling requested,2024-05-10
+112637,1201,refunded,EMEA,partner,2044.93,27,priority handling requested,2025-04-30
+106930,1176,refunded,APAC,partner,1309.32,22,priority handling requested,2024-02-12
+105269,1156,refunded,LATAM,phone,534.72,16,,2024-04-11
+113054,1038,refunded,EMEA,retail,1721.66,2,,2025-02-11
+102000,1343,refunded,LATAM,web,395.59,13,priority handling requested,2025-01-18
+118055,1069,refunded,LATAM,phone,801.1,18,priority handling requested,2024-11-28
+107361,1220,pending,NA,web,68.78,3,priority handling requested,2024-08-24
+104335,1001,refunded,NA,web,1594.45,11,,2024-10-17
+101825,1005,cancelled,APAC,retail,1960.64,27,,2025-05-10
+112138,1014,refunded,APAC,retail,1099.79,3,priority handling requested,2024-02-10
+115402,1205,fulfilled,LATAM,retail,1428.21,12,priority handling requested,2024-07-27
+112521,1142,refunded,NA,web,1123.38,24,priority handling requested,2025-04-18
+105116,1305,fulfilled,EMEA,partner,1651.02,19,priority handling requested,2024-05-12
+104873,1066,refunded,EMEA,partner,2152.05,8,priority handling requested,2024-01-10
+102772,1173,refunded,NA,partner,1677.7,21,priority handling requested,2024-11-27
+116381,1237,cancelled,LATAM,partner,1206.43,28,,2025-05-01
+112384,1041,refunded,NA,web,2082.59,30,priority handling requested,2024-01-27
+113613,1396,pending,EMEA,partner,468.55,9,,2024-10-28
+114757,1305,pending,LATAM,web,2419.5,13,priority handling requested,2024-06-22
+103821,1044,fulfilled,APAC,web,723.18,3,priority handling requested,2025-01-17
+113480,1353,refunded,NA,retail,1533.59,19,priority handling requested,2024-05-03
+100573,1262,fulfilled,EMEA,phone,1992.68,9,priority handling requested,2025-05-08
+114772,1075,refunded,LATAM,partner,826.74,19,priority handling requested,2025-05-14
+117317,1037,cancelled,APAC,partner,2271.2,2,priority handling requested,2025-01-25
+114444,1223,refunded,EMEA,retail,2311.72,15,priority handling requested,2024-07-18
+118168,1238,cancelled,APAC,retail,2225.75,13,,2024-07-22
+115617,1212,fulfilled,EMEA,phone,599.09,25,,2024-12-03
+109807,1110,cancelled,LATAM,partner,2389.05,12,priority handling requested,2024-01-06
+101988,1091,fulfilled,EMEA,phone,2376.27,21,priority handling requested,2024-10-21
+104013,1219,cancelled,LATAM,partner,906.84,20,,2024-04-28
+106371,1078,refunded,EMEA,retail,1869.66,8,priority handling requested,2025-04-17
+116322,1182,cancelled,EMEA,partner,2468.21,2,,2024-10-25
+114547,1382,cancelled,APAC,web,294.99,20,,2024-05-10
+107803,1297,refunded,NA,partner,1069.15,30,priority handling requested,2024-01-06
+101005,1287,refunded,LATAM,partner,216.72,25,priority handling requested,2025-03-25
+101869,1168,fulfilled,EMEA,web,933.62,4,priority handling requested,2025-05-05
+117022,1194,refunded,NA,partner,365.11,20,priority handling requested,2024-08-12
+101655,1088,refunded,EMEA,retail,2043.79,28,priority handling requested,2024-09-14
+105974,1090,pending,APAC,phone,300.78,11,priority handling requested,2024-09-28
+117406,1171,cancelled,EMEA,web,395.7,11,priority handling requested,2025-04-02
+115222,1091,cancelled,APAC,phone,980.79,27,priority handling requested,2024-03-14
+104439,1137,fulfilled,NA,partner,1912.97,26,priority handling requested,2024-11-03
+114077,1290,fulfilled,LATAM,retail,423.14,18,priority handling requested,2024-03-12
+110575,1150,cancelled,NA,partner,1189.78,9,priority handling requested,2024-02-04
+116209,1348,pending,LATAM,partner,2414.62,5,priority handling requested,2024-07-03
+112590,1021,cancelled,APAC,partner,2266.36,24,priority handling requested,2024-02-01
+106265,1365,pending,EMEA,web,2401.47,30,priority handling requested,2024-10-21
+103132,1378,pending,EMEA,web,306.05,27,priority handling requested,2024-09-26
+109426,1388,refunded,NA,phone,650.37,26,priority handling requested,2025-04-06
+117428,1275,refunded,APAC,web,2119.88,1,priority handling requested,2025-04-24
+104887,1315,cancelled,LATAM,partner,1112.02,25,,2024-11-06
+100572,1340,pending,APAC,partner,43.66,15,priority handling requested,2024-03-04
+103440,1280,fulfilled,LATAM,web,589.16,15,,2024-05-01
+114934,1044,fulfilled,APAC,web,2283.91,11,,2024-09-28
+103664,1270,fulfilled,APAC,web,977.47,6,priority handling requested,2024-02-24
+100191,1107,pending,NA,phone,1068.51,5,priority handling requested,2025-04-09
+116737,1220,pending,LATAM,partner,924.49,4,priority handling requested,2024-08-02
+101076,1315,pending,LATAM,retail,1361.96,29,priority handling requested,2024-03-19
+109975,1200,pending,APAC,partner,1497.74,23,priority handling requested,2025-04-26
+118501,1097,fulfilled,LATAM,partner,1792.45,10,priority handling requested,2024-07-22
+117841,1089,refunded,EMEA,retail,2272.77,16,priority handling requested,2024-11-23
+113872,1269,refunded,EMEA,retail,2029.1,6,,2024-10-06
+118376,1125,refunded,APAC,retail,2221.18,2,priority handling requested,2024-05-20
+119169,1357,pending,LATAM,partner,1331.61,19,priority handling requested,2024-11-03
+101227,1364,pending,LATAM,web,1604.23,13,,2025-01-26
+102643,1009,pending,LATAM,web,552.32,6,,2025-04-18
+108217,1047,refunded,APAC,partner,1466.66,16,priority handling requested,2024-01-15
+106481,1386,pending,APAC,web,1630.68,20,priority handling requested,2025-05-29
+105882,1172,refunded,EMEA,partner,626.71,28,priority handling requested,2025-04-19
+104900,1306,pending,EMEA,web,1601.63,10,,2025-06-13
+115004,1134,fulfilled,APAC,phone,564.21,27,priority handling requested,2024-04-28
+116470,1129,cancelled,EMEA,phone,1355.64,20,,2025-01-23
+106968,1101,cancelled,LATAM,web,1907.48,6,priority handling requested,2024-09-23
+101361,1243,pending,EMEA,phone,2290.69,17,priority handling requested,2025-03-01
+100358,1059,fulfilled,LATAM,partner,2303.63,24,priority handling requested,2024-03-18
+114496,1283,pending,NA,partner,251.59,17,priority handling requested,2024-06-21
+106928,1398,pending,EMEA,web,1528.21,2,priority handling requested,2024-11-25
+108459,1041,refunded,EMEA,phone,2477.82,2,,2024-10-08
+101409,1225,pending,EMEA,partner,691.27,18,priority handling requested,2024-10-23
+101519,1110,pending,LATAM,partner,1729.2,13,priority handling requested,2025-03-07
+118910,1373,refunded,APAC,partner,1286.56,13,priority handling requested,2024-09-07
+103775,1087,cancelled,EMEA,partner,1173.6,17,priority handling requested,2024-03-27
+116638,1123,pending,EMEA,retail,1867.87,19,priority handling requested,2025-03-13
+111285,1339,fulfilled,APAC,partner,1855.93,30,priority handling requested,2024-01-22
+100159,1071,pending,EMEA,retail,1296.16,30,priority handling requested,2025-05-24
+100606,1166,pending,EMEA,web,1570.27,18,,2025-01-16
+105506,1373,fulfilled,LATAM,web,2447.96,26,priority handling requested,2025-04-04
+115035,1068,cancelled,NA,retail,1386.52,4,priority handling requested,2024-08-22
+111425,1372,pending,LATAM,web,551.71,26,priority handling requested,2025-02-19
+109707,1388,pending,APAC,partner,1289.85,16,,2024-10-03
+110991,1192,refunded,LATAM,web,1356.3,16,priority handling requested,2024-10-03
+101636,1344,fulfilled,LATAM,phone,2255.0,10,priority handling requested,2024-01-21
+108612,1305,refunded,NA,retail,2044.01,10,,2024-12-05
+116366,1333,cancelled,NA,web,995.74,13,priority handling requested,2024-03-30
+115489,1336,pending,EMEA,web,1661.14,7,priority handling requested,2024-07-13
+104158,1157,pending,EMEA,retail,1989.41,17,priority handling requested,2025-02-26
+100916,1050,fulfilled,APAC,partner,1714.09,1,priority handling requested,2024-04-19
+107160,1249,refunded,EMEA,web,2443.15,20,priority handling requested,2024-10-09
+116340,1321,cancelled,EMEA,phone,1547.89,9,priority handling requested,2024-06-17
+117377,1284,refunded,EMEA,partner,80.57,17,priority handling requested,2025-04-09
+104954,1001,pending,NA,phone,206.86,10,,2024-04-17
+106996,1072,cancelled,NA,phone,2150.36,23,priority handling requested,2024-01-02
+114953,1191,pending,NA,partner,393.74,13,priority handling requested,2025-04-11
+101560,1319,pending,EMEA,phone,476.85,16,priority handling requested,2024-05-12
+111626,1306,fulfilled,NA,web,1298.36,7,priority handling requested,2025-01-04
+117439,1379,pending,APAC,retail,771.9,19,priority handling requested,2024-11-21
+110012,1100,fulfilled,NA,partner,655.5,24,priority handling requested,2024-12-23
+112245,1281,fulfilled,NA,phone,110.82,29,priority handling requested,2024-06-13
+113302,1054,cancelled,EMEA,retail,2271.22,8,,2024-01-04
+118691,1239,fulfilled,LATAM,partner,2421.85,16,priority handling requested,2024-01-19
+103719,1146,refunded,EMEA,partner,55.14,24,priority handling requested,2025-06-21
+112456,1342,refunded,APAC,web,1327.86,2,priority handling requested,2024-10-24
+100493,1055,fulfilled,APAC,partner,1741.96,20,priority handling requested,2024-05-07
+111645,1036,fulfilled,LATAM,retail,1662.1,7,priority handling requested,2025-03-07
+118534,1011,cancelled,NA,phone,2361.14,17,priority handling requested,2024-03-03
+112605,1370,fulfilled,EMEA,retail,2195.51,22,priority handling requested,2024-11-21
+110323,1312,fulfilled,EMEA,retail,1478.05,24,priority handling requested,2024-02-21
+101919,1291,fulfilled,NA,retail,2298.78,30,,2025-06-18
+113013,1368,refunded,LATAM,phone,889.57,27,priority handling requested,2025-04-24
+119160,1285,pending,APAC,retail,1485.55,5,priority handling requested,2024-12-04
+112620,1014,refunded,LATAM,web,1759.35,1,priority handling requested,2025-06-23
+109709,1351,refunded,LATAM,partner,258.54,13,priority handling requested,2024-06-08
+108334,1240,cancelled,EMEA,phone,1264.13,5,priority handling requested,2024-12-17
+114588,1113,fulfilled,LATAM,web,381.2,29,priority handling requested,2024-04-20
+109366,1226,cancelled,LATAM,web,2361.92,14,priority handling requested,2024-08-04
+108238,1170,cancelled,LATAM,retail,254.05,21,priority handling requested,2025-02-06
+119864,1223,refunded,EMEA,phone,308.85,11,priority handling requested,2025-04-05
+107938,1390,refunded,EMEA,phone,512.1,19,priority handling requested,2025-06-15
+105593,1159,fulfilled,EMEA,phone,952.73,21,priority handling requested,2025-02-07
+101587,1178,refunded,NA,web,255.46,27,priority handling requested,2024-08-02
+109242,1255,refunded,LATAM,web,614.61,9,priority handling requested,2024-01-10
+107516,1227,pending,EMEA,web,2056.64,19,priority handling requested,2024-07-26
+116716,1331,pending,LATAM,partner,1577.59,12,priority handling requested,2024-01-10
+100084,1221,fulfilled,EMEA,retail,2468.19,7,priority handling requested,2025-02-21
+100736,1251,pending,APAC,web,894.13,13,priority handling requested,2025-02-21
+105117,1153,fulfilled,NA,web,167.04,2,priority handling requested,2024-12-21
+117769,1301,cancelled,NA,phone,186.85,5,priority handling requested,2024-02-11
+104529,1346,refunded,EMEA,partner,610.37,2,priority handling requested,2024-04-16
+116837,1291,fulfilled,EMEA,partner,2446.18,18,priority handling requested,2024-12-29
+110771,1209,cancelled,LATAM,partner,1079.69,7,priority handling requested,2024-07-29
+103608,1252,pending,EMEA,web,2278.26,16,priority handling requested,2024-10-03
+107578,1042,pending,EMEA,phone,905.97,2,priority handling requested,2025-06-04
+107446,1202,cancelled,NA,retail,2272.36,1,priority handling requested,2024-06-22
+116580,1027,pending,APAC,partner,2416.89,1,priority handling requested,2025-02-13
+101678,1060,pending,NA,retail,251.89,2,priority handling requested,2025-04-21
+114100,1255,pending,APAC,partner,2489.98,24,,2024-01-14
+108768,1201,fulfilled,NA,partner,1284.07,21,priority handling requested,2025-06-17
+111005,1047,fulfilled,LATAM,partner,2024.87,9,,2024-04-03
+112680,1335,fulfilled,EMEA,phone,1523.16,1,priority handling requested,2024-01-25
+103723,1377,refunded,EMEA,retail,909.18,1,,2024-09-25
+107403,1260,cancelled,APAC,retail,2277.4,25,priority handling requested,2024-02-05
+110321,1137,cancelled,EMEA,web,2136.58,26,priority handling requested,2025-04-28
+116892,1313,cancelled,LATAM,web,590.0,21,priority handling requested,2025-01-01
+101698,1141,cancelled,NA,phone,954.98,17,priority handling requested,2024-06-11
+102826,1162,fulfilled,EMEA,partner,2323.29,18,priority handling requested,2025-04-01
+105765,1323,refunded,EMEA,partner,1811.64,24,priority handling requested,2024-11-10
+101583,1396,cancelled,APAC,partner,1163.32,24,priority handling requested,2025-06-06
+109912,1298,fulfilled,EMEA,phone,1050.31,18,priority handling requested,2024-01-18
+102624,1386,pending,APAC,web,281.41,6,priority handling requested,2025-03-16
+119918,1384,cancelled,NA,retail,1280.65,11,priority handling requested,2024-12-18
+117417,1016,pending,APAC,web,2307.8,8,priority handling requested,2024-06-10
+102948,1096,pending,APAC,web,1577.94,8,,2024-10-13
+117790,1296,pending,NA,partner,1974.16,29,priority handling requested,2024-12-14
+106208,1222,fulfilled,APAC,phone,247.8,3,priority handling requested,2024-12-04
+118230,1005,cancelled,NA,retail,740.13,9,priority handling requested,2024-08-25
+114965,1159,cancelled,NA,phone,813.86,7,priority handling requested,2024-09-05
+117266,1039,refunded,NA,partner,12.92,22,priority handling requested,2025-04-25
+108526,1283,pending,APAC,web,576.26,30,priority handling requested,2024-04-11
+108661,1359,pending,NA,phone,1255.03,11,priority handling requested,2025-05-31
+108932,1309,fulfilled,APAC,partner,1775.18,16,priority handling requested,2025-01-12
+109894,1375,pending,APAC,partner,438.74,21,priority handling requested,2024-09-21
+108205,1165,refunded,APAC,retail,850.97,22,priority handling requested,2024-07-19
+110269,1388,refunded,APAC,retail,946.85,19,priority handling requested,2025-03-28
+115517,1191,refunded,NA,web,170.43,28,priority handling requested,2024-02-14
+110005,1394,cancelled,NA,web,924.76,16,priority handling requested,2024-06-02
+110050,1209,cancelled,APAC,phone,665.07,19,priority handling requested,2024-09-13
+103053,1086,fulfilled,LATAM,retail,157.47,1,priority handling requested,2024-03-17
+107238,1016,fulfilled,EMEA,partner,1165.44,30,priority handling requested,2024-03-22
+111128,1372,pending,NA,retail,1105.43,11,,2025-02-01
+100719,1275,fulfilled,EMEA,web,856.27,18,,2025-02-04
+113245,1277,cancelled,EMEA,retail,1231.12,21,priority handling requested,2024-03-02
+111937,1222,cancelled,EMEA,phone,587.3,28,priority handling requested,2024-12-10
+100589,1015,fulfilled,NA,retail,12.73,16,priority handling requested,2025-04-26
+116365,1354,fulfilled,NA,retail,1446.66,4,priority handling requested,2024-05-19
+115913,1265,pending,APAC,partner,2035.3,29,priority handling requested,2025-01-30
+110114,1057,refunded,LATAM,phone,2121.78,8,priority handling requested,2024-07-25
+108757,1252,fulfilled,EMEA,web,1442.59,5,priority handling requested,2025-06-09
+112692,1037,pending,NA,phone,396.32,24,,2024-05-14
+103965,1158,refunded,NA,phone,729.91,4,priority handling requested,2024-09-01
+113679,1251,refunded,APAC,phone,1784.16,8,priority handling requested,2024-10-15
+116496,1244,fulfilled,NA,phone,1432.8,30,priority handling requested,2024-07-28
+118335,1314,refunded,APAC,phone,2170.86,24,,2025-03-04
+109715,1300,fulfilled,EMEA,retail,1735.83,26,,2024-08-03
+103013,1310,refunded,EMEA,phone,1250.29,21,priority handling requested,2024-06-25
+113663,1070,cancelled,APAC,partner,835.91,8,priority handling requested,2025-01-18
+100889,1140,refunded,NA,retail,2195.64,5,priority handling requested,2025-06-15
+111763,1180,cancelled,APAC,web,439.5,4,priority handling requested,2024-07-05
+118936,1119,fulfilled,LATAM,retail,268.44,8,,2024-04-11
+105099,1284,cancelled,NA,partner,1671.56,24,priority handling requested,2025-02-14
+116431,1155,fulfilled,NA,phone,562.11,12,priority handling requested,2025-04-30
+113617,1311,pending,APAC,retail,1062.39,23,priority handling requested,2025-05-18
+113670,1239,fulfilled,APAC,web,123.96,22,priority handling requested,2024-10-24
+119206,1176,cancelled,NA,web,1492.51,30,priority handling requested,2024-12-22
+101892,1028,fulfilled,APAC,phone,1935.96,2,priority handling requested,2025-05-05
+112479,1231,cancelled,APAC,phone,1243.65,23,priority handling requested,2024-02-21
+108723,1014,fulfilled,EMEA,phone,2275.48,15,priority handling requested,2025-02-18
+117282,1362,cancelled,APAC,phone,250.56,25,,2025-05-09
+104473,1205,cancelled,NA,phone,1436.37,11,priority handling requested,2024-03-19
+119528,1228,pending,EMEA,retail,2267.33,6,,2025-03-26
+116367,1088,fulfilled,EMEA,phone,1907.24,3,priority handling requested,2025-04-09
+119112,1103,pending,EMEA,partner,514.93,10,priority handling requested,2024-05-28
+112434,1143,cancelled,NA,retail,175.89,28,priority handling requested,2025-02-11
+110146,1328,fulfilled,LATAM,partner,888.17,12,priority handling requested,2024-04-30
+109575,1127,fulfilled,EMEA,web,2406.33,19,priority handling requested,2024-11-28
+119202,1332,cancelled,NA,partner,1638.43,12,priority handling requested,2025-05-22
+107583,1161,refunded,EMEA,web,345.33,3,,2024-03-25
+105680,1347,fulfilled,LATAM,retail,1903.82,7,priority handling requested,2024-03-23
+111153,1153,pending,APAC,partner,2119.64,18,,2024-03-26
+113531,1267,fulfilled,EMEA,partner,694.96,28,priority handling requested,2024-06-22
+112828,1019,refunded,NA,retail,703.2,5,priority handling requested,2025-03-08
+115434,1394,refunded,LATAM,retail,1582.39,29,,2025-04-02
+109665,1158,pending,LATAM,phone,1021.52,6,priority handling requested,2024-05-01
+108470,1373,pending,LATAM,phone,1361.7,16,priority handling requested,2025-03-08
+112169,1235,cancelled,APAC,phone,2297.39,24,priority handling requested,2024-02-22
+109440,1267,pending,NA,partner,1126.68,19,priority handling requested,2025-04-12
+107187,1321,pending,LATAM,phone,727.39,1,priority handling requested,2024-03-25
+113888,1251,fulfilled,APAC,partner,1097.72,14,priority handling requested,2024-10-20
+118444,1105,cancelled,EMEA,web,926.63,13,priority handling requested,2025-02-07
+119736,1294,refunded,LATAM,phone,1900.28,9,priority handling requested,2024-10-27
+114233,1335,fulfilled,APAC,phone,18.66,21,priority handling requested,2024-06-24
+105805,1262,refunded,NA,retail,513.89,12,priority handling requested,2024-08-19
+103805,1363,cancelled,LATAM,retail,1500.75,15,priority handling requested,2024-04-03
+113743,1068,pending,LATAM,web,2136.08,17,priority handling requested,2024-05-06
+106562,1094,cancelled,EMEA,partner,972.47,21,priority handling requested,2024-12-13
+114364,1093,cancelled,APAC,partner,242.56,6,priority handling requested,2025-05-31
+118937,1110,fulfilled,NA,retail,610.91,16,priority handling requested,2025-03-15
+119655,1027,pending,LATAM,phone,1408.45,21,,2025-03-14
+113259,1323,cancelled,APAC,partner,1925.29,27,priority handling requested,2024-11-17
+105530,1075,refunded,LATAM,retail,162.77,5,priority handling requested,2024-08-29
+113830,1044,refunded,LATAM,retail,1966.49,23,priority handling requested,2024-01-17
+119980,1034,pending,APAC,partner,831.94,30,,2024-11-21
+119653,1244,pending,NA,retail,151.19,12,,2024-11-09
+100164,1260,fulfilled,NA,retail,1937.86,16,priority handling requested,2024-07-08
+119916,1175,cancelled,NA,retail,208.66,19,priority handling requested,2024-04-03
+103141,1019,fulfilled,APAC,web,1103.92,8,priority handling requested,2024-07-24
+109687,1100,fulfilled,EMEA,web,1552.87,13,priority handling requested,2025-05-13
+105044,1071,fulfilled,LATAM,web,360.8,18,,2024-12-22
+106017,1071,pending,NA,web,2028.81,9,priority handling requested,2024-10-30
+118472,1047,cancelled,LATAM,partner,1852.53,15,priority handling requested,2025-06-01
+110971,1248,pending,EMEA,partner,1688.65,2,,2025-05-04
+111822,1316,cancelled,LATAM,retail,2257.55,19,priority handling requested,2024-02-14
+103002,1128,fulfilled,NA,web,1126.63,12,priority handling requested,2024-06-29
+112399,1181,fulfilled,LATAM,retail,2200.51,18,priority handling requested,2024-06-07
+116145,1258,pending,EMEA,partner,1174.12,13,priority handling requested,2024-04-12
+113227,1326,fulfilled,EMEA,partner,1941.48,23,priority handling requested,2025-03-01
+116243,1086,pending,EMEA,phone,1903.73,15,,2024-12-08
+114604,1070,cancelled,EMEA,phone,1409.34,27,priority handling requested,2024-02-20
+104491,1155,cancelled,EMEA,web,1579.17,26,priority handling requested,2024-09-28
+119985,1278,refunded,LATAM,web,478.56,3,priority handling requested,2025-05-31
+111979,1265,fulfilled,APAC,retail,1527.5,19,priority handling requested,2024-05-24
+118842,1201,fulfilled,APAC,partner,2229.54,6,priority handling requested,2025-01-19
+104062,1055,fulfilled,NA,phone,1657.92,27,priority handling requested,2024-10-06
+103064,1043,fulfilled,APAC,retail,814.87,8,priority handling requested,2024-09-16
+107619,1190,pending,LATAM,partner,2243.3,18,priority handling requested,2024-01-02
+110044,1123,fulfilled,NA,partner,1542.97,24,priority handling requested,2025-04-02
+112961,1129,pending,LATAM,phone,1839.77,26,priority handling requested,2024-07-30
+115743,1354,cancelled,LATAM,web,820.91,24,,2024-08-13
+104770,1092,fulfilled,EMEA,retail,2181.22,10,priority handling requested,2025-04-16
+104782,1038,pending,APAC,partner,754.11,9,priority handling requested,2025-01-29
+107726,1246,fulfilled,NA,retail,1904.68,18,priority handling requested,2024-03-30
+113448,1344,pending,NA,partner,1548.19,28,priority handling requested,2024-04-07
+110161,1001,refunded,NA,web,564.97,23,priority handling requested,2024-09-11
+116729,1262,fulfilled,APAC,retail,1237.17,10,priority handling requested,2024-03-02
+115209,1266,fulfilled,EMEA,partner,1141.27,21,priority handling requested,2024-11-28
+106085,1030,cancelled,APAC,retail,722.71,12,,2024-04-09
+107453,1025,refunded,EMEA,partner,1405.81,15,priority handling requested,2024-08-20
+115557,1201,pending,LATAM,web,2333.32,23,priority handling requested,2024-06-27
+109246,1198,cancelled,EMEA,web,2107.0,27,priority handling requested,2024-05-15
+108065,1047,pending,APAC,phone,730.93,17,priority handling requested,2024-11-27
+111192,1130,fulfilled,APAC,retail,813.37,21,priority handling requested,2024-10-26
+112137,1104,refunded,EMEA,web,1504.36,16,,2024-03-24
+117629,1184,fulfilled,LATAM,retail,333.93,22,priority handling requested,2024-04-14
+110222,1289,cancelled,LATAM,phone,530.55,4,priority handling requested,2025-01-08
+113206,1365,refunded,NA,web,882.94,28,priority handling requested,2025-04-03
+107195,1074,fulfilled,LATAM,partner,1697.34,8,priority handling requested,2024-05-03
+109784,1293,fulfilled,NA,web,2321.06,18,priority handling requested,2024-04-03
+118785,1226,pending,NA,phone,2498.15,16,priority handling requested,2024-10-04
+110163,1023,fulfilled,LATAM,retail,2499.07,24,priority handling requested,2024-11-30
+113800,1020,cancelled,EMEA,retail,1444.65,1,priority handling requested,2024-02-22
+101817,1287,pending,NA,web,893.74,30,,2024-07-21
+104278,1254,pending,LATAM,partner,1776.53,1,priority handling requested,2025-04-22
+118423,1312,cancelled,LATAM,phone,841.31,27,priority handling requested,2024-04-04
+113936,1280,cancelled,LATAM,phone,1408.98,16,priority handling requested,2024-10-02
+118864,1022,cancelled,EMEA,retail,2005.43,22,priority handling requested,2024-02-26
+104882,1150,refunded,NA,partner,1888.74,26,priority handling requested,2024-08-16
+109581,1233,fulfilled,EMEA,web,1283.49,8,priority handling requested,2024-11-17
+106600,1075,fulfilled,APAC,phone,1013.1,5,priority handling requested,2024-06-12
+104549,1031,refunded,EMEA,partner,710.86,28,,2025-01-13
+101680,1072,fulfilled,NA,retail,511.2,25,priority handling requested,2024-09-17
+119691,1360,cancelled,NA,web,2311.81,11,priority handling requested,2024-08-08
+102657,1160,cancelled,EMEA,phone,582.99,19,priority handling requested,2025-05-18
+108041,1303,cancelled,LATAM,retail,25.24,29,priority handling requested,2025-04-27
+102954,1211,pending,APAC,retail,2423.48,20,priority handling requested,2025-03-13
+104515,1014,refunded,EMEA,web,303.79,22,priority handling requested,2024-02-17
+115014,1148,refunded,NA,partner,1477.09,18,priority handling requested,2024-10-09
+117007,1215,pending,APAC,partner,1567.08,19,priority handling requested,2024-12-06
+116706,1059,refunded,NA,retail,597.62,24,priority handling requested,2025-03-28
+100840,1234,fulfilled,APAC,web,2269.97,9,priority handling requested,2024-04-20
+118223,1068,refunded,APAC,web,319.56,1,priority handling requested,2024-03-27
+103049,1250,refunded,APAC,web,193.98,27,priority handling requested,2024-01-12
+101136,1123,refunded,APAC,retail,2248.75,24,,2024-08-15
+113745,1393,pending,EMEA,retail,587.01,25,priority handling requested,2025-06-08
+101071,1119,fulfilled,EMEA,retail,2441.93,18,priority handling requested,2024-01-24
+106679,1129,pending,NA,retail,918.7,7,priority handling requested,2024-06-14
+110563,1264,pending,LATAM,phone,1162.79,11,priority handling requested,2024-09-03
+113422,1392,pending,APAC,retail,262.49,11,priority handling requested,2024-05-23
+103729,1109,fulfilled,APAC,partner,1557.48,8,priority handling requested,2024-08-07
+117589,1163,pending,APAC,phone,916.42,25,priority handling requested,2024-03-17
+111469,1350,pending,NA,retail,1206.6,6,,2024-12-31
+102913,1202,fulfilled,LATAM,partner,289.02,9,priority handling requested,2024-07-10
+113742,1262,fulfilled,NA,phone,904.81,4,priority handling requested,2024-07-30
+106288,1394,cancelled,APAC,web,1710.53,5,priority handling requested,2024-10-07
+106850,1053,fulfilled,LATAM,retail,1751.51,10,priority handling requested,2024-09-08
+117933,1126,refunded,APAC,phone,1835.21,28,priority handling requested,2025-01-23
+110119,1103,cancelled,EMEA,partner,396.96,9,priority handling requested,2025-01-08
+104170,1320,cancelled,LATAM,phone,1273.7,21,priority handling requested,2024-04-08
+111515,1124,pending,LATAM,retail,1534.56,11,priority handling requested,2024-11-04
+113274,1107,cancelled,LATAM,phone,2412.2,3,priority handling requested,2024-06-06
+100340,1204,cancelled,NA,retail,1570.09,7,priority handling requested,2024-05-27
+115325,1262,refunded,LATAM,phone,29.26,9,priority handling requested,2024-09-17
+119317,1160,pending,EMEA,web,1362.55,16,priority handling requested,2024-10-01
+109244,1077,pending,APAC,phone,2228.71,8,,2024-07-25
+101187,1024,refunded,EMEA,retail,1328.65,15,,2024-02-14
+104975,1296,pending,NA,phone,1126.16,3,priority handling requested,2024-02-01
+101557,1226,fulfilled,NA,web,1210.12,19,priority handling requested,2024-06-02
+105089,1232,pending,APAC,retail,1567.71,30,priority handling requested,2025-03-27
+114283,1232,fulfilled,APAC,phone,2407.4,2,,2025-04-21
+117525,1286,refunded,EMEA,web,348.37,13,,2024-08-23
+111644,1373,fulfilled,LATAM,phone,2434.99,18,,2024-01-18
+117040,1214,refunded,LATAM,retail,1063.64,6,priority handling requested,2024-12-06
+115397,1077,refunded,NA,partner,1360.98,12,priority handling requested,2025-04-16
+114228,1296,pending,LATAM,partner,989.57,27,priority handling requested,2024-12-03
+101620,1292,fulfilled,EMEA,partner,2472.25,1,priority handling requested,2025-04-05
+108353,1236,refunded,EMEA,retail,1518.77,3,priority handling requested,2024-11-06
+108958,1335,pending,APAC,partner,2382.88,6,priority handling requested,2024-05-17
+115125,1162,cancelled,LATAM,web,1646.6,6,priority handling requested,2025-02-17
+104133,1199,cancelled,NA,retail,642.66,30,priority handling requested,2024-06-03
+102675,1132,fulfilled,LATAM,web,1438.21,19,priority handling requested,2024-08-07
+107933,1358,fulfilled,NA,partner,2493.74,1,,2025-05-04
+118608,1397,refunded,LATAM,web,86.41,22,priority handling requested,2024-09-02
+104725,1172,cancelled,LATAM,partner,333.36,13,priority handling requested,2025-04-06
+118855,1028,cancelled,APAC,web,384.22,10,priority handling requested,2024-10-16
+111950,1155,cancelled,EMEA,web,1312.08,4,priority handling requested,2024-05-01
+100419,1052,cancelled,LATAM,partner,1194.61,1,,2024-07-14
+100619,1211,cancelled,NA,web,594.07,16,priority handling requested,2025-04-13
+104625,1264,cancelled,NA,phone,1301.48,25,priority handling requested,2024-12-13
+102786,1191,pending,LATAM,phone,1335.89,17,priority handling requested,2024-11-17
+105943,1041,refunded,EMEA,retail,142.29,15,priority handling requested,2025-02-12
+115142,1255,refunded,APAC,partner,466.87,20,priority handling requested,2024-07-23
+111091,1057,pending,NA,phone,653.47,19,,2025-03-29
+101839,1002,refunded,EMEA,phone,1142.17,19,priority handling requested,2025-02-06
+103051,1248,cancelled,EMEA,partner,1709.46,27,priority handling requested,2025-02-24
+108937,1045,pending,APAC,web,372.93,5,,2024-10-29
+112016,1075,pending,NA,phone,607.97,3,priority handling requested,2024-03-17
+113553,1062,cancelled,LATAM,partner,2235.68,3,,2024-09-19
+101731,1113,refunded,EMEA,retail,522.27,29,,2025-03-28
+112473,1329,fulfilled,APAC,web,2374.69,21,priority handling requested,2024-06-30
+113251,1090,cancelled,APAC,partner,1513.26,26,priority handling requested,2025-05-31
+103004,1271,refunded,NA,phone,964.63,1,priority handling requested,2024-02-08
+111875,1286,refunded,APAC,phone,637.66,7,priority handling requested,2024-03-11
+107916,1317,pending,APAC,partner,1666.12,13,priority handling requested,2024-02-06
+101591,1316,fulfilled,APAC,phone,1901.35,1,priority handling requested,2025-03-25

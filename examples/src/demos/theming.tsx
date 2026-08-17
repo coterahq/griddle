@@ -123,9 +123,14 @@ export function ThemingDemo(): React.ReactElement {
     [controller]
   );
 
-  // Set on the grid's own wrapper rather than on `:root`, which is the shape a
-  // consumer's override takes and the reason the library defines nothing
-  // globally.
+  /*
+   * Set on the grid itself, not on a wrapper.
+   *
+   * `.cotera-griddle` declares the nine defaults, and the grid root carries
+   * that class — so a value inherited from an ancestor loses to the grid's own
+   * declaration. This is the bug that made the colour pickers on the left do
+   * nothing. An inline style on the grid beats every stylesheet rule.
+   */
   const style = Object.fromEntries(
     TOKENS.map((token) => [token, tokens[token]])
   ) as React.CSSProperties;
@@ -163,7 +168,7 @@ export function ThemingDemo(): React.ReactElement {
         ).join('\n')}\n}`,
       }}
     >
-      <div className="theming-layout" style={style}>
+      <div className="theming-layout">
         <div className="token-editor">
           {TOKENS.map((token) => (
             <label key={token}>
@@ -189,6 +194,7 @@ export function ThemingDemo(): React.ReactElement {
             {...controller.gridProps}
             getRowId={(row) => row.id}
             viewModel={viewModel}
+            style={style}
           />
         </div>
       </div>

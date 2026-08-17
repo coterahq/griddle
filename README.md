@@ -101,11 +101,11 @@ If you need a pivot table, this is not a pivot table.
 **You need it to render on a server.** It measures itself with `ResizeObserver`
 and `getBoundingClientRect`. It is a client component and it will stay one.
 
-**You want joins without DuckDB.** Right now `joinLayer` compiles to SQL, so
-engine-side joins mean the DuckDB adapter. There's a
-[workaround for small data](#if-both-fit-in-memory-do-it-in-javascript) that's
-genuinely fine, but if you wanted the in-memory adapter to do real joins, it
-doesn't yet.
+**Your data is behind an API you don't control.** Joins need an adapter that
+can see the whole population before it pages — an array or a database can, one
+page of an HTTP response cannot. If your backend owns the data and won't join
+for you, the best this can do is decorate the page you were given, and those
+columns can't be sorted.
 
 **You found a bug or a missing feature.** Please open an issue. Several of the
 things in the [limitations](#limitations) section are gaps rather than
@@ -153,73 +153,64 @@ Here's the case from the top of this README, concretely. You have `orders` and
 `users` as two arrays, and you want the customer's name to be a real column: one
 you can sort by, filter on, and get correct answers from.
 
-### If both fit in memory, do it in JavaScript
-
-For small data this is the right answer and it needs nothing from us. Build a
-lookup, flatten the rows, hand them over:
+Declare it as a layer:
 
 ```ts
-import { createMemoryDataSource } from '@cotera/griddle/memory';
-import { createGridController } from '@cotera/griddle/source';
+import { joinLayer } from '@cotera/griddle/source';
 
-const usersById = new Map(users.map((user) => [user.user_id, user]));
-const joined = orders.map((order) => ({
-  ...order,
-  user_name: usersById.get(order.user_id)?.name ?? null,
-}));
-
-const controller = createGridController({
-  source: createMemoryDataSource({ rows: joined, columns }),
-  viewModel,
-  getRowId: (row) => row.id,
+const withUser = joinLayer({
+  id: 'user',
+  from: { kind: 'rows', rows: users },
+  on: 'user_id',
+  columns: ['name', 'email'],
 });
 ```
 
-`user_name` now behaves like every other column. This works because the
-in-memory adapter holds the whole population, so when it sorts, it sorts
-everything. The failure mode described at the top of this file needs a _page_
-to happen to, and there isn't one.
-
-### If they don't, let DuckDB do it
-
-Register each blob and declare the join as a layer. DuckDB folds it into the
-page query:
+Then hand it to whichever adapter you're using. **The same object works on
+both**, unchanged:
 
 ```ts
-import {
-  createDuckDbDataSource,
-  joinLayer,
-  registerJsonSource,
-} from '@cotera/griddle/duckdb';
+// In memory: builds a lookup and attaches the fields to the whole array
+// before anything is filtered, sorted or paged.
+createMemoryDataSource({ rows: orders, columns, layers: [withUser] });
 
-const ordersRel = await registerJsonSource(query, {
-  name: 'orders',
-  rows: orders,
-});
-const usersRel = await registerJsonSource(query, {
-  name: 'users',
-  rows: users,
-});
-
-const source = createDuckDbDataSource({
-  query,
-  from: ordersRel,
-  columns: [
-    { id: 'id', sqlType: 'BIGINT' },
-    { id: 'user_id', sqlType: 'VARCHAR' },
-    { id: 'total', sqlType: 'BIGINT' },
-  ],
-  layers: [
-    joinLayer({ id: 'user', from: usersRel, on: 'user_id', columns: ['name'] }),
-  ],
-});
+// DuckDB: compiles a JOIN into the page query.
+createDuckDbDataSource({ query, from, columns, layers: [withUser] });
 ```
 
-Sorting by `name` is now one query across both relations. Swap
-`registerJsonSource` for `registerParquetSource` and the same code runs against
-a 200 MB file on a CDN, because DuckDB fetches only the row groups the query
-touches over HTTP range requests. The demo does this with 20,000 orders and a
-177 kB parquet.
+`name` is now an ordinary column. Sort by it and you get the right rows out of
+the whole dataset, because both adapters applied the join _before_ choosing a
+page. That property is what matters, and it has nothing to do with having a
+query engine — it needs the adapter to be able to see everything, which an
+array and a database both can.
+
+There's a test that hands one layer array to both adapters and asserts they
+return identical rows across five sort and filter shapes. If they ever
+disagree about what a join means, it fails.
+
+### When you'd reach for DuckDB anyway
+
+Scale, mostly. A `{ kind: 'rows' }` relation is a lookup table you already
+have in memory; past a few thousand rows on the left-hand side you want the
+engine. Point it at a parquet and the same layer still applies:
+
+```ts
+const from = await registerParquetSource(query, { name: 'orders', url });
+createDuckDbDataSource({ query, from, columns, layers: [withUser] });
+```
+
+DuckDB fetches only the row groups the query touches, over HTTP range
+requests, so a 200 MB file on a CDN costs a few hundred kB to sort. The demo
+does this with 20,000 orders in a 177 kB parquet.
+
+For data already in the warehouse, `from` also takes a bare string (or
+`{ kind: 'sql' }`), which is a relation only an engine can read:
+
+```ts
+joinLayer({ id: 'user', from: 'users', on: 'user_id', columns: ['name'] });
+```
+
+The in-memory adapter throws on that one, with a message saying why.
 
 ---
 
@@ -228,17 +219,20 @@ touches over HTTP range requests. The demo does this with 20,000 orders and a
 A layer is one thing laid over a data source. There are four slots, and the
 difference between two of them is the whole design.
 
-| Slot      | Available on | What it does                                                                      |
-| --------- | ------------ | --------------------------------------------------------------------------------- |
-| `present` | any adapter  | Leading grid columns, a live channel for patching loaded rows, a row detail panel |
-| `enrich`  | any adapter  | Attach fields to an already-fetched page from somewhere else                      |
-| `project` | `/duckdb`    | Extra columns at read time, via `JOIN` from another source                        |
-| `mutate`  | `/duckdb`    | Statements against a materialized table; can `ALTER`, can replay an edit log      |
+| Slot      | Available on                               | What it does                                                                      |
+| --------- | ------------------------------------------ | --------------------------------------------------------------------------------- |
+| `join`    | any adapter that sees its whole population | Bring columns across from another relation, before paging                         |
+| `present` | any adapter                                | Leading grid columns, a live channel for patching loaded rows, a row detail panel |
+| `enrich`  | any adapter                                | Attach fields to an already-fetched page from somewhere else                      |
+| `project` | `/duckdb`                                  | Hand-written SQL projection, for what `join` can't express                        |
+| `mutate`  | `/duckdb`                                  | Statements against a materialized table; can `ALTER`, can replay an edit log      |
 
-### `project` is not `enrich`
+### `join` is not `enrich`
 
-A projected column is part of the query. `WHERE` and `ORDER BY` reach it the
-same way they reach a native column, so sorting by it is correct.
+A joined column is applied before the page is chosen. `WHERE` and `ORDER BY`
+reach it the same way they reach a native column, so sorting by it is correct.
+(`project` is the same thing written by hand in SQL, for the cases the
+declaration can't express.)
 
 An enriched column is stapled onto a page the source already chose. It is the
 staple-the-name-on pattern from the top of this README, with a name. Sorting by
@@ -336,6 +330,14 @@ const source: GridDataSource<Order> = {
     return myClient.count({ where: filters, signal });
   },
 
+  // Optional. Declare it when your API only sorts by certain fields. Most
+  // APIs accept a fixed set and ignore the rest, which means the grid draws a
+  // sort arrow, the backend returns its default order, and the user reads a
+  // list they believe is sorted. Omit it to mean "any column".
+  sortableColumns() {
+    return ['id', 'name', 'created_at'];
+  },
+
   // Optional. Leave it off and the header charts stay empty.
   async loadColumnStats({ columnId, filters, signal }) {
     const buckets = await myClient.histogram({
@@ -355,6 +357,11 @@ const source: GridDataSource<Order> = {
   },
 };
 ```
+
+The controller intersects `sortableColumns()` with each column's own
+`sortable`, so the capability can take a sort away but never hand one back that
+you disabled. Columns outside the set are marked unsortable on the view model,
+so the header stops offering a control that cannot work.
 
 Two things to get right. Forward the `signal`: the controller aborts superseded
 queries, and an adapter that ignores it leaves every abandoned request running
@@ -575,6 +582,19 @@ survives into `dist/style.css`. Drop this stylesheet into a page you don't
 control and it cannot change anything outside the grid. That's not a promise,
 it's an assertion in `scripts/build-css.mjs`.
 
+One consequence worth knowing. `DataGrid` puts `.cotera-griddle` on its own
+root, which is where those defaults land — and a declaration on an element
+always beats a value inherited from an ancestor. So setting tokens on a
+_wrapper_ does nothing. Set them on the grid:
+
+```tsx
+<DataGrid style={{ '--dg-accent': '#b45309' } as React.CSSProperties} … />
+```
+
+or in a rule that matches the grid itself (`.dark .cotera-griddle { … }`).
+Either works; a wrapper does not, and it fails silently, which is why it's
+called out here.
+
 ## Overriding components
 
 `CellComponent`, `HeaderComponent`, `RowComponent`, `TopBarComponent` and
@@ -590,10 +610,11 @@ exists.
 The short version lives in [why shouldn't I use this](#why-shouldnt-i-use-this).
 The details:
 
-**Joins need DuckDB.** `project` and `mutate` compile to SQL. The in-memory
-adapter could support engine-side joins, since it holds the whole population,
-but it doesn't today; join in JavaScript first. The HTTP adapter can't, because
-the library only ever holds one page and the server would have to do the work.
+**Joins need an adapter that sees its whole population.** In-memory and DuckDB
+both do. The HTTP adapter does not — the library only ever holds one page — so
+joins there mean either doing the work server-side or accepting `enrich`, whose
+columns can't be sorted. `project` and `mutate`, the hand-written SQL slots,
+remain DuckDB-only by definition.
 
 **Enriched columns can't be sorted or filtered.** By design, and enforced three
 ways. If you need to order by a column from another source it has to be a
@@ -640,7 +661,7 @@ production.
 
 ```bash
 bun install
-bun run test          # vitest on node, jsdom, 226 specs
+bun run test          # vitest on node, jsdom, 263 specs
 bun run typecheck
 bun run lint
 bun run build         # tsup (js + bundled dts), then scripts/build-css.mjs

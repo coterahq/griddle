@@ -12,6 +12,7 @@ import { cn } from '../../ui/cn';
 import { ALIGNMENT_CLASS, formatDataGridNumber } from '../format';
 import type {
   DataGridColumnAlignment,
+  DataGridColumnDataType,
   DataGridColumnDisplayOptions,
   DataGridNumberFormat,
 } from '../types';
@@ -38,11 +39,25 @@ const DECIMALS: { value: number | null; label: string }[] = [
 ];
 
 const PREVIEW_VALUE = 0.4213;
+const PREVIEW_TEXT = 'Sample value';
+
+/**
+ * Whether number formatting means anything for this column.
+ *
+ * `undefined` and `unknown` count as numeric-capable on purpose: a column that
+ * never declared a type can still hold numbers, and the formatter decides at
+ * runtime by looking at the value. An explicitly non-numeric column cannot,
+ * so offering it a decimal count is offering a control that does nothing.
+ */
+const isNumericColumn = (type: DataGridColumnDataType | undefined): boolean =>
+  type === undefined || type === 'number' || type === 'unknown';
 
 export type DataGridDisplayOptionsDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   columnLabel: string;
+  /** Drives which controls are shown; omitted behaves as an untyped column. */
+  columnType?: DataGridColumnDataType;
   options: DataGridColumnDisplayOptions;
   onChange: (options: Partial<DataGridColumnDisplayOptions>) => void;
 };
@@ -53,10 +68,12 @@ export type DataGridDisplayOptionsDialogProps = {
  */
 export const DataGridDisplayOptionsDialog: React.FC<
   DataGridDisplayOptionsDialogProps
-> = ({ open, onOpenChange, columnLabel, options, onChange }) => {
-  const previewShare = options.inCellBar
-    ? Math.min(1, Math.max(0, PREVIEW_VALUE / (options.barMax ?? 1)))
-    : null;
+> = ({ open, onOpenChange, columnLabel, columnType, options, onChange }) => {
+  const numeric = isNumericColumn(columnType);
+  const previewShare =
+    numeric && options.inCellBar
+      ? Math.min(1, Math.max(0, PREVIEW_VALUE / (options.barMax ?? 1)))
+      : null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -69,22 +86,30 @@ export const DataGridDisplayOptionsDialog: React.FC<
         </DialogHeader>
 
         <div className="space-y-4">
-          <Segmented
-            label="Number format"
-            value={options.numberFormat}
-            options={NUMBER_FORMATS}
-            onChange={(numberFormat) => {
-              onChange({ numberFormat });
-            }}
-          />
-          <Segmented
-            label="Decimals"
-            value={options.decimals}
-            options={DECIMALS}
-            onChange={(decimals) => {
-              onChange({ decimals });
-            }}
-          />
+          {/* Number formatting, decimals and the in-cell bar all operate on a
+              numeric value. On a text or date column they are controls that
+              visibly do nothing, so they are not offered. Alignment applies to
+              every column. */}
+          {numeric ? (
+            <Segmented
+              label="Number format"
+              value={options.numberFormat}
+              options={NUMBER_FORMATS}
+              onChange={(numberFormat) => {
+                onChange({ numberFormat });
+              }}
+            />
+          ) : null}
+          {numeric ? (
+            <Segmented
+              label="Decimals"
+              value={options.decimals}
+              options={DECIMALS}
+              onChange={(decimals) => {
+                onChange({ decimals });
+              }}
+            />
+          ) : null}
           <Segmented
             label="Alignment"
             value={options.alignment}
@@ -94,23 +119,25 @@ export const DataGridDisplayOptionsDialog: React.FC<
             }}
           />
 
-          <div className="flex items-center justify-between rounded-lg border border-(color:--dg-border) px-3 py-2">
-            <div>
-              <div className="text-xs font-medium text-(color:--dg-fg)">
-                In-cell bar
+          {numeric ? (
+            <div className="flex items-center justify-between rounded-lg border border-(color:--dg-border) px-3 py-2">
+              <div>
+                <div className="text-xs font-medium text-(color:--dg-fg)">
+                  In-cell bar
+                </div>
+                <div className="text-[11px] text-(color:--dg-muted-fg)">
+                  Draw a proportional bar behind numeric values
+                </div>
               </div>
-              <div className="text-[11px] text-(color:--dg-muted-fg)">
-                Draw a proportional bar behind numeric values
-              </div>
+              <Switch
+                checked={options.inCellBar}
+                aria-label="In-cell bar"
+                onCheckedChange={(inCellBar) => {
+                  onChange({ inCellBar });
+                }}
+              />
             </div>
-            <Switch
-              checked={options.inCellBar}
-              aria-label="In-cell bar"
-              onCheckedChange={(inCellBar) => {
-                onChange({ inCellBar });
-              }}
-            />
-          </div>
+          ) : null}
 
           <div className="space-y-1.5">
             <div className="text-[11px] font-medium uppercase tracking-wide text-(color:--dg-muted-fg)">
@@ -129,7 +156,9 @@ export const DataGridDisplayOptionsDialog: React.FC<
                   ALIGNMENT_CLASS[options.alignment]
                 )}
               >
-                {formatDataGridNumber(PREVIEW_VALUE, options)}
+                {numeric
+                  ? formatDataGridNumber(PREVIEW_VALUE, options)
+                  : PREVIEW_TEXT}
               </span>
             </div>
           </div>

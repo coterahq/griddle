@@ -63,6 +63,21 @@ export type GridDataSource<TRow> = {
   }): Promise<DataGridColumnStats>;
 
   /**
+   * Column ids this source can order by.
+   *
+   * Omit it to mean "all of them", which is the honest answer for an engine:
+   * DuckDB and an in-memory array can sort on anything they hold. An HTTP
+   * endpoint usually cannot — the API accepts `sort=name|created` and silently
+   * ignores the rest — and a grid that offers a sort the backend drops is the
+   * same silent-wrong-order failure that `enrich` columns exist to prevent.
+   *
+   * The controller intersects this with each column's own `sortable`, so a
+   * capability can only ever take a sort away, never add one the caller
+   * disabled.
+   */
+  sortableColumns?(): readonly string[];
+
+  /**
    * An exact count when `loadPage` returned `null` for it — a source that can
    * count, but not in the same round trip as the page.
    */

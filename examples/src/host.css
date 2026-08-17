@@ -373,3 +373,33 @@ body {
     border-top: 1px solid var(--page-line);
   }
 }
+
+/* ── CSV URL input ──────────────────────────────────────────────────── */
+
+.url-form {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.url-form input {
+  inline-size: min(46vw, 420px);
+  padding: 5px 9px;
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--page-line);
+  border-radius: 7px;
+}
+
+.url-form input:focus-visible {
+  outline: 2px solid color-mix(in oklab, currentcolor 35%, transparent);
+  outline-offset: 1px;
+}
+
+/* CORS advice arrives as a paragraph, so keep its newlines. */
+.demo-error {
+  white-space: pre-wrap;
+  max-width: 76ch;
+}

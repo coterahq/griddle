@@ -5,7 +5,8 @@ import type {
 } from '../core/types';
 import { dataGridColumnTypeFromSqlType } from '../core/column-type';
 import { SqlLayerStack } from '../source/layers/sql';
-import type { SqlSourceLayer } from '../source/layers/sql';
+import type { GridSourceLayer } from '../source/layers/types';
+import { toSqlLayers } from './join-layer';
 import type { GridDataSource, GridPage, GridQuery } from '../source/types';
 import { fromArrowRow, parseRowCount } from './arrow';
 import type { DuckDbCellValue } from './arrow';
@@ -34,7 +35,14 @@ export type CreateDuckDbDataSourceOptions<TRow> = {
   defaultOrderBy?: string | null;
   /** Header stats. `false` turns them off; omit for the built-in aggregates. */
   stats?: boolean;
-  layers?: readonly SqlSourceLayer<TRow>[];
+  /**
+   * Layers to apply.
+   *
+   * Takes both kinds: a declared `joinLayer`, which this adapter compiles into
+   * a `JOIN`, and a hand-written `project` / `mutate` layer for anything the
+   * declaration cannot express. `present` and `enrich` layers pass through.
+   */
+  layers?: readonly GridSourceLayer<TRow>[];
   /** An ad-hoc read-only statement selecting from `source`. */
   customSelectSql?: string;
 };
@@ -73,7 +81,7 @@ export function createDuckDbDataSource<TRow = Record<string, DuckDbCellValue>>({
   layers = [],
   customSelectSql = '',
 }: CreateDuckDbDataSourceOptions<TRow>): DuckDbDataSource<TRow> {
-  const stack = new SqlLayerStack<TRow>(layers);
+  const stack = new SqlLayerStack<TRow>(toSqlLayers(layers));
 
   // Projected columns are addressable by the grid exactly like native ones —
   // that is the whole difference between `project` and `enrich`.

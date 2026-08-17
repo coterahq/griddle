@@ -548,3 +548,171 @@ describe('grid controller — dispose', () => {
     expect(loadPage).toHaveBeenCalledTimes(1);
   });
 });
+
+/**
+ * Not every source can sort by every column.
+ *
+ * An engine can; an HTTP endpoint that accepts `sort=name|created` and
+ * silently ignores anything else cannot. Sending it one anyway is the worst
+ * outcome available: the backend returns its default order, the grid draws a
+ * sort arrow, and the user reads a list they believe is sorted.
+ */
+describe('grid controller — sortableColumns', () => {
+  const sourceThatSorts = (
+    sortableColumns: string[] | undefined,
+    loadPage = vi.fn(() =>
+      Promise.resolve<GridPage<Row>>({ rows: rowsFrom(2), total: 2 })
+    )
+  ): GridDataSource<Row> =>
+    sortableColumns === undefined
+      ? { loadPage }
+      : { loadPage, sortableColumns: () => sortableColumns };
+
+  it('sends every sort when the source declares nothing', async () => {
+    const queries: GridQuery[] = [];
+    const viewModel = viewModelFor();
+    const controller = createGridController({
+      source: {
+        loadPage: (q) => {
+          queries.push(q);
+          return Promise.resolve({ rows: rowsFrom(1), total: 1 });
+        },
+      },
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+    viewModel.setSort('name', 'asc');
+    await flush();
+
+    expect(queries.at(-1)?.sorts).toMatchObject([
+      { columnId: 'name', direction: 'asc' },
+    ]);
+    expect(controller.sortableColumns).toBeNull();
+    controller.dispose();
+  });
+
+  it('drops a sort the source cannot honour', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const queries: GridQuery[] = [];
+    const viewModel = viewModelFor();
+    const controller = createGridController({
+      source: {
+        loadPage: (q) => {
+          queries.push(q);
+          return Promise.resolve({ rows: rowsFrom(1), total: 1 });
+        },
+        sortableColumns: () => ['id'],
+      },
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+
+    viewModel.setSort('name', 'asc');
+    await flush();
+
+    // The query goes out unsorted rather than carrying a sort the backend
+    // would ignore.
+    expect(queries.at(-1)?.sorts).toMatchObject([]);
+    expect(warn.mock.calls[0]?.[0]).toContain('name');
+    warn.mockRestore();
+    controller.dispose();
+  });
+
+  it('keeps a sort the source does declare', async () => {
+    const queries: GridQuery[] = [];
+    const viewModel = viewModelFor();
+    const controller = createGridController({
+      source: {
+        loadPage: (q) => {
+          queries.push(q);
+          return Promise.resolve({ rows: rowsFrom(1), total: 1 });
+        },
+        sortableColumns: () => ['id', 'name'],
+      },
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+    viewModel.setSort('name', 'desc');
+    await flush();
+
+    expect(queries.at(-1)?.sorts).toMatchObject([
+      { columnId: 'name', direction: 'desc' },
+    ]);
+    controller.dispose();
+  });
+
+  // The header should not offer a control that cannot work.
+  it('marks unsupported columns unsortable on the view model', async () => {
+    const viewModel = viewModelFor();
+    const controller = createGridController({
+      source: sourceThatSorts(['id']),
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+
+    expect(
+      viewModel.columns.snapshot().map((c) => [c.id, c.sortable])
+    ).toMatchObject([
+      ['id', undefined],
+      ['name', false],
+    ]);
+    controller.dispose();
+  });
+
+  // Intersection, not replacement: a capability can take a sort away and never
+  // hand one back that the caller disabled.
+  it('never re-enables a column the caller marked unsortable', async () => {
+    const viewModel = createDataGridViewModel<Row>({
+      columns: [
+        { id: 'id', header: 'Id', sortable: false, getValue: (r) => r.id },
+        { id: 'name', header: 'Name', getValue: (r) => r.name },
+      ],
+    });
+    const controller = createGridController({
+      source: sourceThatSorts(['id', 'name']),
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+
+    expect(viewModel.columns.snapshot()[0]?.sortable).toBe(false);
+    controller.dispose();
+  });
+
+  it('applies the capability to columns added later', async () => {
+    const viewModel = viewModelFor();
+    const controller = createGridController({
+      source: sourceThatSorts(['id']),
+      viewModel,
+      getRowId: (row) => row.id,
+    });
+    await flush();
+
+    viewModel.columns.set([
+      ...viewModel.columns.snapshot(),
+      { id: 'late', header: 'Late', getValue: () => null },
+    ]);
+
+    expect(viewModel.columns.snapshot().at(-1)?.sortable).toBe(false);
+    controller.dispose();
+  });
+
+  it('exposes the declared set', async () => {
+    const controller = createGridController({
+      source: sourceThatSorts(['id', 'name']),
+      viewModel: viewModelFor(),
+      getRowId: (row) => row.id,
+    });
+    await flush();
+
+    expect([...(controller.sortableColumns ?? [])]).toMatchObject([
+      'id',
+      'name',
+    ]);
+    controller.dispose();
+  });
+});

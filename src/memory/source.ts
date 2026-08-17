@@ -5,6 +5,8 @@ import type {
   DataGridSort,
   DataGridStatBucket,
 } from '../core/types';
+import { applyJoins, joinedGridColumns, joinsIn } from '../source/layers/join';
+import type { GridSourceLayer } from '../source/layers/types';
 import type { GridDataSource, GridPage, GridQuery } from '../source/types';
 import { compareValues, matchesFilterValue } from './filter';
 
@@ -16,6 +18,16 @@ export type CreateMemoryDataSourceOptions<TRow> = {
    * grid is given.
    */
   columns: readonly DataGridColumn<TRow>[];
+  /**
+   * Layers to apply. `joinLayer` is the interesting one.
+   *
+   * Joins run over the whole array before anything is filtered, sorted or
+   * paged, which is what makes a joined column sortable — the same property a
+   * SQL `JOIN` has, arrived at with a `Map`. Only `{ kind: 'rows' }` relations
+   * work here; a `sql` relation throws, because this adapter has no engine to
+   * hand it to.
+   */
+  layers?: readonly GridSourceLayer<TRow>[];
   /** Buckets in a numeric or temporal histogram. */
   histogramBuckets?: number;
   /** Categories charted before the rest collapse into "+ N more". */
@@ -91,13 +103,44 @@ const compactLabel = (value: number, temporal: boolean): string =>
 export function createMemoryDataSource<TRow>({
   rows,
   columns,
+  layers = [],
   histogramBuckets = DEFAULT_HISTOGRAM_BUCKETS,
   topCategories = DEFAULT_TOP_CATEGORIES,
   delayMs = 0,
 }: CreateMemoryDataSourceOptions<TRow>): GridDataSource<TRow> {
-  const columnsById = new Map(columns.map((column) => [column.id, column]));
-  const allRows = (): readonly TRow[] =>
+  const joins = joinsIn(layers);
+  // Joined columns are indistinguishable from native ones once they are here,
+  // which is the whole point: filters and sorts resolve their type through the
+  // same map.
+  const columnsById = new Map(
+    [...columns, ...joinedGridColumns(layers)].map((column) => [
+      column.id,
+      column,
+    ])
+  );
+
+  const baseRows = (): readonly TRow[] =>
     typeof rows === 'function' ? rows() : rows;
+
+  /*
+   * Joined once per distinct base array, not once per query.
+   *
+   * A static array is the same reference every time, so the join runs once for
+   * the life of the source. A `rows` function that returns something new — live
+   * data — re-joins, which is the behaviour that makes the function form worth
+   * having.
+   */
+  let cache: { source: readonly TRow[]; joined: TRow[] } | null = null;
+  const allRows = (): readonly TRow[] => {
+    const source = baseRows();
+    if (joins.length === 0) {
+      return source;
+    }
+    if (cache === null || cache.source !== source) {
+      cache = { source, joined: applyJoins(source, joins) };
+    }
+    return cache.joined;
+  };
 
   const valueOf = (row: TRow, columnId: string): unknown =>
     columnsById.get(columnId)?.getValue(row);
