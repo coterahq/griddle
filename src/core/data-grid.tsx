@@ -855,6 +855,26 @@ export function DataGrid<TRow>({
       }),
     [bodyHeight, headerHeight, rowOffsets, rows.length, scrollY]
   );
+
+  /**
+   * The visible window, reachable from `contextForCell` without being one of
+   * its dependencies.
+   *
+   * `contextForCell` is a prop of every memoized row, so anything in its
+   * dependency array re-renders every row on screen when it changes — and
+   * `virtualizedRows.endIndex` is clamped by `rows.length`, so it changes on
+   * every insert and delete. Depending on it made pushing one row in cost a
+   * full repaint of the viewport, which is precisely what the patchable row
+   * source exists to avoid. `render-cost.spec.tsx` measures it.
+   *
+   * A ref rather than dropping the check: `state.visible` is `true` for every
+   * cell the render loop produces (it only walks the window), but `selectCell`
+   * can ask about a focused row that has since scrolled away, and that caller
+   * deserves the honest answer.
+   */
+  const visibleWindowRef = React.useRef(virtualizedRows);
+  visibleWindowRef.current = virtualizedRows;
+
   const virtualizedRegularColumns = React.useMemo(
     () =>
       getVirtualizedColumns({
@@ -1125,8 +1145,8 @@ export function DataGrid<TRow>({
           cellSelected,
           hovered: false,
           visible:
-            rowIndex >= virtualizedRows.startIndex &&
-            rowIndex <= virtualizedRows.endIndex,
+            rowIndex >= visibleWindowRef.current.startIndex &&
+            rowIndex <= visibleWindowRef.current.endIndex,
           editable,
           editing:
             editingCell?.rowId === rowId &&
@@ -1212,8 +1232,6 @@ export function DataGrid<TRow>({
       selectedCellRanges,
       selectedRowIds,
       viewModel,
-      virtualizedRows.endIndex,
-      virtualizedRows.startIndex,
     ]
   );
 
