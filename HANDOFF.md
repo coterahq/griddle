@@ -51,8 +51,16 @@ bun run check:package   # publint + attw --pack
 bun run examples:dev          # the demo site
 bun run examples:build
 bun run examples:screenshots  # visual baseline, needs examples:build first
-node scripts/build-fixtures.mjs   # regenerate the demo's parquet/JSON
+node scripts/build-fixtures.mjs      # regenerate the demo's parquet/JSON
+node scripts/build-taxi-fixture.mjs  # rebuild the 609,698-row NYC taxi fixture
 ```
+
+The two fixture scripts differ in kind. `build-fixtures.mjs` generates from a
+fixed seed and never touches the network. `build-taxi-fixture.mjs` downloads
+48 MB of published NYC TLC trip records (cached under a gitignored `.cache/`)
+and slices a fixed week out of them. Both are deterministic, and both commit
+their output — the TLC sends no CORS headers, so that file has to be
+same-origin or the demo cannot read it at all.
 
 ---
 

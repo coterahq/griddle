@@ -9,3 +9,6 @@ test-results/
 playwright-report/
 .claude/settings.local.json
 screenshots/
+# Source data for scripts/build-taxi-fixture.mjs. 48 MB from the TLC's CDN,
+# read once to produce the 8.7 MB parquet that is committed.
+.cache/
