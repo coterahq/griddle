@@ -63,7 +63,13 @@ jobs:
           mkdir -p /tmp/consumer && cd /tmp/consumer
           npm init -y >/dev/null
           npm pkg set type=module
-          npm i react@19 react-dom@19 typescript@5.7.3 /tmp/cotera-griddle-*.tgz
+          # `@types/react` is not optional here. The package's declarations
+          # import from 'react', so a strict consumer without the types gets
+          # TS7016 on every one of them — which is what this job caught the
+          # first time it ever ran. A real consumer of a React library has
+          # them installed; the test has to look like a real consumer.
+          npm i react@19 react-dom@19 @types/react@19 @types/react-dom@19 \
+            typescript@5.7.3 /tmp/cotera-griddle-*.tgz
           cat > index.ts <<'EOF'
           import { DataGrid, createGridStore } from '@cotera/griddle';
           const rows = createGridStore<{ id: number }[]>([]);
