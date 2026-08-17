@@ -8,6 +8,12 @@ in memory. You get one grid, and sorting by a column that came from the JSON
 sorts all twenty thousand rows, not the two hundred that happened to be on
 screen.
 
+**[→ Try it: live demos at coterahq.github.io/griddle](https://coterahq.github.io/griddle/)**
+
+Seven demos, all running in your browser. The first is 20,000 rows in a 177 kB
+parquet, read over HTTP range requests — sort a column and watch DuckDB fetch
+only the row groups it needs.
+
 ```bash
 npm install @cotera/griddle
 ```

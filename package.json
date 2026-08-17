@@ -37,6 +37,10 @@
     "type": "git",
     "url": "git+https://github.com/coterahq/griddle.git"
   },
+  "homepage": "https://coterahq.github.io/griddle/",
+  "bugs": {
+    "url": "https://github.com/coterahq/griddle/issues"
+  },
   "keywords": [
     "griddle",
     "react",
