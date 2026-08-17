@@ -1,0 +1,115 @@
+name: Release
+
+# Publishing is driven by tags, not by pushes to main: `npm version <x>` (or an
+# edit to package.json) lands on main first, and only pushing the matching
+# `v*` tag actually cuts the release. The dispatch entry point is for
+# rehearsing that — it defaults to a dry run and publishes nothing.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Build, pack and validate, but do not publish
+        type: boolean
+        default: true
+
+# Never cancel a release mid-flight; a half-run publish is worse than a queue.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write # create the GitHub Release
+  id-token: write # OIDC, which is what mints the npm provenance attestation
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.19
+
+      # npm does the publishing even though bun does everything else: the
+      # package sets `publishConfig.provenance`, and provenance is an npm CLI
+      # feature that needs `registry-url` set here so NODE_AUTH_TOKEN is
+      # written into the runner's .npmrc. Node 22 ships npm 10, which is well
+      # past the 9.5 provenance requires.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - run: bun install --frozen-lockfile
+
+      # The tag is the release's name and package.json is what actually gets
+      # published; if they disagree, the tag lies about what is on npm forever.
+      # Cheaper to fail here than to unpublish.
+      - name: Tag must match package.json version
+        if: github.event_name == 'push'
+        run: |
+          pkg=$(node -p "require('./package.json').version")
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$pkg" != "$tag" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match package.json version $pkg"
+            exit 1
+          fi
+          echo "releasing $pkg"
+
+      # The same gates CI runs on every PR. A tag can be pushed from any
+      # commit, including one CI never saw, so the release re-earns them
+      # rather than trusting that a green check exists somewhere upstream.
+      - run: bun run lint
+      - run: bun run format:check
+      - run: bun run typecheck
+      - run: bun run test
+      - run: bun run build
+      - run: bun run check:package
+
+      # A prerelease published without an explicit dist-tag becomes `latest`,
+      # so `npm i @cotera/griddle` would hand every new consumer a beta.
+      # 0.1.0-beta.0 -> beta, 1.0.0-rc.2 -> rc, 1.0.0 -> latest.
+      - name: Resolve the npm dist-tag
+        id: disttag
+        run: |
+          version=$(node -p "require('./package.json').version")
+          case "$version" in
+            *-*)
+              pre="${version#*-}"; pre="${pre%%.*}"
+              # semver allows a bare numeric identifier (1.0.0-0), which is not
+              # a usable dist-tag; anything not starting with a letter gets the
+              # generic prerelease channel instead.
+              printf '%s' "$pre" | grep -Eq '^[a-zA-Z][a-zA-Z0-9-]*$' || pre=next
+              ;;
+            *) pre=latest ;;
+          esac
+          echo "tag=$pre" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$([ "$pre" = latest ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          echo "publishing under dist-tag: $pre"
+
+      - name: Publish to npm
+        if: github.event_name == 'push' || inputs.dry_run == false
+        run: npm publish --provenance --access public --tag "${{ steps.disttag.outputs.tag }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Pack only (dry run)
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: npm publish --dry-run --tag "${{ steps.disttag.outputs.tag }}"
+
+      # Marked prerelease when the version is one, so the beta line never shows
+      # up as the repo's "Latest release".
+      - name: Create the GitHub Release
+        if: github.event_name == 'push'
+        run: |
+          flags=""
+          if [ "${{ steps.disttag.outputs.prerelease }}" = true ]; then
+            flags=--prerelease
+          fi
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes $flags
+        env:
+          GH_TOKEN: ${{ github.token }}

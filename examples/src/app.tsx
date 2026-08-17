@@ -2,6 +2,7 @@ import * as React from 'react';
 import { CsvDemo } from './demos/csv';
 import { MemoryDemo } from './demos/memory';
 import { ParquetDemo } from './demos/parquet';
+import { TaxiDemo } from './demos/taxi';
 import { HttpDemo } from './demos/http';
 import { OverridesDemo } from './demos/overrides';
 import { ThemingDemo } from './demos/theming';
@@ -22,6 +23,7 @@ type DemoId =
   | 'parquet'
   | 'csv'
   | 'three-sources'
+  | 'taxi'
   | 'memory'
   | 'http'
   | 'theming'
@@ -35,6 +37,13 @@ type Scheme = 'light' | 'dark';
  * the smallest true thing this library does and the fastest to understand. The
  * cross-source join is the interesting claim, but it lands better once you have
  * already seen the simple case work.
+ *
+ * Then the taxi data, immediately after the join it is the proof of. The
+ * generated fixture explains the mechanism on a shape we chose; 609,698 real
+ * rows and someone else's normalised lookup table are the part that is hard to
+ * argue with. It goes second-to-the-join rather than first because 8.7 MB of
+ * parquet is a poor thing to open on, and because "sorting by a joined column
+ * is a query, not a page reorder" is a claim you have to have already heard.
  */
 const DEMOS: { id: DemoId; label: string; render: () => React.ReactElement }[] =
   [
@@ -45,6 +54,7 @@ const DEMOS: { id: DemoId; label: string; render: () => React.ReactElement }[] =
       label: 'Three sources',
       render: () => <ThreeSourcesDemo />,
     },
+    { id: 'taxi', label: '600k real rows', render: () => <TaxiDemo /> },
     { id: 'memory', label: 'In memory', render: () => <MemoryDemo /> },
     { id: 'http', label: 'Over HTTP', render: () => <HttpDemo /> },
     { id: 'theming', label: 'Theming', render: () => <ThemingDemo /> },

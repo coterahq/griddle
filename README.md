@@ -10,9 +10,10 @@ screen.
 
 **[→ Try it: live demos at coterahq.github.io/griddle](https://coterahq.github.io/griddle/)**
 
-Seven demos, all running in your browser. The first is 20,000 rows in a 177 kB
+Eight demos, all running in your browser. The first is 20,000 rows in a 177 kB
 parquet, read over HTTP range requests — sort a column and watch DuckDB fetch
-only the row groups it needs.
+only the row groups it needs. The fourth is 609,698 real NYC taxi trips, where
+the borough names live in a separate file and sorting by one is a query.
 
 ```bash
 npm install @cotera/griddle
@@ -207,7 +208,10 @@ createDuckDbDataSource({ query, from, columns, layers: [withUser] });
 
 DuckDB fetches only the row groups the query touches, over HTTP range
 requests, so a 200 MB file on a CDN costs a few hundred kB to sort. The demo
-does this with 20,000 orders in a 177 kB parquet.
+does this with 20,000 orders in a 177 kB parquet, and again with 609,698 NYC
+taxi trips in an 8.7 MB one — the second is the same code and a better argument,
+because the join it needs is one the TLC's schema imposed rather than one we
+chose. See `scripts/build-taxi-fixture.mjs` for where that data comes from.
 
 For data already in the warehouse, `from` also takes a bare string (or
 `{ kind: 'sql' }`), which is a relation only an engine can read:
