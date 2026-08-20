@@ -5,6 +5,57 @@
 `controller.rowSource` takes granular patches, which is what lets the grid
 repaint a row instead of the viewport.
 
+## How a change reaches sorting, filters and the header stats
+
+There are two levels to this, and the difference is the useful part.
+
+**A patch repaints. It does not re-query.** `applyPatch` writes into the rows
+the grid is currently holding, so the affected cells repaint immediately and
+nothing moves: a row whose new value would sort it elsewhere stays where it is
+until the next query. That is deliberate — rows jumping under the cursor while
+someone is reading them is worse than an ordering that is one edit stale.
+
+**To fold the change into ordering, filtering, totals and the header charts,
+the source has to see it.** Give the source live data and re-run the query:
+
+```ts
+// In memory: `rows` takes a function, re-read on every loadPage, loadTotal
+// and loadColumnStats. Return a new array and joined columns re-join too.
+let orders = initialOrders;
+const source = createMemoryDataSource({ rows: () => orders, columns, layers });
+
+// 1. update the data the source reads
+orders = orders.map((o) => (o.id === 'r42' ? { ...o, status: 'shipped' } : o));
+
+// 2. repaint now, so the cell doesn't wait for a round trip
+controller.rowSource.applyPatch({
+  type: 'update-cell',
+  rowId: 'r42',
+  columnId: 'status',
+  value: 'shipped',
+});
+
+// 3. re-run the current query — same sorts, same filters, rows stay mounted
+controller.refresh();
+```
+
+After step 3 the new value is an ordinary part of the population: `ORDER BY`
+sees it, `WHERE` sees it, and `loadTotal` counts it. Changing a sort or a filter
+re-queries on its own, so an edit made just before a sort needs no `refresh()`
+at all.
+
+On the DuckDB adapter the equivalent of step 1 is a `mutate` layer, which
+replays an edit log into the materialized table so the engine owns the value —
+see [Layers](./layers.md#mutate-statements-against-the-materialized-table).
+
+**Header stats** are per column and reload when filters change, or the first
+time a column's stats are opened. They are computed by the source over the whole
+population — `loadColumnStats` in the in-memory adapter reads the same `rows`
+function, and the DuckDB adapter aggregates over the fully joined source — so
+once the source has the change, the next stats load reflects it. Toggling a
+filter is the cheapest way to force that; a patch alone will not, because the
+grid never claims to have recomputed an aggregate it did not run.
+
 ## Rows
 
 Add a row:

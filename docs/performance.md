@@ -37,26 +37,3 @@ and now they cost nothing.
 Every store-typed prop goes through `useSyncExternalStore`, and column stats are
 per column, so a histogram arriving for one column doesn't re-render the header
 row. Batched patches coalesce into a single notification.
-
----
-
-## A confession
-
-Everything above was true when we wrote this section except one part, and we
-only found out because we wrote the test first.
-
-The claim was that inserting a row doesn't re-render the grid. The test said
-otherwise: inserting one row re-rendered every row on screen, and so did
-deleting one. Cell updates were already surgical, so the bug had been hiding
-behind the case people check.
-
-The cause was a single dependency array. The function that builds each cell's
-context is a prop on every memoized row, and it listed the virtual window's
-`endIndex`. That index is clamped by the row count, so it moved on every insert
-and delete, which gave the callback a new identity, which busted the memo on
-every row, which threw away the exact row-identity work the patchable source
-exists to do. One ref later it was fixed, and there are now nine tests standing
-on it.
-
-We're telling you because "high performance" in a README is worth about as much
-as the paper it's printed on. The tests are in the repo. Run them.

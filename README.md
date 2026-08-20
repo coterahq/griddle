@@ -8,7 +8,6 @@
 [![CI](https://github.com/coterahq/griddle/actions/workflows/ci.yml/badge.svg)](https://github.com/coterahq/griddle/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat&labelColor=363D44)](#license)
 [![React](https://img.shields.io/badge/React-18%20%7C%2019-blue?style=flat&logo=react&logoColor=b0c0c0&labelColor=363D44)](#quick-start)
-[![DuckDB](https://img.shields.io/badge/DuckDB-wasm%20%7C%20native-blue?style=flat&logo=duckdb&logoColor=b0c0c0&labelColor=363D44)](#adapters)
 
 **[▶ Live demos — coterahq.github.io/griddle](https://coterahq.github.io/griddle/)**
 
@@ -16,14 +15,15 @@
 
 ---
 
-> Fetch a page of orders, look up the customer names, staple them onto the rows. It ships.  
-> Then someone clicks **sort by customer** — and gets the page they already had, reordered.  
-> No error, no empty state. Just quietly wrong.
+> A grid can only sort what it can see. Griddle joins your other data sources into
+> the query itself, so sorting, filtering and column stats cover the whole dataset
+> rather than the page that happened to be loaded.
 
 ---
 
 ## Table of Contents
 
+- [The Problem](#the-problem)
 - [Why Griddle](#why-griddle)
 - [What You Get](#what-you-get)
 - [How It Works](#how-it-works)
@@ -40,28 +40,38 @@
 
 ---
 
+## The Problem
+
+Say your orders are in a warehouse table and your customer names come from an
+API. The usual approach is to fetch a page of orders, look up the names for the
+200 rows you got back, and attach them to the rows.
+
+Now sort by customer. The database ordered by order id, not by name, so the sort
+runs over those 200 rows in JavaScript. A customer whose order sits on page four
+never reaches the top. Nothing throws and nothing looks broken — the list is
+simply in the wrong order, and stays that way until someone notices the top of
+an A-to-Z list isn't an A.
+
+Filtering has the same shape: filter on a name and you get four matching rows
+out of the page, under a footer that still says 20,000. The fix is to join
+before paging, so the engine orders the whole population and hands you the
+correct page. That is what a `join` layer does, and both the in-memory and
+DuckDB adapters implement it.
+
+<div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
+
+---
+
 ## Why Griddle
 
-### Ask yourself these questions:
-
-- Do your grid columns come from more than one place — a warehouse, an API, a config service?
-- Have you shipped a sort that only reorders the page the user already had?
-- Do you have more rows than fit in one fetch?
-- Are you about to hand-roll virtualization, filter UI, column stats and cell editing again?
-- Do you want a column from another source to be sortable and filterable, correctly?
-
-**If you answered yes to two or more — Griddle is worth your time.**
-
-Pushing the join into the query is the correct fix and everybody knows it. The
-reason it doesn't happen is that it's a week of work: sort state has to reach
-the query builder, the query builder has to know about the join, and now you own
-paging, cancellation, and the bug where a slow first request lands after a fast
-second one. This library is that week, already done.
+You want a configurable, fast data grid that can layer on data from elsewhere —
+and change that data at runtime — without sorting, filtering and column stats
+quietly going wrong when it does.
 
 > [!NOTE]
-> **Best for:** React apps showing more rows than one fetch holds, or columns
-> that come from more than one source — warehouse tables, parquet on object
-> storage, JSON APIs, in-memory arrays.
+> **Best for:** React apps with more rows than one fetch holds, or columns from
+> more than one source — warehouse tables, parquet on object storage, JSON
+> APIs, in-memory arrays.
 >
 > **Not for:** pivot tables, tree/grouped rows, server-rendered grids, or
 > pixel-level control over every element.
@@ -187,6 +197,11 @@ across five sort and filter shapes.
 > **cannot** be sorted or filtered. See
 > [`join` is not `enrich`](./docs/layers.md#join-is-not-enrich).
 
+`join` is one of five slots. The others add presentation columns, a live channel
+for patching rows on screen, a row detail panel, hand-written SQL projections and
+replayable mutations — each with a worked example in
+**[docs/layers.md](./docs/layers.md)**.
+
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
 
 ---
@@ -200,10 +215,11 @@ across five sort and filter shapes.
 | `@cotera/griddle/http`   | An HTTP endpoint that pages, sorts and filters server-side.                | ⚠️ `enrich` only — it holds one page |
 | `@cotera/griddle/source` | The `GridDataSource` contract and the controller that drives one.          | —                                    |
 
-The library doesn't own DuckDB: bundle choice, worker hosting and CSP are
-properties of your deployment, so you pass in a query function. There's no
-`apache-arrow` dependency either — `{ toArray(): unknown[] }` is the entire type
-surface. Full detail, plus how to write your own adapter, in
+Each adapter is its own entry point, and the grid itself depends on none of
+them. `@cotera/griddle` installs no database driver: `@duckdb/duckdb-wasm` is an
+optional peer that only matters if you import `@cotera/griddle/duckdb`, and the
+adapter declares the shape it needs structurally rather than importing the
+package at all. Setup, capabilities and how to write your own adapter are in
 **[docs/adapters.md](./docs/adapters.md)**.
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
@@ -232,21 +248,13 @@ All eight run entirely in your browser at
 
 ## Performance
 
-The design goal is that a live update repaints what changed and not the grid.
-Every number below is asserted in `src/core/__tests__/render-cost.spec.tsx`,
-counting per-row renders through a real `CellComponent`.
+Judge it on the big one:
+**[609,698 NYC taxi trips in an 8.7 MB parquet](https://coterahq.github.io/griddle/?demo=taxi)**,
+sorted, filtered and joined against a lookup table, entirely in your browser.
 
-| Change                             | Cost                        |
-| ---------------------------------- | --------------------------- |
-| 100,000-row source, first paint    | fewer than 60 rows mounted  |
-| Insert a row                       | no existing row re-renders  |
-| Delete a row                       | no surviving row re-renders |
-| Update one cell                    | that row, nothing else      |
-| Write a value a cell already holds | **nothing re-renders**      |
-| 200 patches applied as a batch     | one notification            |
-
-Nine of those tests exist because the first version of this section was wrong
-and the test caught it — the story is in
+Rows and columns are virtualized, and a patch repaints the cells it touched
+rather than the viewport. The numbers behind that are asserted in
+`src/core/__tests__/render-cost.spec.tsx` and summarised in
 **[docs/performance.md](./docs/performance.md)**.
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
@@ -325,9 +333,9 @@ bun run examples:screenshots # visual baseline
 
 ## Documentation
 
-- **[Layers](./docs/layers.md)** — joins across sources, the five slots, `join` vs `enrich`
+- **[Layers](./docs/layers.md)** — joins across sources, and a worked example of each of the five slots
 - **[Adapters](./docs/adapters.md)** — the controller, DuckDB setup, writing your own source
-- **[Runtime changes](./docs/runtime.md)** — row patches, columns, the view model, stores
+- **[Runtime changes](./docs/runtime.md)** — row patches, and how a change reaches sorting, filters and the header stats
 - **[Theming](./docs/theming.md)** — the nine tokens, the wrapper gotcha, component overrides
 - **[Performance](./docs/performance.md)** — what's measured, how, and one confession
 - **[Limitations](./docs/limitations.md)** — the full list, and when to use something else
