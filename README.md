@@ -219,8 +219,10 @@ Each adapter is its own entry point, and the grid itself depends on none of
 them. `@cotera/griddle` installs no database driver: `@duckdb/duckdb-wasm` is an
 optional peer that only matters if you import `@cotera/griddle/duckdb`, and the
 adapter declares the shape it needs structurally rather than importing the
-package at all. Setup, capabilities and how to write your own adapter are in
-**[docs/adapters.md](./docs/adapters.md)**.
+package at all. `bun run check:boundaries` asserts that after every build — it
+walks the emitted module graph, chunks included, and fails if adapter code
+reaches the main entry. Setup, capabilities and how to write your own adapter
+are in **[docs/adapters.md](./docs/adapters.md)**.
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
 
@@ -314,8 +316,9 @@ bun install
 bun run test          # vitest on node + jsdom, 263 specs
 bun run typecheck
 bun run lint
-bun run build         # tsup (js + bundled dts), then scripts/build-css.mjs
-bun run check:package # publint + attw
+bun run build            # tsup (js + bundled dts), then scripts/build-css.mjs
+bun run check:boundaries # the core grid pulls in no adapter
+bun run check:package    # publint + attw
 
 bun run examples:dev         # the demo site
 bun run examples:screenshots # visual baseline

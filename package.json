@@ -120,6 +120,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "check:boundaries": "node scripts/check-boundaries.mjs",
     "check:package": "publint && attw --pack . --exclude-entrypoints ./style.css ./themes/cotera.css ./themes/light.css ./themes/dark.css ./themes/dark-auto.css",
     "examples:dev": "vite --config examples/vite.config.ts",
     "examples:build": "vite build --config examples/vite.config.ts",

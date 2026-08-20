@@ -23,6 +23,11 @@ jobs:
       - run: bun run typecheck
       - run: bun run test
       - run: bun run build
+      - name: Adapter boundaries
+        # The core grid must depend on no adapter, so `npm install
+        # @cotera/griddle` never pulls a database driver. Runs after the build
+        # because it walks the emitted module graph, chunks included.
+        run: bun run check:boundaries
       - name: Package correctness
         # publint checks the manifest; attw checks that the dual ESM/CJS
         # declarations resolve under every consumer moduleResolution. Under a
