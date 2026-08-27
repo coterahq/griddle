@@ -10,7 +10,7 @@ screen.
 
 **[→ Try it: live demos at coterahq.github.io/griddle](https://coterahq.github.io/griddle/)**
 
-This component powers our public dataset lib at [cotera.co/datasets](https://cotera.co/datasets)
+This component powers our public dataset lib at [cotera.co/datasets/library](https://cotera.co/datasets/library)
 
 Eight demos, all running in your browser. The first is 20,000 rows in a 177 kB
 parquet, read over HTTP range requests — sort a column and watch DuckDB fetch
